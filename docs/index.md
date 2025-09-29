@@ -9,7 +9,7 @@ myst:
 
 The Heterogeneous-computing Interface for Portability (HIP) is a C++ runtime API
 and kernel language that lets you create portable applications for AMD and
-NVIDIA GPUs from a single source code. For more information, see [What is HIP?](./what_is_hip)
+NVIDIA GPUs from a single source code. 
 
 The HIP documentation is organized into the following categories:
 
@@ -47,7 +47,7 @@ The HIP documentation is organized into the following categories:
 
   * {doc}`./how-to/hip_runtime_api/external_interop`
 
-* {doc}`./how-to/hip_tools`
+* {doc}`./conceptual/rocm-tools`
 
 * {doc}`./how-to/performance_optimization`
 
@@ -55,7 +55,7 @@ The HIP documentation is organized into the following categories:
 
 * {doc}`./how-to/multi-gpu_programming`
 
-* {doc}`./how-to/machine_learning_with_rocm`
+* {doc}`./how-to/deep_learning_with_rocm`
 
 Known issues of this material are listed on the [HIP book GitHub repository](https://github.com/ROCm/hipbook/issues).
 

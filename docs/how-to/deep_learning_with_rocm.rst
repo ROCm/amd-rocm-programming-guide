@@ -5,6 +5,12 @@
 .. _hip_book_multi_gpu_programming:
 
 ********************************************************************************
-Machine learning with ROCm
+Deep learning with ROCm
 ********************************************************************************
 
+.. remote-content::
+   :repo: ROCm/ROCm
+   :path: docs/how-to/deep-learning-rocm.rst
+   :start_line: 8
+   :default_branch: develop
+   :tag_prefix: docs/

@@ -38,8 +38,8 @@ subtrees:
       - file: how-to/hip_runtime_api/multi_device
       - file: how-to/hip_runtime_api/opengl_interop
       - file: how-to/hip_runtime_api/external_interop
-  - file: how-to/hip_tools
+  - file: conceptual/rocm-tools
   - file: how-to/performance_optimization
   - file: conceptual/rocm-libraries
   - file: how-to/multi-gpu_programming
-  - file: how-to/machine_learning_with_rocm
+  - file: how-to/deep_learning_with_rocm

@@ -12,5 +12,6 @@ ROCm
    :repo: ROCm/ROCm
    :path: docs/what-is-rocm.rst
    :default_branch: develop
-   :start_line: 15
+   :start_line: 7
+   :replace: data/|../../data/
    :tag_prefix: docs/

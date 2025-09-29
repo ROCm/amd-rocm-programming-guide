@@ -13,4 +13,5 @@ Parallel programming
    :path: docs/understand/programming_model.rst
    :default_branch: docs/develop
    :start_line: 15
+   :replace: ../data/understand/|../../data/understand/ 
    :tag_prefix: docs/

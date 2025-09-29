@@ -18,6 +18,7 @@ class BranchAwareRemoteContent(Directive):
        :path: path/to/file.rst
        :default_branch: docs/develop  # Branch to use when not on a release
        :tag_prefix: Docs/  # Optional
+       :replace: old_text|new_text  # Replace old_text with new_text (can be used multiple times)
     """
 
     required_arguments = 0
@@ -30,6 +31,7 @@ class BranchAwareRemoteContent(Directive):
         'default_branch': str,  # Branch to use when not on a release tag
         'start_line': int,      # Include the file from a specific line
         'tag_prefix': str,      # Prefix for release tags (e.g., 'Docs/')
+        'replace': str,         # Text replacement in format "old|new"
     }
 
     def get_current_version(self):
@@ -69,11 +71,39 @@ class BranchAwareRemoteContent(Directive):
         """Construct the raw.githubusercontent.com URL"""
         return f'https://raw.githubusercontent.com/{repo}/{ref}/{path}'
 
+    def apply_replacements(self, content):
+        """Apply text replacements to content"""
+        if 'replace' not in self.options:
+            return content
+        
+        # Get replacement specification
+        replace_spec = self.options['replace']
+        
+        # Split by pipe character to get old and new text
+        if '|' not in replace_spec:
+            logger.warning('Replace option must be in format "old_text|new_text"')
+            return content
+        
+        parts = replace_spec.split('|', 1)  # Split only on first pipe
+        old_text = parts[0]
+        new_text = parts[1]
+        
+        # Perform replacement
+        modified_content = content.replace(old_text, new_text)
+        
+        if modified_content != content:
+            logger.info(f'Replaced "{old_text}" with "{new_text}"')
+        
+        return modified_content
+
     def fetch_and_parse_content(self, url, source_path):
         """Fetch content and parse it as RST"""
         response = requests.get(url)
         response.raise_for_status()
         content = response.text
+
+        # Apply text replacements before parsing
+        content = self.apply_replacements(content)
 
         start_line = self.options.get('start_line', 0)
 
