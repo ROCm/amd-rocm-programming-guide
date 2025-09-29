@@ -62,6 +62,6 @@ html_context["official_branch"] = official_branch
 html_context["version"] = version
 html_context["release"] = release
 
+html_theme = 'sphinx_book_theme'
 
 numfig = False
-suppress_warnings = ["autosectionlabel.*"]

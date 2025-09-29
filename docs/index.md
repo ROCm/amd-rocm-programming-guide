@@ -5,75 +5,55 @@ myst:
     "keywords": "Radeon, open, compute, platform, install, how, conceptual, reference, home, docs"
 ---
 
-# HIP Book
+# Accelerated Computing with HIP
 
 The Heterogeneous-computing Interface for Portability (HIP) is a C++ runtime API
 and kernel language that lets you create portable applications for AMD and
 NVIDIA GPUs from a single source code. For more information, see [What is HIP?](./what_is_hip)
 
-```{note}
-HIP API 7.0 introduces changes to make it align more closely with NVIDIA CUDA.
-These changes are incompatible with prior releases, and might require recompiling
-existing HIP applications for use with the ROCm 7.0 release. For more information,
-see [HIP API 7.0 changes](./hip-7-changes).
-```
-
-Installation instructions are available from:
-
-* [Installing HIP](./install/install)
-* [Building HIP from source](./install/build)
-
 The HIP documentation is organized into the following categories:
 
-::::{grid} 1 2 2 2
-:gutter: 3
+* {doc}`./conceptual/foreword`
 
-:::{grid-item-card} Programming guide
+* {doc}`./conceptual/introduction`
 
-* {doc}`./understand/programming_model`
-* {doc}`./understand/hardware_implementation`
-* {doc}`./understand/compilers`
-* {doc}`./how-to/performance_guidelines`
-* [Debugging with HIP](./how-to/debugging)
-* {doc}`./how-to/logging`
+  * {doc}`./conceptual/introduction/parallel_programming`
+
+  * {doc}`./conceptual/introduction/rocm`
+
+* {doc}`./how-to/getting_started_with_hip_programming`
+
 * {doc}`./how-to/hip_runtime_api`
-* {doc}`./how-to/hip_cpp_language_extensions`
-* {doc}`./how-to/kernel_language_cpp_support`
-* {doc}`./how-to/hip_porting_guide`
-* {doc}`./how-to/hip_rtc`
-* {doc}`./understand/amd_clr`
 
-:::
+  * {doc}`./how-to/hip_runtime_api/initialization`
 
-:::{grid-item-card} Reference
+  * {doc}`./how-to/hip_runtime_api/memory_management`
 
-* [HIP runtime API](./reference/hip_runtime_api_reference)
-* [HIP math API](./reference/math_api)
-* [HIP complex math API](./reference/complex_math_api)
-* [HIP environment variables](./reference/env_variables)
-* [HIP error codes](./reference/error_codes)
-* [CUDA to HIP API Function Comparison](./reference/api_syntax)
-* [List of deprecated APIs](./reference/deprecated_api_list)
-* [Low Precision Floating Point Types](./reference/low_fp_types)
-* {doc}`./reference/hardware_features`
+  * {doc}`./how-to/hip_runtime_api/error_handling`
 
-:::
+  * {doc}`./how-to/hip_runtime_api/asynchronous`
 
-:::{grid-item-card} Tutorial
+  * {doc}`./how-to/hip_runtime_api/cooperative_groups`
 
-* [HIP basic examples](https://github.com/ROCm/rocm-examples/tree/develop/HIP-Basic)
-* [HIP examples](https://github.com/ROCm/rocm-examples)
-* [SAXPY tutorial](./tutorial/saxpy)
-* [Reduction tutorial](./tutorial/reduction)
-* [Cooperative groups tutorial](./tutorial/cooperative_groups_tutorial)
+  * {doc}`./how-to/hip_runtime_api/hipgraph`
 
-:::
+  * {doc}`./how-to/hip_runtime_api/call_stack`
 
-::::
+  * {doc}`./how-to/hip_runtime_api/multi_device`
 
-Known issues are listed on the [HIP GitHub repository](https://github.com/ROCm/HIP/issues).
+  * {doc}`./how-to/hip_runtime_api/opengl_interop`
 
-To contribute features or functions to the HIP project, refer to [Contributing to HIP](https://github.com/ROCm/HIP/blob/develop/CONTRIBUTING.md).
+  * {doc}`./how-to/hip_runtime_api/external_interop`
+
+* {doc}`./conceptual/rocm-libraries`
+
+* {doc}`./how-to/hip_tools`
+
+* {doc}`./how-to/performance_optimization`
+
+Known issues of this material are listed on the [HIP book GitHub repository](https://github.com/ROCm/hipbook/issues).
+
+To contribute features or functions to the HIP project, refer to [Contributing to HIP](https://github.com/ROCm/hipbook/blob/develop/CONTRIBUTING.md).
 To contribute to the documentation, refer to {doc}`Contributing to ROCm docs <rocm:contribute/contributing>` page.
 
 You can find licensing information on the [Licensing](https://rocm.docs.amd.com/en/latest/about/license.html) page.
