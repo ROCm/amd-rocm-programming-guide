@@ -21,6 +21,8 @@ The HIP documentation is organized into the following categories:
 
   * {doc}`./conceptual/introduction/rocm`
 
+  * {doc}`./conceptual/introduction/hip`
+
 * {doc}`./how-to/getting_started_with_hip_programming`
 
 * {doc}`./how-to/hip_runtime_api`
@@ -45,11 +47,15 @@ The HIP documentation is organized into the following categories:
 
   * {doc}`./how-to/hip_runtime_api/external_interop`
 
-* {doc}`./conceptual/rocm-libraries`
-
 * {doc}`./how-to/hip_tools`
 
 * {doc}`./how-to/performance_optimization`
+
+* {doc}`./conceptual/rocm-libraries`
+
+* {doc}`./how-to/multi-gpu_programming`
+
+* {doc}`./how-to/machine_learning_with_rocm`
 
 Known issues of this material are listed on the [HIP book GitHub repository](https://github.com/ROCm/hipbook/issues).
 

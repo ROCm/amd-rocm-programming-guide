@@ -1,16 +1,16 @@
 .. meta::
-  :description: HIP book ROCm libraries
-  :keywords: AMD, ROCm, HIP, CUDA, HIP Book ROCm Libraries
+  :description: HIP book HIP
+  :keywords: AMD, ROCm, HIP, CUDA, HIP Book HIP
 
-.. _hip_book_rocm_libraries:
+.. _hip_book_rocm:
 
 ********************************************************************************
-ROCm Libraries
+HIP
 ********************************************************************************
 
 .. remote-content::
-   :repo: ROCm/ROCm
-   :path: docs/what-is-rocm.rst
+   :repo: ROCm/HIP
+   :path: docs/what_is_hip.rst
    :default_branch: develop
    :start_line: 15
    :tag_prefix: docs/
