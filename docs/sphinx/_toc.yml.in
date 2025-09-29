@@ -1,0 +1,42 @@
+# Anywhere {branch} is used, the branch name will be substituted.
+# These comments will also be removed.
+defaults:
+  numbered: False
+  maxdepth: 6
+root: index
+subtrees:
+- entries:
+  - file: introduction.rst
+  - file: about/release-notes.md
+  - file: how-to/hip_runtime_api
+    subtrees:
+    - entries:
+      - file: how-to/hip_runtime_api/initialization
+      - file: how-to/hip_runtime_api/memory_management
+        subtrees:
+        - entries:
+          - file: how-to/hip_runtime_api/memory_management/host_memory
+          - file: how-to/hip_runtime_api/memory_management/device_memory
+            subtrees:
+            - entries:
+              - file: how-to/hip_runtime_api/memory_management/device_memory/texture_fetching
+          - file: how-to/hip_runtime_api/memory_management/coherence_control
+          - file: how-to/hip_runtime_api/memory_management/unified_memory
+          - file: how-to/hip_runtime_api/memory_management/virtual_memory
+          - file: how-to/hip_runtime_api/memory_management/stream_ordered_allocator
+      - file: how-to/hip_runtime_api/error_handling
+      - file: how-to/hip_runtime_api/call_stack
+      - file: how-to/hip_runtime_api/asynchronous
+      - file: how-to/hip_runtime_api/hipgraph
+      - file: how-to/hip_runtime_api/cooperative_groups
+      - file: how-to/hip_runtime_api/multi_device
+      - file: how-to/hip_runtime_api/opengl_interop
+      - file: how-to/hip_runtime_api/external_interop
+
+
+- caption: Contribute
+  entries:
+  - file: CONTRIBUTING.md
+    title: Contributing to the ROCm documentation
+  - file: about/license.md
+    title: ROCm licenses
