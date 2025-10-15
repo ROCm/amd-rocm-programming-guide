@@ -8,10 +8,14 @@ myst:
 # Accelerated Computing with HIP
 
 The Heterogeneous-computing Interface for Portability (HIP) is a C++ runtime API
-and kernel language that lets you create portable applications for AMD and
-NVIDIA GPUs from a single source code. 
+and kernel language designed to enable developers to write portable,
+high-performance applications that can run on both AMD and NVIDIA GPUs from a
+single source code base.
 
-The HIP documentation is organized into the following categories:
+This textbook introduces the core concepts, APIs, and best practices for
+accelerated computing using HIP. It provides hands-on guidance for writing GPU
+kernels, managing memory, optimizing performance, and integrating HIP with the
+broader AMD ROCm ecosystem of tools and libraries.
 
 * {doc}`./conceptual/foreword`
 
@@ -41,8 +45,6 @@ The HIP documentation is organized into the following categories:
 
   * {doc}`./how-to/hip_runtime_api/call_stack`
 
-  * {doc}`./how-to/hip_runtime_api/multi_device`
-
   * {doc}`./how-to/hip_runtime_api/opengl_interop`
 
   * {doc}`./how-to/hip_runtime_api/external_interop`
@@ -50,6 +52,12 @@ The HIP documentation is organized into the following categories:
 * {doc}`./how-to/performance_optimization`
 
 * {doc}`./how-to/multi-gpu_programming`
+
+  * {doc}`./how-to/multi-gpu/multi_device`
+
+  * {doc}`./how-to/multi-gpu/rccl`
+
+* {doc}`./reference/amd_gpus`
 
 * {doc}`./conceptual/rocm-libraries`
 
@@ -59,9 +67,24 @@ The HIP documentation is organized into the following categories:
 
 * {doc}`./install/rocm_install`
 
+* {doc}`./reference/rocm_in_data_centers`
+
+  * {doc}`./install/containered_rocm`
+
+  * {doc}`./reference/rocm_in_data_centers/rocm_kubernetes`
+
+    * {doc}`./reference/rocm_in_data_centers/kubernetes/configuration`
+
+    * {doc}`./reference/rocm_in_data_centers/kubernetes/examples`
+
+    * {doc}`./reference/rocm_in_data_centers/kubernetes/installation`
+
+    * {doc}`./reference/rocm_in_data_centers/kubernetes/resource-allocation`
+
+
+
 Known issues of this material are listed on the [HIP book GitHub repository](https://github.com/ROCm/hipbook/issues).
 
-To contribute features or functions to the HIP project, refer to [Contributing to HIP](https://github.com/ROCm/hipbook/blob/develop/CONTRIBUTING.md).
 To contribute to the documentation, refer to {doc}`Contributing to ROCm docs <rocm:contribute/contributing>` page.
 
 You can find licensing information on the [Licensing](https://rocm.docs.amd.com/en/latest/about/license.html) page.

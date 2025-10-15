@@ -12,5 +12,6 @@ Deep learning with ROCm
    :repo: ROCm/ROCm
    :path: docs/how-to/deep-learning-rocm.rst
    :start_line: 8
+   :replace: rocm-for-ai|rocm:how-to/rocm-for-ai
    :default_branch: develop
    :tag_prefix: docs/

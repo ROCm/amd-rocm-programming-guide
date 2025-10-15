@@ -12,22 +12,24 @@ Over the past 40 years, we have seen amazing advances in processing power,
 and microprocessor designers have regularly delivered higher performance chips
 by adding more transistors and scaling the processor clock, taking advantage of
 silicon technology’s Moore’s Law and Dennard scaling. However, early in the 21st
-century, as predicted by Robert Dennard at IBM, the clock frequency of a chip was
-limited. Hence, we found ourselves unable to push silicon to higher power densities
-as the energy accumulated would become impossible to dissipate. In response, chip
-vendors began looking for advancements in parallel processing using multiple cores
-on a single chip. Although new levels of high performance have been achieved,
-most extant software was written assuming a sequential processing model. This
-continues to pose challenges to programmers who are pushed to pursue new and
-innovative methods to exploit parallelism in their applications.
+century, as predicted by Robert Dennard at IBM, the clock frequency of a chip
+was limited. Hence, we found ourselves unable to push silicon to higher power
+densities as the energy accumulated would become impossible to dissipate. In
+response, chip vendors began looking for advancements in parallel processing
+using multiple cores on a single chip. Although new levels of high performance
+have been achieved, most extant software was written assuming a sequential
+processing model. This continues to pose challenges to programmers who are
+pushed to pursue new and innovative methods to exploit parallelism in their
+applications.
 Recently, we witnessed the number of cores on a single microprocessor grow
 from a couple to many. For example, AMD’s third-generation Ryzen Threadripper
-central processing unit (CPU) hosts up to 64 cores, with the next iteration aiming
-for 128. Application programmers have started to leverage the benefits of many
-core CPUs because they excel at running multiple concurrent sequential threads.
+central processing unit (CPU) hosts up to 64 cores, with the next iteration
+aiming for 128. Application programmers have started to leverage the benefits of
+many core CPUs because they excel at running multiple concurrent sequential
+threads.
 Another interesting trend is heterogeneous computing, which uses platforms
-specialized for specific execution models. The first wave of such efforts was in
-troduced by graphics card vendors (e.g., ATI and NVIDIA) who built the first
+specialized for specific execution models. The first wave of such efforts was
+introduced by graphics card vendors (e.g., ATI and NVIDIA) who built the first
 graphics processing units (GPUs) with tailored chip designs to accelerate data
 parallel graphics-heavy workloads. Notably, these designs required applications
 to be written using proprietary graphics languages, which presented barriers to
@@ -37,12 +39,12 @@ Today’s graphics vendors typically exploit a single program multiple data (SIM
 model, in which computational loops are unrolled to leverage parallel execution
 units working in a SIMD fashion. With the introduction of programmable
 shaders, GPUs could be programmed using high-level languages, leveraging
-existing techniques from C and C++, such as NVIDIA’s Compute Unified De
-vice Architecture (CUDA) (June 2007) and Khronos’ Open Computing Language (OpenCL)
-(August 2009). These parallel programming languages made multi
-platform GPU application development fairly consistent. Notably, C++ dialects
-use common syntax and data-type conversion standards. Thus, GPU programs now
-only differ in their low-level details.
+existing techniques from C and C++, such as NVIDIA’s Compute Unified Device
+Architecture (CUDA) (June 2007) and Khronos’ Open Computing Language (OpenCL)
+(August 2009). These parallel programming languages made multi platform GPU
+application development fairly consistent. Notably, C++ dialects use common
+syntax and data-type conversion standards. Thus, GPU programs now only differ in
+their low-level details.
 
 As CUDA gained popularity, concerns were raised about it only running on
 NVIDIA hardware, which posed a problematic single-vendor source paradigm.
@@ -74,19 +76,19 @@ only supported for PGI and Cray hardware; thus, we cannot fairly compare it to
 other heterogeneous technologies.
 
 In August 2012, Microsoft presented its massive parallelism approach as an
-extension to the C++ language via its Visual Studio C++ compiler, C++ Ac
-celerated Massive Parallelism (AMP). It was implemented on DirectX 11 as an
+extension to the C++ language via its Visual Studio C++ compiler, C++
+Accelerated Massive Parallelism (AMP). It was implemented on DirectX 11 as an
 open specification. A year and a half later, the updated specification (version 1.2)
 was released. Microsoft had planned on this update becoming part of the C++14
 Standard, but the C++ Committee did not adopt it.
 
-AMD introduced the Heterogeneous Interface for Portability (HIP) program
-ming language in October 2016 to address both portability and performance. HIP
+AMD introduced the Heterogeneous Interface for Portability (HIP) programming
+language in October 2016 to address both portability and performance. HIP
 follows many similar parallel programming historic conventions that CUDA has
-also leveraged. However, HIP can run on multiple platforms with little to no per
-formance overhead. Using AMD’s Radeon Open Ecosystem (ROCm) platform,
-parallel programs developed using HIP can be used for a wide range of applica
-tions, spanning deep learning to molecular dynamics.
+also leveraged. However, HIP can run on multiple platforms with little to no
+performance overhead. Using AMD’s Radeon Open Ecosystem (ROCm) platform,
+parallel programs developed using HIP can be used for a wide range of
+applications, spanning deep learning to molecular dynamics.
 
 This book introduces the HIP programming language and its ecosystem of
 libraries and development tools. Notably, it is based on C++, and readers of
