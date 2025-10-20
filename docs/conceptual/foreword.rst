@@ -8,6 +8,12 @@
 Foreword
 ********************************************************************************
 
+.. note::
+
+  The foreword will be updated once the proper title is determined. This may
+  also affect the final structure. The current version is copied from the
+  previous book.
+
 The world of high-performance computing has recently witnessed a milestone:
 achieving, for the first time, exascale performance with the Frontier
 supercomputer deployed in the Oak Ridge National Laboratory. Frontier was

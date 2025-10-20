@@ -52,8 +52,8 @@ subtrees:
     subtrees:
     - entries:
       - file: install/containered_rocm
-      - file: reference/rocm_in_data_centers/slurm_integration
-      - file: reference/rocm_in_data_centers/rocm_kubernetes
+      - file: reference/rocm_in_data_centers/slurm-integration
+      - file: reference/rocm_in_data_centers/rocm-kubernetes
         subtrees:
         - entries:
           - file: reference/rocm_in_data_centers/kubernetes/configuration

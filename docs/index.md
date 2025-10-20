@@ -71,7 +71,9 @@ broader AMD ROCm ecosystem of tools and libraries.
 
   * {doc}`./install/containered_rocm`
 
-  * {doc}`./reference/rocm_in_data_centers/rocm_kubernetes`
+  * {doc}`./reference/rocm_in_data_centers/slurm-integration`
+
+  * {doc}`./reference/rocm_in_data_centers/rocm-kubernetes`
 
     * {doc}`./reference/rocm_in_data_centers/kubernetes/configuration`
 

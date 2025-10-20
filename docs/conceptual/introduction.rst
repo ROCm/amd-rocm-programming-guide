@@ -8,6 +8,12 @@
 Introduction
 ********************************************************************************
 
+.. note::
+
+  The introduction will be updated once the proper title is determined. This may
+  also affect the final structure. The current version is copied from the
+  previous book.
+
 Over the past 40 years, we have seen amazing advances in processing power,
 and microprocessor designers have regularly delivered higher performance chips
 by adding more transistors and scaling the processor clock, taking advantage of
@@ -97,4 +103,4 @@ examples presented throughout this text, we target the AMD Instinct
 Machine-Intelligence (MI)-100 GPU, with which readers are not required to be
 familiar. Most code examples will run on any GPU supported by ROCm or CUDA
 platforms. This chapter introduces readers to the world of parallel computing
-with HIP and ROCm. Later chapters explore the features and ecosystem of HIP
+with HIP and ROCm. Later chapters explore the features and ecosystem of HIP.

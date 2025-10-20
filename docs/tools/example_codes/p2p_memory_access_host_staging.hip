@@ -56,7 +56,7 @@ int main()
         std::cout << "This example requires at least two HIP devices." << std::endl;
         return EXIT_SUCCESS;
     }
-
+    
     double* deviceData0;
     double* deviceData1;
     constexpr std::size_t elems = 1024;
@@ -76,6 +76,10 @@ int main()
     HIP_CHECK(hipMalloc(&deviceData1, size)); // Allocate memory on device 1
     simpleKernel<<<8, 128>>>(deviceData1, elems); // Launch kernel on device 1
     HIP_CHECK(hipDeviceSynchronize());
+
+    // Use deviceData0 on device 1. This works but incurs a performance penalty.
+    HIP_CHECK(hipSetDevice(deviceId1));
+    HIP_CHECK(hipMemcpy(deviceData1, deviceData0, size, hipMemcpyDeviceToDevice));
 
     // Copy result from device 0
     double hostData0[elems];
