@@ -67,13 +67,13 @@ broader AMD ROCm ecosystem of tools and libraries.
 
 ## ROCm platform
 
+* {doc}`./install/rocm_install`
+
 * {doc}`./reference/amd_gpus`
 
 * {doc}`./conceptual/rocm-libraries`
 
 * {doc}`./conceptual/rocm-tools`
-
-* {doc}`./install/rocm_install`
 
 ## ROCm in data centers
 
