@@ -5,14 +5,14 @@
 .. _hip_book_rocm_tools:
 
 ********************************************************************************
-ROCm Tools
+ROCm tools
 ********************************************************************************
 
 The latest ROCm tools documentation is available on their official documentation
 page. Here, we provide only a list with brief descriptions. For detailed
 guidance, please refer to the tools' how-to pages.
 
-System Management
+System management
 -----------------
 
 .. csv-table::

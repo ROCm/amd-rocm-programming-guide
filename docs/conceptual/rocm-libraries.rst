@@ -5,14 +5,14 @@
 .. _hip_book_rocm_libraries:
 
 ********************************************************************************
-ROCm Libraries
+ROCm libraries
 ********************************************************************************
 
 The latest ROCm libraries documentation is available on their official
 documentation page. Here, we provide only a list with brief descriptions.
 For detailed guidance, please refer to the libraries' how-to pages.
 
-Machine Learning & Computer Vision
+Machine learning & computer vision
 -----------------------------------------------
 
 .. csv-table::

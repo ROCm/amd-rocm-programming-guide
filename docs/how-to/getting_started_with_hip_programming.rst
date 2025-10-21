@@ -5,7 +5,7 @@
 .. _hip_getting_started_with_hip_programming:
 
 ********************************************************************************
-Getting Started with HIP Programming 
+Getting started with HIP programming 
 ********************************************************************************
 
 .. remote-content::

@@ -5,7 +5,7 @@
 .. _hip_book_performance_optimization:
 
 ********************************************************************************
-HIP Performance Optimization
+HIP performance optimization
 ********************************************************************************
 
 .. remote-content::
