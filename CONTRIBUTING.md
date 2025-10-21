@@ -1,10 +1,10 @@
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Contributing to ROCm">
-  <meta name="keywords" content="ROCm, contributing, contribute, maintainer, contributor">
+  <meta name="description" content="Contributing to HIP Book">
+  <meta name="keywords" content="HIP Book, contributing, contribute, maintainer, contributor">
 </head>
 
-# Contribute to ROCm
+# Contribute to HIP Book
 
 AMD values and encourages contributions to our code and documentation. If you want to contribute
 to our ROCm repositories, first review the following guidance. For documentation-specific information,
@@ -28,7 +28,7 @@ bugs.
 ### Issue tracking
 
 Before filing a new issue, search the
-[existing issues](https://github.com/ROCm/ROCm/issues) to make sure your issue isn't
+[existing issues](https://github.com/ROCm/hipbook/issues) to make sure your issue isn't
 already listed.
 
 General issue guidelines:
@@ -75,19 +75,6 @@ You can look up each license on the [ROCm licensing](https://rocm.docs.amd.com/e
 
 ### New feature development
 
-Use the [GitHub Discussion forum](https://github.com/ROCm/ROCm/discussions)
+Use the [GitHub Discussion forum](https://github.com/ROCm/hipbook/discussions)
 (Ideas category) to propose new features. Our maintainers are happy to provide direction and
 feedback on feature development.
-
-### Documentation
-
-Submit ROCm documentation changes to our
-[documentation repository](https://github.com/ROCm/ROCm). You must update
-documentation related to any new feature or API contribution.
-
-Note that each ROCm project uses its own repository for documentation.
-
-## Future development workflow
-
-The current ROCm development workflow is GitHub-based. If, in the future, we change this platform,
-the tools and links may change. In this instance, we will update contribution guidelines accordingly.

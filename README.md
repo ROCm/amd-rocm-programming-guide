@@ -1,49 +1,58 @@
-# AMD ROCm Software
+# HIP Book
 
-ROCm is an open-source stack, composed primarily of open-source software, designed for graphics
-processing unit (GPU) computation. ROCm consists of a collection of drivers, development tools, and
-APIs that enable GPU programming from low-level kernel to end-user applications.
+The HIP Book is a solution designed for generating comprehensive books and
+guides from the ROCm documentation portal. This repository primarily contains
+HIP and ROCm documentation, and serves as a centralized resource for developers,
+contributors, and users of the ROCm ecosystem.
 
-With ROCm, you can customize your GPU software to meet your specific needs. You can develop,
-collaborate, test, and deploy your applications in a free, open source, integrated, and secure software
-ecosystem. ROCm is particularly well-suited to GPU-accelerated high-performance computing (HPC),
-artificial intelligence (AI), scientific computing, and computer aided design (CAD).
+The purpose of this repository is to:
 
-ROCm is powered by AMD’s
-[Heterogeneous-computing Interface for Portability (HIP)](https://github.com/ROCm/HIP),
-an open-source software C++ GPU programming environment and its corresponding runtime. HIP
-allows ROCm developers to create portable applications on different platforms by deploying code on a
-range of platforms, from dedicated gaming GPUs to exascale HPC clusters.
+- Aggregate and organize HIP and ROCm documentation into a structured book
+  format.
 
-ROCm supports programming models, such as OpenMP and OpenCL, and includes all necessary open
-source software compilers, debuggers, and libraries. ROCm is fully integrated into machine learning
-(ML) frameworks, such as PyTorch and TensorFlow.
+- Provide an easily accessible and offline-readable version of the ROCm
+  documentation.
 
-> [!IMPORTANT]
-> A new open source build platform for ROCm is under development at
-> https://github.com/ROCm/TheRock, featuring a unified CMake build with bundled
-> dependencies, Windows support, and more.
+- Support automated documentation generation workflows and publishing tools.
 
-## Getting and Building ROCm from Source
+> [!NOTE]
+> This repository focuses exclusively on documentation content and related build scripts — it does not contain any source code for HIP or ROCm themselves.
 
-Please use [TheRock](https://github.com/ROCm/TheRock) build system to build ROCm from source.
+## Build the documentat
 
-## ROCm documentation
+You can build our documentation via the command line using Python.
 
-This repository contains the [manifest file](https://gerrit.googlesource.com/git-repo/+/HEAD/docs/manifest-format.md)
-for ROCm releases, changelogs, and release information.
+See the `build.tools.python` setting in the [Read the Docs configuration file](https://github.com/ROCm/ROCm/blob/develop/.readthedocs.yaml) for the Python version used by Read the Docs to build documentation.
 
-The `default.xml` file contains information for all repositories and the associated commit used to build
-the current ROCm release; `default.xml` uses the [Manifest Format repository](https://gerrit.googlesource.com/git-repo/).
+See the [Python requirements file](https://github.com/ROCm/ROCm/blob/develop/docs/sphinx/requirements.txt) for Python packages needed to build the documentation.
 
-Source code for our documentation is located in the `/docs` folder of most ROCm repositories. The
-`develop` branch of our repositories contains content for the next ROCm release.
+Use the Python Virtual Environment (`venv`) and run the following commands from the project root:
 
-The ROCm documentation homepage is [rocm.docs.amd.com](https://rocm.docs.amd.com).
+::::{tab-set}
+:::{tab-item} Linux and WSL
+:sync: linux
 
-For information on how to contribute to the ROCm documentation, see [Contributing to the ROCm documentation](https://rocm.docs.amd.com/en/latest/contribute/contributing.html).
+```sh
+python3 -mvenv .venv
 
-## Older ROCm releases
+.venv/bin/python -m pip install -r docs/sphinx/requirements.txt
+.venv/bin/python -m sphinx -T -E -b html -d _build/doctrees -D language=en docs _build/html
+```
 
-For release information for older ROCm releases, refer to the
-[ROCm release history](https://rocm.docs.amd.com/en/latest/release/versions.html).
+:::
+:::{tab-item} Windows
+:sync: windows
+
+```powershell
+python -mvenv .venv
+
+.venv\Scripts\python.exe -m pip install -r docs/sphinx/requirements.txt
+.venv\Scripts\python.exe -m sphinx -T -E -b html -d _build/doctrees -D language=en docs _build/html
+```
+
+:::
+::::
+
+Navigate to `_build/html/index.html` and open this file in a web browser.
+
+For further information, please check [building documentation](https://rocm.docs.amd.com/en/latest/contribute/building.html).
