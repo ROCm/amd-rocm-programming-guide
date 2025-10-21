@@ -5,7 +5,8 @@ defaults:
   maxdepth: 6
 root: index
 subtrees:
-- entries:
+- caption: Getting Started
+  entries:
   - file: conceptual/foreword
   - file: conceptual/introduction
     subtrees:
@@ -14,6 +15,9 @@ subtrees:
       - file: conceptual/introduction/rocm
       - file: conceptual/introduction/hip
   - file: how-to/getting_started_with_hip_programming
+
+- caption: Core HIP Programming
+  entries:
   - file: how-to/hip_runtime_api
     subtrees:
     - entries:
@@ -31,23 +35,32 @@ subtrees:
           - file: how-to/hip_runtime_api/memory_management/virtual_memory
           - file: how-to/hip_runtime_api/memory_management/stream_ordered_allocator
       - file: how-to/hip_runtime_api/error_handling
-      - file: how-to/hip_runtime_api/call_stack
       - file: how-to/hip_runtime_api/asynchronous
-      - file: how-to/hip_runtime_api/hipgraph
       - file: how-to/hip_runtime_api/cooperative_groups
+      - file: how-to/hip_runtime_api/hipgraph
+      - file: how-to/hip_runtime_api/call_stack
       - file: how-to/hip_runtime_api/opengl_interop
       - file: how-to/hip_runtime_api/external_interop
+
+- caption: Advanced Topics
+  entries:
   - file: how-to/performance_optimization
   - file: how-to/multi-gpu_programming
     subtrees:
     - entries:
       - file: how-to/multi-gpu/multi_device
       - file: how-to/multi-gpu/rccl
+  - file: how-to/deep_learning_with_rocm
+
+- caption: ROCm Platform
+  entries:
   - file: reference/amd_gpus
   - file: conceptual/rocm-libraries
   - file: conceptual/rocm-tools
-  - file: how-to/deep_learning_with_rocm
   - file: install/rocm_install
+
+- caption: Enterprise Deployment
+  entries:
   - file: reference/rocm_in_data_centers
     subtrees:
     - entries:
@@ -56,7 +69,7 @@ subtrees:
       - file: reference/rocm_in_data_centers/rocm-kubernetes
         subtrees:
         - entries:
-          - file: reference/rocm_in_data_centers/kubernetes/configuration
-          - file: reference/rocm_in_data_centers/kubernetes/examples
           - file: reference/rocm_in_data_centers/kubernetes/installation
+          - file: reference/rocm_in_data_centers/kubernetes/configuration
           - file: reference/rocm_in_data_centers/kubernetes/resource-allocation
+          - file: reference/rocm_in_data_centers/kubernetes/examples
