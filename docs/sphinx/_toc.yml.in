@@ -55,6 +55,8 @@ subtrees:
       - file: tutorial/hip-performance-optimization/highly-parallel-image-gamma-correction
       - file: tutorial/hip-performance_optimization/fixed-size-kernels-image-gamma-correction
       - file: tutorial/hip-performance-optimization/reduction
+      - file: tutorial/hip-performance-optimization/tiling-matrix-multiply
+      - file: tutorial/hip-performance-optimization/tiling-matrix-transpose
   - file: how-to/multi-gpu_programming
     subtrees:
     - entries:

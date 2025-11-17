@@ -288,6 +288,7 @@ DL
 dll
 DMA
 DNN
+DNNs
 DNNL
 Dockerfile
 Dockerized
@@ -801,6 +802,7 @@ PaLM
 parallelizable
 parallelization
 parallelized
+parallelizes
 parallelizing
 param
 parameterization
@@ -1130,6 +1132,7 @@ texels
 TF
 TFLOPS
 th
+threadblock
 THREADGROUPS
 threadgroups
 threadIdx
