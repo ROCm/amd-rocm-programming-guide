@@ -1,10 +1,10 @@
-# Example Workloads
+# Example workloads
 
 This document provides example workloads and configurations for using the AMD GPU device plugin in Kubernetes.
 
-## Basic GPU Pod Example
+## Basic GPU pod example
 
-This example demonstrates how to run a basic PyTorch workload on an AMD GPU. The pod creates simple tensors on the GPU and performs basic addition operations to verify GPU functionality. Since this is a job-like workload that runs once and completes, we set `restartPolicy: Never` to prevent the pod from restarting after completion.
+This example demonstrates how to run a basic PyTorch workload on an AMD GPU. The pod creates simple tensors on the GPU and performs basic addition operations to verify GPU functionality. Since this is a job-like workload that runs once and completes, `restartPolicy: Never` is set to prevent the pod from restarting after completion.
 
 Here's a simple example of a pod requesting an AMD GPU:
 
@@ -49,11 +49,11 @@ Check the output with:
 kubectl logs pytorch-gpu-pod-example
 ```
 
-This example manifest is available for download here: [https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/example/pod/pytorch.yaml](https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/example/pod/pytorch.yaml)
+See the [pytorch.yaml example manifest](https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/example/pod/pytorch.yaml).
 
-## Multiple GPU Example
+## Multiple GPU example
 
-This example shows how to utilize multiple GPUs in a JAX application. It performs parallel matrix multiplications across both GPUs using JAX's pmap functionality for distributed computation.
+This example shows how to utilize multiple GPUs in a JAX application. It performs parallel matrix multiplications across both GPUs using JAX's `pmap` functionality for distributed computation.
 
 ```yaml
 apiVersion: v1
@@ -111,9 +111,9 @@ Check the output with:
 kubectl logs jax-multigpu-pod
 ```
 
-This example manifest is available for download here: [https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/example/pod/jax-mult-gpu.yaml](https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/example/pod/jax-mult-gpu.yaml)
+See the [jax-mult-gpu.yaml example manifest](https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/example/pod/jax-mult-gpu.yaml).
 
-## Non-privileged Pod with GPU Access Example
+## Non-privileged pod with GPU access example
 
 This example demonstrates the same JAX example as above, running as a non-privileged container configuration for enhanced security.
 
@@ -177,4 +177,4 @@ Check the output with:
 kubectl logs jax-non-privileged-multi-gpu-pod
 ```
 
-This example manifest is available for download here: [https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/example/pod/jax-non-privileged.yaml](https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/example/pod/jax-non-privileged.yaml)
+See the [jax-non-privileged.yaml example manifest](https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/example/pod/jax-non-privileged.yaml).

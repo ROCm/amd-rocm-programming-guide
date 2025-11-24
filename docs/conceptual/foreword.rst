@@ -34,12 +34,12 @@ can now be pursued, including:
 - Financial risk analysis.
 
 AMD has enabled these advances by delivering a new class of high-performance
-CPUs and GPUs and arichopen-source software stack supporting HIP and ROCm
+CPUs and GPUs and a rich open-source software stack supporting HIP and ROCm
 execution. This emerging programming ecosystem offers many novel features,
 including interoperability of hardware accelerators (i.e., AMD and NVIDIA GPUs),
 as well support for key high-performance compilers (e.g., LLVM), cluster
 deployment, and essential application frameworks (e.g., Raja, Kokkos, TensorFlow
-and PyTorch) and key high-performance libraries (rocBLAS, rocSparse, MIOpen,
+and PyTorch) and key high-performance libraries (rocBLAS, rocSPARSE, MIOpen,
 RCCL,rocFFT). To complement these advances, the high-performance computing
 community has also contributed to these milestones by providing state-of-the-art
 third-party tools for performance monitoring, debuggers, and visualization tools.

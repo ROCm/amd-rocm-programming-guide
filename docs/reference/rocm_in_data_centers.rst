@@ -1,14 +1,14 @@
 .. meta::
-  :description: ROCm in datacenters
-  :keywords: AMD, ROCm, HIP, CUDA, ROCm in datacenters
+  :description: ROCm in data centers
+  :keywords: AMD, ROCm, HIP, CUDA, ROCm in data centers
 
-.. _hipbook_rocm_in_datacenters:
+.. _hipbook_rocm_in_data_centers:
 
 ********************************************************************************
-ROCm in datacenters
+ROCm in data centers
 ********************************************************************************
 
-ROCm in datacenters:
+ROCm in data centers:
 
 * :doc:`../install/containered_rocm`
 

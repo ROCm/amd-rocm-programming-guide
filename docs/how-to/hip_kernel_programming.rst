@@ -18,12 +18,12 @@ HIP kernel programming
 
 
 .. TODO:
-..  3 HIPKernelProgramming 23
-..  3.1 CallingFunctionswithinHIPKernels . . . . . . . . . . . . . . . . 23
-..  3.1.1 __global__FunctioninHIP. . . . . . . . . . . . . . . . . 24
-..  3.1.2 __device__FunctioninHIP. . . . . . . . . . . . . . . . . 24
-..  3.1.3 __host__FunctioninHIP. . . . . . . . . . . . . . . . . . 25
-..  3.1.4 Combining__host__and__device__functions . . . . . 26
-..  3.2 UsingTemplatesinHIPKernels . . . . . . . . . . . . . . . . . . . 27
-..  3.3 UsingStructsinHIP. . . . . . . . . . . . . . . . . . . . . . . . . . 28
+..  3 HIP Kernel Programming 23
+..  3.1 Calling Functions within HIP Kernels . . . . . . . . . . . . . . . . 23
+..  3.1.1 __global__ Function in HIP. . . . . . . . . . . . . . . . . 24
+..  3.1.2 __device__ Function in HIP. . . . . . . . . . . . . . . . . 24
+..  3.1.3 __host__ Function in HIP. . . . . . . . . . . . . . . . . . 25
+..  3.1.4 Combining __host__ and __device__ functions . . . . . 26
+..  3.2 Using Templates in HIP Kernels . . . . . . . . . . . . . . . . . . . 27
+..  3.3 Using Structs in HIP. . . . . . . . . . . . . . . . . . . . . . . . . . 28
 ..  3.4 Conclusion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33

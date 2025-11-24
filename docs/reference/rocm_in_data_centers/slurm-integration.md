@@ -1,12 +1,12 @@
-# Slurm integration
+# Slurm Integration
 
-AMD Device Metrics Exporter integrates with Slurm workload manager to track GPU metrics for Slurm jobs. This topic explains how to set up and configure this integration.
+The AMD Device Metrics Exporter integrates with the Slurm workload manager to track GPU metrics for Slurm jobs. This topic explains how to set up and configure this integration.
 
 ## Prerequisites
 
 - Slurm workload manager installed and configured
 - AMD Device Metrics Exporter installed and running
-- Root or sudo access on Slurm nodes
+- Root or `sudo` access on Slurm nodes
 
 ## Installation
 
@@ -36,13 +36,13 @@ Epilog="/etc/slurm/epilog.d/*"
 sudo systemctl restart slurmd     # On compute nodes
 ```
 
-## Exporter Container Deployment
+## Exporter container deployment
 
-### Directory Setup
+### Directory setup
 
 It's recommended to use the following directory structure to store persistent exporter data on the host:
 
-```
+```console
 $ tree -d exporter/
      exporter/
        - config/
@@ -55,7 +55,7 @@ Create the directory required for tracking Slurm jobs:
 mkdir -p /var/run/exporter
 ```
 
-### Start Exporter Container
+### Start exporter container
 
 Once the directory structure is ready, start the exporter container:
 
@@ -96,21 +96,25 @@ When Slurm integration is enabled, the following job-specific labels are added t
 
 ## Troubleshooting
 
-### Common Issues
+### Common issues
 
-1. Script permissions:
-   - Ensure the exporter script is executable
-   - Verify proper ownership (should be owned by `root` or `slurm` user)
+The following are common issues you may encounter when integrating Slurm with the AMD Device Metrics Exporter:
 
-2. Configuration issues:
-   - Check Slurm logs for prolog/epilog execution errors
-   - Verify paths in slurm.conf are correct
+#### Script permissions
 
-3. Metric collection:
-   - Ensure metrics exporter is running
-   - Check if job ID labels are being properly set
+Ensure the exporter script is executable and verify proper ownership (should be owned by `root` or `slurm` user).
 
-4. Check service status:
+#### Configuration issues
+
+Check Slurm logs for prolog or epilog execution errors and verify paths in `slurm.conf` are correct.
+
+#### Metric collection
+
+Ensure the metrics exporter is running and check if job ID labels are being properly set.
+
+#### Service status
+
+Check the service status:
 
 ```bash
 systemctl status gpuagent.service amd-metrics-exporter.service
@@ -130,9 +134,9 @@ View service logs:
 journalctl -u gpuagent.service -u amd-metrics-exporter.service
 ```
 
-## Advanced Configuration
+## Advanced configuration
 
-### Custom Script Location
+### Custom script location
 
 You can place the script in a different location by updating the paths in `slurm.conf`:
 
@@ -141,13 +145,13 @@ Prolog=/path/to/custom/slurm-prolog.sh
 Epilog=/path/to/custom/slurm-epilog.sh
 ```
 
-### Additional Job Information
+### Additional job information
 
 The integration script can be modified to include additional job-specific information in the metrics. Edit the script to add custom labels as needed.
 
 Slurm labels are disabled by default. To enable Slurm labels, add the following to your `config.json`:
 
-```
+```json
 {
   "GPUConfig": {
     "Labels": [

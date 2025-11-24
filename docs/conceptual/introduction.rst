@@ -55,10 +55,10 @@ their low-level details.
 As CUDA gained popularity, concerns were raised about it only running on
 NVIDIA hardware, which posed a problematic single-vendor source paradigm.
 OpenCL, which can run on GPUs, CPUs, digital signal processors, and field
-programmable gate arrays, addressed this issue by adopting a CUDA-like program
-ming model. Hence, the cost of portability was significantly reduced. OpenCL’s
-requirement that device code being presented as a string posed unnecessary
-difficulties with code maintenance and debugging.
+programmable gate arrays, addressed this issue by adopting a CUDA-like
+programming model. Hence, the cost of portability was significantly reduced.
+OpenCL’s requirement that device code being presented as a string posed
+unnecessary difficulties with code maintenance and debugging.
 
 For the Fortran 1997 language, Open Multiprocessing (OpenMP) version 4.0
 API started supporting GPUs. Currently, it supports the C++03 standard.
