@@ -55,7 +55,9 @@ broader AMD ROCm ecosystem of tools and libraries.
 
 ## Advanced topics
 
-* {doc}`./how-to/performance_optimization`
+* {doc}`./tutorial/hip-performance-optimization`
+
+  * {doc}`./tutorial/hip-performance-optimization/reduction`
 
 * {doc}`./how-to/multi-gpu_programming`
 
