@@ -5,6 +5,8 @@ myst:
     "keywords": "HIP, ROCm, Heterogeneous-computing Interface for Portability, HIP textbook, ROCm textbook"
 ---
 
+<!-- markdownlint-disable MD036 -->
+
 # Accelerated Computing with HIP
 
 The Heterogeneous-computing Interface for Portability (HIP) is a C++ runtime API
@@ -17,7 +19,7 @@ accelerated computing using HIP. It provides hands-on guidance for writing GPU
 kernels, managing memory, optimizing performance, and integrating HIP with the
 broader AMD ROCm ecosystem of tools and libraries.
 
-## Getting started
+**Getting started**
 
 * {doc}`./conceptual/foreword`
 
@@ -31,7 +33,7 @@ broader AMD ROCm ecosystem of tools and libraries.
 
 * {doc}`./how-to/getting_started_with_hip_programming`
 
-## Core HIP programming
+**Core HIP programming**
 
 * {doc}`./how-to/hip_runtime_api`
 
@@ -53,7 +55,7 @@ broader AMD ROCm ecosystem of tools and libraries.
 
   * {doc}`./how-to/hip_runtime_api/external_interop`
 
-## Advanced topics
+**Advanced topics**
 
 * {doc}`./tutorial/hip-performance-optimization`
 
@@ -67,7 +69,7 @@ broader AMD ROCm ecosystem of tools and libraries.
 
 * {doc}`./how-to/deep_learning_with_rocm`
 
-## ROCm platform
+**ROCm platform**
 
 * {doc}`./install/rocm_install`
 
@@ -77,7 +79,7 @@ broader AMD ROCm ecosystem of tools and libraries.
 
 * {doc}`./conceptual/rocm-tools`
 
-## ROCm in data centers
+**ROCm in data centers**
 
 * {doc}`./install/containered_rocm`
 
@@ -93,7 +95,7 @@ broader AMD ROCm ecosystem of tools and libraries.
 
   * {doc}`./reference/rocm_in_data_centers/kubernetes/examples`
 
-## Additional resources
+**Additional resources**
 
 * **Known issues**: Track and report issues on the [HIP book GitHub repository](https://github.com/ROCm/hipbook/issues)
 * **Contributing**: See {doc}`Contributing to ROCm docs <rocm:contribute/contributing>` for contribution guidelines
