@@ -1,23 +1,22 @@
 ---
 myst:
   html_meta:
-    "description": "HIP book"
-    "keywords": "HIP, ROCm, Heterogeneous-computing Interface for Portability, HIP textbook, ROCm textbook"
+    "description": "AMD ROCm programming guide"
+    "keywords": "HIP, ROCm, AMD ROCm programming guide, ROCm handbook volume one"
 ---
 
 <!-- markdownlint-disable MD036 -->
 
-# Accelerated Computing with HIP
+# AMD ROCm Programming Guide
 
-The Heterogeneous-computing Interface for Portability (HIP) is a C++ runtime API
-and kernel language designed to enable developers to write portable,
-high-performance applications that can run on both AMD and NVIDIA GPUs from a
-single source code base.
+ROCm is a software stack, composed primarily of open-source software, that
+provides the tools for programming AMD Graphics Processing Units (GPUs), from
+low-level kernels to high-level end-user applications.
 
-This textbook introduces the core concepts, APIs, and best practices for
-accelerated computing using HIP. It provides hands-on guidance for writing GPU
-kernels, managing memory, optimizing performance, and integrating HIP with the
-broader AMD ROCm ecosystem of tools and libraries.
+The AMD ROCm Programming Guide introduces the core concepts, APIs, and best practices for programming with ROCm and the HIP programming language. 
+ROCm programming. It provides hands-on guidance for writing GPU kernels,
+managing memory, optimizing performance, and integrating HIP with the broader
+AMD ROCm ecosystem of tools and libraries.
 
 **Getting started**
 
@@ -109,6 +108,6 @@ broader AMD ROCm ecosystem of tools and libraries.
 
 **Additional resources**
 
-* **Known issues**: Track and report issues on the [HIP book GitHub repository](https://github.com/ROCm/hipbook/issues)
+* **Known issues**: Track and report issues on the [AMD ROCm programming guide GitHub repository](https://github.com/ROCm/hipbook/issues)
 * **Contributing**: See {doc}`Contributing to ROCm docs <rocm:contribute/contributing>` for contribution guidelines
 * **License**: Review licensing information on the [Licensing](https://rocm.docs.amd.com/en/latest/about/license.html) page
