@@ -55,6 +55,18 @@ broader AMD ROCm ecosystem of tools and libraries.
 
   * {doc}`./how-to/hip_runtime_api/external_interop`
 
+* {doc}`./tutorial/programming-patterns`
+
+  * {doc}`./tutorial/programming-patterns/matrix_multiplication`
+
+  * {doc}`./tutorial/programming-patterns/atomic_operations_histogram`
+
+  * {doc}`./tutorial/programming-patterns/cpu_gpu_kmeans`
+
+  * {doc}`./tutorial/programming-patterns/stencil_operations`
+
+  * {doc}`./tutorial/programming-patterns/multikernel_bfs`
+
 **Advanced topics**
 
 * {doc}`./tutorial/hip-performance-optimization`
@@ -71,7 +83,7 @@ broader AMD ROCm ecosystem of tools and libraries.
 
 **ROCm platform**
 
-* {doc}`./install/rocm_install`
+* {doc}`./install/install`
 
 * {doc}`./reference/amd_gpus`
 
