@@ -15,7 +15,7 @@ memory hierarchies, and execution patterns. Modern AMD GPUs offer massive
 parallel processing capabilities with thousands of computing cores and
 high-bandwidth memory systems. However, realizing this
 potential requires careful attention to how kernels are structured, how memory
-is accessed, and how computational resources are utilized. 
+is accessed, and how computational resources are utilized.
 
 This collection of tutorials demonstrates proven optimization techniques that
 can dramatically improve application performance. The optimization
@@ -104,8 +104,8 @@ analysis. The recommended workflow for optimizing HIP applications includes:
 
 1. **Profile your application** using tools like
    :doc:`rocprofv3 <rocprofiler-sdk:using-rocprofv3>`,
-   the :doc:`ROCm Compute Profiler <rocprofiler-compute:index>`, or the 
-   :doc:`ROCm Systems Profiler <rocprofiler-systems:index>` to identify performance 
+   the :doc:`ROCm Compute Profiler <rocprofiler-compute:index>`, or the
+   :doc:`ROCm Systems Profiler <rocprofiler-systems:index>` to identify performance
    bottlenecks and collect execution traces.
 
 2. **Analyze the profiling data** to understand kernel execution times, memory
@@ -128,7 +128,7 @@ To get the most from these tutorials, you should have:
 * Familiarity with GPU architecture concepts (see
   :doc:`../reference/amd_gpus`).
 
-* HIP runtime environment installed (see :doc:`../install/rocm_install`).
+* HIP runtime environment installed (see :doc:`../install/install`).
 
 * Basic knowledge of performance profiling concepts (recommended).
 

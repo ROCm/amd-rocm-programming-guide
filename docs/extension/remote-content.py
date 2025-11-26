@@ -15,13 +15,20 @@ class BranchAwareRemoteContent(Directive):
     """
     Directive that downloads and includes content from other repositories,
     matching the branch/tag of the current documentation build.
+
     Usage:
     .. remote-content::
        :repo: owner/repository
        :path: path/to/file.rst
        :default_branch: docs/develop  # Branch to use when not on a release
        :tag_prefix: Docs/  # Optional
-       :replace: old_text|new_text  # Replace old_text with new_text (can be used multiple times)
+       :replace: old_text1|new_text1;; old_text2|new_text2;; old_text3|new_text3
+       :project_name: ProjectName  # Optional override for URL construction
+       :docs_base_url: https://rocm.docs.amd.com/projects  # Optional override
+       :doc_ignore: path/to/ignore;; another/path  # Doc links to leave unconverted
+
+    The :replace: option uses | to separate old and new text, and ;; to separate multiple replacements.
+    The :doc_ignore: option uses ;; to separate multiple paths to ignore.
     """
 
     required_arguments = 0
@@ -34,7 +41,10 @@ class BranchAwareRemoteContent(Directive):
         'default_branch': str,  # Branch to use when not on a release tag
         'start_line': int,      # Include the file from a specific line
         'tag_prefix': str,      # Prefix for release tags (e.g., 'Docs/')
-        'replace': str,         # Text replacement in format "old|new"
+        'replace': str,         # Text replacement in format "old|new" (use ;; to separate multiple replacements)
+        'project_name': str,    # Override project name for URL construction
+        'docs_base_url': str,   # Override base URL for documentation
+        'doc_ignore': str,      # Doc links to ignore (not convert to external URLs), separated by ;;
     }
 
     def get_current_version(self):
@@ -70,34 +80,193 @@ class BranchAwareRemoteContent(Directive):
 
         return self.options['default_branch']
 
+    def get_project_name(self):
+        """Extract project name from repo option or use override"""
+        # Check if there's an explicit override
+        if 'project_name' in self.options:
+            return self.options['project_name']
+
+        # Parse from repo: "ROCm/HIP" -> "HIP"
+        repo = self.options.get('repo', '')
+        if '/' in repo:
+            return repo.split('/')[-1]
+
+        return repo
+
+    def get_ignored_doc_paths(self):
+        """Get list of doc paths that should not be converted"""
+        if 'doc_ignore' not in self.options:
+            return []
+
+        # Split by ;; to get multiple paths
+        ignored_paths = self.options['doc_ignore'].split(';;')
+
+        # Strip whitespace and filter empty entries
+        return [path.strip() for path in ignored_paths if path.strip()]
+
+    def get_docs_base_url(self):
+        """Get the base URL for documentation"""
+        # Check for explicit override in directive
+        if 'docs_base_url' in self.options:
+            return self.options['docs_base_url']
+
+        # Check for global config
+        env = self.state.document.settings.env
+        if hasattr(env.config, 'remote_content_docs_base'):
+            return env.config.remote_content_docs_base
+
+        # Default to ROCm docs
+        return 'https://rocm.docs.amd.com/projects'
+
     def construct_raw_url(self, repo, path, ref):
         """Construct the raw.githubusercontent.com URL"""
         return f'https://raw.githubusercontent.com/{repo}/{ref}/{path}'
+
+    def construct_doc_url(self, doc_path, ref):
+        """Construct external documentation URL for a :doc: reference"""
+        base_url = self.get_docs_base_url()
+        project_name = self.get_project_name()
+
+        # Clean up the doc_path: remove .rst extension if present
+        if doc_path.endswith('.rst'):
+            doc_path = doc_path[:-4]
+
+        # Remove leading slash to avoid double slashes in URL
+        doc_path = doc_path.lstrip('/')
+
+        # Special case: main ROCm docs don't use /projects/ structure
+        if self.options.get('repo') == 'ROCm/ROCm':
+            url = f'https://rocm.docs.amd.com/en/{ref}/{doc_path}.html'
+        else:
+            # Standard project pattern: domain/projects/name/en/ref/path
+            url = f'{base_url}/{project_name}/en/{ref}/{doc_path}.html'
+
+        return url
+
+    def resolve_relative_doc_path(self, doc_path, source_file_path):
+        """Resolve relative document paths based on source file location"""
+        # If it's not a relative path, return as-is
+        if not doc_path.startswith('./') and not doc_path.startswith('../'):
+            return doc_path
+
+        # Get the directory of the source file
+        source_dir = Path(source_file_path).parent
+
+        # Resolve the relative path
+        resolved_path = (source_dir / doc_path).as_posix()
+
+        # Normalize (remove . and ..)
+        resolved_path = str(Path(resolved_path))
+
+        return resolved_path
+
+    def process_doc_roles(self, content, ref):
+        """Process :doc: roles and convert them to external links"""
+        # Get list of paths to ignore
+        ignored_paths = self.get_ignored_doc_paths()
+
+        # Pattern to match :doc: roles
+        # Matches both :doc:`target` and :doc:`text <target>`
+        # But NOT namespaced references like :doc:`project:target`
+        doc_pattern = r':doc:`([^`]+)`'
+
+        def replace_doc_role(match):
+            full_content = match.group(1)
+
+            # Skip if it contains a namespace (colon before any angle bracket or no angle bracket)
+            # Check both "project:path" and "<project:path>" formats
+            if '<' in full_content:
+                # Format: "text <target>" - check target for namespace
+                target_part = full_content.split('<', 1)[1].rstrip('>')
+                if ':' in target_part:
+                    logger.debug(f'Skipping namespaced doc reference: {full_content}')
+                    return match.group(0)
+            else:
+                # Format: "target" - check directly for namespace
+                if ':' in full_content:
+                    logger.debug(f'Skipping namespaced doc reference: {full_content}')
+                    return match.group(0)
+
+            # Check if it's the format "text <target>" or just "target"
+            if '<' in full_content and '>' in full_content:
+                # Extract text and target
+                text_match = re.match(r'(.+?)\s*<(.+?)>', full_content)
+                if text_match:
+                    display_text = text_match.group(1).strip()
+                    target = text_match.group(2).strip()
+                else:
+                    # Fallback if regex doesn't match
+                    display_text = full_content
+                    target = full_content
+            else:
+                # Just a target, use it as display text too
+                target = full_content.strip()
+                display_text = target
+
+            # Check if this target should be ignored
+            if target in ignored_paths:
+                logger.info(f'Ignoring doc link as requested: {target}')
+                return match.group(0)
+
+            # Also check if the target matches after stripping leading slash
+            target_stripped = target.lstrip('/')
+            if target_stripped in ignored_paths:
+                logger.info(f'Ignoring doc link as requested: {target}')
+                return match.group(0)
+
+            # Resolve relative paths
+            resolved_target = self.resolve_relative_doc_path(target, self.options['path'])
+
+            # Construct the external URL
+            url = self.construct_doc_url(resolved_target, ref)
+
+            # Return as a standard RST external link
+            result = f'`{display_text} <{url}>`__'
+            logger.info(f'Converted :doc:`{full_content}` to external link: {url}')
+
+            return result
+
+        # Replace all :doc: roles
+        processed_content = re.sub(doc_pattern, replace_doc_role, content)
+
+        return processed_content
 
     def apply_replacements(self, content):
         """Apply text replacements to content"""
         if 'replace' not in self.options:
             return content
-        
+
         # Get replacement specification
-        replace_spec = self.options['replace']
-        
-        # Split by pipe character to get old and new text
-        if '|' not in replace_spec:
-            logger.warning('Replace option must be in format "old_text|new_text"')
-            return content
-        
-        parts = replace_spec.split('|', 1)  # Split only on first pipe
-        old_text = parts[0]
-        new_text = parts[1]
-        
-        # Perform replacement
-        modified_content = content.replace(old_text, new_text)
-        
-        if modified_content != content:
-            logger.info(f'Replaced "{old_text}" with "{new_text}"')
-        
-        return modified_content
+        replace_option = self.options['replace']
+
+        # Split by ;; to get multiple replacements
+        replace_specs = replace_option.split(';;')
+
+        # Apply each replacement
+        for replace_spec in replace_specs:
+            replace_spec = replace_spec.strip()
+
+            # Skip empty entries
+            if not replace_spec:
+                continue
+
+            # Split by pipe character to get old and new text
+            if '|' not in replace_spec:
+                logger.warning(f'Replace option must be in format "old_text|new_text", got: "{replace_spec}"')
+                continue
+
+            parts = replace_spec.split('|', 1)  # Split only on first pipe
+            old_text = parts[0]
+            new_text = parts[1]
+
+            # Perform replacement
+            modified_content = content.replace(old_text, new_text)
+
+            if modified_content != content:
+                logger.info(f'Replaced "{old_text}" with "{new_text}"')
+                content = modified_content
+
+        return content
 
     def get_image_cache_dir(self):
         """Get or create the directory for cached remote images"""
@@ -114,26 +283,26 @@ class BranchAwareRemoteContent(Directive):
             image_path,
             ref
         )
-        
+
         try:
             logger.info(f'Downloading image from {image_url}')
             response = requests.get(image_url, timeout=30)
             response.raise_for_status()
-            
+
             # Create cache directory and save the image
             cache_dir = self.get_image_cache_dir()
-            
+
             # Preserve the directory structure of the image
             image_rel_path = Path(image_path)
             local_image_path = cache_dir / image_rel_path
             local_image_path.parent.mkdir(parents=True, exist_ok=True)
-            
+
             # Write the image content
             local_image_path.write_bytes(response.content)
             logger.info(f'Saved image to {local_image_path}')
-            
+
             return local_image_path
-            
+
         except requests.exceptions.RequestException as e:
             logger.warning(f'Failed to download image from {image_url}: {str(e)}')
             return None
@@ -143,35 +312,35 @@ class BranchAwareRemoteContent(Directive):
         # Pattern to match image and figure directives
         # Matches: .. image:: path or .. figure:: path
         image_pattern = r'\.\.\s+(image|figure)::\s+([^\s]+)'
-        
+
         def replace_image_path(match):
             directive = match.group(1)
             original_path = match.group(2)
-            
+
             # Skip if it's already an absolute URL
             if original_path.startswith(('http://', 'https://', '/')):
                 return match.group(0)
-            
+
             # Get the directory of the source file
             source_dir = str(Path(self.options['path']).parent)
-            
+
             # Resolve the image path relative to the source file
             if source_dir and source_dir != '.':
                 image_path = str(Path(source_dir) / original_path)
             else:
                 image_path = original_path
-            
+
             # Normalize the path
             image_path = str(Path(image_path).as_posix())
-            
+
             # Download the image
             local_image_path = self.download_image(image_path, ref)
-            
+
             if local_image_path:
                 # Get the Sphinx source directory
                 env = self.state.document.settings.env
                 srcdir = Path(env.srcdir)
-                
+
                 # Make the path relative to the source directory
                 try:
                     rel_path = local_image_path.relative_to(srcdir.parent)
@@ -179,17 +348,17 @@ class BranchAwareRemoteContent(Directive):
                 except ValueError:
                     # If we can't make it relative, use absolute path
                     new_path = str(local_image_path.as_posix())
-                
+
                 logger.info(f'Replaced image path: {original_path} -> {new_path}')
                 return f'.. {directive}:: {new_path}'
             else:
                 # If download failed, keep the original path
                 logger.warning(f'Keeping original image path due to download failure: {original_path}')
                 return match.group(0)
-        
+
         # Replace all image paths
         processed_content = re.sub(image_pattern, replace_image_path, content)
-        
+
         return processed_content
 
     def fetch_and_parse_content(self, url, source_path, ref):
@@ -200,6 +369,9 @@ class BranchAwareRemoteContent(Directive):
 
         # Apply text replacements before parsing
         content = self.apply_replacements(content)
+
+        # Process :doc: roles to convert to external links
+        content = self.process_doc_roles(content, ref)
 
         # Process images: download them and update paths
         content = self.process_images(content, ref)
@@ -212,7 +384,7 @@ class BranchAwareRemoteContent(Directive):
         for line_no, line in enumerate(content.splitlines()):
             if line_count >= start_line:
                 content_list.append(line, source_path, line_no)
-            line_count+=1 
+            line_count+=1
 
         # Create a section node and parse content
         node = nodes.section()
@@ -262,6 +434,9 @@ class BranchAwareRemoteContent(Directive):
 
 def setup(app):
     app.add_directive('remote-content', BranchAwareRemoteContent)
+
+    # Add configuration value for global docs base URL
+    app.add_config_value('remote_content_docs_base', 'https://rocm.docs.amd.com/projects', 'html')
 
     return {
         'parallel_read_safe': True,

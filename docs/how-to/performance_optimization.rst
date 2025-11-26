@@ -9,9 +9,10 @@ HIP performance optimization
 ********************************************************************************
 
 .. remote-content::
-   :repo: ROCm/HIP
-   :path: docs/how-to/performance_guidelines.rst
+   :repo: ROCm/rocm-systems
+   :path: projects/hip/docs/how-to/performance_guidelines.rst
    :start_line: 11
-   :default_branch: docs/develop
+   :default_branch: develop
    :tag_prefix: docs/
+   :project_name: HIP
 

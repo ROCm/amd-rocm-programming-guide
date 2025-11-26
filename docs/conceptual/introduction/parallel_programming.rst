@@ -9,9 +9,11 @@ Parallel programming
 ********************************************************************************
 
 .. remote-content::
-   :repo: ROCm/HIP
-   :path: docs/understand/programming_model.rst
-   :default_branch: docs/develop
+   :repo: ROCm/rocm-systems
+   :path: projects/hip/docs/understand/programming_model.rst
+   :default_branch: develop
    :start_line: 15
-   :replace: ../data/understand/|../../data/understand/ 
+   :replace: ../data/understand/|../../data/understand/
    :tag_prefix: docs/
+   :project_name: HIP
+   :docs_base_url: https://rocm.docs.amd.com/projects

@@ -11,7 +11,7 @@ ROCm GPUs
 This section provides an overview of the AMD GPUs and accelerators supported by
 the ROCm software stack. It includes details on the hardware architectures,
 their key features, and the corresponding specifications. Note that listed
-hardware features indicate architectural capabilities, not performance metrics. 
+hardware features indicate architectural capabilities, not performance metrics.
 
 For performance-related details, refer to the Accelerator and GPU hardware
 specifications tables below.
@@ -25,11 +25,12 @@ depends on the specifications found in the Accelerator and GPU hardware
 specifications page.
 
 .. remote-content::
-   :repo: ROCm/hip
-   :path: docs/reference/hardware_features.rst
+   :repo: ROCm/rocm-systems
+   :path: projects/hip/docs/reference/hardware_features.rst
    :start_line: 12
-   :default_branch: docs/develop
+   :default_branch: develop
    :tag_prefix: docs/
+   :project_name: HIP
 
 Accelerator and GPU hardware specifications
 ===========================================

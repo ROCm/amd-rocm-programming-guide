@@ -15,3 +15,4 @@ Deep learning with ROCm
    :replace: rocm-for-ai|rocm:how-to/rocm-for-ai
    :default_branch: develop
    :tag_prefix: docs/
+   :docs_base_url: https://rocm.docs.amd.com/

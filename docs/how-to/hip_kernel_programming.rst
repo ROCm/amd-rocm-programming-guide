@@ -8,13 +8,14 @@
 HIP kernel programming
 ********************************************************************************
 
-
 .. remote-content::
-   :repo: ROCm/HIP
-   :path: docs/how-to/hip_cpp_language_extensions.rst
+   :repo: ROCm/rocm-systems
+   :path: projects/hip/docs/how-to/hip_cpp_language_extensions.rst
    :start_line: 15
-   :default_branch: docs/develop
+   :default_branch: develop
    :tag_prefix: docs/
+   :project_name: HIP
+   :docs_base_url: https://rocm.docs.amd.com/projects
 
 
 .. TODO:

@@ -26,7 +26,7 @@ There are multiple variations of reduction that allow parallel processing. The a
 Reduction on GPUs
 =================
 
-Implementing reductions on GPUs requires a basic understanding of the :doc:`/understand/programming_model`. The document explores aspects of low-level optimization best discussed through the :ref:`inherent_thread_model`, and refrains from using cooperative groups.
+Implementing reductions on GPUs requires a basic understanding of the :doc:`../../conceptual/introduction/parallel_programming`. The document explores aspects of low-level optimization best discussed through the :ref:`inherent_thread_model`, and refrains from using cooperative groups.
 
 Synchronizing parallel threads of execution across a GPU is crucial for correctness as the partial results can't be synchronized before they manifest. Synchronizing all the threads running on a GPU at any given time is possible, however, it is a costly and intricate operation. If synchronization is not absolutely necessary, map the parallel algorithm so that multiprocessors and blocks can make independent progress and need not sync frequently.
 

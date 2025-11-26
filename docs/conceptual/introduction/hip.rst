@@ -9,9 +9,12 @@ Introducing HIP
 ********************************************************************************
 
 .. remote-content::
-   :repo: ROCm/HIP
-   :path: docs/what_is_hip.rst
+   :repo: ROCm/rocm-systems
+   :path: projects/hip/docs/what_is_hip.rst
    :default_branch: develop
    :start_line: 10
-   :replace: data/|../../data/
+   :replace: :doc:`ROCm <rocm:what-is-rocm>`|:doc:`ROCm </rocm>`;;data/|../../data/
+   :doc_ignore: ./rocm
    :tag_prefix: docs/
+   :project_name: HIP
+   :docs_base_url: https://rocm.docs.amd.com/projects

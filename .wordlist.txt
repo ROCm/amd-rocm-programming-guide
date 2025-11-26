@@ -33,6 +33,7 @@ AMDMIGraphX
 AmgX
 AMI
 Andrej
+another's
 AOCC
 AOMP
 AOT
@@ -60,6 +61,7 @@ asynchrony
 aten
 ATI
 atmi
+atomicity
 atomicRMW
 atomics
 Autocast
@@ -82,6 +84,7 @@ benchmarked
 benchmarking
 bfloat
 bfloat
+BFS
 bilinear
 Bitcode
 bitcode
@@ -123,6 +126,10 @@ CDNA
 CentOS
 centos
 centric
+centroid
+centroids
+Centroid
+Centroids
 CGUI
 changelog
 ChatGPT
@@ -271,6 +278,7 @@ DirectX
 disaggregated
 Disaggregated
 disambiguates
+discretized
 distro
 distros
 dkms
@@ -512,6 +520,7 @@ inferencing
 InfiniBand
 inflight
 init
+initializations
 initializer
 inlined
 Inlines
@@ -896,6 +905,7 @@ README
 recommender
 recommenders
 Recomputation
+recomputation
 redirections
 refactorization
 reformats
@@ -912,6 +922,7 @@ rescaling
 ResNet
 reStructuredText
 reusability
+RGB
 rhel
 RHEL
 Rickle
@@ -974,6 +985,7 @@ roctracer
 ROCTx
 rocTX
 rocWMMA
+Rodinia
 roundtrip
 RPP
 rst
@@ -1188,6 +1200,7 @@ unstacking
 unswitching
 untrusted
 untuned
+unvisited
 unwindowed
 upscaled
 upvote
