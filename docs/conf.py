@@ -22,10 +22,10 @@ for line in lines:
         continue
     version_numbers.append(line.strip())
 version_number = ".".join(version_numbers)
-left_nav_title = f"HIP book {version_number} Documentation"
+left_nav_title = f"ROCm Programming Guide {version_number}"
 
 # for PDF output on Read the Docs
-project = "HIP Book Documentation"
+project = "ROCm Programming Guide"
 author = "Advanced Micro Devices, Inc."
 copyright = "Copyright (c) 2023 Advanced Micro Devices, Inc. All rights reserved."
 version = version_number

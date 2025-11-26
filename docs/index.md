@@ -13,22 +13,21 @@ ROCm is a software stack, composed primarily of open-source software, that
 provides the tools for programming AMD Graphics Processing Units (GPUs), from
 low-level kernels to high-level end-user applications.
 
-The AMD ROCm Programming Guide introduces the core concepts, APIs, and best practices for programming with ROCm and the HIP programming language.
-ROCm programming. It provides hands-on guidance for writing GPU kernels,
-managing memory, optimizing performance, and integrating HIP with the broader
-AMD ROCm ecosystem of tools and libraries.
+The AMD ROCm Programming Guide introduces the core concepts, APIs, and best
+practices for programming with ROCm and the HIP programming language. It
+provides hands-on guidance for writing GPU kernels, managing memory, optimizing
+performance, and integrating HIP with the broader AMD ROCm ecosystem of tools
+and libraries.
 
 **Getting started**
 
-* {doc}`./conceptual/foreword`
-
 * {doc}`./conceptual/introduction`
 
-  * {doc}`./conceptual/introduction/parallel_programming`
+* {doc}`./conceptual/introduction/rocm`
 
-  * {doc}`./conceptual/introduction/rocm`
+* {doc}`./conceptual/introduction/hip`
 
-  * {doc}`./conceptual/introduction/hip`
+* {doc}`./conceptual/introduction/parallel_programming`
 
 * {doc}`./how-to/getting_started_with_hip_programming`
 

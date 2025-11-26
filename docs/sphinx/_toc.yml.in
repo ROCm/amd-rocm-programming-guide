@@ -7,13 +7,10 @@ root: index
 subtrees:
 - caption: Getting started
   entries:
-  - file: conceptual/foreword
   - file: conceptual/introduction
-    subtrees:
-    - entries:
-      - file: conceptual/introduction/parallel_programming
-      - file: conceptual/introduction/rocm
-      - file: conceptual/introduction/hip
+  - file: conceptual/introduction/rocm
+  - file: conceptual/introduction/hip
+  - file: conceptual/introduction/parallel_programming
   - file: how-to/getting_started_with_hip_programming
 
 - caption: Core HIP programming

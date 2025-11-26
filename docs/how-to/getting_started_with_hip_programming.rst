@@ -5,14 +5,14 @@
 .. _hip_getting_started_with_hip_programming:
 
 ********************************************************************************
-Getting started with HIP programming
+SAXPY Tutorial - Hello HIP 
 ********************************************************************************
 
 .. remote-content::
    :repo: ROCm/rocm-systems
    :path: projects/hip/docs/tutorial/saxpy.rst
    :default_branch: develop
-   :start_line: 15
+   :start_line: 17
    :replace: :doc:`reduction`|:doc:`Reduction <tutorial/reduction>`
    :doc_ignore: /install/install
    :tag_prefix: docs/
