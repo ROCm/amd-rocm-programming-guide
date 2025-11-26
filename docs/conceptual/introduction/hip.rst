@@ -1,6 +1,6 @@
 .. meta::
-  :description: HIP book HIP
-  :keywords: AMD, ROCm, HIP, CUDA, HIP Book HIP
+  :description: AMD ROCm Programming Guide What is HIP
+  :keywords: AMD, ROCm, HIP, CUDA, AMD ROCm Programming Guide, What is HIP
 
 .. _hip_book_rocm:
 

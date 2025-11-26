@@ -1,6 +1,6 @@
 .. meta::
-  :description: HIP book ROCm libraries
-  :keywords: AMD, ROCm, HIP, CUDA, HIP Book ROCm Libraries
+  :description: AMD ROCm Programming Guide ROCm libraries
+  :keywords: AMD, ROCm, HIP, CUDA, AMD ROCm Programming Guide ROCm Libraries
 
 .. _hip_book_rocm_libraries:
 

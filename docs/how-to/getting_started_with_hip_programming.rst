@@ -1,11 +1,11 @@
 .. meta::
-  :description: HIP book getting started with HIP programming
-  :keywords: AMD, ROCm, HIP, CUDA, HIP Book Getting Started with HIP Programming
+  :description: Getting started with HIP programming
+  :keywords: AMD, ROCm, HIP, CUDA, Getting Started with HIP Programming
 
 .. _hip_getting_started_with_hip_programming:
 
 ********************************************************************************
-SAXPY Tutorial - Hello HIP 
+SAXPY Tutorial - Hello HIP
 ********************************************************************************
 
 .. remote-content::

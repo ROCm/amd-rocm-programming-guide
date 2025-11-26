@@ -1,6 +1,6 @@
 .. meta::
-  :description: HIP book parallel programming
-  :keywords: AMD, ROCm, HIP, CUDA, HIP Book Parallel Programming,
+  :description: AMD ROCm Programming Guide parallel programming
+  :keywords: AMD, ROCm, HIP, CUDA, AMD ROCm Programming Guide, Parallel Programming,
 
 .. _hip_parallel_programming:
 

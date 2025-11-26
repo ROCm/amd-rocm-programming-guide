@@ -1,6 +1,6 @@
 .. meta::
-  :description: HIP book introduction
-  :keywords: AMD, ROCm, HIP, CUDA, HIP Book introduction,
+  :description: AMD ROCm Programming Guide introduction
+  :keywords: AMD, ROCm, HIP, CUDA, AMD ROCm Programming Guide introduction,
 
 .. _hip_book_introduction:
 
@@ -9,9 +9,9 @@ Introduction
 ********************************************************************************
 
 
-What are the key drivers for ROCm and users of ROCm in the marketplace? 
-What are some of the key features of the ROCm tools and HIP runtime? 
-What is a good introduction to this document? 
+What are the key drivers for ROCm and users of ROCm in the marketplace?
+What are some of the key features of the ROCm tools and HIP runtime?
+What is a good introduction to this document?
 
 AMD introduced the Heterogeneous Interface for Portability (HIP) programming
 language in October 2016 to address both portability and performance. HIP

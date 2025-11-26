@@ -1,6 +1,6 @@
 .. meta::
-  :description: HIP book foreword
-  :keywords: AMD, ROCm, HIP, CUDA, HIP Book foreword,
+  :description: AMD ROCm Programming Guide foreword
+  :keywords: AMD, ROCm, HIP, CUDA, AMD ROCm Programming Guide foreword,
 
 .. _hip_book_foreword:
 
