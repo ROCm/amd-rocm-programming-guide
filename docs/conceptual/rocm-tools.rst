@@ -17,6 +17,7 @@ System management
 
 .. csv-table::
   :header: "Component", "Description"
+  :widths: 33, 67
 
   ":doc:`AMD SMI <amdsmi:index>`", "System management interface to control AMD GPU settings, monitor performance, and retrieve device and process information"
   ":doc:`ROCm Data Center Tool <rdc:index>`", "Simplifies administration and addresses key infrastructure challenges in AMD GPUs in cluster and data-center environments"
@@ -29,12 +30,13 @@ Performance
 
 .. csv-table::
   :header: "Component", "Description"
+  :widths: 33, 67
 
   ":doc:`ROCm Bandwidth Test <rocm_bandwidth_test:index>`", "Captures the performance characteristics of buffer copying and kernel read/write operations"
   ":doc:`ROCm Compute Profiler <rocprofiler-compute:index>`", "Kernel-level profiling for machine learning and high performance computing (HPC) workloads"
   ":doc:`ROCm Systems Profiler <rocprofiler-systems:index>`", "Comprehensive profiling and tracing of applications running on the CPU or the CPU and GPU"
   ":doc:`ROCProfiler <rocprofiler:index>`", "Profiling tool for HIP applications"
-  ":class:`format-big-table` :doc:`ROCprofiler-SDK <rocprofiler-sdk:index>`", "Toolkit for developing analysis tools for profiling and tracing GPU compute applications. This toolkit is in beta and subject to change"
+  ":doc:`ROCprofiler-SDK <rocprofiler-sdk:index>`", "Toolkit for developing analysis tools for profiling and tracing GPU compute applications. This toolkit is in beta and subject to change"
   ":doc:`ROCTracer <roctracer:index>`", "Intercepts runtime API calls and traces asynchronous activity"
 
 .. note::
@@ -47,6 +49,7 @@ Development
 
 .. csv-table::
   :header: "Component", "Description"
+  :widths: 33, 67
 
   ":doc:`HIPIFY <hipify:index>`", "Translates CUDA source code into portable HIP C++"
   ":doc:`ROCm CMake <rocmcmakebuildtools:index>`", "Collection of CMake modules for common build and development tasks"

@@ -15,12 +15,12 @@ The algorithm
 
 Reduction has many names depending on the domain; in functional programming it's referred to as `fold <https://en.wikipedia.org/wiki/Fold_(higher-order_function)>`_, in C++, it's called ``std::accumulate`` and in C++17, as ``std::reduce``. A reduction takes a range of inputs and "reduces" the given range with a binary operation to a singular or scalar output. Canonically, a reduction requires a "zero" element that bootstraps the algorithm and serves as one of the initial operands to the binary operation. The "zero" element is generally called `identity or neutral <https://en.wikipedia.org/wiki/Identity_element>`_ element in the group theory, which implies that it is an operand that doesn't change the result. Some typical use cases are: calculating a sum or normalizing a dataset and finding the maximum value in the dataset. The latter use case is discussed further in this tutorial.
 
-.. figure:: ../data/tutorial/reduction/foldl.svg
+.. figure:: ../../data/tutorial/reduction/foldl.svg
   :alt: Diagram demonstrating fold left
 
 There are multiple variations of reduction that allow parallel processing. The approach taken by ``std::reduce`` requires the user-provided binary operator to operate on any combination of identity and input range elements, or even exclusively on any of them. This allows you to insert any number of identities to facilitate parallel processing and then combine the partial results of parallel execution.
 
-.. figure:: ../data/tutorial/reduction/parallel_foldl.svg
+.. figure:: ../../data/tutorial/reduction/parallel_foldl.svg
   :alt: Diagram demonstrating parallel fold left
 
 Reduction on GPUs
@@ -37,7 +37,7 @@ Naive shared reduction
 
 The naive algorithm takes a tree-like shape, where the computational domain is purposefully distributed among blocks. In all blocks, all threads participate in loading data from persistent (from the kernel's perspective) global memory into the shared memory. This helps to perform tree-like reduction for a single thread by writing the partial result to global, in a location unique to the block, which allows the block to make independent progress. The partial results are combined in subsequent launches of the same kernel until a scalar result is reached.
 
-.. figure:: ../data/tutorial/reduction/naive_reduction.svg
+.. figure:: ../../data/tutorial/reduction/naive_reduction.svg
   :alt: Diagram demonstrating naive reduction
 
 This approach requires temporary storage based on the number of blocks launched, as each block outputs a scalar partial result. Depending on the need to store or destroy the input, a second temporary storage might be needed, which could be large enough to store the results of the second kernel launch. Alternatively, you can reuse the storage of the larger than necessary original input. These implementations differ so slightly that the document only considers the use case where the input could be destroyed.
@@ -140,7 +140,7 @@ Reducing thread divergence
 
 You can reduce divergence by keeping dataflow between memory addresses identical but reassigning the thread ids.
 
-.. figure:: ../data/tutorial/reduction/reduced_divergence_reduction.svg
+.. figure:: ../../data/tutorial/reduction/reduced_divergence_reduction.svg
   :alt: Diagram demonstrating reduced divergence reduction
 
 .. code-block:: diff
@@ -182,7 +182,7 @@ A notable exception is when the shared read uniformly broadcasts to the same add
         __syncthreads();
     }
 
-.. figure:: ../data/tutorial/reduction/conflict_free_reduction.svg
+.. figure:: ../../data/tutorial/reduction/conflict_free_reduction.svg
   :alt: Diagram demonstrating bank conflict free reduction
 
 .. note::
@@ -495,10 +495,10 @@ Prefer warp communication over shared
 
 As mentioned in the previous step, communication between local memory is faster than shared memory. Instead of relying on the local memory only at the end of the tree-like reduction, a better approach is to turn the tree reduction inside out and perform multiple warp reductions in parallel on all active threads, thus communicating only their partial results through the shared memory.
 
-.. figure:: ../data/tutorial/reduction/warp_reduction.svg
+.. figure:: ../../data/tutorial/reduction/warp_reduction.svg
   :alt: Diagram demonstrating warp reduction
 
-.. figure:: ../data/tutorial/reduction/warp_reduction_with_shared.svg
+.. figure:: ../../data/tutorial/reduction/warp_reduction_with_shared.svg
   :alt: Diagram demonstrating warp reduction and results store in shared memory
 
 The kernel versions differ significantly enough to be described using a diff; use afresh instead.

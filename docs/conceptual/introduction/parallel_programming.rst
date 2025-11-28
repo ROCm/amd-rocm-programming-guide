@@ -9,7 +9,6 @@
    :path: projects/hip/docs/understand/programming_model.rst
    :default_branch: develop
    :start_line: 8
-   :replace: ../data/understand/|../../data/understand/
    :tag_prefix: docs/
    :project_name: HIP
    :docs_base_url: https://rocm.docs.amd.com/projects

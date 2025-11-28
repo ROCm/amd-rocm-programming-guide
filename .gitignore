@@ -6,6 +6,7 @@ build
 # documentation artifacts
 _build/
 _images/
+_remote_images/
 __pycache__/
 _static/
 _templates/

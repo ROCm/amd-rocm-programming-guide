@@ -271,12 +271,17 @@ class BranchAwareRemoteContent(Directive):
     def get_image_cache_dir(self):
         """Get or create the directory for cached remote images"""
         env = self.state.document.settings.env
-        cache_dir = Path(env.app.outdir).parent / '_remote_images' / self.options['repo'].replace('/', '_')
+        # Store images in docs/_remote_images/ directory
+        cache_dir = Path(env.srcdir) / '_remote_images' / self.options['repo'].replace('/', '_')
         cache_dir.mkdir(parents=True, exist_ok=True)
         return cache_dir
 
     def download_image(self, image_path, ref):
         """Download an image from the remote repository"""
+        # The image_path has already been resolved relative to the source file
+        # which already includes the necessary repository structure
+        # So we can use it directly
+        
         # Construct the raw URL for the image
         image_url = self.construct_raw_url(
             self.options['repo'],
@@ -291,10 +296,14 @@ class BranchAwareRemoteContent(Directive):
 
             # Create cache directory and save the image
             cache_dir = self.get_image_cache_dir()
-
-            # Preserve the directory structure of the image
-            image_rel_path = Path(image_path)
-            local_image_path = cache_dir / image_rel_path
+            
+            # Get just the relative path part for saving
+            # Remove any 'docs/' prefix as we handle that separately
+            save_path = Path(image_path)
+            if save_path.parts and save_path.parts[0] == 'docs':
+                save_path = Path(*save_path.parts[1:])
+            
+            local_image_path = cache_dir / save_path
             local_image_path.parent.mkdir(parents=True, exist_ok=True)
 
             # Write the image content
@@ -307,32 +316,88 @@ class BranchAwareRemoteContent(Directive):
             logger.warning(f'Failed to download image from {image_url}: {str(e)}')
             return None
 
-    def process_images(self, content, ref):
-        """Process image references in the content and download images"""
-        # Pattern to match image and figure directives
-        # Matches: .. image:: path or .. figure:: path
-        image_pattern = r'\.\.\s+(image|figure)::\s+([^\s]+)'
-
-        def replace_image_path(match):
-            directive = match.group(1)
-            original_path = match.group(2)
-
+    def process_image_nodes(self, node, ref):
+        """Process image nodes in the parsed content and download images"""
+        from docutils import nodes
+        
+        # Find all image and figure nodes
+        for img_node in node.traverse(nodes.image):
+            original_uri = img_node.get('uri', '')
+            
             # Skip if it's already an absolute URL
-            if original_path.startswith(('http://', 'https://', '/')):
-                return match.group(0)
-
-            # Get the directory of the source file
-            source_dir = str(Path(self.options['path']).parent)
-
+            if original_uri.startswith(('http://', 'https://', '/')):
+                continue
+            
+            # Get the full path of the source file (includes any repo structure)
+            source_path = Path(self.options['path'])
+            source_dir = source_path.parent
+            repo = self.options.get('repo', '')
+            
             # Resolve the image path relative to the source file
-            if source_dir and source_dir != '.':
-                image_path = str(Path(source_dir) / original_path)
+            if source_dir.as_posix() and source_dir.as_posix() != '.':
+                # Build the full path by joining source dir with image path
+                # First convert to POSIX path for consistency
+                joined_path = (source_dir / original_uri).as_posix()
+                
+                # Use os.path.normpath to resolve .. components
+                image_path = os.path.normpath(joined_path)
+                # Convert backslashes to forward slashes for consistency
+                image_path = image_path.replace('\\', '/')
+                
+                # Check repository-specific path adjustments
+                # After normpath, we need to check if the path is correct for the repository structure
+                
+                if repo == 'ROCm/rocm-systems':
+                    # For rocm-systems, docs are under projects/hip/docs/
+                    # Check various patterns for the normalized path
+                    if image_path.startswith('projects/hip/') and not image_path.startswith('projects/hip/docs/'):
+                        # The path likely normalized from projects/hip/docs/../../data to projects/hip/data
+                        # We need to add docs/ back
+                        rest_of_path = image_path[len('projects/hip/'):]
+                        image_path = f'projects/hip/docs/{rest_of_path}'
+                    elif image_path.startswith('projects/') and not image_path.startswith('projects/hip/'):
+                        # Path is projects/data/... instead of projects/hip/docs/data/...
+                        # Remove 'projects/' prefix and add full path
+                        rest_of_path = image_path[len('projects/'):]
+                        image_path = f'projects/hip/docs/{rest_of_path}'
+                    elif image_path.startswith('../'):
+                        # Path goes outside repo structure with ../
+                        # Strip the ../ and add to the correct base path
+                        rest_of_path = image_path[3:]  # Remove '../'
+                        image_path = f'projects/hip/docs/{rest_of_path}'
+                    elif not image_path.startswith('projects/'):
+                        # Path completely outside expected structure, prepend full path
+                        image_path = f'projects/hip/docs/{image_path}'
+                        
+                elif repo in ['ROCm/ROCm', 'ROCm/rccl']:
+                    # For ROCm and rccl, docs are under docs/
+                    if image_path.startswith('../'):
+                        # Path goes outside repo structure with ../
+                        # Strip the ../ and add to the correct base path
+                        rest_of_path = image_path[3:]  # Remove '../'
+                        image_path = f'docs/{rest_of_path}'
+                    elif not image_path.startswith('docs/'):
+                        # Path normalized outside docs/, add it back
+                        image_path = f'docs/{image_path}'
             else:
-                image_path = original_path
-
-            # Normalize the path
-            image_path = str(Path(image_path).as_posix())
-
+                # If no source directory, use original URI
+                image_path = original_uri
+                
+                # Still need to check repository requirements for paths without source dir
+                if repo == 'ROCm/rocm-systems' and not image_path.startswith('projects/'):
+                    image_path = f'projects/hip/docs/{image_path}'
+                elif repo in ['ROCm/ROCm', 'ROCm/rccl'] and not image_path.startswith('docs/'):
+                    image_path = f'docs/{image_path}'
+            
+            # Final normalization to remove any remaining ../ components
+            # This is crucial to prevent ../  in the middle of the final path
+            image_path = os.path.normpath(image_path).replace('\\', '/')
+            
+            # Ensure we don't have leading slashes
+            image_path = image_path.lstrip('/')
+            
+            logger.info(f'Processing image: {original_uri} -> {image_path}')
+            
             # Download the image
             local_image_path = self.download_image(image_path, ref)
 
@@ -343,23 +408,20 @@ class BranchAwareRemoteContent(Directive):
 
                 # Make the path relative to the source directory
                 try:
-                    rel_path = local_image_path.relative_to(srcdir.parent)
+                    rel_path = local_image_path.relative_to(srcdir)
+                    # Use absolute path from source root with leading slash
+                    # This ensures Sphinx can always find the image
                     new_path = '/' + str(rel_path.as_posix())
                 except ValueError:
                     # If we can't make it relative, use absolute path
                     new_path = str(local_image_path.as_posix())
-
-                logger.info(f'Replaced image path: {original_path} -> {new_path}')
-                return f'.. {directive}:: {new_path}'
+                
+                # Update the image node's URI
+                img_node['uri'] = new_path
+                logger.info(f'Updated image URI: {original_uri} -> {new_path}')
             else:
                 # If download failed, keep the original path
-                logger.warning(f'Keeping original image path due to download failure: {original_path}')
-                return match.group(0)
-
-        # Replace all image paths
-        processed_content = re.sub(image_pattern, replace_image_path, content)
-
-        return processed_content
+                logger.warning(f'Keeping original image path due to download failure: {original_uri}')
 
     def fetch_and_parse_content(self, url, source_path, ref):
         """Fetch content and parse it as RST"""
@@ -370,11 +432,8 @@ class BranchAwareRemoteContent(Directive):
         # Apply text replacements before parsing
         content = self.apply_replacements(content)
 
-        # Process :doc: roles to convert to external links
+        # Process :doc: roles before parsing
         content = self.process_doc_roles(content, ref)
-
-        # Process images: download them and update paths
-        content = self.process_images(content, ref)
 
         start_line = self.options.get('start_line', 0)
 
@@ -384,11 +443,14 @@ class BranchAwareRemoteContent(Directive):
         for line_no, line in enumerate(content.splitlines()):
             if line_count >= start_line:
                 content_list.append(line, source_path, line_no)
-            line_count+=1
+            line_count += 1
 
         # Create a section node and parse content
         node = nodes.section()
         nested_parse_with_titles(self.state, content_list, node)
+        
+        # Process images after parsing: download them and update node URIs
+        self.process_image_nodes(node, ref)
 
         return node.children
 
@@ -398,6 +460,8 @@ class BranchAwareRemoteContent(Directive):
             return []
 
         target_ref = self.get_target_ref()
+        logger.info(f'Target ref determined: {target_ref} for repo: {self.options["repo"]}')
+        
         if not target_ref:
             return []
 
@@ -414,7 +478,8 @@ class BranchAwareRemoteContent(Directive):
             logger.warning(f'Failed to fetch content from {raw_url}: {str(e)}')
 
             # If we failed on a tag, try falling back to default_branch
-            if re.match(r'^\d+\.\d+\.\d+$', target_ref) or target_ref.startswith('Docs/'):
+            current_version = self.get_current_version()
+            if current_version:
                 if 'default_branch' in self.options:
                     try:
                         fallback_ref = self.options['default_branch']

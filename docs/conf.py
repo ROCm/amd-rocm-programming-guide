@@ -44,7 +44,7 @@ for sphinx_var in ROCmDocs.SPHINX_VARS:
 # Add the _extensions directory to Python's search path
 sys.path.append(str(Path(__file__).parent / 'extension'))
 
-extensions += ["sphinxcontrib.datatemplates", "version-ref", "csv-to-list-table", "remote-content"]
+extensions += ["sphinxcontrib.datatemplates", "version-ref", "csv-to-list-table", "remote-content", "svg-pdf-converter"]
 
 cpp_id_attributes = ["__global__", "__device__", "__host__", "__forceinline__", "static"]
 cpp_paren_attributes = ["__declspec"]
@@ -65,3 +65,6 @@ html_context["release"] = release
 html_theme = 'sphinx_book_theme'
 
 numfig = False
+
+# SVG converter configuration is handled by the svg-pdf-converter extension
+# which provides custom preprocessing for Draw.io SVGs
