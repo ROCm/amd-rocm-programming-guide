@@ -58,11 +58,30 @@ html_context = {}
 if os.environ.get("READTHEDOCS", "") == "True":
     html_context["READTHEDOCS"] = True
 
+html_theme_options = {
+    "announcement": "This AMD ROCm Programming Guide is a solution designed to generate comprehensive books and guides from the content on the <a id='rocm-banner' href='https://rocm.docs.amd.com/en/latest/'>ROCm documentation</a> portal.",
+    "flavor": "generic",
+    "header_title": "AMD ROCm Programming Guide",
+    "header_link": "https://rocm.docs.amd.com/projects/hipbook-internal/en/latest/",
+    "version_list_link": "https://rocm.docs.amd.com/projects/hipbook-internal/en/latest/",
+    "nav_secondary_items": {
+        "GitHub": "https://github.com/ROCm/amd-rocm-programming-guide",
+        "Community": "https://github.com/ROCm/ROCm/discussions",
+        "Blogs": "https://rocm.blogs.amd.com/",
+        "Instinct™ Docs": "https://instinct.docs.amd.com/",
+        "Support": "https://github.com/ROCm/ROCm/issues/new/choose",
+    },
+    "link_main_doc": False,
+    "secondary_sidebar_items": {
+        "**": ["page-toc"],
+    }
+}
+
 html_context["official_branch"] = official_branch
 html_context["version"] = version
 html_context["release"] = release
 
-html_theme = 'sphinx_book_theme'
+html_theme = "rocm_docs_theme"
 
 numfig = False
 
