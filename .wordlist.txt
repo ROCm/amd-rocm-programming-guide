@@ -912,6 +912,8 @@ recomputation
 redirections
 refactorization
 reformats
+reimplement
+reimplements
 reinforcememt
 RelWithDebInfo
 repo
@@ -1294,6 +1296,8 @@ Yifan
 YML
 YModel
 ysvmadyb
+zag
+zig
 zc
 ZenDNN
 ZeRO

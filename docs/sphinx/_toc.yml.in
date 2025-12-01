@@ -53,7 +53,8 @@ subtrees:
     subtrees:
     - entries:
       - file: tutorial/hip-performance-optimization/highly-parallel-image-gamma-correction
-      - file: tutorial/hip-performance-optimization/reduction      
+      - file: tutorial/hip-performance_optimization/fixed-size-kernels-image-gamma-correction
+      - file: tutorial/hip-performance-optimization/reduction
   - file: how-to/multi-gpu_programming
     subtrees:
     - entries:
