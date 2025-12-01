@@ -53,20 +53,20 @@ Tutorial overview
 This collection provides comprehensive tutorials on essential HIP performance
 optimization techniques:
 
-* :doc:`Highly parallel workloads <./hip-performance-optimization/highly-parallel-image-gamma-correction>`:
+* :doc:`Highly parallel workloads <hip-performance-optimization/highly-parallel-image-gamma-correction>`:
   Optimizing embarrassingly parallel algorithms like image processing.
 
-* :doc:`Fixed-sized kernels <./hip-performance-optimization/fixed-sized-kernels-image-gamma-correction>`:
+* :doc:`Fixed-sized kernels <hip-performance-optimization/fixed-size-kernels-image-gamma-correction>`:
   Reducing thread dispatch overhead through fixed kernel dimensions.
 
-* :doc:`Reduction operations <./hip-performance-optimization/reduction>`:
+* :doc:`Reduction operations <hip-performance-optimization/reduction>`:
   Efficient parallel reduction algorithms using shared memory.
 
-* :doc:`Tiling and data reuse <./hip-performance-optimization/tiling-matrix-multiply>`:
+* :doc:`Tiling and data reuse <hip-performance-optimization/tiling-matrix-multiply>`:
   Leveraging local data share memory to improve matrix multiplication
   performance.
 
-* :doc:`Memory coalescing <./hip-performance-optimization/tiling-matrix-transpose>`:
+* :doc:`Memory coalescing <hip-performance-optimization/tiling-matrix-transpose>`:
   Converting non-coalesced memory access patterns to coalesced ones for better
   bandwidth utilization.
 

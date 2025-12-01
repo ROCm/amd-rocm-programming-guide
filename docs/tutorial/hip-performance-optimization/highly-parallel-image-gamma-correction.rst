@@ -58,19 +58,19 @@ Computational challenges in pixel-wise operations
 
 Image gamma correction is a common image processing algorithm that adjusts
 the brightness of an image without changing the content. As shown in the
-figure above, when you apply a gamma value less than one, the image becomes
+figure above, when you apply a gamma value of less than one, the image becomes
 brighter, whereas a value greater than one darkens it.
 
 Pictures stored on a computer are typically encoded using pixels (see
 figure below), which are square regions of an image that are each rendered
 with a single color. For example, the images used in the figures above and
-below have 267 (width) × 267 (height) pixels total. If the image were colored,
-three values representing red, green and blue (RGB) would be required for each
-pixel, which represents the brightness. Brightness is coded using an 8-bit
-integer [0–255], where zero represents the darkest, and 255 represents the
+below have 267 (width) × 267 (height) pixels total. If the image is in color,
+three values representing red, green, and blue (RGB) would be required for each
+pixel to represent the brightness. Brightness is coded using an 8-bit integer
+[0–255], where zero represents the darkest shade, and 255 represents the
 brightest. The other key method uses a floating-point number between zero
 and one. The red brightness values of all pixels comprise the "red
-channel," and a colored image typically has three channels (RGB).
+channel". A colored image typically has three channels (RGB).
 
 .. figure:: ../../data/tutorial/hip-performance-optimization/pixel_organization.png
    :align: center
@@ -91,7 +91,7 @@ value. A greater-than-one gamma decreases the brightness value. As
 suggested by the equation, the number of output values matches the number
 of input values, and the calculation of each output value is independent of
 the calculation of neighboring values. The image gamma correction algorithm
-is embarrassingly parallel; thus, it is suitable for GPUs.
+is embarrassingly parallel and is therefore suitable for GPUs.
 
 GPU kernel design and optimization strategies
 ==============================================
@@ -105,16 +105,17 @@ correction algorithm using HIP.
    :start-at: #include <hip/hip_runtime.h>
    :caption: Image gamma correction application as an embarrassingly parallel
              algorithm. Each thread is responsible for processing a value in
-             the array of image pixels. The grid size reflects their number.
+             the array of image pixels. The grid size reflects the number of
+             pixels.
 
-To address this GPU programming problem, you must first consider how to map
-the threads to the input and output elements. For embarrassingly parallel
-algorithms, the mapping is straightforward, as each thread is responsible
-for a part of the output channel (a pixel). Therefore, the total number of
-threads will equal the height × width × number of channels = ``num_values``.
-To calculate the grid size, you divide ``num_values`` by the block size. If
-the block size is not a multiple of ``num_values``, you can round up to the
-next integer, as shown in line 23 of the listing above.
+To address this GPU programming problem, first consider how to map the threads
+to the input and output elements. For embarrassingly parallel algorithms, the
+mapping is straightforward because each thread is responsible for a part of the
+output channel (a pixel). Therefore, the total number of threads will equal the
+height × width × number of channels = ``num_values``. To calculate the grid
+size, divide ``num_values`` by the block size. If the block size is not a
+multiple of ``num_values``, you can round up to the next integer, as shown in
+line 23 of the code sample above.
 
 The block size can be between 1 and 1,024, depending on the device
 limitation. Note that selecting a suitable block size will improve the
