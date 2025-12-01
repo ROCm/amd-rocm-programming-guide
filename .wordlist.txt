@@ -1,5 +1,6 @@
 ﻿.hip_fatbin
 AAC
+ABCDE
 ABI
 accuracies
 AccVGPR
@@ -489,6 +490,7 @@ href
 HSA
 hsa
 hsakmt
+HSV
 Huggingface
 HW
 HWE
@@ -608,6 +610,7 @@ lifecycle
 linalg
 linearized
 linearizing
+linenos
 linter
 linux
 literalinclude
@@ -1077,9 +1080,11 @@ stanford
 stochastically
 strided
 structs
+subcaptions
 subcommand
 subdirectory
 subexpression
+subfigure
 subfolder
 subfolders
 submatrix

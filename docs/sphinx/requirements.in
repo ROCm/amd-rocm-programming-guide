@@ -1,5 +1,6 @@
 rocm-docs-core==1.20.1
 sphinx-reredirects
 sphinx-sitemap
+sphinx-subfigure
 sphinxcontrib.datatemplates==0.11.0
 sphinxcontrib-svg2pdfconverter

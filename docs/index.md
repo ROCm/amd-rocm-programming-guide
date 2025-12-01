@@ -71,6 +71,8 @@ and libraries.
 
   * {doc}`./tutorial/hip-performance-optimization/reduction`
 
+  * {doc}`./tutorial/hip-performance-optimization/highly-parallel-image-gamma-correction`
+
 * {doc}`./how-to/multi-gpu_programming`
 
   * {doc}`./how-to/multi-gpu/multi_device`
