@@ -221,6 +221,8 @@ da
 DaemonSet
 Dashboarding
 Dask
+datacenter
+datacenters
 dataflow
 DataFrame
 DataLoader
@@ -531,6 +533,8 @@ inlining
 inplace
 installable
 instrSize
+integrator
+integrators
 IntelliSense
 interdependencies
 interop
@@ -967,6 +971,7 @@ rocminfo
 rocMLIR
 ROCmSoftwarePlatform
 ROCmValidationSuite
+ROCm's
 rocPRIM
 rocprim
 rocprof
