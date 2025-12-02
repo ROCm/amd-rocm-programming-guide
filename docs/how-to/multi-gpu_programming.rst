@@ -25,7 +25,7 @@ environments.
    :path: projects/hip/docs/how-to/hip_runtime_api/multi_device.rst
    :default_branch: develop
    :start_line: 10
-   :replace: :doc:`ROCm <rocm:what-is-rocm>`|:doc:`ROCm </rocm>`;;data/|../../data/
+   :replace: :doc:`ROCm <rocm:what-is-rocm>`|:doc:`ROCm </rocm>`;;data/|../../data/;;../../tools/|../tools/
    :doc_ignore: ./rocm
    :tag_prefix: docs/
    :project_name: HIP
