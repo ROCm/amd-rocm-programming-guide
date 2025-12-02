@@ -71,7 +71,7 @@ Sequential BFS algorithm
 Let's first understand how BFS works sequentially before parallelizing it.
 
 Example Graph
-~~~~~~~~~~~~~
+-------------
 
 Consider a simple graph with four nodes:
 
@@ -84,7 +84,7 @@ Consider a simple graph with four nodes:
            C
 
 Step-by-step execution
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 **Step 1**: Start at the root node ``R``
 

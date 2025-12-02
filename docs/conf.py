@@ -22,10 +22,10 @@ for line in lines:
         continue
     version_numbers.append(line.strip())
 version_number = ".".join(version_numbers)
-left_nav_title = f"ROCm Programming Guide {version_number}"
+left_nav_title = f"AMD ROCm Programming Guide {version_number}"
 
 # for PDF output on Read the Docs
-project = "ROCm Programming Guide"
+project = "AMD ROCm Programming Guide"
 author = "Advanced Micro Devices, Inc."
 copyright = "Copyright (c) 2023 Advanced Micro Devices, Inc. All rights reserved."
 version = version_number
@@ -36,7 +36,7 @@ external_toc_path = "./sphinx/_toc.yml"
 docs_core = ROCmDocs(left_nav_title)
 docs_core.setup()
 
-external_projects_current_project = "hip"
+external_projects_current_project = "hipbook-internal"
 
 for sphinx_var in ROCmDocs.SPHINX_VARS:
     globals()[sphinx_var] = getattr(docs_core, sphinx_var)

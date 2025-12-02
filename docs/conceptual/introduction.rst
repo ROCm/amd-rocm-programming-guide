@@ -2,30 +2,106 @@
   :description: AMD ROCm Programming Guide introduction
   :keywords: AMD, ROCm, HIP, CUDA, AMD ROCm Programming Guide introduction,
 
-.. _hip_book_introduction:
+.. _amd_rocm_programming_guide_introduction:
 
 ********************************************************************************
 Introduction
 ********************************************************************************
 
+The rapid growth of high-performance computing (HPC) and artificial intelligence
+(AI) has driven an equally rapid evolution in the software ecosystems that power
+these workloads. Users increasingly require an open, flexible, and high-performance
+GPU compute platform capable of scaling from exploratory prototyping to
+mission-critical production workloads. AMD's ROCm open-source software platform
+emerged to meet these needs by enabling developers to fully harness the computational
+power of AMD Instinct™ GPUs, AMD Radeon™ GPUs, and supported Ryzen™ APUs,
+while maintaining compatibility with widely adopted industry frameworks.
 
-What are the key drivers for ROCm and users of ROCm in the marketplace?
-What are some of the key features of the ROCm tools and HIP runtime?
-What is a good introduction to this document?
+Key drivers of ROCm
+-----------------------------
 
-AMD introduced the Heterogeneous Interface for Portability (HIP) programming
-language in October 2016 to address both portability and performance. HIP
-follows many similar parallel programming historic conventions that CUDA has
-also leveraged. However, HIP can run on multiple platforms with little to no
-performance overhead. Using AMD’s Radeon Open Ecosystem (ROCm) platform,
-parallel programs developed using HIP can be used for a wide range of
-applications, spanning deep learning to molecular dynamics.
+Several major trends underpin the adoption and growth of ROCm:
 
-This book introduces the HIP programming language and its ecosystem of
-libraries and development tools. Notably, it is based on C++, and readers of
-this book are expected to be somewhat familiar with the language. In the
-examples presented throughout this text, we target the AMD Instinct
-Machine-Intelligence (MI)-100 GPU, with which readers are not required to be
-familiar. Most code examples will run on any GPU supported by ROCm or CUDA
-platforms. This chapter introduces readers to the world of parallel computing
-with HIP and ROCm. Later chapters explore the features and ecosystem of HIP.
+* **Open ecosystem demand**: Organizations—from academic institutions to
+  large-scale HPC centers—value transparent, community-driven platforms. ROCm’s
+  open-source foundation gives developers insight, flexibility, and long-term
+  sustainability for their GPU computing stack.
+
+* **HPC and AI convergence**: Modern workloads increasingly blend simulation,
+  data analytics, and machine learning. ROCm is designed to accelerate this
+  convergence, offering a unified environment that supports scientific
+  computing, deep learning, training and inference, large-scale simulations, and
+  data-driven modeling.
+
+* **Multi-vendor and cross-platform portability**: Many developers want to avoid
+  lock-in to any single GPU vendor. ROCm’s focus on language and platform
+  portability enables teams to maintain a common codebase across heterogeneous
+  compute environments.
+
+* **Performance and efficiency**: ROCm is optimized to extract maximum
+  performance from AMD GPUs, enabling fine-grained optimizations across 
+  on-premise clusters and cloud deployments. 
+
+ROCm users include HPC researchers, AI practitioners, system
+integrators, cloud providers expanding GPU compute offerings, and developers
+building high-performance workloads on AMD hardware—from workstation users with
+desktop Radeon GPUs to large-scale supercomputing installations.
+
+Key features of ROCm tools and the HIP runtime
+----------------------------------------------
+
+At the heart of the ROCm ecosystem is the HIP runtime and HIP programming language, a C++-based programming language introduced by AMD in 2016. HIP
+provides developers with a familiar, CUDA-like programming model while enabling
+portability across AMD and NVIDIA GPU architectures with little to no
+performance overhead. Its design focuses on both performance and maintainability,
+allowing developers to write high-quality parallel code without sacrificing
+efficiency.
+
+Key features of the ROCm tools and HIP runtime include:
+
+* **Cross-platform GPU portability**: HIP enables a single C++ codebase to
+  target multiple GPU vendors, simplifying development and long-term
+  maintenance.
+
+* **Rich language interoperability**: ROCm supports multiple programming
+  languages and interfaces—including HIP, OpenMP, and OpenCL—offering
+  flexibility for different application domains.
+
+* **Optimized math, AI, and HPC libraries**: The platform includes a robust set
+  of tuned libraries for BLAS, FFT, sparse linear algebra, random number
+  generation, graph analytics, and deep learning primitives.
+
+* **Comprehensive development tools**: ROCm provides profilers, debuggers,
+  compilers, and analysis utilities that give developers control over
+  performance tuning and hardware-aware optimization.
+
+* **Scalable performance across AMD GPU families**: Applications can seamlessly
+  run on AMD Instinct accelerators for datacenters as well as Radeon GPUs for
+  workstations and development environments.
+
+* **Integration with industry frameworks**: ROCm supports PyTorch, TensorFlow,
+  JAX, and numerous HPC frameworks, allowing developers to adopt GPU
+  acceleration without needing to rewrite entire codebases.
+
+Together, HIP and the ROCm toolchain form a cohesive, high-performance
+environment for parallel programming, whether targeting deep learning pipelines
+or large-scale scientific simulation.
+
+About AMD ROCm programming guide
+--------------------------------
+
+This guide serves as a comprehensive programming guide for developers working
+with HIP and the broader ROCm ecosystem. It introduces HIP fundamentals,
+demonstrates best practices for GPU development, and provides practical
+examples that run on any AMD GPU supported by ROCm. While many examples
+reference AMD Instinct accelerators such as the MI100, the material remains
+portable and applicable across ROCm-supported hardware.
+
+Importantly, this guide is derived from the official `ROCm docs portal <https://rocm.docs.amd.com/en/latest/index.html>`__,
+reorganized for PDF export and offline usage. By consolidating and refining the online documentation into a
+unified volume, this guide provides developers with a clear, accessible,
+and convenient reference.
+
+The chapters that follow introduce the principles of parallel programming on AMD
+GPUs, explore the features and ecosystem of HIP, and provide practical guidance
+for building efficient, portable, high-performance GPU applications.
