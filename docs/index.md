@@ -33,6 +33,8 @@ and libraries.
 
 **Core HIP programming**
 
+* {doc}`./how-to/core-introduction`
+
 * {doc}`./how-to/hip_runtime_api`
 
   * {doc}`./how-to/hip_runtime_api/initialization`
@@ -65,7 +67,7 @@ and libraries.
 
   * {doc}`./tutorial/programming-patterns/multikernel_bfs`
 
-**Advanced topics**
+**Performance optimization techniques**
 
 * {doc}`./tutorial/hip-performance-optimization`
 
@@ -81,37 +83,11 @@ and libraries.
 
 * {doc}`./how-to/multi-gpu_programming`
 
-  * {doc}`./how-to/multi-gpu/multi_device`
-
-  * {doc}`./how-to/multi-gpu/rccl`
-
-* {doc}`./how-to/deep_learning_with_rocm`
-
 **ROCm platform**
 
 * {doc}`./install/install`
 
 * {doc}`./reference/amd_gpus`
-
-* {doc}`./conceptual/rocm-libraries`
-
-* {doc}`./conceptual/rocm-tools`
-
-**ROCm in data centers**
-
-* {doc}`./install/containered_rocm`
-
-* {doc}`./reference/rocm_in_data_centers/slurm-integration`
-
-* {doc}`./reference/rocm_in_data_centers/rocm-kubernetes`
-
-  * {doc}`./reference/rocm_in_data_centers/kubernetes/installation`
-
-  * {doc}`./reference/rocm_in_data_centers/kubernetes/configuration`
-
-  * {doc}`./reference/rocm_in_data_centers/kubernetes/resource-allocation`
-
-  * {doc}`./reference/rocm_in_data_centers/kubernetes/examples`
 
 **Additional resources**
 

@@ -5,6 +5,11 @@ defaults:
   maxdepth: 6
 root: index
 subtrees:
+
+- entries: 
+  - url: https://rocm.docs.amd.com/_/downloads/amd-rocm-programming-guide/en/latest/pdf/
+    title: View PDF
+
 - caption: Getting started
   entries:
   - file: conceptual/introduction
@@ -15,6 +20,7 @@ subtrees:
 
 - caption: Core HIP programming
   entries:
+  - file: how-to/core-introduction
   - file: how-to/hip_runtime_api
     subtrees:
     - entries:
@@ -47,7 +53,7 @@ subtrees:
       - file: tutorial/programming-patterns/stencil_operations
       - file: tutorial/programming-patterns/multikernel_bfs
 
-- caption: Advanced topics
+- caption: Performance optimization techniques
   entries:
   - file: tutorial/hip-performance-optimization
     subtrees:
@@ -58,27 +64,8 @@ subtrees:
       - file: tutorial/hip-performance-optimization/tiling-matrix-multiply
       - file: tutorial/hip-performance-optimization/tiling-matrix-transpose
   - file: how-to/multi-gpu_programming
-    subtrees:
-    - entries:
-      - file: how-to/multi-gpu/multi_device
-      - file: how-to/multi-gpu/rccl
-  - file: how-to/deep_learning_with_rocm
 
 - caption: ROCm platform
   entries:
   - file: install/install
   - file: reference/amd_gpus
-  - file: conceptual/rocm-libraries
-  - file: conceptual/rocm-tools
-
-- caption: ROCm in datacenters
-  entries:
-  - file: install/containered_rocm
-  - file: reference/rocm_in_data_centers/slurm-integration
-  - file: reference/rocm_in_data_centers/rocm-kubernetes
-    subtrees:
-    - entries:
-      - file: reference/rocm_in_data_centers/kubernetes/installation
-      - file: reference/rocm_in_data_centers/kubernetes/configuration
-      - file: reference/rocm_in_data_centers/kubernetes/resource-allocation
-      - file: reference/rocm_in_data_centers/kubernetes/examples
