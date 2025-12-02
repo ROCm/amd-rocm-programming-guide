@@ -15,3 +15,4 @@ What is ROCm?
    :start_line: 7
    :replace: data/|../../data/
    :tag_prefix: docs/
+   :csv_widths: 33 67

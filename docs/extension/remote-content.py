@@ -45,6 +45,7 @@ class BranchAwareRemoteContent(Directive):
         'project_name': str,    # Override project name for URL construction
         'docs_base_url': str,   # Override base URL for documentation
         'doc_ignore': str,      # Doc links to ignore (not convert to external URLs), separated by ;;
+        'csv_widths': str,      # Add widths to CSV tables (e.g., "33 67")
     }
 
     def get_current_version(self):
@@ -230,6 +231,72 @@ class BranchAwareRemoteContent(Directive):
         processed_content = re.sub(doc_pattern, replace_doc_role, content)
 
         return processed_content
+
+    def process_csv_tables(self, content):
+        """Add widths to CSV tables if csv_widths option is specified"""
+        if 'csv_widths' not in self.options:
+            return content
+        
+        csv_widths = self.options['csv_widths'].strip()
+        if not csv_widths:
+            return content
+        
+        # Pattern to match CSV table directives with their options
+        # This correctly handles RST indentation rules
+        csv_pattern = re.compile(
+            r'^(\s*)\.\. csv-table::.*?\n'  # Match the directive line with optional indentation
+            r'((?:\s+:[^:]+:.*\n)*)',       # Match options (indented, but not relative to directive)
+            re.MULTILINE
+        )
+        
+        def add_widths_to_csv(match):
+            indent = match.group(1)
+            existing_options = match.group(2)
+            
+            # Check if :widths: already exists in the options
+            if ':widths:' in existing_options:
+                return match.group(0)
+            
+            # Find the :header: line to get its indentation
+            header_pattern = re.compile(r'^(\s+):header:.*\n', re.MULTILINE)
+            header_match = header_pattern.search(existing_options)
+            
+            if header_match:
+                # Use the same indentation as the header line
+                option_indent = header_match.group(1)
+                widths_line = f'{option_indent}:widths: {csv_widths}\n'
+                
+                # Insert the widths line after the header
+                modified_options = existing_options[:header_match.end()] + widths_line + existing_options[header_match.end():]
+                result = f'{indent}.. csv-table::\n{modified_options}'
+                
+                logger.info(f'Added :widths: {csv_widths} to CSV table')
+                return result
+            elif existing_options:
+                # If there are other options but no header, add widths at the beginning
+                # Get indentation from the first option
+                first_option_match = re.match(r'^(\s+):', existing_options)
+                if first_option_match:
+                    option_indent = first_option_match.group(1)
+                    widths_line = f'{option_indent}:widths: {csv_widths}\n'
+                    result = f'{indent}.. csv-table::\n{widths_line}{existing_options}'
+                    logger.info(f'Added :widths: {csv_widths} to CSV table')
+                    return result
+            else:
+                # No existing options, add widths as the first option
+                # Standard RST indentation is 3 spaces for options
+                option_indent = '   '
+                widths_line = f'{option_indent}:widths: {csv_widths}\n'
+                result = f'{indent}.. csv-table::\n{widths_line}'
+                logger.info(f'Added :widths: {csv_widths} to CSV table')
+                return result
+            
+            return match.group(0)
+        
+        # Apply the transformation to all CSV tables
+        modified_content = csv_pattern.sub(add_widths_to_csv, content)
+        
+        return modified_content
 
     def apply_replacements(self, content):
         """Apply text replacements to content"""
@@ -431,6 +498,9 @@ class BranchAwareRemoteContent(Directive):
 
         # Apply text replacements before parsing
         content = self.apply_replacements(content)
+
+        # Process CSV tables to add widths if specified
+        content = self.process_csv_tables(content)
 
         # Process :doc: roles before parsing
         content = self.process_doc_roles(content, ref)
