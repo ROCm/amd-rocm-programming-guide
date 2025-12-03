@@ -42,7 +42,7 @@ Multi-version installation
 A multi-version ROCm installation handles situations where users need multiple
 versions of ROCm on the same machine for compatibility with different
 applications and hardware, testing, and other use cases.
-For instructions, see :doc:`Installing multiple ROCm versions<../install/install-methods/multi-version-install-index>`.
+For instructions, see :doc:`Installing multiple ROCm versions<rocm-install-on-linux:install/install-methods/multi-version-install-index>`.
 
 .. _rocm-offline-installer-creator:
 

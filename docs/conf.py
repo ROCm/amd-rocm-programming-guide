@@ -24,6 +24,17 @@ for line in lines:
 version_number = ".".join(version_numbers)
 left_nav_title = f"AMD ROCm Programming Guide {version_number}"
 
+# ROCm version numbers
+rocm_version = '7.1.1'
+rocm_major_version = '7.0'
+rocm_multi_versions = '7.1.1 7.0.2' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
+rocm_multi_versions_package_versions = '7.1.1 7.0.2' # however, in multi, the packages use 6.3.0
+rocm_directory_version = '7.1.1' # in 6.0 rocm was located in /opt/rocm-6.0.0
+amdgpu_version = '7.1.1' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
+amdgpu_install_version = '7.1.1.70101-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
+udev_version = '30.20.1.0-2255209'
+udev_amdgpu_version = '30.20.1'
+
 # for PDF output on Read the Docs
 project = "AMD ROCm Programming Guide"
 author = "Advanced Micro Devices, Inc."
@@ -36,7 +47,20 @@ external_toc_path = "./sphinx/_toc.yml"
 docs_core = ROCmDocs(left_nav_title)
 docs_core.setup()
 
-external_projects_current_project = "hipbook-internal"
+external_projects_current_project = "amd-rocm-programming-guide-internal"
+
+# Add the following replacements to every RST file.
+rst_prolog = f"""
+.. |rocm_version| replace:: {rocm_version}
+.. |rocm_major_version| replace:: {rocm_major_version}
+.. |rocm_multi_versions| replace:: {rocm_multi_versions}
+.. |rocm_multi_versions_package_versions| replace:: {rocm_multi_versions_package_versions}
+.. |amdgpu_version| replace:: {amdgpu_version}
+.. |rocm_directory_version| replace:: {rocm_directory_version}
+.. |amdgpu_install_version| replace:: {amdgpu_install_version}
+.. |udev_version| replace:: {udev_version}
+.. |udev_amdgpu_version| replace:: {udev_amdgpu_version}
+"""
 
 for sphinx_var in ROCmDocs.SPHINX_VARS:
     globals()[sphinx_var] = getattr(docs_core, sphinx_var)
@@ -87,13 +111,13 @@ html_theme_options = {
     "announcement": "This AMD ROCm Programming Guide is a solution designed to generate comprehensive books and guides from the content on the <a id='rocm-banner' href='https://rocm.docs.amd.com/en/latest/'>ROCm documentation</a> portal.",
     "flavor": "generic",
     "header_title": "AMD ROCm Programming Guide",
-    "header_link": "https://rocm.docs.amd.com/projects/hipbook-internal/en/latest/",
-    "version_list_link": "https://rocm.docs.amd.com/projects/hipbook-internal/en/latest/",
+    "header_link": "https://rocm.docs.amd.com/projects/amd-rocm-programming-guide-internal/en/latest/",
+    "version_list_link": "https://rocm.docs.amd.com/projects/amd-rocm-programming-guide-internal/en/release/versions.html",
     "nav_secondary_items": {
-        "GitHub": "https://github.com/ROCm/amd-rocm-programming-guide",
+        "GitHub": "https://github.com/ROCm/amd-rocm-programming-guide-internal",
         "Community": "https://github.com/ROCm/ROCm/discussions",
         "Blogs": "https://rocm.blogs.amd.com/",
-        "Instinct™ Docs": "https://instinct.docs.amd.com/",
+        "ROCm&#8482 Docs": "https://rocm.docs.amd.com",
         "Support": "https://github.com/ROCm/ROCm/issues/new/choose",
     },
     "link_main_doc": False,

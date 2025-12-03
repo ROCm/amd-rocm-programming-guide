@@ -73,8 +73,6 @@ and libraries.
 
   * {doc}`./install/install-methods/package-manager-index`
 
-  * {doc}`./install/install-methods/multi-version-install-index`
-
   * {doc}`./install/post-install`
 
   * {doc}`./install/rocm-offline-installer`

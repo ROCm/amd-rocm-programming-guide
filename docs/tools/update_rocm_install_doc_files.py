@@ -80,10 +80,10 @@ urllib.request.urlretrieve(
      "docs/install/rocm-runfile-installer.rst"
 )
 
-urllib.request.urlretrieve(
-     f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}/docs/install/install-methods/multi-version-install-index.rst",
-     "docs/install/install-methods/multi-version-install-index.rst"
-)
+# urllib.request.urlretrieve(
+#      f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}/docs/install/install-methods/multi-version-install-index.rst",
+#      "docs/install/install-methods/multi-version-install-index.rst"
+# )
 
 urllib.request.urlretrieve(
      f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}/docs/install/install-methods/package-manager-index.rst",
@@ -95,37 +95,37 @@ urllib.request.urlretrieve(
      "docs/install/post-install.rst"
 )
 
-# multi version
+# # multi version
 
-urllib.request.urlretrieve(
-     f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}/docs/install/install-methods/multi-version-install/multi-version-install-debian.rst",
-     "docs/install/install-methods/multi-version-install/multi-version-install-debian.rst"
-)
+# urllib.request.urlretrieve(
+#      f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}/docs/install/install-methods/multi-version-install/multi-version-install-debian.rst",
+#      "docs/install/install-methods/multi-version-install/multi-version-install-debian.rst"
+# )
 
-urllib.request.urlretrieve(
-     f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}/docs/install/install-methods/multi-version-install/multi-version-install-ol.rst",
-     "docs/install/install-methods/multi-version-install/multi-version-install-ol.rst"
-)
+# urllib.request.urlretrieve(
+#      f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}/docs/install/install-methods/multi-version-install/multi-version-install-ol.rst",
+#      "docs/install/install-methods/multi-version-install/multi-version-install-ol.rst"
+# )
 
-urllib.request.urlretrieve(
-     f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}/docs/install/install-methods/multi-version-install/multi-version-install-rhel.rst",
-     "docs/install/install-methods/multi-version-install/multi-version-install-rhel.rst"
-)
+# urllib.request.urlretrieve(
+#      f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}/docs/install/install-methods/multi-version-install/multi-version-install-rhel.rst",
+#      "docs/install/install-methods/multi-version-install/multi-version-install-rhel.rst"
+# )
 
-urllib.request.urlretrieve(
-     f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}/docs/install/install-methods/multi-version-install/multi-version-install-rl.rst",
-     "docs/install/install-methods/multi-version-install/multi-version-install-rl.rst"
-)
+# urllib.request.urlretrieve(
+#      f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}/docs/install/install-methods/multi-version-install/multi-version-install-rl.rst",
+#      "docs/install/install-methods/multi-version-install/multi-version-install-rl.rst"
+# )
 
-urllib.request.urlretrieve(
-     f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}/docs/install/install-methods/multi-version-install/multi-version-install-sles.rst",
-     "docs/install/install-methods/multi-version-install/multi-version-install-sles.rst"
-)
+# urllib.request.urlretrieve(
+#      f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}/docs/install/install-methods/multi-version-install/multi-version-install-sles.rst",
+#      "docs/install/install-methods/multi-version-install/multi-version-install-sles.rst"
+# )
 
-urllib.request.urlretrieve(
-     f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}/docs/install/install-methods/multi-version-install/multi-version-install-ubuntu.rst",
-     "docs/install/install-methods/multi-version-install/multi-version-install-ubuntu.rst"
-)
+# urllib.request.urlretrieve(
+#      f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}/docs/install/install-methods/multi-version-install/multi-version-install-ubuntu.rst",
+#      "docs/install/install-methods/multi-version-install/multi-version-install-ubuntu.rst"
+# )
 
 # package-manager
 
