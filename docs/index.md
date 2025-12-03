@@ -66,6 +66,21 @@ and libraries.
 **ROCm platform**
 
 * {doc}`./install/install`
+
+  * {doc}`./install/prerequisites`
+
+  * {doc}`./install/quick-start`
+
+  * {doc}`./install/install-methods/package-manager-index`
+
+  * {doc}`./install/install-methods/multi-version-install-index`
+
+  * {doc}`./install/post-install`
+
+  * {doc}`./install/rocm-offline-installer`
+
+  * {doc}`./install/rocm-runfile-installer`
+
 * {doc}`./reference/amd_gpus`
 
 Known issues are listed and can be reported on the on the [AMD ROCm programming guide GitHub repository](https://github.com/ROCm/hipbook/issues).

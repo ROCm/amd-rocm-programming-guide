@@ -69,4 +69,43 @@ subtrees:
 - caption: ROCm platform
   entries:
   - file: install/install
+    subtrees:
+    - entries:
+      - file: install/prerequisites
+      - file: install/quick-start
+      - file: install/install-methods/package-manager-index
+        title: Package manager
+        subtrees:
+        - entries:
+          - file: install/install-methods/package-manager/package-manager-ubuntu
+            title: Ubuntu
+          - file: install/install-methods/package-manager/package-manager-debian
+            title: Debian
+          - file: install/install-methods/package-manager/package-manager-rhel
+            title: Red Hat Enterprise Linux
+          - file: install/install-methods/package-manager/package-manager-ol
+            title: Oracle Linux
+          - file: install/install-methods/package-manager/package-manager-rl
+            title: Rocky Linux
+          - file: install/install-methods/package-manager/package-manager-sles
+            title: SUSE Linux Enterprise Server
+      - file: install/install-methods/multi-version-install-index
+        title: Multi-version installation
+        subtrees:
+        - entries:
+          - file: install/install-methods/multi-version-install/multi-version-install-ubuntu
+            title: Ubuntu
+          - file: install/install-methods/multi-version-install/multi-version-install-debian
+            title: Debian
+          - file: install/install-methods/multi-version-install/multi-version-install-rhel
+            title: Red Hat Enterprise Linux
+          - file: install/install-methods/multi-version-install/multi-version-install-ol
+            title: Oracle Linux
+          - file: install/install-methods/multi-version-install/multi-version-install-rl
+            title: Rocky Linux
+          - file: install/install-methods/multi-version-install/multi-version-install-sles
+            title: SUSE Linux Enterprise Server
+      - file: install/post-install
+      - file: install/rocm-offline-installer
+      - file: install/rocm-runfile-installer
   - file: reference/amd_gpus
