@@ -5,7 +5,7 @@
 .. _hip-performance-optimization:
 
 ********************************************************************************
-HIP performance optimization
+Optimizing performance
 ********************************************************************************
 
 Performance optimization is essential for unlocking the full potential of AMD
@@ -46,29 +46,6 @@ traditional CPU optimization:
 
 * **Profiling complexity**: Understanding performance bottlenecks requires
   systematic measurement and analysis using specialized profiling tools.
-
-Tutorial overview
-=================
-
-This collection provides comprehensive tutorials on essential HIP performance
-optimization techniques:
-
-* :doc:`Highly parallel workloads <hip-performance-optimization/highly-parallel-image-gamma-correction>`:
-  Optimizing embarrassingly parallel algorithms like image processing.
-
-* :doc:`Fixed-sized kernels <hip-performance-optimization/fixed-size-kernels-image-gamma-correction>`:
-  Reducing thread dispatch overhead through fixed kernel dimensions.
-
-* :doc:`Reduction operations <hip-performance-optimization/reduction>`:
-  Efficient parallel reduction algorithms using shared memory.
-
-* :doc:`Tiling and data reuse <hip-performance-optimization/tiling-matrix-multiply>`:
-  Leveraging local data share memory to improve matrix multiplication
-  performance.
-
-* :doc:`Memory coalescing <hip-performance-optimization/tiling-matrix-transpose>`:
-  Converting non-coalesced memory access patterns to coalesced ones for better
-  bandwidth utilization.
 
 Optimization principles
 =======================
@@ -131,6 +108,29 @@ To get the most from these tutorials, you should have:
 * HIP runtime environment installed (see :doc:`../install/install`).
 
 * Basic knowledge of performance profiling concepts (recommended).
+
+Optimization tutorials
+======================
+
+This collection provides comprehensive tutorials on essential HIP performance
+optimization techniques:
+
+* :doc:`Highly parallel workloads <hip-performance-optimization/highly-parallel-image-gamma-correction>`:
+  Optimizing embarrassingly parallel algorithms like image processing.
+
+* :doc:`Fixed-sized kernels <hip-performance-optimization/fixed-size-kernels-image-gamma-correction>`:
+  Reducing thread dispatch overhead through fixed kernel dimensions.
+
+* :doc:`Reduction operations <hip-performance-optimization/reduction>`:
+  Efficient parallel reduction algorithms using shared memory.
+
+* :doc:`Tiling and data reuse <hip-performance-optimization/tiling-matrix-multiply>`:
+  Leveraging local data share memory to improve matrix multiplication
+  performance.
+
+* :doc:`Memory coalescing <hip-performance-optimization/tiling-matrix-transpose>`:
+  Converting non-coalesced memory access patterns to coalesced ones for better
+  bandwidth utilization.
 
 Getting started
 ---------------

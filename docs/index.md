@@ -22,63 +22,43 @@ and libraries.
 **Getting started**
 
 * {doc}`./conceptual/introduction`
-
 * {doc}`./conceptual/introduction/rocm`
-
 * {doc}`./conceptual/introduction/hip`
-
 * {doc}`./conceptual/introduction/parallel_programming`
-
 * {doc}`./how-to/getting_started_with_hip_programming`
 
 **Core HIP programming**
 
 * {doc}`./how-to/core-introduction`
-
 * {doc}`./how-to/hip_runtime_api`
 
   * {doc}`./how-to/hip_runtime_api/initialization`
-
   * {doc}`./how-to/hip_runtime_api/memory_management`
-
   * {doc}`./how-to/hip_runtime_api/error_handling`
-
   * {doc}`./how-to/hip_runtime_api/asynchronous`
-
   * {doc}`./how-to/hip_runtime_api/cooperative_groups`
-
   * {doc}`./how-to/hip_runtime_api/hipgraph`
-
   * {doc}`./how-to/hip_runtime_api/call_stack`
-
   * {doc}`./how-to/hip_runtime_api/opengl_interop`
-
   * {doc}`./how-to/hip_runtime_api/external_interop`
 
 * {doc}`./tutorial/programming-patterns`
 
   * {doc}`./tutorial/programming-patterns/matrix_multiplication`
-
   * {doc}`./tutorial/programming-patterns/atomic_operations_histogram`
-
   * {doc}`./tutorial/programming-patterns/cpu_gpu_kmeans`
-
   * {doc}`./tutorial/programming-patterns/stencil_operations`
-
   * {doc}`./tutorial/programming-patterns/multikernel_bfs`
 
 **Performance optimization techniques**
 
+* {doc}`./how-to/performance_optimization`
 * {doc}`./tutorial/hip-performance-optimization`
 
   * {doc}`./tutorial/hip-performance-optimization/highly-parallel-image-gamma-correction`
-
   * {doc}`./tutorial/hip-performance-optimization/fixed-size-kernels-image-gamma-correction`
-
   * {doc}`./tutorial/hip-performance-optimization/reduction`
-
   * {doc}`./tutorial/hip-performance-optimization/tiling-matrix-multiply`
-
   * {doc}`./tutorial/hip-performance-optimization/tiling-matrix-transpose`
 
 * {doc}`./how-to/multi-gpu_programming`
@@ -86,11 +66,10 @@ and libraries.
 **ROCm platform**
 
 * {doc}`./install/install`
-
 * {doc}`./reference/amd_gpus`
 
-**Additional resources**
+Known issues are listed and can be reported on the on the [AMD ROCm programming guide GitHub repository](https://github.com/ROCm/hipbook/issues).
 
-* **Known issues**: Track and report issues on the [AMD ROCm programming guide GitHub repository](https://github.com/ROCm/hipbook/issues)
-* **Contributing**: See {doc}`Contributing to ROCm docs <rocm:contribute/contributing>` for contribution guidelines
-* **License**: Review licensing information on the [Licensing](https://rocm.docs.amd.com/en/latest/about/license.html) page
+To contribute to the documentation, see {doc}`Contributing to ROCm docs <rocm:contribute/contributing>` for contribution guidelines.
+
+You can find licensing information on the [Licensing](https://rocm.docs.amd.com/en/latest/about/license.html) page.

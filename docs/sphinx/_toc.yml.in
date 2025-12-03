@@ -55,6 +55,7 @@ subtrees:
 
 - caption: Performance optimization techniques
   entries:
+  - file: how-to/performance_optimization
   - file: tutorial/hip-performance-optimization
     subtrees:
     - entries:

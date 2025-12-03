@@ -5,7 +5,7 @@
 .. _hip_book_performance_optimization:
 
 ********************************************************************************
-HIP performance optimization
+Performance guidelines
 ********************************************************************************
 
 .. remote-content::
@@ -15,4 +15,3 @@ HIP performance optimization
    :default_branch: develop
    :tag_prefix: docs/
    :project_name: HIP
-
