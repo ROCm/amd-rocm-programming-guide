@@ -30,6 +30,7 @@ and libraries.
 **Core HIP programming**
 
 * {doc}`./how-to/core-introduction`
+* {doc}`./how-to/hip_kernel_programming`
 * {doc}`./how-to/hip_runtime_api`
 
   * {doc}`./how-to/hip_runtime_api/initialization`

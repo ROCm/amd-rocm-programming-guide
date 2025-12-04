@@ -21,6 +21,7 @@ subtrees:
 - caption: Core HIP programming
   entries:
   - file: how-to/core-introduction
+  - file: how-to/hip_kernel_programming
   - file: how-to/hip_runtime_api
     subtrees:
     - entries:
@@ -53,7 +54,7 @@ subtrees:
       - file: tutorial/programming-patterns/stencil_operations
       - file: tutorial/programming-patterns/multikernel_bfs
 
-- caption: Performance optimization techniques
+- caption: Performance optimization
   entries:
   - file: how-to/performance_optimization
   - file: tutorial/hip-performance-optimization

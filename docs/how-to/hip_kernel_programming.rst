@@ -8,6 +8,12 @@
 HIP kernel programming
 ********************************************************************************
 
+As described in the :ref:`hip_parallel_programming`, there are two execution contexts in HIP application code: host and device.
+These execution contexts are signified by the use of ``__host__`` and ``__global__`` (or ``__device__``) qualifiers in
+the code. The following text describes the various qualifiers that can be defined in your HIP code, and the circumstances
+for using these qualifiers. Additional details are provided related to the use of built-in constants, HIP vector types, and
+built-in device functions in your code. 
+
 .. remote-content::
    :repo: ROCm/rocm-systems
    :path: projects/hip/docs/how-to/hip_cpp_language_extensions.rst
