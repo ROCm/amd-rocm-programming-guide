@@ -91,6 +91,4 @@ subtrees:
           - file: install/install-methods/package-manager/package-manager-sles
             title: SUSE Linux Enterprise Server
       - file: install/post-install
-      - file: install/rocm-offline-installer
-      - file: install/rocm-runfile-installer
   - file: reference/amd_gpus

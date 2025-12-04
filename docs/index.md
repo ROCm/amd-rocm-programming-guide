@@ -76,10 +76,6 @@ and libraries.
 
   * {doc}`./install/post-install`
 
-  * {doc}`./install/rocm-offline-installer`
-
-  * {doc}`./install/rocm-runfile-installer`
-
 * {doc}`./reference/amd_gpus`
 
 Known issues are listed and can be reported on the on the [AMD ROCm programming guide GitHub repository](https://github.com/ROCm/hipbook/issues).
