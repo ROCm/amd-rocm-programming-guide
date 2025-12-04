@@ -1,3 +1,6 @@
+.. meta::
+  :robots: noindex
+
  .. meta::
   :description: ROCm containered
   :keywords: AMD, ROCm, HIP, CUDA, ROCm containered

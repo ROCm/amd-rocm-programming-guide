@@ -1,6 +1,5 @@
 .. meta::
-  :description: ROCm in data centers
-  :keywords: AMD, ROCm, HIP, CUDA, ROCm in data centers
+  :robots: noindex
 
 .. _hipbook_rocm_in_data_centers:
 

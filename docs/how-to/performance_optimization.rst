@@ -1,6 +1,5 @@
- .. meta::
-  :description: HIP performance optimization
-  :keywords: AMD, ROCm, HIP, CUDA, AMD ROCm Programming Guide, performance optimization
+.. meta::
+  :robots: noindex
 
 .. _hip_book_performance_optimization:
 

@@ -1,6 +1,5 @@
 .. meta::
-    :description: This chapter describes how to use multiple devices on one host.
-    :keywords: ROCm, HIP, multi-device, multiple, GPUs, devices
+  :robots: noindex
 
 .. _multi-device:
 

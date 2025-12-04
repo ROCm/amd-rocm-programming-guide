@@ -1,6 +1,5 @@
 .. meta::
-  :description: Memory management and its usage
-  :keywords: AMD, ROCm, HIP, CUDA, memory management
+  :robots: noindex
 
 .. _memory_management:
 

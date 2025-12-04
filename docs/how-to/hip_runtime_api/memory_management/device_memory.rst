@@ -1,7 +1,5 @@
 .. meta::
-  :description: This chapter describes the device memory of the HIP ecosystem
-                ROCm software.
-  :keywords: AMD, ROCm, HIP, GPU, device memory, global, constant, texture, surface, shared
+  :robots: noindex
 
 .. _device_memory:
 

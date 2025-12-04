@@ -1,7 +1,5 @@
 .. meta::
-  :description: This chapter describes introduces Virtual Memory (VM) and shows
-                how to use it in AMD HIP.
-  :keywords: AMD, ROCm, HIP, CUDA, virtual memory, virtual, memory, UM, APU
+  :robots: noindex
 
 .. _virtual_memory:
 

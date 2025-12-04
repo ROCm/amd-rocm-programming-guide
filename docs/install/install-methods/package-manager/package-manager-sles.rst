@@ -1,7 +1,5 @@
 .. meta::
-  :description: SUSE Enterprise Linux native installation
-  :keywords: ROCm install, installation instructions, SUSE, SUSE Linux Enterprise Server native installation,
-    AMD, ROCm
+  :robots: noindex
 
 *********************************************************************************************
 SUSE Linux Enterprise Server native installation

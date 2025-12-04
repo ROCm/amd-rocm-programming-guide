@@ -1,3 +1,9 @@
+---
+myst:
+  html_meta:
+    "robots": "noindex"
+---
+
 # Example workloads
 
 This document provides example workloads and configurations for using the AMD GPU device plugin in Kubernetes.

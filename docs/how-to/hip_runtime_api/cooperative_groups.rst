@@ -1,6 +1,5 @@
 .. meta::
-  :description: This topic describes how to use cooperative groups in HIP
-  :keywords: AMD, ROCm, HIP, cooperative groups
+  :robots: noindex
 
 .. _cooperative_groups_how-to:
 

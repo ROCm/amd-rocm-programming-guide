@@ -1,7 +1,5 @@
 .. meta::
-  :description: Rocky Linux native installation
-  :keywords: ROCm install, installation instructions, Rocky Linux, Rocky Linux native installation,
-    AMD, ROCm
+  :robots: noindex
 
 **********************************************************************************************
 Rocky Linux native installation

@@ -1,6 +1,5 @@
 .. meta::
-  :description: Ubuntu native installation
-  :keywords: ROCm install, installation instructions, Ubuntu, Ubuntu native installation, AMD, ROCm
+  :robots: noindex
 
 ****************************************************************************
 Ubuntu native installation

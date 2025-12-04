@@ -1,6 +1,5 @@
 .. meta::
-  :description: HIP performance optimization techniques and tutorials
-  :keywords: AMD, ROCm, HIP, GPU, performance optimization, parallel computing, tutorial
+  :robots: noindex
 
 .. _hip-performance-optimization:
 

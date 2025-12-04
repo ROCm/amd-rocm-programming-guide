@@ -1,6 +1,5 @@
 .. meta::
-  :description: HIP Kernel programming
-  :keywords: AMD, ROCm, HIP, CUDA, HIP Kernel Programming
+  :robots: noindex
 
 .. _core_hip_programming:
 

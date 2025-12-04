@@ -1,0 +1,55 @@
+# ============================================================================
+# Exception List for noindex Meta Tag Script
+# ============================================================================
+# This file specifies which files should NOT have the noindex meta tag added.
+# Use this to keep important pages (like index pages) searchable by Google.
+#
+# Format:
+#   - One pattern per line
+#   - Lines starting with # are comments
+#   - Empty lines are ignored
+#   - Patterns are case-sensitive
+#
+# Pattern Types:
+#   1. Exact file names: index.md (matches any file named index.md)
+#   2. Relative paths: docs/api/overview.rst (matches that specific file)
+#   3. Glob patterns: docs/**/*.rst (matches all .rst files under docs/)
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# KEEP INDEX/LANDING PAGES SEARCHABLE
+# ----------------------------------------------------------------------------
+# These pages are the main entry points and should be indexed
+index.md
+
+# Main README files
+README.md
+
+conceptual/introduction.rst
+
+release/*
+
+# Tutorials
+tutorial/hip-performance-optimization/*
+tutorial/prerequisites.rst
+
+# ----------------------------------------------------------------------------
+# KEEP SPECIFIC IMPORTANT PAGES SEARCHABLE
+# ----------------------------------------------------------------------------
+# Add your documentation pages here
+docs/introduction.rst
+
+# ----------------------------------------------------------------------------
+# EXCLUDE ENTIRE DIRECTORIES OR SECTIONS
+# ----------------------------------------------------------------------------
+# API reference - you might want this indexed
+# api/**/*.rst
+# api/**/*.md
+
+
+# ----------------------------------------------------------------------------
+# CROSS-PLATFORM NOTE
+# ----------------------------------------------------------------------------
+# The script handles both forward slashes (/) and backslashes (\) in paths
+# Use forward slashes for better cross-platform compatibility
+# ============================================================================

@@ -1,3 +1,9 @@
+---
+myst:
+  html_meta:
+    "robots": "noindex"
+---
+
 # Installation guide
 
 This guide walks through the process of installing the AMD GPU device plugin on a Kubernetes cluster.

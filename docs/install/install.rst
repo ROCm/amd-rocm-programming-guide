@@ -1,6 +1,5 @@
- .. meta::
-  :description: ROCm install
-  :keywords: AMD, ROCm, HIP, CUDA, ROCm install
+.. meta::
+  :robots: noindex
 
 .. _hip_book_rocm_install:
 
@@ -52,7 +51,7 @@ ROCm Offline Installer Creator
 The ROCm Offline Installer Creator creates an 
 installation package for a preconfigured setup of ROCm, the AMDGPU driver, or a combination
 of the two on a target system without network or internet access.
-See :doc:`ROCm Offline Installer Creator <../install/rocm-offline-installer>` for instructions.
+See :doc:`ROCm Offline Installer Creator <rocm-install-on-linux:install/rocm-offline-installer>` for instructions.
 
 .. _rocm-runfile-installer:
 
@@ -61,4 +60,4 @@ ROCm Runfile Installer
 
 The ROCm Runfile Installer lets you install ROCm without using a native Linux package management system.
 It can be used with or without network or internet access.
-See :doc:`ROCm Runfile Installer <../install/rocm-runfile-installer>` for instructions.
+See :doc:`ROCm Runfile Installer <rocm-install-on-linux:install/rocm-runfile-installer>` for instructions.

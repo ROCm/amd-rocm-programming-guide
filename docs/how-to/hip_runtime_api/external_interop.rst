@@ -1,8 +1,5 @@
 .. meta::
-   :description: HIP provides an external resource interoperability API that
-                 allows efficient data sharing between HIP's computing power and
-                 OpenGL's graphics rendering.
-   :keywords: AMD, ROCm, HIP, external, interop, interoperability
+  :robots: noindex
 
 *******************************************************************************
 External resource interoperability

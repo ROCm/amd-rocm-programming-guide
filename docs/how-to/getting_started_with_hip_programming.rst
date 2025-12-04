@@ -1,6 +1,5 @@
 .. meta::
-  :description: Getting started with HIP programming
-  :keywords: AMD, ROCm, HIP, CUDA, Getting Started with HIP Programming
+  :robots: noindex
 
 .. _hip_getting_started_with_hip_programming:
 

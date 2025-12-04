@@ -1,6 +1,5 @@
 .. meta::
-  :description: CPU-GPU cooperative computing at K-means clustering
-  :keywords: AMD, ROCm, HIP, CPU-GPU cooperative computing, K-means, clustering, K-means clustering
+  :robots: noindex
 
 *******************************************************************************
 CPU-GPU cooperative computing: K-means clustering tutorial

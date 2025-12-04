@@ -1,7 +1,5 @@
 .. meta::
-  :description: HIP coherence control
-                ecosystem ROCm software.
-  :keywords: AMD, ROCm, HIP, host memory
+  :robots: noindex
 
 .. _coherence_control:
 

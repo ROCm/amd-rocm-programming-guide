@@ -1,6 +1,5 @@
 .. meta::
-  :description: Quick start install guide
-  :keywords: ROCm installation, AMD, ROCm, Package manager, AMDGPU
+  :robots: noindex
 
 .. _rocm-install-quick:
 

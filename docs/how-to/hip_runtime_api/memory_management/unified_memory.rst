@@ -1,7 +1,5 @@
 .. meta::
-  :description: This chapter describes Unified Memory and shows
-                how to use it in AMD HIP.
-  :keywords: AMD, ROCm, HIP, CUDA, unified memory, unified, memory
+  :robots: noindex
 
 .. _unified_memory:
 

@@ -1,6 +1,5 @@
 .. meta::
-  :description: Matrix multiplication tutorial
-  :keywords: AMD, ROCm, HIP, two-dimensional kernels, matrix multiplication tutorial
+  :robots: noindex
 
 *******************************************************************************
 Two-dimensional kernels: Matrix multiplication tutorial

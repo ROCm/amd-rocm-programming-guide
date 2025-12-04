@@ -1,6 +1,5 @@
 .. meta::
-   :description: Initialization.
-   :keywords: AMD, ROCm, HIP, initialization
+  :robots: noindex
 
 .. _initialization:
 

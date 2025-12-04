@@ -1,6 +1,5 @@
 .. meta::
-  :description: Machine learning with ROCm
-  :keywords: AMD, ROCm, HIP, CUDA, Machine learning with ROCm,
+  :robots: noindex
 
 .. _hip_book_multi_gpu_programming:
 

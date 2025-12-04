@@ -1,6 +1,5 @@
 .. meta::
-  :description: This topic describes asynchronous concurrent execution in HIP
-  :keywords: AMD, ROCm, HIP, asynchronous concurrent execution, asynchronous, async, concurrent, concurrency
+  :robots: noindex
 
 .. _asynchronous_how-to:
 

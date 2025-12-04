@@ -1,7 +1,5 @@
 .. meta::
-  :description: This chapter describes the texture fetching modes of the HIP ecosystem
-                ROCm software.
-  :keywords: AMD, ROCm, HIP, Texture, Texture Fetching
+  :robots: noindex
 
 .. _texture_fetching:
 

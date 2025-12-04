@@ -1,6 +1,5 @@
- .. meta::
-  :description: AMD GPUs
-  :keywords: AMD, ROCm, HIP, GPUs
+.. meta::
+  :robots: noindex
 
 .. _hip_book_rocm_gpus:
 

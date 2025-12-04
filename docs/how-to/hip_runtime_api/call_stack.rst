@@ -1,6 +1,5 @@
 .. meta::
-    :description: This page describes call stack concept in HIP
-    :keywords: AMD, ROCm, HIP, call stack
+  :robots: noindex
 
 *******************************************************************************
 Call stack

@@ -1,6 +1,5 @@
 .. meta::
-  :description: Multi-kernel programming with breadth-first search (BFS)
-  :keywords: AMD, ROCm, HIP, GPU programming, multi-kernel, BFS, breadth-first search
+  :robots: noindex
 
 *******************************************************************************
 Multi-kernel programming: breadth-first search tutorial

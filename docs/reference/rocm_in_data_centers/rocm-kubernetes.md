@@ -1,3 +1,9 @@
+---
+myst:
+  html_meta:
+    "robots": "noindex"
+---
+
 # AMD GPU Device Plugin for Kubernetes
 
 The AMD GPU Device Plugin for Kubernetes enables the use of AMD GPUs as schedulable resources in Kubernetes clusters. This plugin allows you to run GPU-accelerated workloads such as machine learning, scientific computing, and visualization applications on Kubernetes.

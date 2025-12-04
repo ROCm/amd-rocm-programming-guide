@@ -1,6 +1,5 @@
 .. meta::
-  :description: GPU programming patterns and tutorials
-  :keywords: AMD, ROCm, HIP, GPU, programming patterns, parallel computing, tutorial
+  :robots: noindex
 
 .. _gpu_programming-patterns:
 

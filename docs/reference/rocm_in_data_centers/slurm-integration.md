@@ -1,3 +1,9 @@
+---
+myst:
+  html_meta:
+    "robots": "noindex"
+---
+
 # Slurm Integration
 
 The AMD Device Metrics Exporter integrates with the Slurm workload manager to track GPU metrics for Slurm jobs. This topic explains how to set up and configure this integration.

@@ -1,3 +1,9 @@
+---
+myst:
+  html_meta:
+    "robots": "noindex"
+---
+
 # Configuration options
 
 This document outlines the configuration options available for the AMD GPU device plugin for Kubernetes.

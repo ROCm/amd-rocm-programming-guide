@@ -1,6 +1,5 @@
 .. meta::
-  :description:
-  :keywords: stream, memory allocation, SOMA, stream ordered memory allocator
+  :robots: noindex
 
 .. _stream_ordered_memory_allocator_how-to:
 

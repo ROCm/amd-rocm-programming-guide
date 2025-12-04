@@ -1,6 +1,5 @@
 .. meta::
-  :description: Host memory of the HIP ecosystem
-  :keywords: AMD, ROCm, HIP, host memory
+  :robots: noindex
 
 .. _host_memory:
 

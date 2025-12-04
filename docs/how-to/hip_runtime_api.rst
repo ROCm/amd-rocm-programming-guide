@@ -1,6 +1,5 @@
 .. meta::
-  :description: HIP runtime API usage
-  :keywords: AMD, ROCm, HIP, CUDA, HIP runtime API How to,
+  :robots: noindex
 
 .. _hip_runtime_api_how-to:
 

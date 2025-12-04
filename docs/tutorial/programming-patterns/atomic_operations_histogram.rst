@@ -1,6 +1,5 @@
 .. meta::
-  :description: HIP atomic operations histogram tutorial
-  :keywords: AMD, ROCm, HIP, atomic operations, GPU programming, histogram, synchronization primitives
+  :robots: noindex
 
 *******************************************************************************
 Atomic operations: Histogram tutorial

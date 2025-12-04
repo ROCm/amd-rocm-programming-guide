@@ -1,6 +1,5 @@
 .. meta::
-   :description: Error Handling
-   :keywords: AMD, ROCm, HIP, error handling, error
+  :robots: noindex
 
 .. _error_handling:
 

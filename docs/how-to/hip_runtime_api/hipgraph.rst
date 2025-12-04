@@ -1,6 +1,5 @@
 .. meta::
-    :description: This chapter describes how to use HIP graphs and highlights their use cases.
-    :keywords: ROCm, HIP, graph, stream
+  :robots: noindex
 
 .. _how_to_HIP_graph:
 

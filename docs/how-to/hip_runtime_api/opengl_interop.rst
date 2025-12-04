@@ -1,8 +1,5 @@
 .. meta::
-   :description: HIP provides an OpenGL interoperability API that allows
-                 efficient data sharing between HIP's computing power and
-                 OpenGL's graphics rendering.
-   :keywords: AMD, ROCm, HIP, OpenGL, interop, interoperability
+  :robots: noindex
 
 *******************************************************************************
 OpenGL interoperability

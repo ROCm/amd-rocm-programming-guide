@@ -1,6 +1,5 @@
 .. meta::
-  :description: Debian native installation
-  :keywords: ROCm install, installation instructions, Debian, Debian native installation, AMD, ROCm
+  :robots: noindex
 
 ****************************************************************************
 Debian native installation

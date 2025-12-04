@@ -1,7 +1,5 @@
 .. meta::
-  :description: Installation via native package manager
-  :keywords: ROCm install, installation instructions, package manager, native package manager, AMD,
-    ROCm
+  :robots: noindex
 
 ******************************************************************************
 Installation via native package manager

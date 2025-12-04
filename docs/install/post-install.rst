@@ -1,6 +1,5 @@
 .. meta::
-  :description: Post-installation instructions
-  :keywords: ROCm install, installation instructions, AMD, ROCm
+  :robots: noindex
 
 *************************************************************************
 Post-installation instructions

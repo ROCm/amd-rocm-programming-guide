@@ -1,6 +1,5 @@
 .. meta::
-  :description: Image convolution tutorial using HIP on AMD GPUs
-  :keywords: AMD, ROCm, HIP, stencil operations, image convolution, GPU programming, data parallelism
+  :robots: noindex
 
 *******************************************************************************
 Stencil operations: Image convolution tutorial

@@ -1,7 +1,5 @@
 .. meta::
-  :description: Oracle Linux native installation
-  :keywords: ROCm install, installation instructions, OL, Oracle Linux native installation,
-    AMD, ROCm
+  :robots: noindex
 
 **********************************************************************************************
 Oracle Linux native installation
