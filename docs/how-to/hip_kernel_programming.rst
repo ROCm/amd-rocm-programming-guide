@@ -16,6 +16,7 @@ built-in device functions in your code.
 .. remote-content::
    :repo: ROCm/rocm-systems
    :path: projects/hip/docs/how-to/hip_cpp_language_extensions.rst
+   :fix_latex_math: true
    :start_line: 15
    :default_branch: develop
    :tag_prefix: docs/

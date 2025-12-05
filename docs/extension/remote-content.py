@@ -46,6 +46,7 @@ class BranchAwareRemoteContent(Directive):
         'docs_base_url': str,   # Override base URL for documentation
         'doc_ignore': str,      # Doc links to ignore (not convert to external URLs), separated by ;;
         'csv_widths': str,      # Add widths to CSV tables (e.g., "33 67")
+        'fix_latex_math': str,  # Enable automatic LaTeX math fixes (true/false)
     }
 
     def get_current_version(self):
@@ -298,6 +299,38 @@ class BranchAwareRemoteContent(Directive):
         
         return modified_content
 
+    def process_latex_math(self, content):
+        """Fix common LaTeX math issues in content"""
+        # Check if latex math fixing is enabled
+        if 'fix_latex_math' not in self.options:
+            return content
+        
+        fix_latex = self.options.get('fix_latex_math', '').strip().lower()
+        if fix_latex not in ('true', '1', 'yes'):
+            return content
+        
+        def escape_underscores_in_text(match):
+            """Escape underscores within a \text{} command"""
+            text_content = match.group(1)
+            # Only escape underscores that are not already escaped
+            escaped_content = re.sub(r'(?<!\\)_', r'\\_', text_content)
+            if escaped_content != text_content:
+                logger.info(f'Fixed underscores in \\text{{{text_content}}} -> \\text{{{escaped_content}}}')
+            return f'\\text{{{escaped_content}}}'
+        
+        # Find all \text{} commands and fix underscores within them
+        # This pattern handles nested braces by matching balanced braces
+        # We use a simpler approach that works for most cases
+        text_pattern = r'\\text\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\}'
+        
+        # Process the content
+        modified_content = re.sub(text_pattern, escape_underscores_in_text, content)
+        
+        if modified_content != content:
+            logger.info('Applied LaTeX math fixes')
+        
+        return modified_content
+
     def apply_replacements(self, content):
         """Apply text replacements to content"""
         if 'replace' not in self.options:
@@ -498,6 +531,9 @@ class BranchAwareRemoteContent(Directive):
 
         # Apply text replacements before parsing
         content = self.apply_replacements(content)
+
+        # Fix LaTeX math issues if requested
+        content = self.process_latex_math(content)
 
         # Process CSV tables to add widths if specified
         content = self.process_csv_tables(content)

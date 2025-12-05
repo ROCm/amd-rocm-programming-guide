@@ -41,6 +41,7 @@ author = "Advanced Micro Devices, Inc."
 copyright = "Copyright (c) 2023 Advanced Micro Devices, Inc. All rights reserved."
 version = version_number
 release = version_number
+latex_engine = "xelatex"
 
 external_toc_path = "./sphinx/_toc.yml"
 
