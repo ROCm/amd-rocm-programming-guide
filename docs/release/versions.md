@@ -2,11 +2,11 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="AMD ROCm programming guide release history">
+  <meta name="description" content="AMD ROCm Programming Guide release history">
   <meta name="keywords" content="documentation, release history, ROCm, AMD, Programming Guide">
 </head>
 
-# AMD ROCm programming guide release history
+# AMD ROCm Programming Guide release history
 
 | Version | Release date |
 | ------- | ------------ |
