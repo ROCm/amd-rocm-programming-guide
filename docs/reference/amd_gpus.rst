@@ -4,11 +4,11 @@
 .. _hip_book_rocm_gpus:
 
 ********************************************************************************
-ROCm GPUs
+ROCm™ GPUs
 ********************************************************************************
 
 This section provides an overview of the AMD GPUs and accelerators supported by
-the ROCm software stack. It includes details on the hardware architectures,
+the ROCm™ software stack. It includes details on the hardware architectures,
 their key features, and the corresponding specifications. Note that listed
 hardware features indicate architectural capabilities, not performance metrics.
 

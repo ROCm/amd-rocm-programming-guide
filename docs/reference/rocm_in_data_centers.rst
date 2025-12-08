@@ -4,10 +4,10 @@
 .. _hipbook_rocm_in_data_centers:
 
 ********************************************************************************
-ROCm in data centers
+ROCm™ in data centers
 ********************************************************************************
 
-ROCm in data centers:
+ROCm™ in data centers:
 
 * :doc:`../install/containered_rocm`
 

@@ -67,7 +67,7 @@ subtrees:
       - file: tutorial/hip-performance-optimization/tiling-matrix-transpose
   - file: how-to/multi-gpu_programming
 
-- caption: ROCm platform
+- caption: ROCm™ platform
   entries:
   - file: install/install
     subtrees:
