@@ -1,7 +1,7 @@
 import urllib.request
 
 repo = "ROCm/rocm-install-on-linux"
-branch = "develop"
+branch = "docs/7.1.1"
 
 # urllib.request.urlretrieve(
 #      f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}/docs/install/3rd-party/dgl-install.rst",
