@@ -109,7 +109,7 @@ if os.environ.get("READTHEDOCS", "") == "True":
     html_context["READTHEDOCS"] = True
 
 html_theme_options = {
-    "announcement": "This AMD ROCm&#8482 Programming Guide is a solution designed to generate comprehensive books and guides from the content on the <a id='rocm-banner' href='https://rocm.docs.amd.com/en/latest/'>ROCm&#8482 documentation</a> portal.",
+    "announcement": "Additional content can be found on the <a id='rocm-banner' href='https://rocm.docs.amd.com/en/latest/'>ROCm&#8482 documentation portal</a>.",
     "flavor": "generic",
     "header_title": "AMD ROCm&#8482 Programming Guide",
     "header_link": "https://rocm.docs.amd.com/projects/amd-rocm-programming-guide-internal/en/latest/",
