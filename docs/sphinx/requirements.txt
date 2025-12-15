@@ -240,7 +240,7 @@ sphinx-notfound-page==1.1.0
     # via rocm-docs-core
 sphinx-reredirects==0.1.6
     # via -r requirements.in
-sphinx-sitemap==2.8.0
+sphinx-sitemap==2.9.0
     # via -r requirements.in
 sphinx-subfigure==0.2.4
     # via -r requirements.in
