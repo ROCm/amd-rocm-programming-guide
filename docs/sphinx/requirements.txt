@@ -19,7 +19,7 @@ babel==2.17.0
     # via
     #   pydata-sphinx-theme
     #   sphinx
-beartype==0.22.7
+beartype==0.22.9
     # via sphinx-substitution-extensions
 beautifulsoup4==4.13.4
     # via pydata-sphinx-theme
@@ -244,7 +244,7 @@ sphinx-sitemap==2.8.0
     # via -r requirements.in
 sphinx-subfigure==0.2.4
     # via -r requirements.in
-sphinx-substitution-extensions==2025.11.17
+sphinx-substitution-extensions==2025.12.15
     # via -r requirements.in
 sphinxcontrib-applehelp==2.0.0
     # via sphinx
