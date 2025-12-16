@@ -16,6 +16,7 @@ subtrees:
   - file: conceptual/introduction/rocm
   - file: conceptual/introduction/hip
   - file: conceptual/introduction/parallel_programming
+  - file: conceptual/introduction/hw_impl
   - file: how-to/getting_started_with_hip_programming
 
 - caption: Core HIP programming
@@ -91,4 +92,3 @@ subtrees:
           - file: install/install-methods/package-manager/package-manager-sles
             title: SUSE Linux Enterprise Server
       - file: install/post-install
-  - file: reference/amd_gpus

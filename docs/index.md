@@ -25,6 +25,7 @@ and libraries.
 * {doc}`./conceptual/introduction/rocm`
 * {doc}`./conceptual/introduction/hip`
 * {doc}`./conceptual/introduction/parallel_programming`
+* {doc}`./conceptual/introduction/hw_impl`
 * {doc}`./how-to/getting_started_with_hip_programming`
 
 **Core HIP programming**
@@ -76,7 +77,6 @@ and libraries.
 
   * {doc}`./install/post-install`
 
-* {doc}`./reference/amd_gpus`
 
 Known issues are listed and can be reported on the on the [AMD ROCm™ Programming Guide GitHub repository](https://github.com/ROCm/hipbook/issues).
 
