@@ -301,6 +301,7 @@ dp
 DPM
 DPP
 DRI
+DRM
 dropless
 ds
 dst
@@ -512,6 +513,7 @@ IDE
 IDEs
 iDRAC
 IFWI
+IGP
 iGPU
 IILE
 ImageNet
@@ -1187,6 +1189,7 @@ uarch
 UC
 UCC
 UCX
+udev
 UE
 UIF
 ULP

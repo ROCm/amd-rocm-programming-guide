@@ -48,7 +48,7 @@ external_toc_path = "./sphinx/_toc.yml"
 docs_core = ROCmDocs(left_nav_title)
 docs_core.setup()
 
-external_projects_current_project = "amd-rocm-programming-guide-internal"
+external_projects_current_project = "amd-rocm-programming-guide"
 
 # Add the following replacements to every RST file.
 rst_prolog = f"""

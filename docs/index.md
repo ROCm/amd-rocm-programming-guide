@@ -77,8 +77,7 @@ and libraries.
 
   * {doc}`./install/post-install`
 
-
-Known issues are listed and can be reported on the on the [AMD ROCm™ Programming Guide GitHub repository](https://github.com/ROCm/hipbook/issues).
+Known issues are listed and can be reported on the on the [AMD ROCm™ Programming Guide GitHub repository](https://github.com/ROCm/amd-rocm-programming-guide/issues).
 
 To contribute to the documentation, see {doc}`Contributing to ROCm™ docs <rocm:contribute/contributing>` for contribution guidelines.
 
