@@ -238,7 +238,7 @@ sphinx-last-updated-by-git==0.3.8
     # via sphinx-sitemap
 sphinx-notfound-page==1.1.0
     # via rocm-docs-core
-sphinx-reredirects==0.1.6
+sphinx-reredirects==1.1.0
     # via -r requirements.in
 sphinx-sitemap==2.8.0
     # via -r requirements.in
