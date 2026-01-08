@@ -2,7 +2,7 @@
   :robots: noindex
 
 *******************************************************************************
-Two-dimensional kernels: Matrix multiplication tutorial
+Two-dimensional kernels: matrix multiplication tutorial
 *******************************************************************************
 
 GPUs provide a massively parallel architecture consisting of thousands of cores,

@@ -2,7 +2,7 @@
   :robots: noindex
 
 *******************************************************************************
-Atomic operations: Histogram tutorial
+Atomic operations: histogram tutorial
 *******************************************************************************
 
 In GPU programming, a core design principle is to **avoid simultaneous writes to

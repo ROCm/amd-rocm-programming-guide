@@ -2,7 +2,7 @@
   :robots: noindex
 
 *******************************************************************************
-Stencil operations: Image convolution tutorial
+Stencil operations: image convolution tutorial
 *******************************************************************************
 
 Stencil operations represent an important class of **embarrassingly parallel**
