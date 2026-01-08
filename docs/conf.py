@@ -22,7 +22,7 @@ for line in lines:
         continue
     version_numbers.append(line.strip())
 version_number = ".".join(version_numbers)
-left_nav_title = f"AMD ROCm&#8482 Programming Guide {version_number}"
+left_nav_title = f"AMD ROCm Programming Guide {version_number}"
 
 # ROCm version numbers
 rocm_version = '7.1.1'
@@ -36,7 +36,7 @@ udev_version = '30.20.1.0-2255209'
 udev_amdgpu_version = '30.20.1'
 
 # for PDF output on Read the Docs
-project = "AMD ROCm&#8482 Programming Guide"
+project = "AMD ROCm™ Programming Guide"
 author = "Advanced Micro Devices, Inc."
 copyright = "Copyright (c) 2023 Advanced Micro Devices, Inc. All rights reserved."
 version = version_number
@@ -109,16 +109,16 @@ if os.environ.get("READTHEDOCS", "") == "True":
     html_context["READTHEDOCS"] = True
 
 html_theme_options = {
-    "announcement": "Additional content can be found on the <a id='rocm-banner' href='https://rocm.docs.amd.com/en/latest/'>ROCm&#8482 documentation portal</a>.",
+    "announcement": "Additional content can be found on the <a id='rocm-banner' href='https://rocm.docs.amd.com/en/latest/'>ROCm documentation portal</a>.",
     "flavor": "generic",
-    "header_title": "AMD ROCm&#8482 Programming Guide",
+    "header_title": "AMD ROCm™ Programming Guide",
     "header_link": "https://rocm.docs.amd.com/projects/amd-rocm-programming-guide/en/latest/",
-    "version_list_link": "https://rocm.docs.amd.com/projects/amd-rocm-programming-guide/en/latest/release/versions.html",
+    "version_list_link": False,
     "nav_secondary_items": {
         "GitHub": "https://github.com/ROCm/amd-rocm-programming-guide",
         "Community": "https://github.com/ROCm/ROCm/discussions",
         "Blogs": "https://rocm.blogs.amd.com/",
-        "ROCm&#8482 Docs": "https://rocm.docs.amd.com",
+        "ROCm™ Docs": "https://rocm.docs.amd.com",
         "Support": "https://github.com/ROCm/ROCm/issues/new/choose",
     },
     "link_main_doc": False,

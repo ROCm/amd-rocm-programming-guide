@@ -3,7 +3,7 @@
   :keywords: AMD, ROCm, HIP, matrix transpose, tiling, coalescing, tutorial
 
 *************************************************************
-Tiling & Coalescing - Matrix Transpose
+Tiling and coalescing: matrix transpose
 *************************************************************
 
 Matrix transpose is a fundamental linear algebra operation that serves as a

@@ -611,10 +611,10 @@ The kernel now has three compile-time configurable parameters. The only part of 
 
 .. _reading-items:
 
-Reading ``ItemsPerThread``
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Reading ItemsPerThread
+^^^^^^^^^^^^^^^^^^^^^^
 
-The change to reading happens inside `read_global_safe`:
+The change to reading happens inside ``read_global_safe``:
 
 .. code-block:: C++
 

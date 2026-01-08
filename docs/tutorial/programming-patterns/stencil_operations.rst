@@ -2,7 +2,7 @@
   :robots: noindex
 
 *******************************************************************************
-Stencil operations: Image convolution tutorial
+Stencil operations: image convolution tutorial
 *******************************************************************************
 
 Stencil operations represent an important class of **embarrassingly parallel**
@@ -71,7 +71,7 @@ The smoothing operation
 -----------------------
 
 The tutorial implements a **box blur** (uniform smoothing filter). Each
-pixel’s new value is the average of its local neighborhood. This operation:
+pixel's new value is the average of its local neighborhood. This operation:
 
 * Reduces noise by averaging local intensity variations.
 
@@ -108,6 +108,9 @@ work items per dimension:
 
 Complete implementation
 =======================
+
+This section provides the complete source code for the 2D convolution 
+implementation.
 
 Header and setup
 ----------------
@@ -258,6 +261,8 @@ output image, scaling back to the 0-255 range.
 
 Host code implementation
 ------------------------
+
+The host code manages memory allocation, data transfer, and kernel launch.
 
 Main function setup
 ~~~~~~~~~~~~~~~~~~~
