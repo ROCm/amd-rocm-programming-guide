@@ -7,7 +7,7 @@ root: index
 subtrees:
 
 - entries: 
-  - url: https://rocm.docs.amd.com/_/downloads/amd-rocm-programming-guide/en/{branch}/pdf/
+  - url: https://rocm-handbook.amd.com/_/downloads/en/{branch}/pdf/
     title: View PDF
 
 - caption: Getting started
