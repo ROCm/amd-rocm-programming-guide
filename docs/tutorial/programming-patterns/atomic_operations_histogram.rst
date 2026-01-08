@@ -69,7 +69,7 @@ In a serial CPU program, this is straightforward. On a GPU, thousands of threads
 may attempt to increment the same bin concurrently, leading to **race
 conditions** unless atomic synchronization is used.
 
-The Challenge in parallel context
+The challenge in parallel context
 ---------------------------------
 
 When multiple threads attempt to increment the same bin:
