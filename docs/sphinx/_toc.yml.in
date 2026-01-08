@@ -89,6 +89,7 @@ subtrees:
             title: SUSE Linux Enterprise Server
       - file: install/post-install
 
-- entries: 
+- caption: PDF version
+  entries: 
   - url: https://rocm.docs.amd.com/_/downloads/amd-rocm-programming-guide/en/{branch}/pdf/
     title: View PDF
