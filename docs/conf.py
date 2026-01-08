@@ -113,7 +113,7 @@ html_theme_options = {
     "flavor": "generic",
     "header_title": "AMD ROCm™ Programming Guide",
     "header_link": "https://rocm.docs.amd.com/projects/amd-rocm-programming-guide/en/latest/",
-    "version_list_link": "https://rocm.docs.amd.com/projects/amd-rocm-programming-guide/en/latest/release/versions.html",
+    "version_list_link": False,
     "nav_secondary_items": {
         "GitHub": "https://github.com/ROCm/amd-rocm-programming-guide",
         "Community": "https://github.com/ROCm/ROCm/discussions",
