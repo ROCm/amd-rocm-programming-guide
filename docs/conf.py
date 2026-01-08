@@ -112,10 +112,10 @@ html_theme_options = {
     "announcement": "Additional content can be found on the <a id='rocm-banner' href='https://rocm.docs.amd.com/en/latest/'>ROCm&#8482 documentation portal</a>.",
     "flavor": "generic",
     "header_title": "AMD ROCm&#8482 Programming Guide",
-    "header_link": "https://rocm.docs.amd.com/projects/amd-rocm-programming-guide-internal/en/latest/",
-    "version_list_link": "https://rocm.docs.amd.com/projects/amd-rocm-programming-guide-internal/en/latest/release/versions.html",
+    "header_link": "https://rocm.docs.amd.com/projects/amd-rocm-programming-guide/en/latest/",
+    "version_list_link": "https://rocm.docs.amd.com/projects/amd-rocm-programming-guide/en/latest/release/versions.html",
     "nav_secondary_items": {
-        "GitHub": "https://github.com/ROCm/amd-rocm-programming-guide-internal",
+        "GitHub": "https://github.com/ROCm/amd-rocm-programming-guide",
         "Community": "https://github.com/ROCm/ROCm/discussions",
         "Blogs": "https://rocm.blogs.amd.com/",
         "ROCm&#8482 Docs": "https://rocm.docs.amd.com",

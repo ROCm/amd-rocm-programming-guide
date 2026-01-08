@@ -10,4 +10,4 @@
 
 | Version | Release date |
 | ------- | ------------ |
-| [7.1.1](https://rocm.docs.amd.com/projects/amd-rocm-programming-guide-internal/en/docs-7.1.1/) | November 26, 2025 |
+| [7.1.1](https://rocm.docs.amd.com/projects/amd-rocm-programming-guide/en/docs-7.1.1/) | November 26, 2025 |
