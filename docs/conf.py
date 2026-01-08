@@ -22,7 +22,7 @@ for line in lines:
         continue
     version_numbers.append(line.strip())
 version_number = ".".join(version_numbers)
-left_nav_title = f"AMD ROCm™ Programming Guide {version_number}"
+left_nav_title = f"AMD ROCm Programming Guide {version_number}"
 
 # ROCm version numbers
 rocm_version = '7.1.1'
@@ -109,7 +109,7 @@ if os.environ.get("READTHEDOCS", "") == "True":
     html_context["READTHEDOCS"] = True
 
 html_theme_options = {
-    "announcement": "Additional content can be found on the <a id='rocm-banner' href='https://rocm.docs.amd.com/en/latest/'>ROCm™ documentation portal</a>.",
+    "announcement": "Additional content can be found on the <a id='rocm-banner' href='https://rocm.docs.amd.com/en/latest/'>ROCm documentation portal</a>.",
     "flavor": "generic",
     "header_title": "AMD ROCm™ Programming Guide",
     "header_link": "https://rocm.docs.amd.com/projects/amd-rocm-programming-guide/en/latest/",
