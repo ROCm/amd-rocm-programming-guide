@@ -3,7 +3,7 @@
 
  .. meta::
   :description: ROCm containered
-  :keywords: AMD, ROCm, HIP, CUDA, ROCm containered
+  :keywords: AMD, ROCm, HIP, ROCm containered
 
 .. _hip_book_rocm_containered:
 
