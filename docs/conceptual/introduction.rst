@@ -1,6 +1,6 @@
 .. meta::
   :description: AMD ROCm Programming Guide introduction
-  :keywords: AMD, ROCm, HIP, CUDA, AMD ROCm Programming Guide introduction,
+  :keywords: AMD, ROCm, HIP, AMD ROCm Programming Guide introduction,
 
 .. _amd_rocm_programming_guide_introduction:
 
@@ -23,7 +23,7 @@ Key drivers of ROCm
 Several major trends underpin the adoption and growth of ROCm:
 
 * **Open ecosystem demand**: Organizations—from academic institutions to
-  large-scale HPC centers—value transparent, community-driven platforms. ROCm’s
+  large-scale HPC centers—value transparent, community-driven platforms. ROCm's
   open-source foundation gives developers insight, flexibility, and long-term
   sustainability for their GPU computing stack.
 
@@ -32,11 +32,6 @@ Several major trends underpin the adoption and growth of ROCm:
   convergence, offering a unified environment that supports scientific
   computing, deep learning, training and inference, large-scale simulations, and
   data-driven modeling.
-
-* **Multi-vendor and cross-platform portability**: Many developers want to avoid
-  lock-in to any single GPU vendor. ROCm’s focus on language and platform
-  portability enables teams to maintain a common codebase across heterogeneous
-  compute environments.
 
 * **Performance and efficiency**: ROCm is optimized to extract maximum
   performance from AMD GPUs, enabling fine-grained optimizations across 
@@ -50,18 +45,12 @@ desktop Radeon GPUs to large-scale supercomputing installations.
 Key features of ROCm tools and the HIP runtime
 ----------------------------------------------
 
-At the heart of the ROCm ecosystem is the HIP runtime and HIP programming language, a C++-based programming language introduced by AMD in 2016. HIP
-provides developers with a familiar, CUDA-like programming model while enabling
-portability across AMD and NVIDIA GPU architectures with little to no
-performance overhead. Its design focuses on both performance and maintainability,
-allowing developers to write high-quality parallel code without sacrificing
-efficiency.
+At the heart of the ROCm ecosystem is the HIP runtime and programming model, a
+C++ API introduced by AMD in 2016. HIP provides a familiar, CUDA-like interface
+for high-performance development on AMD GPUs. Its design balances performance
+with maintainability, allowing developers to write quality parallel code.
 
 Key features of the ROCm tools and HIP runtime include:
-
-* **Cross-platform GPU portability**: HIP enables a single C++ codebase to
-  target multiple GPU vendors, simplifying development and long-term
-  maintenance.
 
 * **Rich language interoperability**: ROCm supports multiple programming
   languages and interfaces—including HIP, OpenMP, and OpenCL—offering
