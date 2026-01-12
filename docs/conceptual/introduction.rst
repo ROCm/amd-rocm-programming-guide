@@ -10,12 +10,13 @@ Introduction
 
 The rapid growth of high-performance computing (HPC) and artificial intelligence
 (AI) has driven an equally rapid evolution in the software ecosystems that power
-these workloads. Users increasingly require an open, flexible, and high-performance
-GPU compute platform capable of scaling from exploratory prototyping to
-mission-critical production workloads. AMD's ROCm open-source software platform
-emerged to meet these needs by enabling developers to fully harness the computational
-power of AMD Instinct™ GPUs, AMD Radeon™ GPUs, and supported Ryzen™ APUs,
-while maintaining compatibility with widely adopted industry frameworks.
+these workloads. Users increasingly require an open, flexible, and
+high-performance GPU compute platform capable of scaling from exploratory
+prototyping to mission-critical production workloads. AMD's ROCm open-source
+software platform emerged to meet these needs by enabling developers to fully
+harness the computational power of AMD Instinct™ GPUs, AMD Radeon™ GPUs, and
+supported Ryzen™ APUs, while maintaining compatibility with widely adopted
+industry frameworks.
 
 Key drivers of ROCm
 -----------------------------
