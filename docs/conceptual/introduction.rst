@@ -46,9 +46,10 @@ Key features of ROCm tools and the HIP runtime
 ----------------------------------------------
 
 At the heart of the ROCm ecosystem is the HIP runtime and programming model, a
-C++ API introduced by AMD in 2016. HIP provides a familiar, CUDA-like interface
-for high-performance development on AMD GPUs. Its design balances performance
-with maintainability, allowing developers to write quality parallel code.
+C++ API introduced by AMD in 2016. HIP provides a familiar, NVIDIA CUDA-like
+interface for high-performance development on AMD GPUs. Its design balances
+performance with maintainability, allowing developers to write quality parallel
+code.
 
 Key features of the ROCm tools and HIP runtime include:
 
