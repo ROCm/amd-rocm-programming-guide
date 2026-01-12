@@ -529,6 +529,10 @@ class BranchAwareRemoteContent(Directive):
         response.raise_for_status()
         content = response.text
 
+        # Normalize tabs after numbered list markers to spaces
+        # This fixes formatting issues where numbered lists use tabs instead of spaces
+        content = re.sub(r'^(\s*\d+\.)\t+', r'\1 ', content, flags=re.MULTILINE)
+
         # Apply text replacements before parsing
         content = self.apply_replacements(content)
 

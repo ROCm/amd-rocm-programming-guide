@@ -18,7 +18,7 @@ built-in device functions in your code.
    :path: projects/hip/docs/how-to/hip_cpp_language_extensions.rst
    :fix_latex_math: true
    :start_line: 15
-   :default_branch: develop
+   :default_branch: docs/7.1.1
    :tag_prefix: docs/
    :project_name: HIP
    :docs_base_url: https://rocm.docs.amd.com/projects

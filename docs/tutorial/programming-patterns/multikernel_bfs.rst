@@ -69,7 +69,7 @@ Sequential BFS algorithm
 
 Let's first understand how BFS works sequentially before parallelizing it.
 
-Example Graph
+Example graph
 -------------
 
 Consider a simple graph with four nodes:
@@ -226,7 +226,7 @@ outgoing edges:
 
 **Kernel 1 responsibilities:**
 
-* Clear the node’s mask (mark processed).
+* Clear the node's mask (mark processed).
 
 * Explore all edges.
 
@@ -295,10 +295,13 @@ Host-side control loop
 The loop exits when no new nodes are discovered. ``g_over`` or ``h_over`` on
 host side remains ``false`` after one full iteration.
 
-Performance Characteristics
+Performance characteristics
 ===========================
 
-Parallelism Patterns
+This section examines the performance characteristics of the parallel BFS 
+implementation.
+
+Parallelism patterns
 --------------------
 
 **Within each iteration:**
@@ -311,7 +314,7 @@ Parallelism Patterns
 - Sequential: Must complete one level before starting the next
 - Variable parallelism: Different levels may have different numbers of nodes
 
-Workload Characteristics
+Workload characteristics
 ------------------------
 
 .. list-table::
@@ -333,7 +336,7 @@ Best practices
 ==============
 
 This section outlines recommended practices for implementing an efficient
-GPU-accelerated Breadth-First Search (BFS). It highlights design principles,
+GPU-accelerated breadth-first search (BFS). It highlights design principles,
 memory-management strategies, and debugging techniques that help ensure
 correctness, maintainability, and high performance when mapping BFS onto modern
 GPU architectures.

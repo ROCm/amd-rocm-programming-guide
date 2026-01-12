@@ -15,9 +15,6 @@ The purpose of this repository is to:
 
 - Support automated documentation generation workflows and publishing tools.
 
-> [!NOTE]
-> This repository focuses exclusively on documentation content and related build scripts — it does not contain any source code for HIP or ROCm themselves.
-
 ## Build the documentation
 
 You can build our documentation via the command line using Python.

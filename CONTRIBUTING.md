@@ -1,35 +1,27 @@
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Contributing to HIP Book">
-  <meta name="keywords" content="HIP Book, contributing, contribute, maintainer, contributor">
+  <meta name="description" content="Contributing to the AMD ROCm Programming Guide">
+  <meta name="keywords" content="AMD ROCm Programming Guide, contributing, contribute, maintainer, contributor">
 </head>
 
-# Contribute to HIP Book
+# Contributing to the AMD ROCm Programming Guide
 
 AMD values and encourages contributions to our code and documentation. If you want to contribute
 to our ROCm repositories, first review the following guidance. For documentation-specific information,
 see [Contributing to ROCm docs](https://rocm.docs.amd.com/en/latest/contribute/contributing.html).
 
-ROCm is a software stack made up of a collection of drivers, development tools, and APIs that enable
-GPU programming from low-level kernel to end-user applications. Because some of our components
-are inherited from external projects (such as
-[LLVM](https://github.com/ROCm/llvm-project) and
-[Kernel driver](https://github.com/ROCm/ROCK-Kernel-Driver)), these use
-project-specific contribution guidelines and workflow. Refer to their repositories for more information.
-All other ROCm components follow the workflow described in the following sections.
-
 ## Development workflow
 
-ROCm uses GitHub to host code, collaborate, and manage version control. We use pull requests (PRs)
-for all changes within our repositories. We use
-[GitHub issues](https://github.com/ROCm/ROCm/issues) to track known issues, such as
-bugs.
+The AMD ROCm Programming Guide uses GitHub to host code, collaborate, and manage
+version control. We use pull requests (PRs) for all changes within our
+repositories. We use [GitHub issues](https://github.com/ROCm/amd-rocm-programming-guide/issues)
+to track known issues, such as bugs.
 
 ### Issue tracking
 
 Before filing a new issue, search the
-[existing issues](https://github.com/ROCm/hipbook/issues) to make sure your issue isn't
-already listed.
+[existing issues](https://github.com/ROCm/amd-rocm-programming-guide/issues) to
+make sure your issue isn't already listed.
 
 General issue guidelines:
 
@@ -47,7 +39,9 @@ General issue guidelines:
 
 ### Pull requests
 
-When you create a pull request, you should target the default branch.  Our repositories typically use the **develop** branch as the default integration branch.
+When you create a pull request, you should target the default branch.  Our
+repositories typically use the `develop` branch as the default integration
+branch.
 
 When creating a PR, use the following process. Note that each repository may include additional,
 project-specific steps. Refer to each repository's PR process for any additional steps.
@@ -75,6 +69,6 @@ You can look up each license on the [ROCm licensing](https://rocm.docs.amd.com/e
 
 ### New feature development
 
-Use the [GitHub Discussion forum](https://github.com/ROCm/hipbook/discussions)
+Use the [GitHub Discussion forum](https://github.com/ROCm/ROCm/discussions)
 (Ideas category) to propose new features. Our maintainers are happy to provide direction and
 feedback on feature development.

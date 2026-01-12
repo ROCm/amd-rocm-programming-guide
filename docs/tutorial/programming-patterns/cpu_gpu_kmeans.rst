@@ -181,7 +181,7 @@ efficient and data sizes are small. The algorithm iterates between GPU-based
 membership updates and CPU-based centroid averaging until convergence or a
 maximum iteration count is reached.
 
-Data Structures
+Data structures
 ---------------
 
 The implementation stores all data in simple, contiguous arrays for efficient
@@ -199,7 +199,7 @@ flattened ``std::vector<float>`` arrays, while cluster assignments are stored as
     std::vector<float> centroids;      // Centroid positions (k * dimension)
     std::vector<int> memberships;      // Cluster assignments (length)
 
-Main Loop
+Main loop
 ---------
 
 The core K-means iteration:
@@ -303,7 +303,7 @@ Allocate space on the GPU for:
 * **Centroids**: :math:`k` centroids, each with dimension features
 * **Membership assignments**: One cluster ID per data point
 
-Step 2: Data transfer to GPU
+Step 2: data transfer to GPU
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: c++
@@ -314,7 +314,7 @@ Step 2: Data transfer to GPU
 Transfer the current centroid positions from CPU to GPU. Note that the data
 points (``gpuData``) are already on the GPU from earlier initialization.
 
-Step 3: Kernel configuration
+Step 3: kernel configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: c++
@@ -326,7 +326,7 @@ Step 3: Kernel configuration
 * ``globalSize``: Number of blocks needed to cover all data points
 * Rounding up ensures we process all data points
 
-Step 4: Kernel launch
+Step 4: kernel launch
 ~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: c++
@@ -338,7 +338,7 @@ Step 4: Kernel launch
 Launch the GPU kernel to compute cluster assignments in parallel, then wait for
 completion.
 
-Step 5: Retrieve results
+Step 5: retrieve results
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: c++
@@ -349,7 +349,7 @@ Step 5: Retrieve results
 
 Copy the new membership assignments back from GPU to CPU.
 
-Step 6: Count changes
+Step 6: count changes
 ~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: c++
@@ -364,7 +364,7 @@ Step 6: Count changes
 
 Count how many data points changed clusters. This value determines if the algorithm has converged.
 
-Step 7: Cleanup
+Step 7: cleanup
 ~~~~~~~~~~~~~~~
 
 .. code-block:: c++
@@ -545,7 +545,7 @@ Memory strategy
    fragmentation and reduce allocation latency, especially in iterative or
    batched workloads.
 
-Performance Considerations
+Performance considerations
 --------------------------
 
 .. list-table::

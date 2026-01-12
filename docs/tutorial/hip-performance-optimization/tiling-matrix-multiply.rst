@@ -3,7 +3,7 @@
   :keywords: AMD, ROCm, HIP, matrix multiplication, tiling, performance, tutorial
 
 *************************************************************
-Tiling & Reuse - Matrix Multiplication
+Tiling and reuse: matrix multiplication
 *************************************************************
 
 Matrix multiplication is one of the most important GPU workloads as it supports

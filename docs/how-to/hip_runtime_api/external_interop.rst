@@ -1,9 +1,9 @@
 .. meta::
   :robots: noindex
 
-*******************************************************************************
+**********************************
 External resource interoperability
-*******************************************************************************
+**********************************
 
 This feature allows HIP to work with resources -- like memory and semaphores --
 created by other APIs. This means resources can be used from APIs like CUDA,
@@ -16,8 +16,8 @@ To use external resources in HIP, you typically follow these steps:
 - Use external resources as if they were created in HIP
 - Destroy the HIP resource object to clean up
 
-Semaphore Functions
-===============================================================================
+Semaphore functions
+===================
 
 Semaphore functions are essential for synchronization in parallel computing.
 These functions facilitate communication and coordination between different
@@ -29,8 +29,8 @@ of concurrent processes.
 
 External semaphore functions can be used in HIP as described in :ref:`external_resource_interoperability_reference`.
 
-Memory Functions
-===============================================================================
+Memory functions
+================
 
 HIP external memory functions focus on the efficient sharing and management of
 memory resources. These functions enable importing memory created by external
@@ -42,7 +42,7 @@ graphics. Proper memory management ensures stability and efficient resource
 utilization.
 
 Example
-===============================================================================
+=======
 
 ROCm examples include a
 `HIP--Vulkan interoperation example <https://github.com/ROCm/rocm-examples/tree/develop/HIP-Basic/vulkan_interop>`_

@@ -123,11 +123,11 @@ optimization techniques:
 * :doc:`Reduction operations <hip-performance-optimization/reduction>`:
   Efficient parallel reduction algorithms using shared memory.
 
-* :doc:`Tiling and data reuse <hip-performance-optimization/tiling-matrix-multiply>`:
+* :doc:`Tiling and reuse <hip-performance-optimization/tiling-matrix-multiply>`:
   Leveraging local data share memory to improve matrix multiplication
   performance.
 
-* :doc:`Memory coalescing <hip-performance-optimization/tiling-matrix-transpose>`:
+* :doc:`Tiling and coalescing <hip-performance-optimization/tiling-matrix-transpose>`:
   Converting non-coalesced memory access patterns to coalesced ones for better
   bandwidth utilization.
 

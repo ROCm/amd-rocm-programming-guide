@@ -10,7 +10,7 @@ What is HIP?
 .. remote-content::
    :repo: ROCm/rocm-systems
    :path: projects/hip/docs/what_is_hip.rst
-   :default_branch: develop
+   :default_branch: docs/7.1.1
    :start_line: 10
    :replace: :doc:`ROCm <rocm:what-is-rocm>`|:doc:`ROCm </rocm>`;;data/|../../data/
    :doc_ignore: ./rocm

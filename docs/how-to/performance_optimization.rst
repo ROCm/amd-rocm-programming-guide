@@ -11,6 +11,6 @@ Performance guidelines
    :repo: ROCm/rocm-systems
    :path: projects/hip/docs/how-to/performance_guidelines.rst
    :start_line: 11
-   :default_branch: develop
+   :default_branch: docs/7.1.1
    :tag_prefix: docs/
    :project_name: HIP

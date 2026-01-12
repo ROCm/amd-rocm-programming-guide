@@ -301,6 +301,7 @@ dp
 DPM
 DPP
 DRI
+DRM
 dropless
 ds
 dst
@@ -512,6 +513,7 @@ IDE
 IDEs
 iDRAC
 IFWI
+IGP
 iGPU
 IILE
 ImageNet
@@ -569,6 +571,7 @@ isa
 ISA
 ISV
 ISVs
+ItemsPerThread
 iteratively
 ITL
 Jannat
@@ -1187,6 +1190,7 @@ uarch
 UC
 UCC
 UCX
+udev
 UE
 UIF
 ULP
