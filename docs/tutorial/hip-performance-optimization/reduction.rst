@@ -391,7 +391,7 @@ In the preceding code, note the code repetition for all possible values of ``war
     +#endif
     +});
 
-Because HIP typically targets hardware with warp sizes of 32 (NVIDIA GPUs and RDNA AMD GPUs) and 64 (CDNA AMD GPUs), portable HIP code must handle both. That is why instead of assuming a warp size of 32, make the warp size a template argument of the kernel. This allows you to unroll the final loop using ``tmp::static_for`` in a parametric way but still having the code read much like an ordinary loop.
+Because HIP typically targets hardware with warp sizes of 32 (RDNA AMD GPUs) and 64 (CDNA AMD GPUs), portable HIP code must handle both. That is why instead of assuming a warp size of 32, make the warp size a template argument of the kernel. This allows you to unroll the final loop using ``tmp::static_for`` in a parametric way but still having the code read much like an ordinary loop.
 
 Promoting the warp size to being a compile-time constant also requires you to handle it similarly on the host-side. You can sandwich the kernel launch with ``tmp::static_switch``, promoting the snake-case run-time ``warp_size`` variable to a camel-case compile-time constant ``WarpSize``.
 
