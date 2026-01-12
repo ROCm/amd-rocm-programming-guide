@@ -22,7 +22,7 @@ environments.
 .. remote-content::
    :repo: ROCm/rocm-systems
    :path: projects/hip/docs/how-to/hip_runtime_api/multi_device.rst
-   :default_branch: develop
+   :default_branch: docs/7.1.1
    :start_line: 10
    :replace: :doc:`ROCm <rocm:what-is-rocm>`|:doc:`ROCm </rocm>`;;data/|../../data/;;../../tools/|../tools/
    :doc_ignore: ./rocm

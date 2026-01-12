@@ -10,7 +10,7 @@ SAXPY Tutorial - Hello HIP
 .. remote-content::
    :repo: ROCm/rocm-systems
    :path: projects/hip/docs/tutorial/saxpy.rst
-   :default_branch: develop
+   :default_branch: docs/7.1.1
    :start_line: 17
    :replace: :doc:`reduction`|:doc:`Reduction <tutorial/reduction>`
    :doc_ignore: /install/install

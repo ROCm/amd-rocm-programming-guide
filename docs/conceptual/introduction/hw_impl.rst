@@ -6,7 +6,7 @@
 .. remote-content::
    :repo: ROCm/rocm-systems
    :path: projects/hip/docs/understand/hardware_implementation.rst
-   :default_branch: develop
+   :default_branch: docs/7.1.1
    :start_line: 6
    :tag_prefix: docs/
    :project_name: HIP

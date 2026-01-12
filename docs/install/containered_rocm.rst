@@ -15,5 +15,5 @@ ROCm containered
    :repo: ROCm/rocm-install-on-linux
    :path: docs/how-to/docker.rst
    :start_line: 7
-   :default_branch: develop
+   :default_branch: docs/7.1.1
    :tag_prefix: docs/

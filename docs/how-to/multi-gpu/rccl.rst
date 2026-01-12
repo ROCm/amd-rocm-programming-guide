@@ -11,7 +11,7 @@ RCCL
    :repo: ROCm/rccl
    :path: docs/what-is-rccl.rst
    :start_line: 8
-   :default_branch: develop
+   :default_branch: docs/7.1.1
    :tag_prefix: docs/
 
 
@@ -23,7 +23,7 @@ RCCL usage tips
    :path: docs/how-to/rccl-usage-tips.rst
    :start_line: 10
    :replace: ../data/|../../data/
-   :default_branch: develop
+   :default_branch: docs/7.1.1
    :tag_prefix: docs/
 
 Using the NCCL Net plugin API
@@ -34,5 +34,5 @@ Using the NCCL Net plugin API
    :path: docs/how-to/using-nccl.rst
    :start_line: 10
    :replace: ../data/|../../data/
-   :default_branch: develop
+   :default_branch: docs/7.1.1
    :tag_prefix: docs/
