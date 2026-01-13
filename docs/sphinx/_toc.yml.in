@@ -88,8 +88,9 @@ subtrees:
           - file: install/install-methods/package-manager/package-manager-sles
             title: SUSE Linux Enterprise Server
       - file: install/post-install
+  - file: install/third-party-tools
 
 - caption: PDF version
-  entries: 
+  entries:
   - url: https://rocm-handbook.amd.com/_/downloads/amd-rocm-programming-guide/en/{branch}/pdf/
     title: View PDF
