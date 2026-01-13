@@ -487,6 +487,7 @@ hotspotting
 HPC
 hpc
 HPCG
+HPCToolkit
 HPE
 HPL
 hpp
@@ -618,6 +619,7 @@ lifecycle
 linalg
 linearized
 linearizing
+Linaro
 linenos
 linter
 linux
@@ -794,6 +796,7 @@ optimizers
 os
 OSS
 OSU
+OTF
 outDir
 overindex
 overindexing
@@ -807,6 +810,7 @@ PagedAttention
 pallas
 Pallas
 PaLM
+PAPI
 parallelizable
 parallelization
 parallelized
@@ -1022,6 +1026,8 @@ SBIOS
 SCA
 scalability
 scalable
+Scalasca
+Cube
 scalarizing
 ScaledGEMM
 sceneries
@@ -1171,7 +1177,9 @@ torchtext
 torchtitan
 torchvision
 TorchVision
+Theia
 TP
+TotalView
 TPS
 TPU
 TPUs
@@ -1235,6 +1243,7 @@ VALU
 Vanhoucke
 variadic
 variational
+Vampir
 VBIOS
 VCN
 vdi
