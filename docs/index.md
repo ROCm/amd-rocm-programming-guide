@@ -77,6 +77,8 @@ and libraries.
 
   * {doc}`./install/post-install`
 
+* {doc}`./install/third-party-tools`
+
 Known issues are listed and can be reported on the on the [AMD ROCm Programming Guide GitHub repository](https://github.com/ROCm/amd-rocm-programming-guide/issues).
 
 To contribute to the documentation, see {doc}`Contributing to ROCm docs <rocm:contribute/contributing>` for contribution guidelines.
