@@ -6,8 +6,8 @@ defaults:
 root: index
 subtrees:
 - entries:
-  - file: release-notes.rst
-    title: Release notes
+  - file: revision-history.rst
+    title: Revision history
 
 - caption: Getting started
   entries:

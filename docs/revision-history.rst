@@ -1,9 +1,9 @@
 .. meta::
     :robots: noindex
 
-*************
-Release notes
-*************
+****************
+Revision history
+****************
 
 This page tracks releases of the AMD ROCm Programming Guide documentation.
 
@@ -21,14 +21,14 @@ This page tracks releases of the AMD ROCm Programming Guide documentation.
 ROCm 7.2.0
 ==========
 
-New content
------------
+Additions
+---------
 
 Added a page listing third-party software compatible with ROCm: 
 :doc:`install/third-party-tools`.
 
-Updated content
----------------
+Modifications
+-------------
 
 * Minor command line argument update on :doc:`reference/rocm_in_data_centers/kubernetes/configuration`
   page.
