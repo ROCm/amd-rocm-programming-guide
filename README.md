@@ -1,9 +1,10 @@
 # AMD ROCm Programming Guide
 
-The AMD ROCm Programming Guide is a solution designed for generating comprehensive books and
-guides from the ROCm documentation portal. This repository primarily contains
-HIP and ROCm documentation, and serves as a centralized resource for developers,
-contributors, and users of the ROCm ecosystem.
+The AMD ROCm Programming Guide is a solution designed for generating
+comprehensive books and guides from the ROCm documentation portal. This
+repository primarily contains HIP and ROCm documentation, and serves as a
+centralized resource for developers, contributors, and users of the ROCm
+ecosystem.
 
 The purpose of this repository is to:
 
