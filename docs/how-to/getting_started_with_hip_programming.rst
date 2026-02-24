@@ -12,7 +12,7 @@ SAXPY Tutorial - Hello HIP
    :path: projects/hip/docs/tutorial/saxpy.rst
    :default_branch: develop
    :start_line: 17
-   :doc_remap: reduction|/tutorial/hip-performance-optimization/reduction
+   :doc_remap: reduction|Reduction|/tutorial/hip-performance-optimization/reduction
    :doc_ignore: /install/install
    :tag_prefix: docs/
    :project_name: HIP
