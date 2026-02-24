@@ -12,7 +12,8 @@ What is HIP?
    :path: projects/hip/docs/what_is_hip.rst
    :default_branch: develop
    :start_line: 10
-   :replace: :doc:`ROCm <rocm:what-is-rocm>`|:doc:`ROCm </rocm>`;;data/|../../data/
+   :replace: data/|../../data/
+   :doc_remap: rocm:what-is-rocm|rocm
    :doc_ignore: ./rocm
    :tag_prefix: docs/
    :project_name: HIP
