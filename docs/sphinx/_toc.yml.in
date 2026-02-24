@@ -53,9 +53,11 @@ subtrees:
       - file: tutorial/programming-patterns/cpu_gpu_kmeans
       - file: tutorial/programming-patterns/stencil_operations
       - file: tutorial/programming-patterns/multikernel_bfs
+  - file: how-to/hip_compilers
 
 - caption: Performance optimization
   entries:
+  - file: conceptual/gpu_performance
   - file: how-to/performance_optimization
   - file: tutorial/hip-performance-optimization
     subtrees:

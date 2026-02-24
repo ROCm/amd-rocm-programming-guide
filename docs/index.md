@@ -54,8 +54,11 @@ For details on changes and version information, check the {doc}`./revision-histo
   * {doc}`./tutorial/programming-patterns/stencil_operations`
   * {doc}`./tutorial/programming-patterns/multikernel_bfs`
 
+* {doc}`./how-to/hip_compilers`
+
 **Performance optimization techniques**
 
+* {doc}`./conceptual/gpu_performance`
 * {doc}`./how-to/performance_optimization`
 * {doc}`./tutorial/hip-performance-optimization`
 
