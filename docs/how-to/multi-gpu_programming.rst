@@ -25,8 +25,6 @@ environments.
    :default_branch: develop
    :start_line: 10
    :replace: data/|../../data/;;../../tools/|../tools/
-   :doc_remap: rocm:what-is-rocm|rocm
-   :doc_ignore: ./rocm
    :tag_prefix: docs/
    :project_name: HIP
    :docs_base_url: https://rocm.docs.amd.com/projects

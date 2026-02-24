@@ -238,20 +238,7 @@ class BranchAwareRemoteContent(Directive):
         def replace_doc_role(match):
             full_content = match.group(1)
 
-            # Skip if it contains a namespace (colon before any angle bracket or no angle bracket)
-            # Check both "project:path" and "<project:path>" formats
-            if '<' in full_content:
-                # Format: "text <target>" - check target for namespace
-                target_part = full_content.split('<', 1)[1].rstrip('>')
-                if ':' in target_part:
-                    logger.debug(f'Skipping namespaced doc reference: {full_content}')
-                    return match.group(0)
-            else:
-                # Format: "target" - check directly for namespace
-                if ':' in full_content:
-                    logger.debug(f'Skipping namespaced doc reference: {full_content}')
-                    return match.group(0)
-
+            # First, parse the display text and target
             # Check if it's the format "text <target>" or just "target"
             if '<' in full_content and '>' in full_content:
                 # Extract text and target
@@ -267,6 +254,9 @@ class BranchAwareRemoteContent(Directive):
                 # Just a target, use it as display text too
                 target = full_content.strip()
                 display_text = target
+
+            # Check if this is a namespaced reference (e.g., "project:path")
+            is_namespaced = ':' in target
 
             # Check if this target should be ignored
             if target in ignored_paths:
@@ -301,6 +291,12 @@ class BranchAwareRemoteContent(Directive):
                     
                     logger.info(f'Remapped :doc:`{full_content}` to {result}')
                     return result
+
+            # If it's a namespaced reference and we got here (no ignore/remap match),
+            # leave it unchanged for intersphinx to handle
+            if is_namespaced:
+                logger.debug(f'Skipping namespaced doc reference (no remap match): {full_content}')
+                return match.group(0)
 
             # Resolve relative paths for external link construction
             resolved_target = self.resolve_relative_doc_path(target, self.options['path'])
