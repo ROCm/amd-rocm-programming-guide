@@ -26,9 +26,23 @@ class BranchAwareRemoteContent(Directive):
        :project_name: ProjectName  # Optional override for URL construction
        :docs_base_url: https://rocm.docs.amd.com/projects  # Optional override
        :doc_ignore: path/to/ignore;; another/path  # Doc links to leave unconverted
+       :doc_remap: remote/path|local/path;; remote/path2|New Text|local/path2
 
     The :replace: option uses | to separate old and new text, and ;; to separate multiple replacements.
     The :doc_ignore: option uses ;; to separate multiple paths to ignore.
+    The :doc_remap: option remaps :doc: links to local paths instead of converting them to external URLs.
+        Format: "old_path|new_path" (keeps original display text) or
+                "old_path|new_display_text|new_path" (replaces display text)
+        Use ;; to separate multiple remappings.
+        
+        Examples:
+        - :doc_remap: install/guide|how-to/getting_started
+          Remaps `:doc:`install/guide`` to `:doc:`how-to/getting_started``
+          Remaps `:doc:`Install <install/guide>`` to `:doc:`Install <how-to/getting_started>``
+        
+        - :doc_remap: install/guide|Getting Started|how-to/getting_started
+          Remaps `:doc:`install/guide`` to `:doc:`Getting Started <how-to/getting_started>``
+          Remaps `:doc:`Install <install/guide>`` to `:doc:`Getting Started <how-to/getting_started>``
     """
 
     required_arguments = 0
@@ -45,6 +59,7 @@ class BranchAwareRemoteContent(Directive):
         'project_name': str,    # Override project name for URL construction
         'docs_base_url': str,   # Override base URL for documentation
         'doc_ignore': str,      # Doc links to ignore (not convert to external URLs), separated by ;;
+        'doc_remap': str,       # Remap doc links to local paths (format: "old_path|new_path" or "old_path|new_text|new_path"), separated by ;;
         'csv_widths': str,      # Add widths to CSV tables (e.g., "33 67")
         'fix_latex_math': str,  # Enable automatic LaTeX math fixes (true/false)
     }
@@ -106,6 +121,51 @@ class BranchAwareRemoteContent(Directive):
         # Strip whitespace and filter empty entries
         return [path.strip() for path in ignored_paths if path.strip()]
 
+    def get_doc_remaps(self):
+        """Get list of doc path remappings
+        
+        Returns a list of tuples: (old_path, new_display_text_or_None, new_path)
+        Format: "old_path|new_path" or "old_path|new_display_text|new_path"
+        """
+        if 'doc_remap' not in self.options:
+            return []
+
+        # Split by ;; to get multiple remappings
+        remap_specs = self.options['doc_remap'].split(';;')
+        
+        remaps = []
+        for remap_spec in remap_specs:
+            remap_spec = remap_spec.strip()
+            
+            # Skip empty entries
+            if not remap_spec:
+                continue
+            
+            # Split by pipe character
+            if '|' not in remap_spec:
+                logger.warning(f'doc_remap option must be in format "old_path|new_path" or "old_path|new_text|new_path", got: "{remap_spec}"')
+                continue
+            
+            parts = remap_spec.split('|')
+            
+            if len(parts) == 2:
+                # Format: old_path|new_path (keep original display text)
+                old_path = parts[0].strip()
+                new_path = parts[1].strip()
+                remaps.append((old_path, None, new_path))
+                logger.debug(f'Added doc remap: {old_path} -> {new_path}')
+            elif len(parts) == 3:
+                # Format: old_path|new_display_text|new_path
+                old_path = parts[0].strip()
+                new_display_text = parts[1].strip()
+                new_path = parts[2].strip()
+                remaps.append((old_path, new_display_text, new_path))
+                logger.debug(f'Added doc remap: {old_path} -> {new_display_text} <{new_path}>')
+            else:
+                logger.warning(f'doc_remap option has too many parts (expected 2 or 3, got {len(parts)}): "{remap_spec}"')
+        
+        return remaps
+
     def get_docs_base_url(self):
         """Get the base URL for documentation"""
         # Check for explicit override in directive
@@ -163,9 +223,12 @@ class BranchAwareRemoteContent(Directive):
         return resolved_path
 
     def process_doc_roles(self, content, ref):
-        """Process :doc: roles and convert them to external links"""
+        """Process :doc: roles and convert them to external links or remap to local paths"""
         # Get list of paths to ignore
         ignored_paths = self.get_ignored_doc_paths()
+        
+        # Get list of path remappings
+        doc_remaps = self.get_doc_remaps()
 
         # Pattern to match :doc: roles
         # Matches both :doc:`target` and :doc:`text <target>`
@@ -216,7 +279,30 @@ class BranchAwareRemoteContent(Directive):
                 logger.info(f'Ignoring doc link as requested: {target}')
                 return match.group(0)
 
-            # Resolve relative paths
+            # Check if this target should be remapped to a local path
+            for old_path, new_display_text, new_path in doc_remaps:
+                # Check both with and without leading slash
+                if target == old_path or target_stripped == old_path:
+                    # Determine the display text for the remapped link
+                    if new_display_text is not None:
+                        # Use the specified new display text
+                        final_display_text = new_display_text
+                    else:
+                        # Keep the original display text
+                        final_display_text = display_text
+                    
+                    # Return as a local :doc: role
+                    if final_display_text == new_path:
+                        # If display text matches path, use simple format
+                        result = f':doc:`{new_path}`'
+                    else:
+                        # Use explicit display text format
+                        result = f':doc:`{final_display_text} <{new_path}>`'
+                    
+                    logger.info(f'Remapped :doc:`{full_content}` to {result}')
+                    return result
+
+            # Resolve relative paths for external link construction
             resolved_target = self.resolve_relative_doc_path(target, self.options['path'])
 
             # Construct the external URL
