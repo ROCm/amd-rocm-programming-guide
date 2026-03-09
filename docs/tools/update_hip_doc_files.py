@@ -1,7 +1,7 @@
 import urllib.request
 
 repo = "ROCm/rocm-systems"
-branch = "docs/7.2.0"
+branch = "docs/7.2.1"
 
 # "https://raw.githubusercontent.com/ROCm/rocm-systems/refs/heads/develop/projects/hip/docs/how-to/hip_runtime_api.rst",
 # https://raw.githubusercontent.com/ROCm/rocm-systems/refs/heads/release/rocm-rel-7.0/projects/hip/docs/how-to/hip_runtime_api.rst

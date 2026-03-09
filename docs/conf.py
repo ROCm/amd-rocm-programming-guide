@@ -27,13 +27,13 @@ left_nav_title = f"AMD ROCm Programming Guide {version_number}"
 # ROCm version numbers
 rocm_version = '7.2.0'
 rocm_major_version = '7.0'
-rocm_multi_versions = '7.2.0 7.1.1 7.0.2' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
-rocm_multi_versions_package_versions = '7.2.0 7.1.1 7.0.2' # however, in multi, the packages use 6.3.0
+rocm_multi_versions = '7.2 7.1.1' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
+rocm_multi_versions_package_versions = '7.2.0 7.1.1' # however, in multi, the packages use 6.3.0
 rocm_directory_version = '7.2.0' # in 6.0 rocm was located in /opt/rocm-6.0.0
-amdgpu_version = '7.2.0' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
-amdgpu_install_version = '7.2.0.70200-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
-udev_version = '30.20.1.0-2255209'
-udev_amdgpu_version = '30.20.1'
+amdgpu_version = '7.2' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
+amdgpu_install_version = '7.2.70200-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
+udev_version = '30.30.0.0-2278356'
+udev_amdgpu_version = '30.30'
 
 # for PDF output on Read the Docs
 project = "AMD ROCm™ Programming Guide"
@@ -119,7 +119,9 @@ html_theme_options = {
         "Community": "https://github.com/ROCm/ROCm/discussions",
         "Blogs": "https://rocm.blogs.amd.com/",
         "ROCm™ Docs": "https://rocm.docs.amd.com",
+        "Instinct™ Docs": "https://instinct.docs.amd.com/",
         "Support": "https://github.com/ROCm/ROCm/issues/new/choose",
+        "ROCm Developer Hub": "https://www.amd.com/en/developer/resources/rocm-hub.html",
     },
     "link_main_doc": False,
     "secondary_sidebar_items": {
@@ -130,6 +132,9 @@ html_theme_options = {
 html_context["official_branch"] = official_branch
 html_context["version"] = version
 html_context["release"] = release
+
+html_static_path = ["sphinx/static/css"]
+html_css_files = ["rocm_custom.css"]
 
 html_theme = "rocm_docs_theme"
 

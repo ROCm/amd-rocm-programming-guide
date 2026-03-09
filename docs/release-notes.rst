@@ -5,7 +5,7 @@
 Release notes
 *************
 
-This page tracks releases of the AMD ROCm Programming Guide documentation.
+This page tracks releases of the AMD ROCm Programming Guide.
 
 .. list-table::
    :header-rows: 1
@@ -13,10 +13,27 @@ This page tracks releases of the AMD ROCm Programming Guide documentation.
 
    * - Version
      - Release date
+   * - `7.2.1 <https://rocm-handbook.amd.com/projects/amd-rocm-programming-guide/en/docs-7.2.1/>`_
+     - March 25, 2026
    * - `7.2.0 <https://rocm-handbook.amd.com/projects/amd-rocm-programming-guide/en/docs-7.2.0/>`_
      - January 21, 2026
    * - `7.1.1 <https://rocm-handbook.amd.com/projects/amd-rocm-programming-guide/en/docs-7.1.1/>`_
      - November 26, 2025
+
+ROCm 7.2.1
+==========
+
+New content
+-----------
+
+Added :doc:`how-to/hip_compilers` page with description of HIP compilers.
+
+Updated content
+---------------
+Enhanced the following topics:
+* :doc:`how-to/getting_started_with_hip_programming` 
+* :doc:`how-to/multi-gpu_programming` 
+* :doc:`how-to/performance_optimization` 
 
 ROCm 7.2.0
 ==========

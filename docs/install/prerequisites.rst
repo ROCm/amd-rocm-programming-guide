@@ -73,6 +73,7 @@ your operating system to ensure you're able to download and install packages.
             .. tab-set::
 
                 {% for os_version in config.html_context['rhel_version_numbers'] %}
+                {% set os_major, _  = os_version.split('.') %}
                 .. tab-item:: {{ os_version }}
                     :sync: {{ os_version }}
 
@@ -82,7 +83,7 @@ your operating system to ensure you're able to download and install packages.
                     .. code-block:: shell
                         :substitutions:
 
-                        {% if os_version == '10.0' or '10.1' -%}
+                        {% if os_major == '10' -%}
                         subscription-manager register --username <username> --password <password>
                         {%- else -%}
                         subscription-manager register --username <username> --password <password>
