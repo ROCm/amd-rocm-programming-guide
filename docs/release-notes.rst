@@ -31,6 +31,7 @@ Added :doc:`how-to/hip_compilers` page with description of HIP compilers.
 Updated content
 ---------------
 Enhanced the following topics:
+
 * :doc:`how-to/getting_started_with_hip_programming` 
 * :doc:`how-to/multi-gpu_programming` 
 * :doc:`how-to/performance_optimization` 
