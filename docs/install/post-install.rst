@@ -114,7 +114,7 @@ If ``update-alternatives`` or ``environment-modules`` are not available on the s
 
 .. important::
 
-   This step is required for version-specific or :doc:`multi-version installations <rocm-install-on-linux:install-methods/multi-version-install-index>`. 
+   This step is required for version-specific or :doc:`multi-version installations <rocm-install-on-linux:install/install-methods/multi-version-install-index>`. 
 
 .. code-block:: shell
    :substitutions:

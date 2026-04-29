@@ -13,7 +13,7 @@ Quick start installation guide
 
 Before proceeding, ensure your kernel meets the :ref:`ROCm system requirements <rocm-install-on-linux:supported_distributions>`. Then select your operating system and version, and run the provided commands to install the AMD GPU and ROCm. 
 
-For detailed guidance, see `Installation via native package manager <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/package-manager-index.html>`_ for AMD GPU installation and :doc:`Detailed install <rocm-install-on-linux:detailed-install>` for ROCm installation.
+For detailed guidance, see `Installation via native package manager <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/install/package-manager-index.html>`_ for AMD GPU installation and :doc:`Detailed install <rocm-install-on-linux:install/detailed-install>` for ROCm installation.
 
 Installing
 ==========

@@ -79,7 +79,7 @@ Effective performance optimization requires systematic measurement and
 analysis. The recommended workflow for optimizing HIP applications includes:
 
 1. **Profile your application** using tools like
-   :doc:`rocprofv3 <rocprofiler-sdk:using-rocprofv3>`,
+   :doc:`rocprofv3 <rocprofiler-sdk:how-to/using-rocprofv3>`,
    the :doc:`ROCm Compute Profiler <rocprofiler-compute:index>`, or the
    :doc:`ROCm Systems Profiler <rocprofiler-systems:index>` to identify performance
    bottlenecks and collect execution traces.
@@ -102,7 +102,7 @@ To get the most from these tutorials, you should have:
   :doc:`../how-to/getting_started_with_hip_programming`).
 
 * Familiarity with GPU architecture concepts (see
-  :doc:`../reference/amd_gpus`).
+  :doc:`hip:understand/hardware_implementation`).
 
 * HIP runtime environment installed (see :doc:`../install/install`).
 

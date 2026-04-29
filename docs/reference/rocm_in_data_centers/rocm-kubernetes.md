@@ -83,4 +83,4 @@ kubectl logs pytorch-gpu-pod-example
 
 ## Contributing
 
-We welcome contributions to this project! Please refer to the [Development Guidelines](contributing/development.md) for details on how to get involved.
+We welcome contributions to this project! Please refer to the [Development Guidelines](https://instinct.docs.amd.com/projects/k8s-device-plugin/en/latest/contributing/development.html) for details on how to get involved.
