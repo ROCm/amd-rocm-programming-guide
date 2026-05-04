@@ -25,17 +25,17 @@ version_number = ".".join(version_numbers)
 left_nav_title = f"AMD ROCm Programming Guide {version_number}"
 
 # ROCm version numbers
-rocm_version = '7.2.2'
+rocm_version = '7.2.3'
 rocm_major_version = '7.0'
-rocm_multi_versions = '7.2.2 7.2.1' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
-rocm_multi_versions_new = '7.2.2 7.2.1'
-rocm_multi_versions_package_versions = '7.2.2 7.2.1' # however, in multi, the packages use 6.3.0
-rocm_multi_versions_package_versions_new = '7.2.2 7.2.1'
-rocm_directory_version = '7.2.2' # in 6.0 rocm was located in /opt/rocm-6.0.0
-amdgpu_version = '7.2.2' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
-amdgpu_install_version = '7.2.2.70202-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
-udev_version = '30.30.1.0-2303411'
-udev_amdgpu_version = '30.30.1'
+rocm_multi_versions = '7.2.3 7.2' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
+rocm_multi_versions_new = '7.2.3 7.2'
+rocm_multi_versions_package_versions = '7.2.3 7.2.0' # however, in multi, the packages use 6.3.0
+rocm_multi_versions_package_versions_new = '7.2.3 7.2.0'
+rocm_directory_version = '7.2.3' # in 6.0 rocm was located in /opt/rocm-6.0.0
+amdgpu_version = '7.2.3' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
+amdgpu_install_version = '7.2.3.70203-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
+udev_version = '30.30.3.0-2327507'
+udev_amdgpu_version = '30.30.3'
 
 # for PDF output on Read the Docs
 project = "AMD ROCm™ Programming Guide"

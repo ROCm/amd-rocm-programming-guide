@@ -39,7 +39,7 @@ Epilog="/etc/slurm/epilog.d/*"
 - Restart Slurm services to apply changes:
 
 ```bash
-sudo systemctl restart slurmd     # On compute nodes
+sudo systemctl restart slurmd     # On compute nodes if slurm.conf is updated
 ```
 
 ## Exporter container deployment
@@ -102,25 +102,21 @@ When Slurm integration is enabled, the following job-specific labels are added t
 
 ## Troubleshooting
 
-### Common issues
+### Common Issues
 
-The following are common issues you may encounter when integrating Slurm with the AMD Device Metrics Exporter:
+1. Script permissions:
+   - Ensure the exporter script is executable
+   - Verify proper ownership (should be owned by `root` or `slurm` user)
 
-#### Script permissions
+2. Configuration issues:
+   - Check Slurm logs for prolog/epilog execution errors
+   - Verify paths in slurm.conf are correct
 
-Ensure the exporter script is executable and verify proper ownership (should be owned by `root` or `slurm` user).
+3. Metric collection:
+   - Ensure metrics exporter is running
+   - Check if job ID labels are being properly set
 
-#### Configuration issues
-
-Check Slurm logs for prolog or epilog execution errors and verify paths in `slurm.conf` are correct.
-
-#### Metric collection
-
-Ensure the metrics exporter is running and check if job ID labels are being properly set.
-
-#### Service status
-
-Check the service status:
+4. Check service status:
 
 ```bash
 systemctl status gpuagent.service amd-metrics-exporter.service
@@ -164,6 +160,10 @@ Slurm labels are disabled by default. To enable Slurm labels, add the following 
       "GPU_UUID",
       "SERIAL_NUMBER",
       "GPU_ID",
+      "POD",
+      "POD_UUID",
+      "NAMESPACE",
+      "CONTAINER",
       "JOB_ID",
       "JOB_USER",
       "JOB_PARTITION",

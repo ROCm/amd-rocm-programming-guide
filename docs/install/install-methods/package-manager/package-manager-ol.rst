@@ -40,7 +40,7 @@ Register ROCm repositories
                 gpgkey=https://repo.radeon.com/rocm/rocm.gpg.key
 
                 [amdgraphics]
-                name=AMD Graphics |rocm_directory_version| repository
+                name=AMD Graphics |rocm_version| repository
                 {% if os_major == '9' -%}
                 baseurl=https://repo.radeon.com/graphics/|rocm_version|/el/{{ os_version }}/main/x86_64/
                 {%- else -%}
