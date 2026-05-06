@@ -72,15 +72,7 @@ For details on changes and version information, see {doc}`./release-notes`.
 
 **ROCm platform**
 
-* {doc}`./install/install`
-
-  * {doc}`./install/prerequisites`
-
-  * {doc}`./install/quick-start`
-
-  * {doc}`./install/install-methods/package-manager-index`
-
-  * {doc}`./install/post-install`
+* {doc}`./install/rocm`
 
 * {doc}`./install/third-party-tools`
 

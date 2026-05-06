@@ -104,7 +104,7 @@ To get the most from these tutorials, you should have:
 * Familiarity with GPU architecture concepts (see
   :doc:`hip:understand/hardware_implementation`).
 
-* HIP runtime environment installed (see :doc:`../install/install`).
+* HIP runtime environment installed (see :doc:`../install/rocm`).
 
 * Basic knowledge of performance profiling concepts (recommended).
 

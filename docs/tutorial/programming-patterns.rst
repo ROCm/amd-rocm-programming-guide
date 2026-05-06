@@ -66,7 +66,7 @@ To get the most from these tutorials, you should have:
 
 * Familiarity with parallel programming concepts.
 
-* HIP runtime environment installed (see :doc:`../install/install`).
+* HIP runtime environment installed (see :doc:`../install/rocm`).
 
 * Basic knowledge of GPU architecture (recommended).
 

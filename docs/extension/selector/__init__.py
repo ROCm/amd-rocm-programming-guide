@@ -449,22 +449,46 @@ class SelectedContentDirective(SphinxDirective):
         return [node]
 
 
+def _skip_visit(translator, node):
+    raise nodes.SkipNode
+
+
+def _noop(translator, node):
+    pass
+
+
 def setup(app):
     app.add_node(
         SelectorGroup,
         html=(SelectorGroup.visit_html, SelectorGroup.depart_html),
+        latex=(_skip_visit, _noop),
+        text=(_skip_visit, _noop),
+        man=(_skip_visit, _noop),
+        texinfo=(_skip_visit, _noop),
     )
     app.add_node(
         SelectorInfo,
         html=(SelectorInfo.visit_html, SelectorInfo.depart_html),
+        latex=(_skip_visit, _noop),
+        text=(_skip_visit, _noop),
+        man=(_skip_visit, _noop),
+        texinfo=(_skip_visit, _noop),
     )
     app.add_node(
         SelectorOption,
         html=(SelectorOption.visit_html, SelectorOption.depart_html),
+        latex=(_skip_visit, _noop),
+        text=(_skip_visit, _noop),
+        man=(_skip_visit, _noop),
+        texinfo=(_skip_visit, _noop),
     )
     app.add_node(
         SelectedContent,
         html=(SelectedContent.visit_html, SelectedContent.depart_html),
+        latex=(_noop, _noop),
+        text=(_noop, _noop),
+        man=(_noop, _noop),
+        texinfo=(_noop, _noop),
     )
 
     app.add_directive("selector", SelectorGroupDirective)

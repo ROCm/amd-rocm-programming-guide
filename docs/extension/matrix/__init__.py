@@ -267,11 +267,47 @@ class CustomTableCellDirective(SphinxDirective):
         return [node]
 
 
+def _noop(translator, node):
+    pass
+
+
+def _skip_visit(translator, node):
+    raise nodes.SkipNode
+
+
 def setup(app):
-    app.add_node(CustomTable, html=(CustomTable.visit_html, CustomTable.depart_html))
-    app.add_node(CustomTableHead, html=(CustomTableHead.visit_html, CustomTableHead.depart_html))
-    app.add_node(CustomTableRow, html=(CustomTableRow.visit_html, CustomTableRow.depart_html))
-    app.add_node(CustomTableCell, html=(CustomTableCell.visit_html, CustomTableCell.depart_html))
+    app.add_node(
+        CustomTable,
+        html=(CustomTable.visit_html, CustomTable.depart_html),
+        latex=(_noop, _noop),
+        text=(_noop, _noop),
+        man=(_noop, _noop),
+        texinfo=(_noop, _noop),
+    )
+    app.add_node(
+        CustomTableHead,
+        html=(CustomTableHead.visit_html, CustomTableHead.depart_html),
+        latex=(_noop, _noop),
+        text=(_noop, _noop),
+        man=(_noop, _noop),
+        texinfo=(_noop, _noop),
+    )
+    app.add_node(
+        CustomTableRow,
+        html=(CustomTableRow.visit_html, CustomTableRow.depart_html),
+        latex=(_noop, _noop),
+        text=(_noop, _noop),
+        man=(_noop, _noop),
+        texinfo=(_noop, _noop),
+    )
+    app.add_node(
+        CustomTableCell,
+        html=(CustomTableCell.visit_html, CustomTableCell.depart_html),
+        latex=(_noop, _noop),
+        text=(_noop, _noop),
+        man=(_noop, _noop),
+        texinfo=(_noop, _noop),
+    )
 
     app.add_directive("matrix", CustomTableDirective)
     app.add_directive("matrix-head", CustomTableHeadDirective)
