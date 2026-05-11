@@ -149,5 +149,37 @@ html_theme = "rocm_docs_theme"
 
 numfig = False
 
+
+# ---------------------------------------------------------------------------
+# PDF-specific exclusions
+# ---------------------------------------------------------------------------
+
+# Docnames of HTML-only redirect stub pages that should produce no output in
+# the PDF build.  These pages exist solely to give the sidebar JS navigation
+# something to link to; they have no readable content.
+_PDF_EXCLUDED_DOCNAMES = {
+    "install/redirect/_prerequisites",
+    "install/redirect/_install",
+    "install/redirect/_post-install",
+    "install/redirect/_uninstall",
+}
+
+
+def _suppress_redirect_stubs_for_pdf(app, docname, source):
+    """Replace redirect stub content with an empty stub during PDF builds.
+
+    The source-read event fires before Sphinx parses the RST, so replacing
+    the source here means the parsed doctree contains no 'Redirecting…'
+    subsection.  The extension's _is_redirect_stub() heuristic then has
+    nothing to match, and _gather_content() drops the empty section.
+    """
+    if app.builder.format == "latex" and docname in _PDF_EXCLUDED_DOCNAMES:
+        source[0] = ""
+
+
+def setup(app):
+    app.connect("source-read", _suppress_redirect_stubs_for_pdf)
+
+
 # SVG converter configuration is handled by the svg-pdf-converter extension
 # which provides custom preprocessing for Draw.io SVGs

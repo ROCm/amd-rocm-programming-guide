@@ -695,6 +695,7 @@ Use the following instructions to install the ROCm Core SDK on your system.
 .. selected:: i=pkgman
    :heading: ROCm meta packages
    :heading-level: 5
+   :no-pdf:
 
    .. _rocm-install-meta-packages:
 

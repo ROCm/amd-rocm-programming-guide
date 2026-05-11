@@ -2,6 +2,8 @@ from pathlib import Path
 
 from docutils import nodes
 from docutils.parsers.rst import directives
+from sphinx.transforms import SphinxTransform
+from sphinx.transforms.post_transforms import SphinxPostTransform
 from sphinx.util.docutils import SphinxDirective
 
 from .utils import kv_to_data_attr, logger
@@ -267,6 +269,73 @@ class CustomTableCellDirective(SphinxDirective):
         return [node]
 
 
+class MatrixToTableTransform(SphinxPostTransform):
+    """Convert custom matrix nodes to standard docutils table nodes for non-HTML builders.
+
+    HTML rendering uses the custom Bootstrap-styled nodes unchanged. For all
+    other builders (LaTeX, text, man, etc.) each CustomTable is replaced with
+    a standard docutils table node so that Sphinx's built-in rendering handles
+    it correctly — no per-file workarounds needed.
+    """
+
+    default_priority = 500
+
+    def apply(self):
+        if self.app.builder.format == "html":
+            return
+
+        for matrix_node in self.document.findall(CustomTable):
+            table_node = self._build_table(matrix_node)
+            matrix_node.replace_self(table_node)
+
+    def _build_table(self, matrix_node):
+        rows = list(matrix_node.findall(CustomTableRow))
+        if not rows:
+            return nodes.paragraph()
+
+        max_cols = max(len(list(r.findall(CustomTableCell))) for r in rows)
+
+        table = nodes.table()
+        tgroup = nodes.tgroup(cols=max_cols)
+        table += tgroup
+
+        for _ in range(max_cols):
+            tgroup += nodes.colspec(colwidth=1)
+
+        header_rows = [r for r in rows if r.get("header-row", False)]
+        body_rows = [r for r in rows if not r.get("header-row", False)]
+
+        if header_rows:
+            thead = nodes.thead()
+            tgroup += thead
+            for row in header_rows:
+                thead += self._build_row(row, max_cols)
+
+        # Always include tbody: Sphinx's LaTeX transform requires it.
+        tbody = nodes.tbody()
+        tgroup += tbody
+        for row in body_rows:
+            tbody += self._build_row(row, max_cols)
+
+        caption = matrix_node.get("caption", "")
+        if caption:
+            table.insert(0, nodes.title(text=caption))
+
+        return table
+
+    def _build_row(self, row_node, max_cols):
+        row = nodes.row()
+        cells = list(row_node.findall(CustomTableCell))
+        for cell_node in cells:
+            entry = nodes.entry()
+            for child in cell_node.children:
+                entry += child.deepcopy()
+            row += entry
+        for _ in range(max_cols - len(cells)):
+            row += nodes.entry()
+        return row
+
+
 def _noop(translator, node):
     pass
 
@@ -314,12 +383,14 @@ def setup(app):
     app.add_directive("matrix-row", CustomTableRowDirective)
     app.add_directive("matrix-cell", CustomTableCellDirective)
 
+    app.add_post_transform(MatrixToTableTransform)
+
     static_assets_dir = Path(__file__).parent / "static"
     app.config.html_static_path.append(str(static_assets_dir))
     app.add_css_file("table.css")
 
     return {
-        "version": "1.1",
+        "version": "1.2",
         "parallel_read_safe": True,
         "parallel_write_safe": True,
     }
