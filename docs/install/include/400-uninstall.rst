@@ -9,163 +9,103 @@ Uninstalling
 
       .. selected:: os=ubuntu os=debian
 
+         .. selected:: fam=all
+
+            .. code-block:: bash
+
+               sudo apt autoremove amdrocm7.13
+
          .. selected:: gfx=gfx950
 
             .. code-block:: bash
 
-               sudo apt autoremove amdrocm7.12-gfx950
+               sudo apt autoremove amdrocm7.13-gfx950
 
          .. selected:: gfx=gfx942
 
             .. code-block:: bash
 
-               sudo apt autoremove amdrocm7.12-gfx94x
+               sudo apt autoremove amdrocm7.13-gfx94x
 
          .. selected:: gfx=gfx90a
 
             .. code-block:: bash
 
-               sudo apt autoremove amdrocm7.12-gfx90a
+               sudo apt autoremove amdrocm7.13-gfx90a
 
          .. selected:: gfx=gfx908
 
             .. code-block:: bash
 
-               sudo apt autoremove amdrocm7.12-gfx908
+               sudo apt autoremove amdrocm7.13-gfx908
 
          .. selected:: gfx=gfx1201 gfx=gfx1200
 
-            .. tab-set::
+            .. code-block:: bash
 
-               .. tab-item:: Graphics and mixed compute
-                  :sync: graphics
-
-                  .. code-block:: bash
-
-                     sudo apt autoremove amdrocm7.12-gfx120x amdgpu-lib
-
-               .. tab-item:: Headless compute
-                  :sync: compute
-
-                  .. code-block:: bash
-
-                     sudo apt autoremove amdrocm7.12-gfx120x
+               sudo apt autoremove amdrocm7.13-gfx120x
 
          .. selected:: gfx=gfx1100 gfx=gfx1101 gfx=gfx1102 gfx=gfx1103
 
-            .. tab-set::
+            .. code-block:: bash
 
-               .. tab-item:: Graphics and mixed compute
-                  :sync: graphics
-
-                  .. code-block:: bash
-
-                     sudo apt autoremove amdrocm7.12-gfx110x amdgpu-lib
-
-               .. tab-item:: Headless compute
-                  :sync: compute
-
-                  .. code-block:: bash
-
-                     sudo apt autoremove amdrocm7.12-gfx110x
+               sudo apt autoremove amdrocm7.13-gfx110x
 
          .. selected:: gfx=gfx1151
 
-            .. tab-set::
+            .. code-block:: bash
 
-               .. tab-item:: Graphics and mixed compute
-                  :sync: graphics
-
-                  .. code-block:: bash
-
-                     sudo apt autoremove amdrocm7.12-gfx1151 amdgpu-lib
-
-               .. tab-item:: Headless compute
-                  :sync: compute
-
-                  .. code-block:: bash
-
-                     sudo apt autoremove amdrocm7.12-gfx1151
+               sudo apt autoremove amdrocm7.13-gfx1151
 
          .. selected:: gfx=gfx1150
 
-            .. tab-set::
+            .. code-block:: bash
 
-               .. tab-item:: Graphics and mixed compute
-                  :sync: graphics
-
-                  .. code-block:: bash
-
-                     sudo apt autoremove amdrocm7.12-gfx1150 amdgpu-lib
-
-               .. tab-item:: Headless compute
-                  :sync: compute
-
-                  .. code-block:: bash
-
-                     sudo apt autoremove amdrocm7.12-gfx1150
+               sudo apt autoremove amdrocm7.13-gfx1150
 
       .. selected:: os=rhel os=oracle-linux os=rocky-linux
+
+         .. selected:: fam=all
+
+            .. code-block:: bash
+
+               sudo dnf remove amdrocm7.13
 
          .. selected:: gfx=gfx950
 
             .. code-block:: bash
 
-               sudo dnf remove amdrocm7.12-gfx950
+               sudo dnf remove amdrocm7.13-gfx950
 
          .. selected:: gfx=gfx942
 
             .. code-block:: bash
 
-               sudo dnf remove amdrocm7.12-gfx94x
+               sudo dnf remove amdrocm7.13-gfx94x
 
          .. selected:: gfx=gfx90a
 
             .. code-block:: bash
 
-               sudo dnf remove amdrocm7.12-gfx90a
+               sudo dnf remove amdrocm7.13-gfx90a
 
          .. selected:: gfx=gfx908
 
             .. code-block:: bash
 
-               sudo dnf remove amdrocm7.12-gfx908
+               sudo dnf remove amdrocm7.13-gfx908
 
          .. selected:: gfx=gfx1201 gfx=gfx1200
 
-            .. tab-set::
+            .. code-block:: bash
 
-               .. tab-item:: Graphics and mixed compute
-                  :sync: graphics
-
-                  .. code-block:: bash
-
-                     sudo dnf remove amdrocm7.12-gfx120x amdgpu-lib
-
-               .. tab-item:: Headless compute
-                  :sync: compute
-
-                  .. code-block:: bash
-
-                     sudo dnf remove amdrocm7.12-gfx120x
+               sudo dnf remove amdrocm7.13-gfx120x
 
          .. selected:: gfx=gfx1100 gfx=gfx1101 gfx=gfx1102 gfx=gfx1103
 
-            .. tab-set::
+            .. code-block:: bash
 
-               .. tab-item:: Graphics and mixed compute
-                  :sync: graphics
-
-                  .. code-block:: bash
-
-                     sudo dnf remove amdrocm7.12-gfx110x
-
-               .. tab-item:: Headless compute
-                  :sync: compute
-
-                  .. code-block:: bash
-
-                     sudo dnf remove amdrocm7.12-gfx110x
+               sudo dnf remove amdrocm7.13-gfx110x
 
       .. selected:: os=sles
 
@@ -209,29 +149,6 @@ Uninstalling
             sudo zypper clean --all
             sudo zypper refresh
 
-   3. Remove your ROCm environment configuration from your system.
-
-      .. tab-set::
-
-         .. tab-item:: System-wide
-            :sync: env-system-setup
-
-            If you opted for a :ref:`system-wide setup
-            <rocm-post-install-env>` during the installation
-            process, remove the ROCm environment variables.
-
-            .. code-block:: bash
-
-               sudo rm -f /etc/profile.d/set-rocm-env.sh
-
-         .. tab-item:: User
-            :sync: env-user-setup
-
-            If you opted for a :ref:`user-specific setup
-            <rocm-post-install-env>` during the installation
-            process, remove the ROCm environment configuration block from
-            your shell configuration file (``~/.bashrc`` or ``~/.profile``).
-
 .. ====================================================================== PIP ==
 
 .. selected:: i=pip
@@ -263,29 +180,6 @@ Uninstalling
          .. code-block:: bat
 
             rmdir /s /q .venv
-
-   3. Remove your ROCm environment configuration from your system.
-
-      .. tab-set::
-
-         .. tab-item:: System-wide
-            :sync: env-system-setup
-
-            If you opted for a :ref:`system-wide setup
-            <rocm-post-install-env>` during the installation
-            process, remove the ROCm environment variables.
-
-            .. code-block:: bash
-
-               sudo rm -f /etc/profile.d/set-rocm-env.sh
-
-         .. tab-item:: User
-            :sync: env-user-setup
-
-            If you opted for a :ref:`user-specific setup
-            <rocm-post-install-env>` during the installation
-            process, remove the ROCm environment configuration block from
-            your shell configuration file (``~/.bashrc`` or ``~/.profile``).
 
 .. ================================================================== TARBALL ==
 
@@ -376,10 +270,22 @@ Uninstalling
 
       .. code-block:: bash
 
-         bash rocm-installer-7.12.0-2.run uninstall-rocm
+         bash rocm-installer-7.13.0-1.run uninstall-rocm
 
    2. Use the following command to uninstall the AMD GPU Driver (amdgpu).
 
       .. code-block:: bash
 
-         bash rocm-installer-7.12.0-2.run uninstall-amdgpu
+         bash rocm-installer-7.13.0-1.run uninstall-amdgpu
+
+.. selected:: w=graphics
+
+   .. selected:: os=ubuntu os=rhel
+
+      The ``amdgpu-install`` script installs a command to uninstall ROCm packages.
+      Run the following command to uninstall the ROCm and Radeon Software for
+      Linux components:
+
+      .. code-block:: bash
+
+         sudo amdgpu-uninstall

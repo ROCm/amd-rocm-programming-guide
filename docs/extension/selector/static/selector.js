@@ -100,6 +100,10 @@ const state = {};
 // produced them is no longer selected.
 const extraBindingKeys = new Set();
 
+// Keys owned by at least one selector group as a primary key. Extra-binding
+// cleanup must never delete these — reconcileGroupSelections manages them.
+const primarySelectorKeys = new Set();
+
 // True while updateVisibility is running; suppresses per-mutation URL/storage
 // syncs so exactly one sync happens per user interaction.
 let isBatchingState = false;
@@ -249,16 +253,26 @@ function reapplyAllExtraBindings() {
     }
   });
 
-  const staleKeys = Array.from(extraBindingKeys).filter((k) => !(k in desired));
+  // Never delete a key that belongs to a primary selector group — those are
+  // managed by reconcileGroupSelections, not by extra-binding cleanup. Without
+  // this guard, switching families (e.g. Instinct → Radeon) would delete "w"
+  // from state because the Instinct option sets w=compute as an extra binding
+  // but the Radeon option does not, even though a visible Use case selector
+  // group owns "w" as its primary key.
+  const staleKeys = Array.from(extraBindingKeys).filter(
+    (k) => !(k in desired) && !primarySelectorKeys.has(k),
+  );
 
   const updates = {};
   for (const [k, v] of Object.entries(desired)) {
     if (state[k] !== v) updates[k] = v;
   }
 
-  // Rebuild tracking set to match current selections.
+  // Rebuild tracking set to match current selections, excluding primary keys.
   extraBindingKeys.clear();
-  for (const key of Object.keys(desired)) extraBindingKeys.add(key);
+  for (const key of Object.keys(desired)) {
+    if (!primarySelectorKeys.has(key)) extraBindingKeys.add(key);
+  }
 
   let changed = false;
   if (staleKeys.length) {
@@ -535,17 +549,19 @@ domReady(() => {
   const localStorageState = getStateFromLocalStorage();
   const urlState = getStateFromURL();
 
-  // Collect all keys used on this page: primary selector keys and any keys
-  // that could be set via extra bindings. Used below to drop stale state.
-  const pageKeys = new Set();
+  // Collect primary selector keys and extra binding keys separately.
+  // Used below to drop stale state and to pre-populate extraBindingKeys so
+  // that stale URL/localStorage extra-binding values are cleared on init.
+  const primaryPageKeys = new Set();
+  const extraBindingPageKeys = new Set();
 
   selectorOptions.forEach((option) => {
     option.addEventListener("click", handleOptionSelect);
     option.addEventListener("keydown", handleOptionKeydown);
 
     const key = option.dataset.selectorKey;
-    if (key) pageKeys.add(key);
-    for (const k of Object.keys(getExtraBindings(option))) pageKeys.add(k);
+    if (key) primaryPageKeys.add(key);
+    for (const k of Object.keys(getExtraBindings(option))) extraBindingPageKeys.add(k);
 
     if (isDefaultOption(option)) {
       const value = option.dataset.selectorValue;
@@ -557,6 +573,12 @@ domReady(() => {
     }
   });
 
+  // Populate the module-level set so reapplyAllExtraBindings can guard against
+  // deleting keys that are owned by primary selector groups.
+  for (const key of primaryPageKeys) primarySelectorKeys.add(key);
+
+  const pageKeys = new Set([...primaryPageKeys, ...extraBindingPageKeys]);
+
   // Merge with priority: URL > localStorage > defaults, then drop any key
   // that has no corresponding selector on this page so stale URL params and
   // localStorage entries from other pages are cleared immediately.
@@ -564,6 +586,16 @@ domReady(() => {
     Object.entries({ ...defaultState, ...localStorageState, ...urlState })
       .filter(([key]) => pageKeys.has(key)),
   );
+
+  // Pre-populate extraBindingKeys with any state keys that are only known as
+  // extra binding keys. This ensures reapplyAllExtraBindings() can identify
+  // and clear them on the first updateVisibility() pass if no currently-
+  // selected option requires them (e.g. gfx when fam=all is selected).
+  for (const key of Object.keys(initialState)) {
+    if (extraBindingPageKeys.has(key) && !primaryPageKeys.has(key)) {
+      extraBindingKeys.add(key);
+    }
+  }
 
   for (const [key, value] of Object.entries(initialState)) {
     applySelectionByKey(key, value);

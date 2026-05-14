@@ -25,47 +25,61 @@ in ROCm |ROCM_VERSION|, see the :doc:`Release notes </about/release-notes>`.
    installation guidance, see `TheRock releases
    <https://github.com/ROCm/TheRock/blob/main/RELEASES.md>`__.
 
-.. include:: ./includes/fam-multi-arch-selector.rst
+.. include:: ./include/fam-multi-arch-selector.rst
 
-.. include:: ./includes/gpu-selector.rst
+.. include:: ./include/gpu-selector.rst
 
-.. include:: ./includes/os-selector.rst
+.. include:: ./include/os-selector.rst
 
-.. include:: ./includes/os-ver-selector.rst
+.. include:: ./include/ror-gpu-selector.rst
 
-.. include:: ./includes/install-method-selector.rst
+.. include:: ./include/ubuntu-ver-selector.rst
+
+.. include:: ./include/debian-ver-selector.rst
+
+.. include:: ./include/rhel-ver-selector.rst
+
+.. include:: ./include/oracle-linux-ver-selector.rst
+
+.. include:: ./include/rocky-linux-ver-selector.rst
+
+.. include:: ./include/sles-ver-selector.rst
+
+.. include:: ./include/windows-ver-selector.rst
+
+.. include:: ./include/install-method-selector.rst
 
 ----
 
 .. _rocm-install-about:
 
-.. include:: ./includes/000-intro.rst
+.. include:: ./include/000-intro.rst
 
 ----
 
 .. _rocm-prerequisites:
 
-.. include:: ./includes/100-prerequisites.rst
+.. include:: ./include/100-prerequisites.rst
 
-.. include:: ./includes/150-runfile-quick-start-config-options.rst
+.. include:: ./include/150-runfile-quick-start-config-options.rst
 
 ----
 
 .. _rocm-install:
 
-.. include:: ./includes/200-install.rst
+.. include:: ./include/200-install.rst
 
 ----
 
 .. _rocm-post-install:
 
-.. include:: ./includes/300-post-install.rst
+.. include:: ./include/300-post-install.rst
 
 ----
 
 .. _rocm-uninstall:
 
-.. include:: ./includes/400-uninstall.rst
+.. include:: ./include/400-uninstall.rst
 
 |
 |

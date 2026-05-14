@@ -41,6 +41,13 @@ Prerequisites
                apt update
                apt install sudo wget
 
+         .. selected:: w=graphics
+
+            .. code-block:: bash
+
+               apt update
+               apt install sudo wget
+
          .. selected:: i=pip
 
             .. code-block:: bash
@@ -83,47 +90,69 @@ Prerequisites
 
 
 .. selected:: os=windows
+   :heading: Prepare Windows for ROCm installation
+   :heading-level: 3
 
-    1. Remove any existing HIP SDK for Windows installations and other
-       conflicting AMD graphics software. To uninstall the HIP SDK using the
-       GUI, navigate to the following screen:
+   1. Remove any existing HIP SDK for Windows installations and other
+      conflicting AMD graphics software. To uninstall the HIP SDK using the
+      GUI, navigate to the following screen:
 
-       * Control Panel > Programs > Uninstall a program
+      * Control Panel > Programs > Uninstall a program
 
-    2. Install AMD Software: Adrenalin Edition for Windows. For details and the
-       download link, see `AMD Software: Adrenalin Edition 26.5.1
-       <https://www.amd.com/en/resources/support-articles/release-notes/RN-RAD-WIN-26-5-1.html#Downloads>`__.
+   2. Disable the following Windows security features as they can interfere
+      with ROCm functionality:
 
-    3. Disable the following Windows security features as they can interfere
-       with ROCm functionality:
+      * Turn off WDAG (Windows Defender Application Guard)
 
-       * Turn off WDAG (Windows Defender Application Guard)
+        * Control Panel > Programs > Programs and Features > Turn Windows
+          features on or off > **Clear** “Microsoft Defender Application
+          Guard”
 
-         * Control Panel > Programs > Programs and Features > Turn Windows
-           features on or off > **Clear** “Microsoft Defender Application
-           Guard”
+      * Turn off SAC (Smart App Control)
 
-       * Turn off SAC (Smart App Control)
+        * Settings > Privacy & security > Windows Security > App & browser
+          control > Smart App Control settings > **Off**
 
-         * Settings > Privacy & security > Windows Security > App & browser
-           control > Smart App Control settings > **Off**
+.. selected:: os=windows
+   :heading: Install AMD Software: Adrenalin Edition
+   :heading-level: 3
+
+   Install AMD Software: Adrenalin Edition for Windows. For details and the
+   download link, see `AMD Software: Adrenalin Edition 26.5.1
+   <https://www.amd.com/en/resources/support-articles/release-notes/RN-RAD-WIN-26-5-1.html#Downloads>`__.
 
 .. =============================================================== OEM KERNEL ==
 
 .. selected:: fam=ryzen
 
-   .. selected:: os=ubuntu
-      :heading: Install the OEM kernel
-      :heading-level: 3
+   .. selected:: i=pkgman i=pip i=tar
 
-      Ryzen APUs require the OEM kernel 6.14 for Ubuntu 24.04. Use the
-      following command to install it using ``apt``.
+      .. selected:: os=ubuntu
+         :heading: Install the OEM kernel
+         :heading-level: 3
 
-      .. code-block:: bash
+         Ryzen APUs (gfx1150, gfx1151, gfx1152, and gfx1103) require the OEM
+         kernel 6.14 for Ubuntu 24.04. Use the following command to install it
+         using ``apt``.
 
-         sudo apt update && sudo apt install linux-image-6.14.0-1018-oem
+         .. code-block:: bash
 
-      .. note::
+            sudo apt update && sudo apt install linux-image-6.14.0-1018-oem
+
+         Reboot your system after installing the OEM kernel.
+
+   .. selected:: w=graphics
+
+      .. selected:: os=ubuntu
+         :heading: Install the OEM kernel
+         :heading-level: 3
+
+         Ryzen APUs require the OEM kernel 6.14 for Ubuntu 24.04. Use the
+         following command to install it using ``apt``.
+
+         .. code-block:: bash
+
+            sudo apt update && sudo apt install linux-image-6.14.0-1018-oem
 
          Reboot your system after installing the OEM kernel.
 
@@ -224,19 +253,7 @@ Prerequisites
 
       sudo zypper update
 
-.. selected:: i=pkgman
-
-   .. selected:: os=oracle-linux
-      :heading: Update your system
-      :heading-level: 3
-
-      Update Oracle Linux to the latest available packages.
-
-      Run the following command to update your system:
-
-      .. code-block:: bash
-
-         sudo dnf update
+.. selected:: w=graphics
 
    .. selected:: os=rhel
       :heading: Add additional package repositories
@@ -252,9 +269,61 @@ Prerequisites
 
             wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm
             sudo rpm -ivh epel-release-latest-10.noarch.rpm
+            sudo dnf config-manager --enable codeready-builder-for-rhel-10-x86_64-rpms
+
+      .. selected:: rhel-ver=9.7 rhel-ver=9.6 rhel-ver=9.4
 
          .. code-block:: bash
 
+            wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+            sudo rpm -ivh epel-release-latest-9.noarch.rpm
+
+         .. code-block:: bash
+
+            sudo dnf config-manager --enable codeready-builder-for-rhel-9-x86_64-rpms
+
+.. selected:: i=pkgman
+
+   .. selected:: os=oracle-linux
+      :heading: Update your system
+      :heading-level: 3
+
+      Update Oracle Linux to the latest available packages.
+
+      Run the following command to update your system:
+
+   .. selected:: oracle-linux-ver=10
+
+      .. code-block:: bash
+
+         sudo dnf update --releasever=10.1 --exclude=\*release\*
+
+   .. selected:: oracle-linux-ver=9
+
+      .. code-block:: bash
+
+         sudo dnf update --releasever=9.7 --exclude=\*release\*
+
+   .. selected:: oracle-linux-ver=8
+
+      .. code-block:: bash
+
+         sudo dnf update --releasever=8.10 --exclude=\*release\*
+
+   .. selected:: os=rhel
+      :heading: Add additional package repositories
+      :heading-level: 3
+
+      ROCm installation packages depend on packages that aren’t included in
+      the default package repositories. Use the following command to add the
+      necessary repositories.
+
+      .. selected:: rhel-ver=10.1 rhel-ver=10.0
+
+         .. code-block:: bash
+
+            wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm
+            sudo rpm -ivh epel-release-latest-10.noarch.rpm
             sudo dnf config-manager --enable codeready-builder-for-rhel-10-x86_64-rpms
 
       .. selected:: rhel-ver=9.7 rhel-ver=9.6 rhel-ver=9.4
@@ -293,6 +362,7 @@ Prerequisites
 
             wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm
             sudo rpm -ivh epel-release-latest-10.noarch.rpm
+            sudo crb enable
 
       .. selected:: oracle-linux-ver=9
 
@@ -300,6 +370,7 @@ Prerequisites
 
             wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
             sudo rpm -ivh epel-release-latest-9.noarch.rpm
+            sudo crb enable
 
       .. selected:: oracle-linux-ver=8
 
@@ -307,10 +378,8 @@ Prerequisites
 
             wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
             sudo rpm -ivh epel-release-latest-8.noarch.rpm
+            sudo crb enable
 
-      .. code-block:: bash
-
-         sudo crb enable
 
    .. selected:: os=rocky-linux
       :heading: Add additional package repositories
@@ -326,14 +395,30 @@ Prerequisites
 
             wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
             sudo rpm -ivh epel-release-latest-9.noarch.rpm
-
-      .. code-block:: bash
-
-         sudo crb enable
+            sudo crb enable
 
 .. ============================================== INSTALL ADDITIONAL PACKAGES ==
 
 .. selected:: os=ubuntu os=debian os=rhel os=oracle-linux os=rocky-linux os=sles
+
+   .. selected:: w=graphics
+      :heading: Install additional packages
+      :heading-level: 3
+
+      Some ROCm tools require the ``libatomic`` and ``libquadmath`` libraries to run correctly. Install
+      them using your distribution's package manager.
+
+      .. selected:: os=ubuntu
+
+         .. code-block:: bash
+
+            sudo apt install libatomic1 libquadmath0
+
+      .. selected:: os=rhel
+
+         .. code-block:: bash
+
+            sudo dnf install libatomic libquadmath
 
    .. selected:: i=pkgman i=pip i=tar
       :heading: Install additional packages
@@ -355,6 +440,7 @@ Prerequisites
                :color: info
                :icon: tools
                :chevron: down-up
+               :open:
 
                Ryzen APUs require the OEM kernel 6.14 for Ubuntu 24.04. Use the
                following command to install it using ``apt``.
@@ -400,6 +486,17 @@ Prerequisites
 .. selected:: i=pip
 
    .. selected:: os=ubuntu
+
+      .. selected:: ubuntu-ver=26.04
+         :heading: Install Python
+         :heading-level: 3
+
+         Install a supported Python version. For example, to install Python
+         3.14, run the following command:
+
+         .. code-block:: bash
+
+            sudo apt install python3.14 python3.14-venv
 
       .. selected:: ubuntu-ver=24.04
          :heading: Install Python
@@ -532,13 +629,58 @@ Prerequisites
       :heading: Install Python
       :heading-level: 3
 
-      Install a supported Python version: 3.11, 3.12, or 3.13. See `Python
+      Install a supported Python version: 3.11, 3.12, 3.13, or 3.14. See `Python
       Releases for Windows <https://www.python.org/downloads/windows/>`__ for
       installation details.
 
 .. =================================================== GPU ACCESS PERMISSIONS ==
 
 .. selected:: i=pkgman i=pip i=tar
+
+   .. selected:: os=ubuntu os=debian os=rhel os=oracle-linux os=rocky-linux os=sles
+      :heading: Configure permissions for GPU access
+      :heading-level: 3
+
+      There are two primary methods of configuring GPU access for ROCm: group
+      membership or udev rules. Each method has its own advantages. The choice
+      depends on your specific requirements and system management preferences.
+
+      .. tab-set::
+
+         .. tab-item:: Group membership
+
+            By default, GPU access is controlled by membership in the ``video`` and
+            ``render`` Linux system groups. The ``video`` group traditionally handles
+            video device access, while the ``render`` group manages GPU rendering
+            through DRM render nodes.
+
+            .. code-block:: bash
+
+               # Add the current user to the render and video groups
+               sudo usermod -a -G render,video $LOGNAME
+
+         .. tab-item:: udev rules
+
+            udev rules are a flexible, system-wide approach for managing device
+            permissions, eliminating the need for user group management while
+            allowing granular GPU access. To enable them and grant GPU access to
+            all users, run the following command:
+
+            .. code-block:: bash
+
+               sudo tee /etc/udev/rules.d/70-amdgpu.rules << EOF
+               KERNEL=="kfd", GROUP="render", MODE="0666"
+               SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="render", MODE="0666"
+               EOF
+
+               sudo udevadm control --reload-rules
+               sudo udevadm trigger
+
+      .. note::
+
+         To apply all settings, reboot your system.
+
+.. selected:: w=graphics
 
    .. selected:: os=ubuntu os=debian os=rhel os=oracle-linux os=rocky-linux os=sles
       :heading: Configure permissions for GPU access
