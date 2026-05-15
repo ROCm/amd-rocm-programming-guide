@@ -25,7 +25,7 @@ version_number = ".".join(version_numbers)
 left_nav_title = f"AMD ROCm Programming Guide {version_number}"
 
 # ROCm version numbers
-rocm_version = '7.2.3'
+rocm_version = '7.13.0'
 rocm_major_version = '7.0'
 rocm_multi_versions = '7.2.3 7.2' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
 rocm_multi_versions_new = '7.2.3 7.2'
