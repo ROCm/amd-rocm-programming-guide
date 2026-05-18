@@ -69,20 +69,25 @@ class BranchAwareRemoteContent(Directive):
         env = self.state.document.settings.env
         html_context = env.config.html_context
 
-        # Detect a release build two ways:
-        # 1. Local: building from a docs/ branch (official_branch == 0)
-        # 2. Read the Docs: building from a tag (detached HEAD, so git
-        #    rev-parse returns "HEAD" and official_branch is -1, but
-        #    READTHEDOCS_VERSION_TYPE is "tag")
+        version = html_context.get("version", "")
+        if not re.match(r'^\d+\.\d+\.\d+$', version):
+            return None
+
+        # Detect a release build in order of reliability:
+        # 1. Local: building from a docs/ branch (official_branch == 0).
+        # 2. Read the Docs tag build: READTHEDOCS_VERSION_TYPE is "tag".
+        # 3. Read the Docs tag build (fallback): the version number appears
+        #    in the READTHEDOCS_VERSION slug (e.g. "docs-7.13.0" contains
+        #    "7.13.0"). This handles environments where VERSION_TYPE is unset.
+        rtd_version_slug = os.environ.get("READTHEDOCS_VERSION", "")
         is_release = (
             html_context.get("official_branch") == 0
             or os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag"
+            or (rtd_version_slug and version in rtd_version_slug)
         )
 
-        if is_release and "version" in html_context:
-            version = html_context["version"]
-            if re.match(r'^\d+\.\d+\.\d+$', version):
-                return version
+        if is_release:
+            return version
 
         # Not a release build — use the default branch
         return None
