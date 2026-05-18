@@ -69,16 +69,22 @@ class BranchAwareRemoteContent(Directive):
         env = self.state.document.settings.env
         html_context = env.config.html_context
 
-        # Check if building from a tag
-        if "official_branch" in html_context:
-            if html_context["official_branch"] == 0:
-                if "version" in html_context:
-                    # Remove any 'v' prefix
-                    version = html_context["version"]
-                    if re.match(r'^\d+\.\d+\.\d+$', version):
-                        return version
+        # Detect a release build two ways:
+        # 1. Local: building from a docs/ branch (official_branch == 0)
+        # 2. Read the Docs: building from a tag (detached HEAD, so git
+        #    rev-parse returns "HEAD" and official_branch is -1, but
+        #    READTHEDOCS_VERSION_TYPE is "tag")
+        is_release = (
+            html_context.get("official_branch") == 0
+            or os.environ.get("READTHEDOCS_VERSION_TYPE") == "tag"
+        )
 
-        # Not a version tag, so we'll use the default branch
+        if is_release and "version" in html_context:
+            version = html_context["version"]
+            if re.match(r'^\d+\.\d+\.\d+$', version):
+                return version
+
+        # Not a release build — use the default branch
         return None
 
     def get_target_ref(self):
