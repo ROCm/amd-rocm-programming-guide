@@ -629,18 +629,35 @@ class BranchAwareRemoteContent(Directive):
 
         start_line = self.options.get('start_line', 0)
 
+        # Compute the source path relative to Sphinx's srcdir so that
+        # directives like ``.. raw:: html :file: data/foo.html`` resolve
+        # correctly.  The remote :path: option includes the repo's docs/
+        # prefix (e.g. "docs/index.rst"), but locally Sphinx's srcdir IS
+        # the docs/ directory, so stripping that prefix gives a path whose
+        # parent directory matches the local srcdir.
+        env = self.state.document.settings.env
+        srcdir = Path(env.srcdir)
+        remote_path = Path(source_path)
+        try:
+            # Strip the portion of the remote path that matches the srcdir
+            # folder name (e.g. "docs/index.rst" → "index.rst").
+            rel_source_path = str(remote_path.relative_to(remote_path.parts[0]))
+        except (ValueError, IndexError):
+            rel_source_path = source_path
+        viewlist_source = str(srcdir / rel_source_path)
+
         # Create ViewList for parsing
         line_count = 0
         content_list = ViewList()
         for line_no, line in enumerate(content.splitlines()):
             if line_count >= start_line:
-                content_list.append(line, source_path, line_no)
+                content_list.append(line, viewlist_source, line_no)
             line_count += 1
 
         # Create a section node and parse content
         node = nodes.section()
         nested_parse_with_titles(self.state, content_list, node)
-        
+
         # Process images after parsing: download them and update node URIs
         self.process_image_nodes(node, ref)
 
