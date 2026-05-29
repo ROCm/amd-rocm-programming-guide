@@ -25,17 +25,17 @@ version_number = ".".join(version_numbers)
 left_nav_title = f"AMD ROCm Programming Guide {version_number}"
 
 # ROCm version numbers
-rocm_version = '7.2.3'
+rocm_version = '7.2.4'
 rocm_major_version = '7.0'
-rocm_multi_versions = '7.2.3 7.2' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
-rocm_multi_versions_new = '7.2.3 7.2'
-rocm_multi_versions_package_versions = '7.2.3 7.2.0' # however, in multi, the packages use 6.3.0
-rocm_multi_versions_package_versions_new = '7.2.3 7.2.0'
-rocm_directory_version = '7.2.3' # in 6.0 rocm was located in /opt/rocm-6.0.0
-amdgpu_version = '7.2.3' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
-amdgpu_install_version = '7.2.3.70203-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
-udev_version = '30.30.3.0-2327507'
-udev_amdgpu_version = '30.30.3'
+rocm_multi_versions = '7.2.4 7.2' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
+rocm_multi_versions_new = '7.2.4 7.2'
+rocm_multi_versions_package_versions = '7.2.4 7.2.0' # however, in multi, the packages use 6.3.0
+rocm_multi_versions_package_versions_new = '7.2.4 7.2.0'
+rocm_directory_version = '7.2.4' # in 6.0 rocm was located in /opt/rocm-6.0.0
+amdgpu_version = '7.2.4' # directory in https://repo.radeon.com/rocm/apt/ and https://repo.radeon.com/amdgpu-install/
+amdgpu_install_version = '7.2.4.70204-1' # version in https://repo.radeon.com/amdgpu-install/6.0.2/ubuntu/jammy/
+udev_version = '30.30.4.0-2341068'
+udev_amdgpu_version = '30.30.4'
 
 # for PDF output on Read the Docs
 project = "AMD ROCm™ Programming Guide"
@@ -119,7 +119,7 @@ html_theme_options = {
     "announcement": "Additional content can be found on the <a id='rocm-banner' href='https://rocm.docs.amd.com/en/latest/'>ROCm documentation portal</a>.",
     "flavor": "generic",
     "header_title": "AMD ROCm™ Programming Guide",
-    "header_link": "https://rocm-handbook.amd.com/projects/amd-rocm-programming-guide/en/docs-7.2.0/",
+    "header_link": "https://rocm-handbook.amd.com/projects/amd-rocm-programming-guide/en/docs-7.2.4/",
     "version_list_link": False,
     "nav_secondary_items": {
         "GitHub": "https://github.com/ROCm/amd-rocm-programming-guide",
