@@ -1,6 +1,5 @@
 .. meta::
-   :description: Learn how to build the ROCm Core SDK from source using TheRock. Includes references to environment setup guides for Ubuntu 24.04 and Windows 11, plus links to official instructions and compatibility guidance.
-   :keywords: AMD ROCm Core SDK, build ROCm from source, TheRock, ROCm SDK, Ubuntu 24.04, Windows 11, ROCm environment setup, AMD GPU compute, ROCm compatibility, ROCm build guide
+  :robots: noindex
 
 ***********************************
 Build the ROCm Core SDK from source
@@ -91,7 +90,7 @@ portable across Ubuntu and other Linux distributions. To learn more about what
 a ROCm ManyLinux build entails, see `ManyLinux builds
 <https://github.com/ROCm/TheRock/blob/main/docs/design/manylinux_builds.md>`__.
 Refer to `ManyLinux x86_84
-<https://github.com/ROCm/TheRock/blob/main/docs/environment_setup_guide.md#manylinux-x84-64>`__
+<https://github.com/ROCm/TheRock/blob/main/docs/environment_setup_guide.md#manylinux-x86-64>`__
 in the environment setup guide.
 
 Ubuntu 24.04

@@ -2,42 +2,42 @@
 
    .. selected:: os=ubuntu
 
-      The package manager method uses Ubuntu's native package manager ``apt``
+      This installation method uses Ubuntu's native package manager ``apt``
       to install ROCm. This method suits standard system-wide installations
       where ROCm packages should be tracked, updated, and removed through
       system package workflows.
 
    .. selected:: os=debian
 
-      The package manager method uses Debian's native package manager ``apt``
+      This installation method uses Debian's native package manager ``apt``
       to install ROCm. This method suits standard system-wide installations
       where ROCm packages should be tracked, updated, and removed through
       system package workflows.
 
    .. selected:: os=rhel
 
-      The package manager method uses RHEL's native package manager ``dnf`` to
+      This installation method uses RHEL's native package manager ``dnf`` to
       install ROCm. This method suits standard system-wide installations where
       ROCm packages should be tracked, updated, and removed through system
       package workflows.
 
    .. selected:: os=oracle-linux
 
-      The package manager method uses Oracle Linux's native package manager
+      This installation method uses Oracle Linux's native package manager
       ``dnf`` to install ROCm. This method suits standard system-wide
       installations where ROCm packages should be tracked, updated, and removed
       through system package workflows.
 
    .. selected:: os=rocky-linux
 
-      The package manager method uses Rocky Linux's native package manager
+      This installation method uses Rocky Linux's native package manager
       ``dnf`` to install ROCm. This method suits standard system-wide
       installations where ROCm packages should be tracked, updated, and removed
       through system package workflows.
 
    .. selected:: os=sles
 
-      The package manager method uses SLES's native package manager ``zypper``
+      This installation method uses SLES's native package manager ``zypper``
       to install ROCm. This method suits standard system-wide installations
       where ROCm packages should be tracked, updated, and removed through
       system package workflows.
@@ -51,10 +51,10 @@
 
 .. selected:: i=tar
 
-   The tarball method provides ROCm as a self-contained installation from
-   a pre-built archive. This method suits controlled or restricted environments
-   requiring manual placement, updates, and removal outside the system package
-   manager.
+   The tarball installation method provides ROCm as a self-contained
+   installation from a pre-built archive. This method suits controlled or
+   restricted environments requiring manual placement, updates, and removal
+   outside the system package manager.
 
 .. selected:: i=runfile
 
@@ -66,14 +66,18 @@
    post-installation configuration, and offers an interactive command line TUI for
    guided setup.
 
+.. selected:: os=wsl
+
+   Installing ROCm in a Windows Subsystem for Linux (WSL) environment requires
+   building the AMD ROCDXG library from source. See
+   `<https://github.com/ROCm/librocdxg>`__ for more information.
+
 .. selected:: w=graphics
 
    .. selected:: os=ubuntu os=rhel
 
-      Use the ``amdgpu-install`` script to install ROCm, the AMD GPU driver, graphics
-      components, and other packages. It simplifies installation by automating
-      GPU-specific and distro-specific package selection. The script also runs
-      post-installation checks and installs an uninstallation script, allowing you to
-      remove the entire AMDGPU stack with a single command. For more information, see
-      `Using the amdgpu-install script
-      <https://amdgpu-install.readthedocs.io/en/latest/install-script.html>`__.
+      Use the ``amdgpu-install`` script to install ROCm, the AMD GPU driver,
+      graphics components, and other packages. It simplifies installation by
+      automating GPU-specific and distro-specific package selection. The script
+      also runs post-installation checks and installs an uninstallation script,
+      allowing you to remove the entire ROCm stack with a single command.

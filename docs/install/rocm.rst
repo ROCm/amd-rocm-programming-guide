@@ -1,6 +1,5 @@
 .. meta::
-   :description: How to install AMD ROCm for Instinct GPUs, Radeon GPUs, and Ryzen AI APUs
-   :keywords: linux, distro, windows, install, download, setup, quick, start, amdgpu-install, pkg, package, meta, ubuntu, debian, red, hat, rhel, suse, sles, enterprise, server, oracle, azure, centos, rocky, fedora, void, arch, cachy, pop, mint, tar
+  :robots: noindex
 
 :selector-toc2: Installation environment
 :selector-toc2-icon: fa-solid fa-computer

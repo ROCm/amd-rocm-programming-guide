@@ -62,6 +62,7 @@ class BranchAwareRemoteContent(Directive):
         'doc_remap': str,       # Remap doc links to local paths (format: "old_path|new_path" or "old_path|new_text|new_path"), separated by ;;
         'csv_widths': str,      # Add widths to CSV tables (e.g., "33 67")
         'fix_latex_math': str,  # Enable automatic LaTeX math fixes (true/false)
+        'replace_re': str,      # Regex replacements in format "pattern|replacement" (use ;; to separate multiple)
     }
 
     def get_current_version(self):
@@ -424,6 +425,26 @@ class BranchAwareRemoteContent(Directive):
         
         return modified_content
 
+    def apply_regex_replacements(self, content):
+        """Apply regex replacements to content (supports multi-line patterns)"""
+        if 'replace_re' not in self.options:
+            return content
+
+        for spec in self.options['replace_re'].split(';;'):
+            spec = spec.strip()
+            if not spec:
+                continue
+            if '|' not in spec:
+                logger.warning(f'replace_re option must be in format "pattern|replacement", got: "{spec}"')
+                continue
+            pattern, replacement = spec.split('|', 1)
+            replacement = replacement.replace('\\n', '\n')
+            modified = re.sub(pattern, replacement, content, flags=re.DOTALL)
+            if modified != content:
+                logger.info(f'replace_re matched pattern: {pattern}')
+                content = modified
+        return content
+
     def apply_replacements(self, content):
         """Apply text replacements to content"""
         if 'replace' not in self.options:
@@ -628,6 +649,7 @@ class BranchAwareRemoteContent(Directive):
 
         # Apply text replacements before parsing
         content = self.apply_replacements(content)
+        content = self.apply_regex_replacements(content)
 
         # Fix LaTeX math issues if requested
         content = self.process_latex_math(content)

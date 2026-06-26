@@ -83,8 +83,8 @@ subtrees:
         title: Installation
       - file: install/redirect/_post-install
         title: Post-installation
-  - file: install/redirect/_uninstall
-    title: Uninstall ROCm
+      - file: install/redirect/_uninstall
+        title: Uninstall ROCm
   - file: install/build-from-source
     title: Build ROCm from source
   - file: install/third-party-tools

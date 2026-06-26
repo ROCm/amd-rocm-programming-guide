@@ -3,7 +3,7 @@ Prerequisites
 
 .. selected:: os=ubuntu os=debian os=rhel os=oracle-linux os=rocky-linux os=sles
 
-   Before installing the ROCm Core SDK |ROCM_VERSION|, ensure your system meets
+   Before installing ROCm |ROCM_VERSION|, ensure your system meets
    all prerequisites. This includes installing the required dependencies and
    configuring permissions for GPU access. To confirm that your system is
    supported, see the :doc:`Compatibility matrix
@@ -11,7 +11,7 @@ Prerequisites
 
 .. selected:: os=windows
 
-   Before installing the ROCm Core SDK |ROCM_VERSION|, ensure your system meets
+   Before installing ROCm |ROCM_VERSION|, ensure your system meets
    all prerequisites. To confirm that your system is supported, see the
    :doc:`Compatibility matrix </compatibility/compatibility-matrix>`.
 
@@ -88,6 +88,8 @@ Prerequisites
 
                zypper install sudo wget
 
+.. ================================================================== WINDOWS ==
+
 
 .. selected:: os=windows
    :heading: Prepare Windows for ROCm installation
@@ -121,40 +123,84 @@ Prerequisites
    download link, see `AMD Software: Adrenalin Edition 26.5.1
    <https://www.amd.com/en/resources/support-articles/release-notes/RN-RAD-WIN-26-5-1.html#Downloads>`__.
 
+.. selected:: os=wsl
+   :heading: Install AMD Software: Adrenalin Edition
+   :heading-level: 3
+
+   Install AMD Software: Adrenalin Edition for Windows. For details and the
+   download link, see `AMD Software: Adrenalin Edition 26.5.2
+   <https://www.amd.com/en/resources/support-articles/release-notes/RN-RAD-WIN-26-5-2.html#Downloads>`__.
+
+.. selected:: os=wsl
+
+   .. selected:: ubuntu-ver=26.04
+      :heading: Install WSL 2 and Ubuntu 26.04
+      :heading-level: 3
+
+      Install WSL 2 and Ubuntu 26.04 on your Windows system. See `How to install Linux on Windows
+      with WSL (Microsoft Learn)
+      <https://learn.microsoft.com/en-us/windows/wsl/install>`__ for instructions.
+
+      Complete the following instructions in your WSL environment.
+
+   .. selected:: ubuntu-ver=24.04
+      :heading: Install WSL 2 and Ubuntu 24.04
+      :heading-level: 3
+
+      Install WSL 2 and Ubuntu 24.04 on your Windows system. See `How to install Linux on Windows
+      with WSL (Microsoft Learn)
+      <https://learn.microsoft.com/en-us/windows/wsl/install>`__ for instructions.
+
+      Complete the following instructions in your WSL environment.
+
+   .. selected:: ubuntu-ver=22.04
+      :heading: Install WSL 2 and Ubuntu 22.04
+      :heading-level: 3
+
+      Install WSL 2 and Ubuntu 22.04 on your Windows system. See `How to install Linux on Windows
+      with WSL (Microsoft Learn)
+      <https://learn.microsoft.com/en-us/windows/wsl/install>`__ for instructions.
+
+      Complete the following instructions in your WSL environment.
+
 .. =============================================================== OEM KERNEL ==
 
 .. selected:: fam=ryzen
 
    .. selected:: i=pkgman i=pip i=tar
 
-      .. selected:: os=ubuntu
-         :heading: Install the OEM kernel
-         :heading-level: 3
+      .. selected:: os=ubuntu os=wsl
 
-         Ryzen APUs (gfx1150, gfx1151, gfx1152, and gfx1103) require the OEM
-         kernel 6.14 for Ubuntu 24.04. Use the following command to install it
-         using ``apt``.
+         .. selected:: ubuntu-ver=24.04
+            :heading: Install the OEM kernel
+            :heading-level: 3
 
-         .. code-block:: bash
+            Ryzen APUs (gfx1150, gfx1151, gfx1152, and gfx1103) require the OEM
+            kernel 6.14 for Ubuntu 24.04. Use the following command to install it
+            using ``apt``.
 
-            sudo apt update && sudo apt install linux-image-6.14.0-1018-oem
+            .. code-block:: bash
 
-         Reboot your system after installing the OEM kernel.
+               sudo apt update && sudo apt install linux-image-6.14.0-1018-oem
+
+            Reboot your system after installing the OEM kernel.
 
    .. selected:: w=graphics
 
       .. selected:: os=ubuntu
-         :heading: Install the OEM kernel
-         :heading-level: 3
 
-         Ryzen APUs require the OEM kernel 6.14 for Ubuntu 24.04. Use the
-         following command to install it using ``apt``.
+         .. selected:: ubuntu-ver=24.04
+            :heading: Install the OEM kernel
+            :heading-level: 3
 
-         .. code-block:: bash
+            Ryzen APUs require the OEM kernel 6.14 for Ubuntu 24.04. Use the
+            following command to install it using ``apt``.
 
-            sudo apt update && sudo apt install linux-image-6.14.0-1018-oem
+            .. code-block:: bash
 
-         Reboot your system after installing the OEM kernel.
+               sudo apt update && sudo apt install linux-image-6.14.0-1018-oem
+
+            Reboot your system after installing the OEM kernel.
 
 .. ================================================ REGISTER ENTERPRISE LINUX ==
 
@@ -399,7 +445,7 @@ Prerequisites
 
 .. ============================================== INSTALL ADDITIONAL PACKAGES ==
 
-.. selected:: os=ubuntu os=debian os=rhel os=oracle-linux os=rocky-linux os=sles
+.. selected:: os=ubuntu os=debian os=rhel os=oracle-linux os=rocky-linux os=sles os=wsl
 
    .. selected:: w=graphics
       :heading: Install additional packages
@@ -435,44 +481,38 @@ Prerequisites
 
          .. selected:: fam=all
 
-            .. dropdown:: Install the OEM kernel for Ryzen APUs
-               :animate: fade-in-slide-down
-               :color: info
-               :icon: tools
-               :chevron: down-up
-               :open:
+            .. selected:: ubuntu-ver=24.04
 
-               Ryzen APUs require the OEM kernel 6.14 for Ubuntu 24.04. Use the
-               following command to install it using ``apt``.
+               .. dropdown:: Install the OEM kernel for Ryzen APUs
+                  :animate: fade-in-slide-down
+                  :color: info
+                  :icon: tools
+                  :chevron: down-up
+                  :open:
 
-               .. code-block:: bash
+                  Ryzen APUs require the OEM kernel 6.14 for Ubuntu 24.04. Use the
+                  following command to install it using ``apt``.
 
-                  sudo apt update && sudo apt install linux-image-6.14.0-1018-oem
+                  .. code-block:: bash
 
-               Reboot your system after installing the OEM kernel.
+                     sudo apt update && sudo apt install linux-image-6.14.0-1018-oem
+
+                  Reboot your system after installing the OEM kernel.
+
+      .. selected:: os=wsl
+
+         To build the ROCDXG library for WSL, you'll need GCC 11.4 or later and
+         CMake 3.15 or later.
+
+         .. code-block:: bash
+
+            sudo apt install libatomic1 libquadmath0 gcc g++ cmake
 
       .. selected:: os=rhel os=oracle-linux os=rocky-linux
 
          .. code-block:: bash
 
             sudo dnf install libatomic libquadmath
-
-         .. selected:: fam=all
-
-            .. dropdown:: Install the OEM kernel for Ryzen APUs
-               :animate: fade-in-slide-down
-               :color: info
-               :icon: tools
-               :chevron: down-up
-
-               Ryzen APUs require the OEM kernel 6.14 for Ubuntu 24.04. Use the
-               following command to install it using ``dnf``.
-
-               .. code-block:: bash
-
-                  sudo dnf update && sudo dnf install linux-image-6.14.0-1018-oem
-
-               Reboot your system after installing the OEM kernel.
 
       .. selected:: os=sles
 
@@ -637,11 +677,56 @@ Prerequisites
 
 .. selected:: i=pkgman i=pip i=tar
 
-   .. selected:: os=ubuntu os=debian os=rhel os=oracle-linux os=rocky-linux os=sles
+   .. selected:: os=ubuntu
+
+      .. selected:: ubuntu-ver=24.04 ubuntu-ver=22.04
+         :heading: Configure permissions for GPU access
+         :heading-level: 3
+
+         There are two primary methods for configuring GPU access for ROCm: group
+         membership or udev rules. Each method has its own advantages. The choice
+         depends on your specific requirements and system management preferences.
+
+         .. tab-set::
+
+            .. tab-item:: Group membership
+
+               By default, GPU access is controlled by membership in the ``video`` and
+               ``render`` Linux system groups. The ``video`` group traditionally handles
+               video device access, while the ``render`` group manages GPU rendering
+               through DRM render nodes.
+
+               .. code-block:: bash
+
+                  # Add the current user to the render and video groups
+                  sudo usermod -a -G render,video $LOGNAME
+
+            .. tab-item:: udev rules
+
+               udev rules are a flexible, system-wide approach for managing device
+               permissions, eliminating the need for user group management while
+               allowing granular GPU access. To enable them and grant GPU access to
+               all users, run the following command:
+
+               .. code-block:: bash
+
+                  sudo tee /etc/udev/rules.d/70-amdgpu.rules << EOF
+                  KERNEL=="kfd", GROUP="render", MODE="0666"
+                  SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="render", MODE="0666"
+                  EOF
+
+                  sudo udevadm control --reload-rules
+                  sudo udevadm trigger
+
+         .. note::
+
+            To apply all settings, reboot your system.
+
+   .. selected:: os=debian os=rhel os=oracle-linux os=rocky-linux os=sles os=wsl
       :heading: Configure permissions for GPU access
       :heading-level: 3
 
-      There are two primary methods of configuring GPU access for ROCm: group
+      There are two primary methods for configuring GPU access for ROCm: group
       membership or udev rules. Each method has its own advantages. The choice
       depends on your specific requirements and system management preferences.
 
@@ -686,7 +771,7 @@ Prerequisites
       :heading: Configure permissions for GPU access
       :heading-level: 3
 
-      There are two primary methods of configuring GPU access for ROCm: group
+      There are two primary methods for configuring GPU access for ROCm: group
       membership or udev rules. Each method has its own advantages. The choice
       depends on your specific requirements and system management preferences.
 

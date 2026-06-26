@@ -10,6 +10,7 @@
 
       .. selector-option:: 15.7
          :width: 6
+         :value: 15.7
 
    .. selector:: SLES version
       :show-cond: gpu=mi100
@@ -17,6 +18,7 @@
 
       .. selector-option:: 15.7
          :width: 12
+         :value: 15.7
 
    .. selector:: SLES version
       :show-cond: fam=all
@@ -28,3 +30,4 @@
 
       .. selector-option:: 15.7
          :width: 6
+         :value: 15.7

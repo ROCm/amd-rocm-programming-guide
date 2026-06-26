@@ -1,11 +1,11 @@
 Installation
 ============
 
-Before getting started, make sure you've completed the :ref:`rocm-prerequisites`.
-For information about supported operating systems and compatible AMD devices,
-see the :doc:`Compatibility matrix </compatibility/compatibility-matrix>`.
-
 .. selected:: os=windows
+
+   Before getting started, make sure you've completed the :ref:`rocm-prerequisites`.
+   For information about supported operating systems and compatible AMD devices,
+   see the :doc:`Compatibility matrix </compatibility/compatibility-matrix>`.
 
    .. caution::
 
@@ -20,7 +20,7 @@ see the :doc:`Compatibility matrix </compatibility/compatibility-matrix>`.
 
    .. code-block:: bash
 
-      wget https://repo.radeon.com/rocm/installer/rocm-runfile-installer/rocm-rel-7.13/rocm-installer-7.13.0-1.run
+      wget https://repo.radeon.com/rocm/installer/rocm-runfile-installer/rocm-rel-7.13/rocm-installer-7.13.0-3.run
 
 .. selected:: w=graphics
 
@@ -32,22 +32,49 @@ see the :doc:`Compatibility matrix </compatibility/compatibility-matrix>`.
 
       .. selected:: os=ubuntu
 
-         .. code-block:: bash
+         .. selected:: ubuntu-ver=26.04
 
-            sudo apt update
-            wget https://repo.radeon.com/amdgpu-install/7.2.1/ubuntu/noble/amdgpu-install_7.2.1.70201-1_all.deb
-            sudo apt install ./amdgpu-install_7.2.1.70201-1_all.deb
+            .. code-block:: bash
+
+               sudo apt update
+               wget https://repo.radeon.com/amdgpu-install/31.30/ubuntu/resolute/amdgpu-install_31.30.313000-1_all.deb
+               sudo apt install ./amdgpu-install_31.30.313000-1_all.deb
+
+         .. selected:: ubuntu-ver=24.04
+
+            .. code-block:: bash
+
+               sudo apt update
+               wget https://repo.radeon.com/amdgpu-install/31.30/ubuntu/noble/amdgpu-install_31.30.313000-1_all.deb
+               sudo apt install ./amdgpu-install_31.30.313000-1_all.deb
+
+         .. selected:: ubuntu-ver=22.04
+
+            .. code-block:: bash
+
+               sudo apt update
+               wget https://repo.radeon.com/amdgpu-install/31.30/ubuntu/jammy/amdgpu-install_31.30.313000-1_all.deb
+               sudo apt install ./amdgpu-install_31.30.313000-1_all.deb
 
       .. selected:: os=rhel
 
-         .. code-block:: bash
+         .. selected:: rhel-ver=10.1
 
-            wget https://repo.radeon.com/amdgpu-install/7.2.1/rhel/10.1/amdgpu-install-7.2.1.70201-1.el10.noarch.rpm
-            sudo dnf install ./amdgpu-install-7.2.1.70201-1.el10.noarch.rpm
+            .. code-block:: bash
+
+               wget https://repo.radeon.com/amdgpu-install/31.30/rhel/10.1/amdgpu-install-31.30.313000-1.el10.noarch.rpm
+               sudo dnf install ./amdgpu-install-31.30.313000-1.el10.noarch.rpm
+
+         .. selected:: rhel-ver=9.7
+
+            .. code-block:: bash
+
+               wget https://repo.radeon.com/amdgpu-install/31.30/rhel/9.7/amdgpu-install-31.30.313000-1.el9.noarch.rpm
+               sudo dnf install ./amdgpu-install-31.30.313000-1.el9.noarch.rpm
 
 .. ==================================================== INSTALL KERNEL DRIVER ==
 
-.. selected:: os=ubuntu os-debian os=rhel os=oracle-linux os=rocky-linux os=sles
+.. selected:: os=ubuntu os=debian os=rhel os=oracle-linux os=rocky-linux os=sles
 
    .. selected:: i=pkgman i=pip i=tar
 
@@ -62,7 +89,7 @@ see the :doc:`Compatibility matrix </compatibility/compatibility-matrix>`.
 
             For Instinct and Radeon devices, install the AMD GPU Driver (amdgpu).
             See `Ubuntu native installation
-            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-31.30.0/install/detailed-install/package-manager/package-manager-ubuntu.html>`__
+            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/31.30.0-preview/install/detailed-install/package-manager/package-manager-ubuntu.html>`__
             in the AMD Instinct Data Center GPU Documentation.
 
             .. selected:: ubuntu-ver=26.04
@@ -79,35 +106,35 @@ see the :doc:`Compatibility matrix </compatibility/compatibility-matrix>`.
 
             For Instinct and Radeon devices, install the AMD GPU Driver (amdgpu).
             See `Debian native installation
-            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-31.30.0/install/detailed-install/package-manager/package-manager-debian.html>`__
+            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/31.30.0-preview/install/detailed-install/package-manager/package-manager-debian.html>`__
             in the AMD Instinct Data Center GPU Documentation.
 
          .. selected:: os=rhel
 
             For Instinct and Radeon devices, install the AMD GPU Driver (amdgpu).
             See `RHEL native installation
-            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-31.30.0/install/detailed-install/package-manager/package-manager-rhel.html>`__
+            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/31.30.0-preview/install/detailed-install/package-manager/package-manager-rhel.html>`__
             in the AMD Instinct Data Center GPU Documentation.
 
          .. selected:: os=oracle-linux
 
             For Instinct and Radeon devices, install the AMD GPU Driver (amdgpu).
             See `Oracle Linux native installation
-            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-31.30.0/install/detailed-install/package-manager/package-manager-ol.html>`__
+            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/31.30.0-preview/install/detailed-install/package-manager/package-manager-ol.html>`__
             in the AMD Instinct Data Center GPU Documentation.
 
          .. selected:: os=rocky-linux
 
             For Instinct and Radeon devices, install the AMD GPU Driver (amdgpu).
             See `Rocky Linux native installation
-            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-31.30.0/install/detailed-install/package-manager/package-manager-rl.html>`__
+            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/31.30.0-preview/install/detailed-install/package-manager/package-manager-rl.html>`__
             in the AMD Instinct Data Center GPU Documentation.
 
          .. selected:: os=sles
 
             For Instinct and Radeon devices, install the AMD GPU Driver (amdgpu).
             See `SLES native installation
-            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-31.30.0/install/detailed-install/package-manager/package-manager-sles.html>`__
+            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/31.30.0-preview/install/detailed-install/package-manager/package-manager-sles.html>`__
             in the AMD Instinct Data Center GPU Documentation.
 
       .. selected:: fam=instinct fam=radeon
@@ -121,42 +148,42 @@ see the :doc:`Compatibility matrix </compatibility/compatibility-matrix>`.
 
             For instructions on installing the AMD GPU Driver (amdgpu), see `Ubuntu native
             installation
-            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-31.30.0/install/detailed-install/package-manager/package-manager-ubuntu.html>`__
+            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/31.30.0-preview/install/detailed-install/package-manager/package-manager-ubuntu.html>`__
             in the AMD Instinct Data Center GPU Documentation.
 
          .. selected:: os=debian
 
             For instructions on installing the AMD GPU Driver (amdgpu), see `Debian native
             installation
-            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-31.30.0/install/detailed-install/package-manager/package-manager-debian.html>`__
+            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/31.30.0-preview/install/detailed-install/package-manager/package-manager-debian.html>`__
             in the AMD Instinct Data Center GPU Documentation.
 
          .. selected:: os=rhel
 
             For instructions on installing the AMD GPU Driver (amdgpu), see `RHEL native
             installation
-            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-31.30.0/install/detailed-install/package-manager/package-manager-rhel.html>`__
+            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/31.30.0-preview/install/detailed-install/package-manager/package-manager-rhel.html>`__
             in the AMD Instinct Data Center GPU Documentation.
 
          .. selected:: os=oracle-linux
 
             For instructions on installing the AMD GPU Driver (amdgpu), see `Oracle Linux native
             installation
-            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-31.30.0/install/detailed-install/package-manager/package-manager-ol.html>`__
+            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/31.30.0-preview/install/detailed-install/package-manager/package-manager-ol.html>`__
             in the AMD Instinct Data Center GPU Documentation.
 
          .. selected:: os=rocky-linux
 
             For instructions on installing the AMD GPU Driver (amdgpu), see `Rocky Linux native
             installation
-            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-31.30.0/install/detailed-install/package-manager/package-manager-rl.html>`__
+            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/31.30.0-preview/install/detailed-install/package-manager/package-manager-rl.html>`__
             in the AMD Instinct Data Center GPU Documentation.
 
          .. selected:: os=sles
 
             For instructions on installing the AMD GPU Driver (amdgpu), see `SLES
             native installation
-            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/docs-31.30.0/install/detailed-install/package-manager/package-manager-sles.html>`__
+            <https://instinct.docs.amd.com/projects/amdgpu-docs/en/31.30.0-preview/install/detailed-install/package-manager/package-manager-sles.html>`__
             in the AMD Instinct Data Center GPU Documentation.
 
       .. selected:: fam=ryzen
@@ -184,19 +211,18 @@ see the :doc:`Compatibility matrix </compatibility/compatibility-matrix>`.
 
       .. code-block:: bash
 
-         bash rocm-installer-7.13.0-1.run deps=install amdgpu
+         bash rocm-installer-7.13.0-3.run deps=install amdgpu
 
       .. note::
 
          Reboot your system after installing the AMD GPU Driver.
-
 
 .. _rocm-install-rocm:
 
 Install ROCm
 ------------
 
-Use the following instructions to install the ROCm Core SDK on your system.
+Use the following instructions to install ROCm packages on your system.
 
 .. ========================================================== PACKAGE MANAGER ==
 
@@ -204,14 +230,14 @@ Use the following instructions to install the ROCm Core SDK on your system.
    :heading: Register ROCm repositories
    :heading-level: 4
 
-   .. selected:: os=ubuntu
+   .. selected:: os=ubuntu os=wsl
 
       Register the ROCm repository with your system's package manager. This lets you install and update
       ROCm packages using ``apt``.
 
       .. selected:: ubuntu-ver=26.04
 
-         .. selected:: fam=instinct fam=all
+         .. selected:: fam=all
 
             .. code-block:: bash
 
@@ -221,12 +247,12 @@ Use the following instructions to install the ROCm Core SDK on your system.
                    gpg --dearmor | sudo tee /etc/apt/keyrings/amdrocm.gpg > /dev/null
 
                sudo tee /etc/apt/sources.list.d/rocm.list << EOF
-               deb [arch=amd64 signed-by=/etc/apt/keyrings/amdrocm.gpg] https://repo.amd.com/rocm/packages/ubuntu2604 stable main
+               deb [arch=amd64 signed-by=/etc/apt/keyrings/amdrocm.gpg] https://repo.amd.com/rocm/packages-multi-arch/ubuntu2604 stable main
                EOF
 
                sudo apt update
 
-         .. selected:: fam=radeon fam=ryzen
+         .. selected:: fam=instinct fam=radeon fam=ryzen
 
             .. code-block:: bash
 
@@ -245,7 +271,7 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
       .. selected:: ubuntu-ver=24.04
 
-         .. selected:: fam=instinct fam=all
+         .. selected:: fam=all
 
             .. code-block:: bash
 
@@ -255,12 +281,12 @@ Use the following instructions to install the ROCm Core SDK on your system.
                    gpg --dearmor | sudo tee /etc/apt/keyrings/amdrocm.gpg > /dev/null
 
                sudo tee /etc/apt/sources.list.d/rocm.list << EOF
-               deb [arch=amd64 signed-by=/etc/apt/keyrings/amdrocm.gpg] https://repo.amd.com/rocm/packages/ubuntu2404 stable main
+               deb [arch=amd64 signed-by=/etc/apt/keyrings/amdrocm.gpg] https://repo.amd.com/rocm/packages-multi-arch/ubuntu2404 stable main
                EOF
 
                sudo apt update
 
-         .. selected:: fam=radeon fam=ryzen
+         .. selected:: fam=instinct fam=radeon fam=ryzen
 
             .. code-block:: bash
 
@@ -279,7 +305,7 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
       .. selected:: ubuntu-ver=22.04
 
-         .. selected:: fam=instinct fam=all
+         .. selected:: fam=all
 
             .. code-block:: bash
 
@@ -289,12 +315,12 @@ Use the following instructions to install the ROCm Core SDK on your system.
                    gpg --dearmor | sudo tee /etc/apt/keyrings/amdrocm.gpg > /dev/null
 
                sudo tee /etc/apt/sources.list.d/rocm.list << EOF
-               deb [arch=amd64 signed-by=/etc/apt/keyrings/amdrocm.gpg] https://repo.amd.com/rocm/packages/ubuntu2204 stable main
+               deb [arch=amd64 signed-by=/etc/apt/keyrings/amdrocm.gpg] https://repo.amd.com/rocm/packages-multi-arch/ubuntu2204 stable main
                EOF
 
                sudo apt update
 
-         .. selected:: fam=radeon fam=ryzen
+         .. selected:: fam=instinct fam=radeon fam=ryzen
 
             .. code-block:: bash
 
@@ -306,7 +332,7 @@ Use the following instructions to install the ROCm Core SDK on your system.
                    gpg --dearmor | sudo tee /etc/apt/keyrings/amdrocm.gpg > /dev/null
 
                sudo tee /etc/apt/sources.list.d/rocm.list << EOF
-               deb [arch=amd64 signed-by=/etc/apt/keyrings/amdrocm.gpg] https://repo.amd.com/rocm/packages/ubuntu2404 stable main
+               deb [arch=amd64 signed-by=/etc/apt/keyrings/amdrocm.gpg] https://repo.amd.com/rocm/packages/ubuntu2204 stable main
                EOF
 
                sudo apt update
@@ -318,33 +344,67 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
       .. selected:: debian-ver=13
 
-         .. code-block:: bash
+         .. selected:: fam=all
 
-            # Download and install GPG key
-            sudo mkdir --parents --mode=0755 /etc/apt/keyrings
-            wget https://repo.amd.com/rocm/packages/gpg/rocm.gpg -O - | \
-                gpg --dearmor | sudo tee /etc/apt/keyrings/amdrocm.gpg > /dev/null
+            .. code-block:: bash
 
-            sudo tee /etc/apt/sources.list.d/rocm.list << EOF
-            deb [arch=amd64 signed-by=/etc/apt/keyrings/amdrocm.gpg] https://repo.amd.com/rocm/packages/debian13 stable main
-            EOF
+               # Download and install GPG key
+               sudo mkdir --parents --mode=0755 /etc/apt/keyrings
+               wget https://repo.amd.com/rocm/packages/gpg/rocm.gpg -O - | \
+                   gpg --dearmor | sudo tee /etc/apt/keyrings/amdrocm.gpg > /dev/null
 
-            sudo apt update
+               sudo tee /etc/apt/sources.list.d/rocm.list << EOF
+               deb [arch=amd64 signed-by=/etc/apt/keyrings/amdrocm.gpg] https://repo.amd.com/rocm/packages-multi-arch/debian13 stable main
+               EOF
+
+               sudo apt update
+
+         .. selected:: fam=instinct fam=radeon fam=ryzen
+
+            .. code-block:: bash
+
+               # Download and install GPG key
+               sudo mkdir --parents --mode=0755 /etc/apt/keyrings
+               wget https://repo.amd.com/rocm/packages/gpg/rocm.gpg -O - | \
+                   gpg --dearmor | sudo tee /etc/apt/keyrings/amdrocm.gpg > /dev/null
+
+               sudo tee /etc/apt/sources.list.d/rocm.list << EOF
+               deb [arch=amd64 signed-by=/etc/apt/keyrings/amdrocm.gpg] https://repo.amd.com/rocm/packages/debian13 stable main
+               EOF
+
+               sudo apt update
 
       .. selected:: debian-ver=12
 
-         .. code-block:: bash
+         .. selected:: fam=all
 
-            # Download and install GPG key
-            sudo mkdir --parents --mode=0755 /etc/apt/keyrings
-            wget https://repo.amd.com/rocm/packages/gpg/rocm.gpg -O - | \
-                gpg --dearmor | sudo tee /etc/apt/keyrings/amdrocm.gpg > /dev/null
+            .. code-block:: bash
 
-            sudo tee /etc/apt/sources.list.d/rocm.list << EOF
-            deb [arch=amd64 signed-by=/etc/apt/keyrings/amdrocm.gpg] https://repo.amd.com/rocm/packages/debian12 stable main
-            EOF
+               # Download and install GPG key
+               sudo mkdir --parents --mode=0755 /etc/apt/keyrings
+               wget https://repo.amd.com/rocm/packages/gpg/rocm.gpg -O - | \
+                   gpg --dearmor | sudo tee /etc/apt/keyrings/amdrocm.gpg > /dev/null
 
-            sudo apt update
+               sudo tee /etc/apt/sources.list.d/rocm.list << EOF
+               deb [arch=amd64 signed-by=/etc/apt/keyrings/amdrocm.gpg] https://repo.amd.com/rocm/packages-multi-arch/debian12 stable main
+               EOF
+
+               sudo apt update
+
+         .. selected:: fam=instinct fam=radeon fam=ryzen
+
+            .. code-block:: bash
+
+               # Download and install GPG key
+               sudo mkdir --parents --mode=0755 /etc/apt/keyrings
+               wget https://repo.amd.com/rocm/packages/gpg/rocm.gpg -O - | \
+                   gpg --dearmor | sudo tee /etc/apt/keyrings/amdrocm.gpg > /dev/null
+
+               sudo tee /etc/apt/sources.list.d/rocm.list << EOF
+               deb [arch=amd64 signed-by=/etc/apt/keyrings/amdrocm.gpg] https://repo.amd.com/rocm/packages/debian12 stable main
+               EOF
+
+               sudo apt update
 
    .. selected:: os=rhel
 
@@ -353,7 +413,23 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
       .. selected:: rhel-ver=10.1 rhel-ver=10.0
 
-         .. selected:: fam=instinct fam=all
+         .. selected:: fam=all
+
+            .. code-block:: bash
+
+               sudo tee /etc/yum.repos.d/rocm.repo <<EOF
+               [rocm]
+               name=ROCm 7.13.0
+               baseurl=https://repo.amd.com/rocm/packages-multi-arch/rhel10/x86_64
+               enabled=1
+               gpgcheck=1
+               gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
+               priority=50
+               EOF
+
+               sudo dnf clean all
+
+         .. selected:: fam=instinct fam=radeon fam=ryzen
 
             .. code-block:: bash
 
@@ -366,27 +442,28 @@ Use the following instructions to install the ROCm Core SDK on your system.
                gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
                priority=50
                EOF
-
-               sudo dnf clean all
-
-         .. selected:: fam=radeon
-
-            .. code-block:: bash
-
-               sudo tee /etc/yum.repos.d/rocm.repo <<EOF
-               [rocm]
-               name=ROCm 7.13.0
-               baseurl=https://repo.amd.com/rocm/packages/rhel10/x86_64
-               enabled=1
-               gpgcheck=1
-               gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
-               priority=50
 
                sudo dnf clean all
 
       .. selected:: rhel-ver=9.7 rhel-ver=9.6 rhel-ver=9.4
 
-         .. selected:: fam=instinct fam=all
+         .. selected:: fam=all
+
+            .. code-block:: bash
+
+               sudo tee /etc/yum.repos.d/rocm.repo <<EOF
+               [rocm]
+               name=ROCm 7.13.0
+               baseurl=https://repo.amd.com/rocm/packages-multi-arch/rhel9/x86_64
+               enabled=1
+               gpgcheck=1
+               gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
+               priority=50
+               EOF
+
+               sudo dnf clean all
+
+         .. selected:: fam=instinct fam=radeon fam=ryzen
 
             .. code-block:: bash
 
@@ -402,36 +479,39 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
                sudo dnf clean all
 
-         .. selected:: fam=radeon
+      .. selected:: rhel-ver=8.10
+
+         .. selected:: fam=all
 
             .. code-block:: bash
 
                sudo tee /etc/yum.repos.d/rocm.repo <<EOF
                [rocm]
                name=ROCm 7.13.0
-               baseurl=https://repo.amd.com/rocm/packages/rhel9/x86_64
+               baseurl=https://repo.amd.com/rocm/packages-multi-arch/rhel8/x86_64
                enabled=1
                gpgcheck=1
                gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
                priority=50
+               EOF
 
                sudo dnf clean all
 
-      .. selected:: rhel-ver=8.10
+         .. selected:: fam=instinct fam=radeon fam=ryzen
 
-         .. code-block:: bash
+            .. code-block:: bash
 
-            sudo tee /etc/yum.repos.d/rocm.repo <<EOF
-            [rocm]
-            name=ROCm 7.13.0
-            baseurl=https://repo.amd.com/rocm/packages/rhel8/x86_64
-            enabled=1
-            gpgcheck=1
-            gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
-            priority=50
-            EOF
+               sudo tee /etc/yum.repos.d/rocm.repo <<EOF
+               [rocm]
+               name=ROCm 7.13.0
+               baseurl=https://repo.amd.com/rocm/packages/rhel8/x86_64
+               enabled=1
+               gpgcheck=1
+               gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
+               priority=50
+               EOF
 
-            sudo dnf clean all
+               sudo dnf clean all
 
    .. selected:: os=oracle-linux
 
@@ -440,12 +520,119 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
       .. selected:: oracle-linux-ver=10
 
+         .. selected:: fam=all
+
+            .. code-block:: bash
+
+               sudo tee /etc/yum.repos.d/rocm.repo <<EOF
+               [rocm]
+               name=ROCm 7.13.0
+               baseurl=https://repo.amd.com/rocm/packages-multi-arch/rhel10/x86_64
+               enabled=1
+               gpgcheck=1
+               gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
+               priority=50
+               EOF
+
+               sudo dnf clean all
+
+         .. selected:: fam=instinct fam=radeon fam=ryzen
+
+            .. code-block:: bash
+
+               sudo tee /etc/yum.repos.d/rocm.repo <<EOF
+               [rocm]
+               name=ROCm 7.13.0
+               baseurl=https://repo.amd.com/rocm/packages/rhel10/x86_64
+               enabled=1
+               gpgcheck=1
+               gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
+               priority=50
+               EOF
+
+               sudo dnf clean all
+
+      .. selected:: oracle-linux-ver=9
+
+         .. selected:: fam=all
+
+            .. code-block:: bash
+
+               sudo tee /etc/yum.repos.d/rocm.repo <<EOF
+               [rocm]
+               name=ROCm 7.13.0
+               baseurl=https://repo.amd.com/rocm/packages-multi-arch/rhel9/x86_64
+               enabled=1
+               gpgcheck=1
+               gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
+               priority=50
+               EOF
+
+               sudo dnf clean all
+
+         .. selected:: fam=instinct fam=radeon fam=ryzen
+
+            .. code-block:: bash
+
+               sudo tee /etc/yum.repos.d/rocm.repo <<EOF
+               [rocm]
+               name=ROCm 7.13.0
+               baseurl=https://repo.amd.com/rocm/packages/rhel9/x86_64
+               enabled=1
+               gpgcheck=1
+               gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
+               priority=50
+               EOF
+
+               sudo dnf clean all
+
+      .. selected:: oracle-linux-ver=8
+
+         .. selected:: fam=all
+
+            .. code-block:: bash
+
+               sudo tee /etc/yum.repos.d/rocm.repo <<EOF
+               [rocm]
+               name=ROCm 7.13.0
+               baseurl=https://repo.amd.com/rocm/packages-multi-arch/rhel8/x86_64
+               enabled=1
+               gpgcheck=1
+               gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
+               priority=50
+               EOF
+
+               sudo dnf clean all
+
+         .. selected:: fam=instinct fam=radeon fam=ryzen
+
+            .. code-block:: bash
+
+               sudo tee /etc/yum.repos.d/rocm.repo <<EOF
+               [rocm]
+               name=ROCm 7.13.0
+               baseurl=https://repo.amd.com/rocm/packages/rhel8/x86_64
+               enabled=1
+               gpgcheck=1
+               gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
+               priority=50
+               EOF
+
+               sudo dnf clean all
+
+   .. selected:: os=rocky-linux
+
+      Register the ROCm repository with your system's package manager. This enables
+      you to install and update ROCm packages using ``dnf``.
+
+      .. selected:: fam=all
+
          .. code-block:: bash
 
             sudo tee /etc/yum.repos.d/rocm.repo <<EOF
             [rocm]
             name=ROCm 7.13.0
-            baseurl=https://repo.amd.com/rocm/packages/rhel10/x86_64
+            baseurl=https://repo.amd.com/rocm/packages-multi-arch/rhel9/x86_64
             enabled=1
             gpgcheck=1
             gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
@@ -454,7 +641,7 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
             sudo dnf clean all
 
-      .. selected:: oracle-linux-ver=9
+      .. selected:: fam=instinct fam=radeon fam=ryzen
 
          .. code-block:: bash
 
@@ -470,41 +657,6 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
             sudo dnf clean all
 
-      .. selected:: oracle-linux-ver=8
-
-         .. code-block:: bash
-
-            sudo tee /etc/yum.repos.d/rocm.repo <<EOF
-            [rocm]
-            name=ROCm 7.13.0
-            baseurl=https://repo.amd.com/rocm/packages/rhel8/x86_64
-            enabled=1
-            gpgcheck=1
-            gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
-            priority=50
-            EOF
-
-            sudo dnf clean all
-
-   .. selected:: os=rocky-linux
-
-      Register the ROCm repository with your system's package manager. This enables
-      you to install and update ROCm packages using ``dnf``.
-
-      .. code-block:: bash
-
-         sudo tee /etc/yum.repos.d/rocm.repo <<EOF
-         [rocm]
-         name=ROCm 7.13.0
-         baseurl=https://repo.amd.com/rocm/packages/rhel9/x86_64
-         enabled=1
-         gpgcheck=1
-         gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
-         priority=50
-         EOF
-
-         sudo dnf clean all
-
    .. selected:: os=sles
 
       Register the ROCm repository with your system's package manager. This enables
@@ -512,41 +664,77 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
       .. selected:: sles-ver=16.0
 
-         .. code-block:: bash
+         .. selected:: fam=all
 
-            sudo tee /etc/zypp/repos.d/rocm.repo <<EOF
-            [rocm]
-            name=ROCm 7.13.0
-            baseurl=https://repo.amd.com/rocm/packages/sles16/x86_64
-            enabled=1
-            gpgcheck=1
-            gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
-            priority=50
-            EOF
+            .. code-block:: bash
 
-            sudo zypper --gpg-auto-import-keys refresh
+               sudo tee /etc/zypp/repos.d/rocm.repo <<EOF
+               [rocm]
+               name=ROCm 7.13.0
+               baseurl=https://repo.amd.com/rocm/packages-multi-arch/sles16/x86_64
+               enabled=1
+               gpgcheck=1
+               gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
+               priority=50
+               EOF
+
+               sudo zypper --gpg-auto-import-keys refresh
+
+         .. selected:: fam=instinct fam=radeon fam=ryzen
+
+            .. code-block:: bash
+
+               sudo tee /etc/zypp/repos.d/rocm.repo <<EOF
+               [rocm]
+               name=ROCm 7.13.0
+               baseurl=https://repo.amd.com/rocm/packages/sles16/x86_64
+               enabled=1
+               gpgcheck=1
+               gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
+               priority=50
+               EOF
+
+               sudo zypper --gpg-auto-import-keys refresh
 
       .. selected:: sles-ver=15.7
 
-         .. code-block:: bash
+         .. selected:: fam=all
 
-            sudo tee /etc/zypp/repos.d/rocm.repo <<EOF
-            [rocm]
-            name=ROCm 7.13.0
-            baseurl=https://repo.amd.com/rocm/packages/sles15/x86_64
-            enabled=1
-            gpgcheck=1
-            gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
-            priority=50
-            EOF
+            .. code-block:: bash
 
-            sudo zypper --gpg-auto-import-keys refresh
+               sudo tee /etc/zypp/repos.d/rocm.repo <<EOF
+               [rocm]
+               name=ROCm 7.13.0
+               baseurl=https://repo.amd.com/rocm/packages-multi-arch/sles15/x86_64
+               enabled=1
+               gpgcheck=1
+               gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
+               priority=50
+               EOF
+
+               sudo zypper --gpg-auto-import-keys refresh
+
+         .. selected:: fam=instinct fam=radeon fam=ryzen
+
+            .. code-block:: bash
+
+               sudo tee /etc/zypp/repos.d/rocm.repo <<EOF
+               [rocm]
+               name=ROCm 7.13.0
+               baseurl=https://repo.amd.com/rocm/packages/sles15/x86_64
+               enabled=1
+               gpgcheck=1
+               gpgkey=https://repo.amd.com/rocm/packages/gpg/rocm.gpg
+               priority=50
+               EOF
+
+               sudo zypper --gpg-auto-import-keys refresh
 
 .. selected:: i=pkgman
    :heading: Install ROCm packages
    :heading-level: 4
 
-   .. selected:: os=ubuntu os=debian
+   .. selected:: os=ubuntu os=debian os=wsl
 
       Use ``apt`` to install the core ROCm packages. See :ref:`ROCm meta
       packages <rocm-install-meta-packages>` for additional installation
@@ -612,6 +800,12 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
             sudo apt install amdrocm7.13-gfx1150
 
+      .. selected:: gfx=gfx1152
+
+         .. code-block:: bash
+
+            sudo apt install amdrocm7.13-gfx1152
+
    .. selected:: os=rhel os=oracle-linux os=rocky-linux
 
       Use ``dnf`` to install the core ROCm packages. See :ref:`ROCm meta
@@ -660,11 +854,41 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
             sudo dnf install amdrocm7.13-gfx110x
 
+      .. selected:: gfx=gfx1030
+
+         .. code-block:: bash
+
+            sudo dnf install amdrocm7.13-gfx103x
+
+      .. selected:: gfx=gfx1151
+
+         .. code-block:: bash
+
+            sudo dnf install amdrocm7.13-gfx1151
+
+      .. selected:: gfx=gfx1150
+
+         .. code-block:: bash
+
+            sudo dnf install amdrocm7.13-gfx1150
+
+      .. selected:: gfx=gfx1152
+
+         .. code-block:: bash
+
+            sudo dnf install amdrocm7.13-gfx1152
+
    .. selected:: os=sles
 
       Use ``zypper`` to install the core ROCm packages. See :ref:`ROCm meta
       packages <rocm-install-meta-packages>` for additional installation
       options.
+
+      .. selected:: fam=all
+
+         .. code-block:: bash
+
+            sudo zypper install amdrocm7.13
 
       .. selected:: gfx=gfx950
 
@@ -695,7 +919,6 @@ Use the following instructions to install the ROCm Core SDK on your system.
 .. selected:: i=pkgman
    :heading: ROCm meta packages
    :heading-level: 5
-   :no-pdf:
 
    .. _rocm-install-meta-packages:
 
@@ -704,6 +927,7 @@ Use the following instructions to install the ROCm Core SDK on your system.
    describes available ROCm meta packages:
 
    .. matrix::
+      :widths: 30 40 30
 
       .. matrix-row::
          :header:
@@ -712,7 +936,7 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
          .. matrix-cell:: Contents
 
-         .. matrix-cell:: Use case and included packages
+         .. matrix-cell:: Use case
 
       .. matrix-row::
 
@@ -778,31 +1002,10 @@ Use the following instructions to install the ROCm Core SDK on your system.
             Core runtime environment.
             Install this to run ROCm applications.
 
-            **Packages:**
-            ``amdrocm-base7.13``,
-            ``amdrocm-sysdeps7.13``,
-            ``amdrocm-llvm7.13``,
-            ``amdrocm-runtime7.13``,
-            ``amdrocm-debugger7.13``,
-            ``amdrocm-blas7.13``,
-            ``amdrocm-rand7.13``,
-            ``amdrocm-fft7.13``,
-            ``amdrocm-solver7.13``,
-            ``amdrocm-sparse7.13``,
-            ``amdrocm-ck7.13``,
-            ``amdrocm-dnn7.13``,
-            ``amdrocm-rccl7.13``,
-            ``amdrocm-rocshmem7.13``,
-            ``amdrocm-math-common7.13``,
-            ``amdrocm-amdsmi7.13``,
-            ``amdrocm-hipify7.13``,
-            ``amdrocm-decode7.13``,
-            ``amdrocm-jpeg7.13``
-
       .. matrix-row::
 
          .. matrix-cell::
-            :show-cond: os=ubuntu os=debian
+            :show-cond: os=ubuntu os=debian os=wsl
 
             .. selected:: gfx=gfx950
 
@@ -955,25 +1158,6 @@ Use the following instructions to install the ROCm Core SDK on your system.
             Development environment.
             Install this to build ROCm applications.
 
-            **Meta package:** ``amdrocm-core7.13``
-
-            **Packages:**
-            ``amdrocm-runtime-dev7.13``,
-            ``amdrocm-llvm-dev7.13``,
-            ``amdrocm-fft-dev7.13``,
-            ``amdrocm-blas-dev7.13``,
-            ``amdrocm-sparse-dev7.13``,
-            ``amdrocm-solver-dev7.13``,
-            ``amdrocm-rand-dev7.13``,
-            ``amdrocm-ccl-dev7.13``,
-            ``amdrocm-opencl-dev7.13``,
-            ``amdrocm-hipblas-common-dev7.13``,
-            ``amdrocm-rccl-dev7.13``,
-            ``amdrocm-rocshmem-dev7.13``,
-            ``amdrocm-dnn-dev7.13``,
-            ``amdrocm-decode-dev7.13``,
-            ``amdrocm-jpeg-dev7.13``
-
       .. matrix-row::
 
          .. matrix-cell::
@@ -982,15 +1166,17 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
          .. matrix-cell:: Profilers, debuggers, and related tools.
 
+         .. matrix-cell:: Install this to profile, debug, and optimize ROCm applications.
+
+      .. matrix-row::
+
          .. matrix-cell::
 
-            Install this to profile, debug, and optimize ROCm applications.
+            ``amdrocm-opencl7.13``
 
-            **Packages:**
-            ``amdrocm-base7.13``,
-            ``amdrocm-amdsmi7.13``,
-            ``amdrocm-profiler-base7.13``,
-            ``amdrocm-profiler7.13``
+         .. matrix-cell:: Components needed to run OpenCL.
+
+         .. matrix-cell:: Install this to run OpenCL applications on ROCm.
 
       .. matrix-row::
 
@@ -1051,20 +1237,8 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
          .. matrix-cell:: The complete ROCm Core SDK including runtimes, compilers, development tools, and dependencies.
 
-         .. matrix-cell::
+         .. matrix-cell:: Install this if you need everything.
 
-            Install this if you need everything.
-
-            **Meta packages:**
-            ``amdrocm-core-dev7.13``,
-            ``amdrocm-developer-tools7.13``
-
-            **Packages:**
-            ``amdrocm-rdc7.13``,
-            ``amdrocm-opencl7.13``
-
-   For a complete list of packages and their legacy equivalents, see
-   :ref:`Linux packages available in ROCm 7.13.0 <linux-packages-available-in-rocm-7-13-0>`.
 
 .. selected:: w=graphics
 
@@ -1089,18 +1263,6 @@ Use the following instructions to install the ROCm Core SDK on your system.
          .. code-block:: bash
 
             sudo amdgpu-install --usecase=rocm --no-dkms
-
-      .. tip::
-
-         To see other ``--usecase`` options, run:
-
-         .. code-block:: bash
-
-            amdgpu-install --list-usecase
-
-         See the `amdgpu-install documentation
-         <https://amdgpu-install.readthedocs.io/en/latest/install-installing.html#installing-or-uninstalling-the-amdgpu-stack>`__
-         for more information.
 
       Reboot your system after installing.
 
@@ -1211,6 +1373,16 @@ Use the following instructions to install the ROCm Core SDK on your system.
             python3.11 -m venv .venv
             source .venv/bin/activate
 
+      .. selected:: oracle-linux-ver=8
+
+         For example, to create and activate a Python 3.11 virtual environment,
+         run the following command:
+
+         .. code-block:: bash
+
+            python3.11 -m venv .venv
+            source .venv/bin/activate
+
    .. selected:: os=rocky-linux
 
       For example, to create and activate a Python 3.11 virtual environment,
@@ -1259,17 +1431,17 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
    .. selected:: fam=all
 
-      Use pip to install the ROCm Core SDK libraries and development tools.
+      Use pip to install the ROCm libraries and development tools.
 
       Run the following command:
 
       .. code-block:: bash
 
-         python -m pip install --index-url https://repo.amd.com/rocm/whl-multi-arch/ "rocm[libraries,devel]"
+         python -m pip install --index-url https://repo.amd.com/rocm/whl-multi-arch/ "rocm[libraries,devel,device-all]"
 
    .. selected:: gfx=gfx950
 
-      Use pip to install the ROCm Core SDK libraries and development tools for
+      Use pip to install the ROCm libraries and development tools for
       your ``gfx950`` GPU.
 
       Run the following command:
@@ -1280,7 +1452,7 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
    .. selected:: gfx=gfx942
 
-      Use pip to install the ROCm Core SDK libraries and development tools for
+      Use pip to install the ROCm libraries and development tools for
       your ``gfx942`` device.
 
       Run the following command:
@@ -1291,7 +1463,7 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
    .. selected:: gfx=gfx90a
 
-      Use pip to install the ROCm Core SDK libraries and development tools.
+      Use pip to install the ROCm libraries and development tools.
 
       Run the following command:
 
@@ -1301,7 +1473,7 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
    .. selected:: gfx=gfx908
 
-      Use pip to install the ROCm Core SDK libraries and development tools.
+      Use pip to install the ROCm libraries and development tools.
 
       Run the following command:
 
@@ -1311,7 +1483,7 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
    .. selected:: gfx=gfx1201
 
-      Use pip to install the ROCm Core SDK libraries and development tools for
+      Use pip to install the ROCm libraries and development tools for
       your ``gfx1201`` GPU.
 
       Run the following command:
@@ -1322,7 +1494,7 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
    .. selected:: gfx=gfx1200
 
-      Use pip to install the ROCm Core SDK libraries and development tools for
+      Use pip to install the ROCm libraries and development tools for
       your ``gfx1200`` GPU.
 
       Run the following command:
@@ -1333,7 +1505,7 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
    .. selected:: gfx=gfx1100 gfx=gfx1101 gfx=gfx1102 gfx=gfx1103
 
-      Use pip to install the ROCm Core SDK libraries and development tools.
+      Use pip to install the ROCm libraries and development tools.
 
       Run the following command:
 
@@ -1341,9 +1513,9 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
          python -m pip install --index-url https://repo.amd.com/rocm/whl/gfx110X-all/ "rocm[libraries,devel]"
 
-   .. selected:: gfx=gfx103x
+   .. selected:: gfx=gfx1030
 
-      Use pip to install the ROCm Core SDK libraries and development tools.
+      Use pip to install the ROCm libraries and development tools.
 
       Run the following command:
 
@@ -1353,7 +1525,7 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
    .. selected:: gfx=gfx1151
 
-      Use pip to install the ROCm Core SDK libraries and development tools for
+      Use pip to install the ROCm libraries and development tools for
       your ``gfx1151`` Ryzen APU.
 
       Run the following command:
@@ -1364,7 +1536,7 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
    .. selected:: gfx=gfx1150
 
-      Use pip to install the ROCm Core SDK libraries and development tools for
+      Use pip to install the ROCm libraries and development tools for
       your ``gfx1150`` Ryzen APU.
 
       Run the following command:
@@ -1375,8 +1547,8 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
    .. selected:: gfx=gfx1152
 
-      Use pip to install the ROCm Core SDK libraries and development tools for
-      your ``gfx1150`` Ryzen APU.
+      Use pip to install the ROCm libraries and development tools for
+      your ``gfx1152`` Ryzen APU.
 
       Run the following command:
 
@@ -1499,6 +1671,16 @@ Use the following instructions to install the ROCm Core SDK on your system.
             mkdir install
             tar -xf *.tar.gz -C install
 
+      .. selected:: gfx=gfx1030
+
+         Use the following commands to download and untar the ROCm tarball.
+
+         .. code-block:: bash
+
+            wget https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx103X-all-7.13.0.tar.gz
+            mkdir install
+            tar -xf *.tar.gz -C install
+
       .. selected:: gfx=gfx1151
 
          Use the following commands to download and untar the ROCm tarball for
@@ -1521,10 +1703,32 @@ Use the following instructions to install the ROCm Core SDK on your system.
             mkdir install
             tar -xf *.tar.gz -C install
 
+      .. selected:: gfx=gfx1152
+
+         Use the following commands to download and untar the ROCm tarball for
+         your ``gfx1152`` GPU.
+
+         .. code-block:: bash
+
+            wget https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx1152-7.13.0.tar.gz
+            mkdir install
+            tar -xf *.tar.gz -C install
+
    .. selected:: os=windows
 
       Download the tarball and extract the contents to ``C:\TheRock\build``.
       Run the following commands in your command prompt:
+
+      .. selected:: fam=all
+
+         .. code-block:: bat
+
+            cd C:\TheRock
+            curl -o therock-dist-windows-multiarch-7.13.0.tar.gz https://repo.amd.com/rocm/tarball-multi-arch/therock-dist-windows-multiarch-7.13.0.tar.gz
+            tar -xzf therock-dist-windows-multiarch-7.13.0.tar.gz -C build --strip-components=1
+
+         - Download link: `therock-dist-windows-multiarch-7.13.0.tar.gz
+           <https://repo.amd.com/rocm/tarball-multi-arch/therock-dist-windows-multiarch-7.13.0.tar.gz>`__
 
       .. selected:: gfx=gfx1201 gfx=gfx1200
 
@@ -1603,49 +1807,61 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
       .. code-block:: bash
 
-         bash rocm-installer-7.13.0-1.run deps=install rocm gfx=gfx950 gpu-access=user
+         bash rocm-installer-7.13.0-3.run deps=install rocm gfx=gfx950 gpu-access=user
 
    .. selected:: gfx=gfx942
 
       .. code-block:: bash
 
-         bash rocm-installer-7.13.0-1.run deps=install rocm gfx=gfx94x gpu-access=user
+         bash rocm-installer-7.13.0-3.run deps=install rocm gfx=gfx94x gpu-access=user
 
    .. selected:: gfx=gfx90a
 
       .. code-block:: bash
 
-         bash rocm-installer-7.13.0-1.run deps=install rocm gfx=gfx90a gpu-access=user
+         bash rocm-installer-7.13.0-3.run deps=install rocm gfx=gfx90a gpu-access=user
 
    .. selected:: gfx=gfx908
 
       .. code-block:: bash
 
-         bash rocm-installer-7.13.0-1.run deps=install rocm gfx=gfx908 gpu-access=user
+         bash rocm-installer-7.13.0-3.run deps=install rocm gfx=gfx908 gpu-access=user
 
    .. selected:: gfx=gfx1201 gfx=gfx1200
 
       .. code-block:: bash
 
-         bash rocm-installer-7.13.0-1.run deps=install rocm gfx=gfx120x gpu-access=user
+         bash rocm-installer-7.13.0-3.run deps=install rocm gfx=gfx120x gpu-access=user
 
    .. selected:: gfx=gfx1100 gfx=gfx1101 gfx=gfx1102 gfx=gfx1103
 
       .. code-block:: bash
 
-         bash rocm-installer-7.13.0-1.run deps=install rocm gfx=gfx110x gpu-access=user
+         bash rocm-installer-7.13.0-3.run deps=install rocm gfx=gfx110x gpu-access=user
+
+   .. selected:: gfx=gfx1030
+
+      .. code-block:: bash
+
+         bash rocm-installer-7.13.0-3.run deps=install rocm gfx=gfx103x gpu-access=user
 
    .. selected:: gfx=gfx1151
 
       .. code-block:: bash
 
-         bash rocm-installer-7.13.0-1.run deps=install rocm gfx=gfx1151 gpu-access=user
+         bash rocm-installer-7.13.0-3.run deps=install rocm gfx=gfx1151 gpu-access=user
 
    .. selected:: gfx=gfx1150
 
       .. code-block:: bash
 
-         bash rocm-installer-7.13.0-1.run deps=install rocm gfx=gfx1150 gpu-access=user
+         bash rocm-installer-7.13.0-3.run deps=install rocm gfx=gfx1150 gpu-access=user
+
+   .. selected:: gfx=gfx1152
+
+      .. code-block:: bash
+
+         bash rocm-installer-7.13.0-3.run deps=install rocm gfx=gfx1152 gpu-access=user
 
 .. selected:: i=runfile
    :heading: ROCm meta components
@@ -1659,6 +1875,7 @@ Use the following instructions to install the ROCm Core SDK on your system.
    The following table describes available ROCm meta components:
 
    .. matrix::
+      :widths: 25 45 30
 
       .. matrix-row::
          :header:
@@ -1747,58 +1964,89 @@ Use the following instructions to install the ROCm Core SDK on your system.
 
       .. code-block:: bash
 
-         bash rocm-installer-7.13.0-1.run deps=install rocm gfx=gfx950 compo=core,core-dev gpu-access=user
+         bash rocm-installer-7.13.0-3.run deps=install rocm gfx=gfx950 compo=core,core-dev gpu-access=user
 
    .. selected:: gfx=gfx942
 
       .. code-block:: bash
 
-         bash rocm-installer-7.13.0-1.run deps=install rocm gfx=gfx94x compo=core,core-dev gpu-access=user
+         bash rocm-installer-7.13.0-3.run deps=install rocm gfx=gfx94x compo=core,core-dev gpu-access=user
 
    .. selected:: gfx=gfx90a
 
       .. code-block:: bash
 
-         bash rocm-installer-7.13.0-1.run deps=install rocm gfx=gfx90a compo=core,core-dev gpu-access=user
+         bash rocm-installer-7.13.0-3.run deps=install rocm gfx=gfx90a compo=core,core-dev gpu-access=user
 
    .. selected:: gfx=gfx908
 
       .. code-block:: bash
 
-         bash rocm-installer-7.13.0-1.run deps=install rocm gfx=gfx908 compo=core,core-dev gpu-access=user
+         bash rocm-installer-7.13.0-3.run deps=install rocm gfx=gfx908 compo=core,core-dev gpu-access=user
 
    .. selected:: gfx=gfx1201 gfx=gfx1200
 
       .. code-block:: bash
 
-         bash rocm-installer-7.13.0-1.run deps=install rocm gfx=gfx120x compo=core,core-dev gpu-access=user
+         bash rocm-installer-7.13.0-3.run deps=install rocm gfx=gfx120x compo=core,core-dev gpu-access=user
 
    .. selected:: gfx=gfx1100 gfx=gfx1101 gfx=gfx1102 gfx=gfx1103
 
       .. code-block:: bash
 
-         bash rocm-installer-7.13.0-1.run deps=install rocm gfx=gfx110x compo=core,core-dev gpu-access=user
+         bash rocm-installer-7.13.0-3.run deps=install rocm gfx=gfx110x compo=core,core-dev gpu-access=user
 
-   .. selected:: gfx=gfx103x
+   .. selected:: gfx=gfx1030
 
       .. code-block:: bash
 
-         bash rocm-installer-7.13.0-1.run deps=install rocm gfx=gfx103x compo=core,core-dev gpu-access=user
+         bash rocm-installer-7.13.0-3.run deps=install rocm gfx=gfx103x compo=core,core-dev gpu-access=user
 
    .. selected:: gfx=gfx1151
 
       .. code-block:: bash
 
-         bash rocm-installer-7.13.0-1.run deps=install rocm gfx=gfx1151 compo=core,core-dev gpu-access=user
+         bash rocm-installer-7.13.0-3.run deps=install rocm gfx=gfx1151 compo=core,core-dev gpu-access=user
 
    .. selected:: gfx=gfx1150
 
       .. code-block:: bash
 
-         bash rocm-installer-7.13.0-1.run deps=install rocm gfx=gfx1150 compo=core,core-dev gpu-access=user
+         bash rocm-installer-7.13.0-3.run deps=install rocm gfx=gfx1150 compo=core,core-dev gpu-access=user
 
    .. selected:: gfx=gfx1152
 
       .. code-block:: bash
 
-         bash rocm-installer-7.13.0-1.run deps=install rocm gfx=gfx1152 compo=core,core-dev gpu-access=user
+         bash rocm-installer-7.13.0-3.run deps=install rocm gfx=gfx1152 compo=core,core-dev gpu-access=user
+
+.. selected:: os=wsl
+   :heading: Build and install the AMD ROCDXG library
+   :heading-level: 3
+
+   1. In your host Windows environment, download and install the `Windows SDK
+      <https://learn.microsoft.com/en-us/windows/apps/windows-sdk/>`__ for
+      Windows 11. Make sure you have the necessary permissions to access the
+      Windows SDK installation files from your WSL environment.
+
+   2. In your WSL environment, clone the ROCDXG library.
+
+      .. code-block:: bash
+
+         git clone https://github.com/ROCm/librocdxg.git
+         cd librocdxg
+
+   3. Build the ROCDXG library using CMake. Set ``WIN_SDK_PATH`` to the Windows SDK
+      include directory for your installed version.
+
+      .. code-block:: bash
+
+         # Set the Windows SDK path (adjust version number if different)
+         export WIN_SDK_PATH="/mnt/c/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0"
+
+         # Build the library
+         mkdir -p build
+         cd build
+         cmake .. -DWIN_SDK="${WIN_SDK_PATH}/shared"
+         make
+         sudo make install

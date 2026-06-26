@@ -1,11 +1,9 @@
 import json
 import html as html_mod
-from sphinx import addnodes as sphinx_addnodes
-from sphinx.transforms import SphinxTransform
 from sphinx.transforms.post_transforms import SphinxPostTransform
 from sphinx.util.docutils import SphinxDirective, directives, nodes
 from pathlib import Path
-from .utils import kv_to_data_attr, normalize_key, logger
+from .utils import kv_to_data_attr, normalize_key, logger, make_unique_id, noop, skip_node, register_output_flags
 
 # ---------------------------------------------------------------------------
 # No static option data: all valid (fam, os, os-ver, install-method)
@@ -428,6 +426,53 @@ class SelectedContent(nodes.General, nodes.Element):
         tag = "section" if node.get("heading", "") else "div"
         translator.body.append(f"</{tag}>")
 
+    @staticmethod
+    def visit_static(translator, node):
+        """Visit handler for static builders (LaTeX/text/man/texinfo).
+
+        Normally SelectorToSectionTransform rewrites every SelectedContent into
+        plain sections before the writer runs, so this handler sees nothing. But
+        when ``rocm_selector_pdf_generation`` is False that transform is skipped
+        for LaTeX, leaving raw SelectedContent nodes in the tree. A plain no-op
+        visit would still let the writer descend into and render all children;
+        skip the whole subtree instead so the conditional install content is
+        genuinely omitted from the PDF.
+        """
+        if not translator.config.rocm_selector_pdf_generation:
+            raise nodes.SkipNode
+        # PDF generation enabled (or a non-LaTeX static builder): let the
+        # already-transformed children render as before.
+
+    @staticmethod
+    def visit_markdown(translator, node):
+        # The Markdown translator (used to generate llms-full.txt) has no
+        # visitor for selector nodes. Render the conditional content inline so
+        # it is not dropped, prefixed with a bold label of its condition (and
+        # heading, when present) so mutually-exclusive variants — e.g.
+        # os=linux vs os=windows — are not conflated into one another.
+        # When Markdown generation is disabled, drop the block entirely.
+        if not translator.config.rocm_selector_markdown_generation:
+            raise nodes.SkipNode
+        heading = node.get("heading", "")
+        # Use this node's own condition (not combined-show-cond): the Markdown
+        # walker descends into nested SelectedContent nodes, each of which emits
+        # its own label, so nesting context is already represented. The combined
+        # value also picks up sibling conditions for top-level blocks.
+        show_cond = node.get("show-cond", "")
+        label_parts = []
+        if show_cond:
+            label_parts.append(show_cond)
+        if heading:
+            label_parts.append(heading)
+        label = " — ".join(label_parts)
+        if label:
+            para = nodes.paragraph()
+            para += nodes.strong(text=label)
+            para.walkabout(translator)
+        for child in node.children:
+            child.walkabout(translator)
+        raise nodes.SkipNode
+
 
 class SelectedContentDirective(SphinxDirective):
     required_arguments = 1  # condition (e.g., os=ubuntu)
@@ -469,8 +514,16 @@ class SelectedContentDirective(SphinxDirective):
 # Node types that are selector UI chrome — always skipped when gathering content
 _SELECTOR_UI = (SelectorGroup, SelectorOption, SelectorInfo)
 
-# Condition keys that are too granular to use for filtering (treat as always-match)
-_IGNORE_KEYS = {"gpu", "gfx", "arch"}
+# Condition keys to treat as always-match during PDF filtering.
+#
+# Empty by design: ``gfx``/``gpu``/``arch`` conditions must be *evaluated*, not
+# ignored. A PDF combo is keyed on (fam, os, os-ver, i) and carries no ``gfx``
+# entry, so a ``gfx=…`` condition falls through to ``_matches``'s "key absent
+# from combo" branch and is correctly excluded — collapsing the many
+# GPU-specific meta-package cells/blocks down to the single ``fam=all`` variant.
+# Previously ``gfx`` was ignored (always-match), which dumped every GPU variant
+# into the PDF (e.g. the 14-column meta-package table).
+_IGNORE_KEYS: set = set()
 
 # Docname prefixes for pages that are HTML-only redirect stubs.
 # These get inlined into the mega-doctree by the LaTeX builder but carry no
@@ -482,7 +535,7 @@ def _is_redirect_stub(node) -> bool:
     """Return True for HTML-only redirect stub pages inlined by the LaTeX builder.
 
     Sphinx's ``inline_all_toctrees`` wraps each inlined document in a
-    ``sphinx_addnodes.start_of_file`` container rather than exposing the
+    ``sphinx.addnodes.start_of_file`` container rather than exposing the
     inner section directly, so detection must work for any node type.
 
     Three strategies in order:
@@ -567,6 +620,55 @@ def _make_pdf_id(*parts: str) -> str:
     return id_ or "pdf-" + raw.replace(".", "-").replace(" ", "-").lower()
 
 
+def _iter_matrix_own(start, cls_name):
+    """Yield descendants of *start* whose class is *cls_name*, stopping at a
+    nested matrix table so an inner matrix's rows/cells are not pulled into the
+    outer grid.
+
+    The matrix nodes live in a sibling extension; they are matched by class
+    name rather than imported so this module stays decoupled from the matrix
+    package (the import path differs across repo layouts).
+    """
+    for child in start.children:
+        if type(child).__name__ == "CustomTable":
+            continue  # boundary: a nested matrix owns its own rows/cells
+        if type(child).__name__ == cls_name:
+            yield child
+        yield from _iter_matrix_own(child, cls_name)
+
+
+def _filter_matrix(table_node, combo: dict, id_prefix: str = ""):
+    """Return a deep copy of a matrix ``CustomTable`` filtered for *combo*.
+
+    In HTML, matrix rows/cells carrying a ``show-cond`` are shown or hidden by
+    JavaScript for the selected device. The PDF has no JavaScript, so without
+    filtering every conditional cell would render — e.g. all 11 GPU-specific
+    package-name cells exploding a 3-column table into 14 columns. This drops
+    rows and cells whose ``show-cond`` does not match *combo*, then filters any
+    ``SelectedContent`` nested inside a surviving cell (so its per-GPU variants
+    collapse to the matching one).
+    """
+    new_table = table_node.deepcopy()
+    for row in list(_iter_matrix_own(new_table, "CustomTableRow")):
+        row_cond = row.get("show-cond", "")
+        if row_cond and not _matches(row_cond, combo):
+            row.parent.remove(row)
+            continue
+        for cell in list(_iter_matrix_own(row, "CustomTableCell")):
+            cell_cond = cell.get("show-cond", "")
+            if cell_cond and not _matches(cell_cond, combo):
+                cell.parent.remove(cell)
+                continue
+            if list(cell.findall(SelectedContent)):
+                filtered: list = []
+                _gather_content(cell.children, combo, filtered, id_prefix)
+                cell.children = []
+                for c in filtered:
+                    c.parent = cell
+                    cell.children.append(c)
+    return new_table
+
+
 def _gather_content(children, combo: dict, into: list, id_prefix: str = ""):
     """Recursively collect content nodes that match *combo*.
 
@@ -629,6 +731,12 @@ def _gather_content(children, combo: dict, into: list, id_prefix: str = ""):
                 for item in inner:
                     new_section += item
                 into.append(new_section)
+        elif type(child).__name__ == "CustomTable":
+            # A matrix table: filter its rows/cells by show-cond for this combo
+            # (JavaScript does this in HTML; the PDF has no JS). Keep the custom
+            # node type intact — MatrixToTableTransform converts it to a docutils
+            # table later.
+            into.append(_filter_matrix(child, combo, id_prefix))
         elif list(child.findall(SelectedContent)):
             # Container (e.g. dropdown/admonition) wrapping SelectedContent nodes.
             # Deep-copy the container then replace its children with the filtered set
@@ -732,6 +840,55 @@ def _build_combos(sel_opts: dict) -> list:
     return combos
 
 
+def _combo_matches_spec(combo: dict, spec: dict) -> bool:
+    """Return True if *combo* satisfies every key in *spec* (a partial match).
+
+    Keys absent from *spec* act as wildcards. Keys and values are normalized so
+    specs can be written naturally (e.g. ``"Ubuntu"`` matches ``"ubuntu"``).
+
+    The OS-version dimension is stored in *combo* under the ``{os}-ver`` key
+    (e.g. ``ubuntu-ver``); a spec may target it with that exact key or with the
+    generic alias ``ver``, which is resolved against the combo's current OS.
+    """
+    for raw_key, raw_val in spec.items():
+        key = normalize_key(str(raw_key))
+        want = normalize_key(str(raw_val))
+
+        if key == "ver":
+            os_val = combo.get("os")
+            key = f"{os_val}-ver" if os_val is not None else "ver"
+
+        if key not in combo:
+            return False
+        if normalize_key(str(combo[key])) != want:
+            return False
+    return True
+
+
+def _filter_combos_for_pdf(all_combos: list, specs: list) -> list:
+    """Keep only combos matching at least one spec dict in *specs*.
+
+    Each entry of *specs* must be a dict of ``{dimension: value}`` constraints.
+    Non-dict entries are ignored with a warning so a malformed config value
+    degrades to "match nothing extra" rather than crashing the build.
+    """
+    valid_specs = []
+    for spec in specs:
+        if isinstance(spec, dict):
+            valid_specs.append(spec)
+        else:
+            logger.warning(
+                "rocm_selector_pdf_generation list entries must be dicts, "
+                "got %r; ignoring it.",
+                spec,
+            )
+    return [
+        (combo, labels)
+        for combo, labels in all_combos
+        if any(_combo_matches_spec(combo, spec) for spec in valid_specs)
+    ]
+
+
 class SelectorPDFReorganizeTransform(SphinxPostTransform):
     """Reorganize the install page for PDF/LaTeX output.
 
@@ -754,6 +911,10 @@ class SelectorPDFReorganizeTransform(SphinxPostTransform):
 
     def apply(self):
         if self.app.builder.format != "latex":
+            return
+
+        # PDF generation disabled: skip the per-combo install-page reorganization.
+        if not self.config.rocm_selector_pdf_generation:
             return
 
         all_selected = list(self.document.findall(SelectedContent))
@@ -810,6 +971,25 @@ class SelectorPDFReorganizeTransform(SphinxPostTransform):
         # ------------------------------------------------------------------
         sel_opts = _collect_selector_options(chapter)
         all_combos = _build_combos(sel_opts)
+
+        # Tri-state rocm_selector_pdf_generation: a list value restricts output
+        # to the combos matching one of its spec dicts. (True generates all;
+        # False never reaches here — the early-return guard above handles it.)
+        pdf_setting = self.config.rocm_selector_pdf_generation
+        if isinstance(pdf_setting, list):
+            total = len(all_combos)
+            all_combos = _filter_combos_for_pdf(all_combos, pdf_setting)
+            logger.info(
+                "rocm_selector_pdf_generation filter: keeping %d of %d install "
+                "combinations for PDF.",
+                len(all_combos), total,
+            )
+            if not all_combos:
+                logger.warning(
+                    "rocm_selector_pdf_generation filter matched no install "
+                    "combinations; the install chapter will contain only its "
+                    "preamble. Check the dimension names/values in the filter."
+                )
 
         # ------------------------------------------------------------------
         # Build the new chapter contents: preamble + per-combo sections.
@@ -909,6 +1089,18 @@ class SelectorPDFReorganizeTransform(SphinxPostTransform):
             child.parent = chapter
             chapter += child
 
+        # IDs built by _make_pdf_id are combo-derived and never registered with
+        # the document, so a heading repeated across combos (e.g. a shared
+        # "Prerequisites" step) yields duplicate section IDs. Reassign every new
+        # section a document-unique ID so PDF/HTML cross-references resolve to
+        # the correct target.
+        for section in chapter.findall(nodes.section):
+            old_ids = section["ids"]
+            base = old_ids[0] if old_ids else (section.get("names") or ["sec"])[0]
+            unique = make_unique_id(self.document, base)
+            section["ids"] = [unique]
+            section["names"] = [unique]
+
 
 class SelectorToSectionTransform(SphinxPostTransform):
     """Convert SelectedContent nodes to proper docutils structures for non-HTML builders.
@@ -924,12 +1116,24 @@ class SelectorToSectionTransform(SphinxPostTransform):
       is correct behaviour for a static format.
 
     The HTML path is untouched: the transform exits immediately for HTML builds.
+    The Markdown path (llms-full.txt) is also left untouched — it runs under the
+    HTML builder and renders SelectedContent via the dedicated Markdown node
+    handler instead.
     """
 
     default_priority = 490  # run before MatrixToTableTransform (500)
 
     def apply(self):
         if self.app.builder.format == "html":
+            return
+
+        # PDF generation disabled: skip converting SelectedContent for LaTeX.
+        # The nodes' latex visitors are no-ops, so the conditional content is
+        # simply omitted from the PDF. Other non-HTML builders still convert.
+        if (
+            self.app.builder.format == "latex"
+            and not self.config.rocm_selector_pdf_generation
+        ):
             return
 
         # Collect upfront so that replacing nodes mid-traversal is safe.
@@ -941,7 +1145,10 @@ class SelectorToSectionTransform(SphinxPostTransform):
 
             if heading:
                 # Replace with a proper section so the heading appears in the PDF.
-                sec_id = nodes.make_id(heading) or nodes.make_id("pdf-" + heading)
+                # Headings repeat across conditional blocks (e.g. "Prerequisites"
+                # under each OS), so the ID must be deduplicated against the
+                # document or cross-references collapse onto the first match.
+                sec_id = make_unique_id(self.document, heading)
                 section = nodes.section(ids=[sec_id], names=[sec_id])
                 section += nodes.title(text=heading)
                 for child in node.children[:]:
@@ -950,51 +1157,49 @@ class SelectorToSectionTransform(SphinxPostTransform):
             else:
                 # No heading — splice children directly into the parent so the
                 # SelectedContent wrapper disappears without dropping any content.
-                parent = node.parent
-                idx = parent.children.index(node)
-                parent.children[idx : idx + 1] = node.children[:]
-
-
-def _skip_visit(translator, node):
-    raise nodes.SkipNode
-
-
-def _noop(translator, node):
-    pass
+                # replace_self routes through Element.replace, which reparents
+                # each spliced child (sets .parent/.document); a raw children
+                # slice assignment would leave them pointing at the detached
+                # wrapper and corrupt later transforms/translators.
+                node.replace_self(node.children[:])
 
 
 def setup(app):
     app.add_node(
         SelectorGroup,
         html=(SelectorGroup.visit_html, SelectorGroup.depart_html),
-        latex=(_skip_visit, _noop),
-        text=(_skip_visit, _noop),
-        man=(_skip_visit, _noop),
-        texinfo=(_skip_visit, _noop),
+        markdown=(skip_node, noop),
+        latex=(skip_node, noop),
+        text=(skip_node, noop),
+        man=(skip_node, noop),
+        texinfo=(skip_node, noop),
     )
     app.add_node(
         SelectorInfo,
         html=(SelectorInfo.visit_html, SelectorInfo.depart_html),
-        latex=(_skip_visit, _noop),
-        text=(_skip_visit, _noop),
-        man=(_skip_visit, _noop),
-        texinfo=(_skip_visit, _noop),
+        markdown=(skip_node, noop),
+        latex=(skip_node, noop),
+        text=(skip_node, noop),
+        man=(skip_node, noop),
+        texinfo=(skip_node, noop),
     )
     app.add_node(
         SelectorOption,
         html=(SelectorOption.visit_html, SelectorOption.depart_html),
-        latex=(_skip_visit, _noop),
-        text=(_skip_visit, _noop),
-        man=(_skip_visit, _noop),
-        texinfo=(_skip_visit, _noop),
+        markdown=(skip_node, noop),
+        latex=(skip_node, noop),
+        text=(skip_node, noop),
+        man=(skip_node, noop),
+        texinfo=(skip_node, noop),
     )
     app.add_node(
         SelectedContent,
         html=(SelectedContent.visit_html, SelectedContent.depart_html),
-        latex=(_noop, _noop),
-        text=(_noop, _noop),
-        man=(_noop, _noop),
-        texinfo=(_noop, _noop),
+        markdown=(SelectedContent.visit_markdown, noop),
+        latex=(SelectedContent.visit_static, noop),
+        text=(SelectedContent.visit_static, noop),
+        man=(SelectedContent.visit_static, noop),
+        texinfo=(SelectedContent.visit_static, noop),
     )
 
     app.add_directive("selector", SelectorGroupDirective)
@@ -1007,9 +1212,17 @@ def setup(app):
     app.add_post_transform(SelectorPDFReorganizeTransform)
     app.add_post_transform(SelectorToSectionTransform)
 
+    register_output_flags(app)
+
     app.connect("env-purge-doc", _purge_selector_pages)
     app.connect("env-merge-info", _merge_selector_pages)
     app.connect("env-updated", _inject_selector_sidebar)
     app.connect("html-page-context", _inject_selector_toc2_context)
 
-    return {"version": "1.5", "parallel_read_safe": True}
+    # The post-transforms mutate each document's own doctree independently and
+    # hold no cross-document state, so parallel writing is safe.
+    return {
+        "version": "1.5",
+        "parallel_read_safe": True,
+        "parallel_write_safe": True,
+    }

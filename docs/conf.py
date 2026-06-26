@@ -25,7 +25,7 @@ version_number = ".".join(version_numbers)
 left_nav_title = f"AMD ROCm Programming Guide {version_number}"
 
 # ROCm version numbers
-rocm_version = '7.13.0'
+rocm_version = '7.14.0'
 rocm_major_version = '7.0'
 rocm_multi_versions = '7.2.3 7.2' # in 6.3, the folder names on repo.radeon.com use 6.3 for minor releases
 rocm_multi_versions_new = '7.2.3 7.2'
@@ -51,6 +51,11 @@ docs_core = ROCmDocs(left_nav_title)
 docs_core.setup()
 
 external_projects_current_project = "amd-rocm-programming-guide"
+
+rocm_selector_pdf_generation = [{"fam": "all", "os": "ubuntu", "ver": "26.04"}, {"fam": "all", "os": "rhel", "ver": "10.1"}, {"fam": "all", "os": "windows"}]
+
+# Generate llms.txt and llms-full.txt (requires the rocm-docs-core[llms] extra).
+rocm_docs_generate_llms = True
 
 # Add the following replacements to every RST file.
 rst_prolog = f"""
@@ -80,39 +85,11 @@ templates_path = ["extension/selector/templates"]
 cpp_id_attributes = ["__global__", "__device__", "__host__", "__forceinline__", "static"]
 cpp_paren_attributes = ["__declspec"]
 
-suppress_warnings = ["etoc.toctree"]
+suppress_warnings = ["etoc.toctree", "etoc.ref", "toc.excluded"]
 
 # Check if the branch is a docs/ branch
 official_branch = run(["git", "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True).stdout.find("docs/")
-
-# Supported linux version numbers
-ubuntu_version_numbers = [('24.04', 'noble'), ('22.04', 'jammy')]
-debian_version_numbers = [('13', 'noble'), ('12', 'jammy')]
-debian_udev_versions = [('13', 'noble', '24.04'), ('12', 'jammy', '22.04')]
-rhel_release_version_numbers = ['10', '9', '8']
-rhel_version_numbers = ['10.1', '10.0', '9.7', '9.6', '9.4', '8.10']
-rhel_multi_versions = ['10.1', '10.0', '9.7', '9.6', '9.4', '8.10']
-sles_version_numbers = ['15.7']
-ol_release_version_numbers = ['10', '9', '8']
-ol_version_numbers = ['10.1', '9.7', '8.10']
-ol_multi_versions = ['10.1', '9.7', '8.10']
-rl_version_numbers = ['9.7']
-rl_multi_versions = ['9.7']
-
-html_context = {
-    "ubuntu_version_numbers" : ubuntu_version_numbers,
-    "debian_version_numbers" : debian_version_numbers,
-    "debian_udev_versions" : debian_udev_versions,
-    "sles_version_numbers" : sles_version_numbers,
-    "rhel_release_version_numbers" : rhel_release_version_numbers,
-    "rhel_version_numbers" : rhel_version_numbers,
-    "rhel_multi_versions" : rhel_multi_versions,
-    "ol_multi_versions" : ol_multi_versions,    
-    "ol_release_version_numbers" : ol_release_version_numbers,
-    "ol_version_numbers" : ol_version_numbers,
-    "rl_version_numbers" : rl_version_numbers,
-    "rl_multi_versions" : rl_multi_versions
-}
+html_context = {}
 
 if os.environ.get("READTHEDOCS", "") == "True":
     html_context["READTHEDOCS"] = True
@@ -120,6 +97,7 @@ if os.environ.get("READTHEDOCS", "") == "True":
 html_theme_options = {
     "announcement": "Additional content can be found on the <a id='rocm-banner' href='https://rocm.docs.amd.com/en/latest/'>ROCm documentation portal</a>.",
     "flavor": "generic",
+    "use_download_button": True,
     "header_title": "AMD ROCm™ Programming Guide",
     "header_link": "https://rocm-handbook.amd.com/projects/amd-rocm-programming-guide/en/docs-7.2.0/",
     "version_list_link": False,
@@ -154,31 +132,30 @@ numfig = False
 # PDF-specific exclusions
 # ---------------------------------------------------------------------------
 
-# Docnames of HTML-only redirect stub pages that should produce no output in
-# the PDF build.  These pages exist solely to give the sidebar JS navigation
-# something to link to; they have no readable content.
-_PDF_EXCLUDED_DOCNAMES = {
-    "install/redirect/_prerequisites",
-    "install/redirect/_install",
-    "install/redirect/_post-install",
-    "install/redirect/_uninstall",
-}
+# Source-file glob for the HTML-only redirect stub pages under
+# install/redirect/.  These pages exist solely to give the sidebar JS
+# navigation something to link to; they have no readable content and must not
+# appear in the PDF.
+_PDF_EXCLUDED_PATTERN = "install/redirect/*"
 
 
-def _suppress_redirect_stubs_for_pdf(app, docname, source):
-    """Replace redirect stub content with an empty stub during PDF builds.
+def _exclude_redirect_stubs_for_pdf(app):
+    """Exclude redirect stub pages from the source set for PDF builds.
 
-    The source-read event fires before Sphinx parses the RST, so replacing
-    the source here means the parsed doctree contains no 'Redirecting…'
-    subsection.  The extension's _is_redirect_stub() heuristic then has
-    nothing to match, and _gather_content() drops the empty section.
+    builder-inited fires before Sphinx discovers source files, so adding the
+    glob to exclude_patterns here means the LaTeX builder never reads or emits
+    these pages.  The generated external-toc still references them, which would
+    warn as 'toctree contains reference to excluded document'; that warning
+    category (sphinx-external-toc's 'etoc.ref') is suppressed via
+    suppress_warnings.  HTML builds are unaffected, so the JS-driven redirect
+    navigation keeps working.
     """
-    if app.builder.format == "latex" and docname in _PDF_EXCLUDED_DOCNAMES:
-        source[0] = ""
+    if app.builder.format == "latex":
+        app.config.exclude_patterns.append(_PDF_EXCLUDED_PATTERN)
 
 
 def setup(app):
-    app.connect("source-read", _suppress_redirect_stubs_for_pdf)
+    app.connect("builder-inited", _exclude_redirect_stubs_for_pdf)
 
 
 # SVG converter configuration is handled by the svg-pdf-converter extension

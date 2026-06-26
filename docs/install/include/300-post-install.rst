@@ -1,11 +1,10 @@
 Post-installation
 =================
 
-.. _rocm-post-install-env:
+After installing ROCm |ROCM_VERSION|, complete these post-installation steps to
+complete your system configuration and validate the installation.
 
-After installing the ROCm Core SDK |ROCM_VERSION|, complete these
-post-installation steps to complete your system configuration and validate the
-installation.
+.. _rocm-post-install-env:
 
 .. selected:: w=compute
 
@@ -85,41 +84,43 @@ installation.
                         EOF
                         source ~/.profile
 
-      .. selected:: os=windows
-         :heading: Configure your environment
-         :heading-level: 3
+.. selected:: os=windows
 
-         Configure environment variables so that ROCm libraries and tools are
-         available on your Windows system.
+   .. selected:: i=tar
+      :heading: Configure your environment
+      :heading-level: 3
 
-         1. **Run command prompt as an administrator** and set the following environment variables.
+      Configure environment variables so that ROCm libraries and tools are
+      available on your Windows system.
 
-            .. code-block:: bat
+      1. **Run command prompt as an administrator** and set the following environment variables.
 
-               setx HIP_DEVICE_LIB_PATH “C:\TheRock\build\lib\llvm\amdgcn\bitcode” /M
-               setx HIP_PATH “C:\TheRock\build” /M
-               setx HIP_PLATFORM “amd” /M
-               setx LLVM_PATH “C:\TheRock\build\lib\llvm” /M
+         .. code-block:: bat
 
-         2. Add the following paths into the PATH environment variable.
+            setx HIP_DEVICE_LIB_PATH “C:\TheRock\build\lib\llvm\amdgcn\bitcode” /M
+            setx HIP_PATH “C:\TheRock\build” /M
+            setx HIP_PLATFORM “amd” /M
+            setx LLVM_PATH “C:\TheRock\build\lib\llvm” /M
 
-            .. code-block:: bat
+      2. Add the following paths into the PATH environment variable.
 
-               setx PATH "%PATH%;C:\TheRock\build\bin" /M
-               setx PATH "%PATH%;C:\TheRock\build\lib\llvm\bin" /M
+         .. code-block:: bat
 
-         3. Open a new command prompt window for the environment variables to take effect. Run ``set``
-            to see the list of active variables.
+            setx PATH "%PATH%;C:\TheRock\build\bin" /M
+            setx PATH "%PATH%;C:\TheRock\build\lib\llvm\bin" /M
 
-            .. code-block:: bat
+      3. Open a new command prompt window for the environment variables to take effect. Run ``set``
+         to see the list of active variables.
 
-               set
+         .. code-block:: bat
+
+            set
 
 .. selected:: os=ubuntu os=debian os=rhel os=oracle-linux os=rocky-linux os=sles
    :heading: Verify your installation
    :heading-level: 3
 
-   Use the following ROCm tools to verify that the ROCm Core SDK is correctly
+   Use the following ROCm tools to verify that the ROCm is correctly
    installed and that your AMD devices are visible to the system.
 
    1. Use ``rocminfo`` to list detected AMD GPUs and confirm that the ROCm
@@ -137,17 +138,17 @@ installation.
 
          .. code-block:: shell-session
 
-            ROCk module version 6.18.4 is loaded
+            ROCk module version 6.16.6 is loaded
             =====================
             HSA System Attributes
             =====================
-            Runtime Version:         1.18
-            Runtime Ext Version:     1.14
+            Runtime Version:         1.21
+            Runtime Ext Version:     1.21
             System Timestamp Freq.:  1000.000000MHz
             Sig. Max Wait Duration:  18446744073709551615 (0xFFFFFFFFFFFFFFFF) (timestamp count)
             Machine Model:           LARGE
             System Endianness:       LITTLE
-            Mwaitx:                  DISABLED
+            Mwaitx:                  ENABLED
             XNACK enabled:           NO
             DMAbuf Support:          YES
             VMM Support:             YES
@@ -158,10 +159,10 @@ installation.
             *******
             Agent 1
             *******
-              Name:                    AMD RYZEN AI MAX+ PRO 395 w/ Radeon 8060S
-              Uuid:                    CPU-XX
-              Marketing Name:          AMD RYZEN AI MAX+ PRO 395 w/ Radeon 8060S
-              Vendor Name:             CPU
+              Name:                    gfx950
+              Uuid:                    GPU-5b920922d0067ea9
+              Marketing Name:          AMD Instinct MI350X
+              Vendor Name:             AMD
 
             ... [output truncated]
 
@@ -179,7 +180,7 @@ installation.
 
          .. code-block:: shell-session
 
-            AMDSMI Tool: 26.3.0+2bd1678d3d | AMDSMI Library version: 26.3.0 | ROCm version: 7.12.0 | amdgpu version: 6.16.13 | hsmp version: N/A | AINIC version: N/A
+            AMDSMI Tool: 26.4.0+3309c611 | AMDSMI Library version: 26.4.0 | ROCm version: 7.13.0 | amdgpu version: 6.16.6 | AINIC version: N/A
 
    .. selected:: i=pip
 
@@ -196,7 +197,7 @@ installation.
    :heading: Verify your installation
    :heading-level: 3
 
-   Use the following ROCm tools to verify that the ROCm Core SDK is correctly
+   Use the following ROCm tools to verify that the ROCm is correctly
    installed and that your AMD devices are visible to the system.
 
    .. selected:: i=pip
@@ -261,6 +262,115 @@ installation.
             multiProcessorCount:              20
 
             ... [output truncated]
+
+.. selected:: os=wsl
+   :heading: Verify your installation
+   :heading-level: 3
+
+   Use ``rocminfo`` to verify that the ROCm is correctly
+   installed and that your AMD devices are visible to the system.
+
+   .. code-block:: bash
+
+      rocminfo
+
+   .. dropdown:: Example output of ``rocminfo``
+      :animate: fade-in-slide-down
+      :color: success
+      :icon: note
+      :chevron: down-up
+
+      .. code-block:: shell-session
+
+         WSL environment detected.
+         =====================
+         HSA System Attributes
+         =====================
+         Runtime Version:         1.21
+         Runtime Ext Version:     1.21
+         System Timestamp Freq.:  1000.000000MHz
+         Sig. Max Wait Duration:  18446744073709551615 (0xFFFFFFFFFFFFFFFF) (timestamp count)
+         Machine Model:           LARGE
+         System Endianness:       LITTLE
+         Mwaitx:                  DISABLED
+         XNACK enabled:           NO
+         DMAbuf Support:          YES
+         VMM Support:             YES
+
+         ==========
+         HSA Agents
+         ==========
+         *******
+         Agent 1
+         *******
+           Name:                    AMD RYZEN AI MAX+ 395 w/ Radeon 8060S
+           Uuid:                    CPU-XX
+           Marketing Name:          AMD RYZEN AI MAX+ 395 w/ Radeon 8060S
+           Vendor Name:             CPU
+           Feature:                 None specified
+           Profile:                 FULL_PROFILE
+           Float Round Mode:        NEAR
+           Max Queue Number:        0(0x0)
+           Queue Min Size:          0(0x0)
+           Queue Max Size:          0(0x0)
+           Queue Type:              MULTI
+           Node:                    0
+           Device Type:             CPU
+           Cache Info:
+             L1:                      49152(0xc000) KB
+           Chip ID:                 0(0x0)
+           Cacheline Size:          64(0x40)
+           BDFID:                   0
+           Internal Node ID:        0
+           Compute Unit:            32
+           SIMDs per CU:            0
+           Shader Engines:          0
+           Shader Arrs. per Eng.:   0
+           Memory Properties:
+           Features:                None
+           Pool Info:
+             Pool 1
+               Segment:                 GLOBAL; FLAGS: FINE GRAINED
+               Size:                    14123020(0xd7800c) KB
+               Allocatable:             TRUE
+               Alloc Granule:           4KB
+               Alloc Recommended Granule:4KB
+               Alloc Alignment:         4KB
+               Accessible by all:       TRUE
+             Pool 2
+               Segment:                 GLOBAL; FLAGS: EXTENDED FINE GRAINED
+               Size:                    14123020(0xd7800c) KB
+               Allocatable:             TRUE
+               Alloc Granule:           4KB
+               Alloc Recommended Granule:4KB
+               Alloc Alignment:         4KB
+               Accessible by all:       TRUE
+             Pool 3
+               Segment:                 GLOBAL; FLAGS: KERNARG, FINE GRAINED
+               Size:                    14123020(0xd7800c) KB
+               Allocatable:             TRUE
+               Alloc Granule:           4KB
+               Alloc Recommended Granule:4KB
+               Alloc Alignment:         4KB
+               Accessible by all:       TRUE
+             Pool 4
+               Segment:                 GLOBAL; FLAGS: COARSE GRAINED
+               Size:                    14123020(0xd7800c) KB
+               Allocatable:             TRUE
+               Alloc Granule:           4KB
+               Alloc Recommended Granule:4KB
+               Alloc Alignment:         4KB
+               Accessible by all:       TRUE
+           ISA Info:
+         *******
+         Agent 2
+         *******
+           Name:                    gfx1151
+           Uuid:                    GPU-ffffffffffffffff
+           Marketing Name:          AMD Radeon(TM) 8060S Graphics
+           Vendor Name:             AMD
+
+         ... [output truncated]
 
 .. selected:: os=ubuntu os=debian os=rhel os=oracle-linux os=rocky-linux os=sles
 
