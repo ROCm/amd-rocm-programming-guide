@@ -7,6 +7,11 @@
          :header:
 
       .. matrix-cell::
+         :show-cond: gpu=max-plus-pro-495 gpu=max-pro-490 gpu=max-pro-485
+
+         `AMD Ryzen AI Max PRO 400 Series <https://www.amd.com/en/products/processors/workstations/mobile.html#tabs-7f0c432fb2-item-296e08633e-tab>`__
+
+      .. matrix-cell::
          :show-cond: gpu=max-pro-395 gpu=max-pro-390 gpu=max-pro-385 gpu=max-pro-380
 
          `AMD Ryzen AI Max PRO 300 Series <https://www.amd.com/en/products/processors/workstations/mobile.html#tabs-7f0c432fb2-item-5116ab7a74-tab>`__
@@ -22,7 +27,7 @@
          `AMD Ryzen AI PRO 400 Series <https://www.amd.com/en/products/processors/workstations/mobile.html#tabs-7f0c432fb2-item-0c42136112-tab>`__
 
       .. matrix-cell::
-         :show-cond: gpu=ai-9-pro-hx-475 gpu=ai-9-pro-hx-470 gpu=ai-9-pro-460
+         :show-cond: gpu=ai-9-hx-pro-475 gpu=ai-9-hx-pro-470 gpu=ai-9-pro-460
 
          `AMD Ryzen AI PRO 400 Series <https://www.amd.com/en/products/processors/laptop/ryzen-for-business.html#tabs-0d174caf43-item-87690677fc-tab>`__
 
@@ -56,17 +61,20 @@
       .. matrix-cell:: Graphics model (iGPU)
          :header:
 
+      .. matrix-cell:: Radeon 8065S
+         :show-cond: gpu=max-plus-pro-495
+
       .. matrix-cell:: Radeon 8060S
          :show-cond: gpu=max-pro-395 gpu=max-395 gpu=max-392 gpu=max-388
 
       .. matrix-cell:: Radeon 8050S
-         :show-cond: gpu=max-pro-390 gpu=max-pro-385 gpu=max-390 gpu=max-385
+         :show-cond: gpu=max-pro-490 gpu=max-pro-485 gpu=max-pro-390 gpu=max-pro-385 gpu=max-390 gpu=max-385
 
       .. matrix-cell:: Radeon 8040S
          :show-cond: gpu=max-pro-380
 
       .. matrix-cell:: Radeon 890M
-         :show-cond: gpu=ai-9-pro-hx-475 gpu=ai-9-pro-hx-470 gpu=ai-9-hx-475 gpu=ai-9-hx-470 gpu=9-hx-pro-375 gpu=9-hx-pro-370 gpu=9-hx-375 gpu=9-hx-370
+         :show-cond: gpu=ai-9-hx-pro-475 gpu=ai-9-hx-pro-470 gpu=ai-9-hx-475 gpu=ai-9-hx-470 gpu=9-hx-pro-375 gpu=9-hx-pro-370 gpu=9-hx-375 gpu=9-hx-370
 
       .. matrix-cell:: Radeon 880M
          :show-cond: gpu=ai-9-pro-465 gpu=ai-9-465 gpu=9-365
@@ -156,4 +164,14 @@
 
       .. matrix-cell::
 
-         `26.5.1 <https://www.amd.com/en/resources/support-articles/release-notes/RN-RAD-WIN-26-5-1.html>`__
+         `26.6.4 <https://www.amd.com/en/resources/support-articles/release-notes/RN-RAD-WIN-26-6-4.html>`__
+
+   .. matrix-row::
+      :show-cond: os=windows
+
+      .. matrix-cell:: Supported Windows OEM Driver version
+         :header:
+
+      .. matrix-cell::
+
+         26.10.28

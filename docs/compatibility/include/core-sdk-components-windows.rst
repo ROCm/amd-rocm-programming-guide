@@ -17,109 +17,109 @@
 
       .. matrix-cell::
 
-         `Composable Kernel 1.3.0 <https://github.com/ROCm/rocm-libraries/tree/release/therock-7.13/projects/composablekernel>`__
+         `Composable Kernel 1.2.0 <https://github.com/ROCm/rocm-libraries/tree/therock-7.14/projects/composablekernel>`__
 
    .. matrix-row::
 
       .. matrix-cell::
 
-         `hipBLAS 3.4.0 <https://github.com/ROCm/rocm-libraries/tree/release/therock-7.13/projects/hipblas>`__
+         `hipBLAS 3.5.0 <https://github.com/ROCm/rocm-libraries/tree/therock-7.14/projects/hipblas>`__
 
    .. matrix-row::
 
       .. matrix-cell::
 
-         `hipBLASLt 1.3.0 <https://github.com/ROCm/rocm-libraries/tree/release/therock-7.13/projects/hipblaslt>`__
+         `hipBLASLt 1.4.1 <https://github.com/ROCm/rocm-libraries/tree/therock-7.14/projects/hipblaslt>`__
 
    .. matrix-row::
 
       .. matrix-cell::
 
-         `hipCUB 4.4.0 <https://github.com/ROCm/rocm-libraries/tree/release/therock-7.13/projects/hipcub>`__
+         `hipCUB 4.5.0 <https://github.com/ROCm/rocm-libraries/tree/therock-7.14/projects/hipcub>`__
 
    .. matrix-row::
 
       .. matrix-cell::
 
-         `hipFFT 1.0.23 <https://github.com/ROCm/rocm-libraries/tree/release/therock-7.13/projects/hipfft>`__
+         `hipFFT 1.0.24 <https://github.com/ROCm/rocm-libraries/tree/therock-7.14/projects/hipfft>`__
 
    .. matrix-row::
 
       .. matrix-cell::
 
-         `hipRAND 3.3.0 <https://github.com/ROCm/rocm-libraries/tree/release/therock-7.13/projects/hiprand>`__
+         `hipRAND 3.4.0 <https://github.com/ROCm/rocm-libraries/tree/therock-7.14/projects/hiprand>`__
 
    .. matrix-row::
 
       .. matrix-cell::
 
-         `hipSOLVER 3.4.0 <https://github.com/ROCm/rocm-libraries/tree/release/therock-7.13/projects/hipsolver>`__
+         `hipSOLVER 3.5.0 <https://github.com/ROCm/rocm-libraries/tree/therock-7.14/projects/hipsolver>`__
 
    .. matrix-row::
 
       .. matrix-cell::
 
-         `hipSPARSE 4.5.0 <https://github.com/ROCm/rocm-libraries/tree/release/therock-7.13/projects/hipsparse>`__
+         `hipSPARSE 4.6.0 <https://github.com/ROCm/rocm-libraries/tree/therock-7.14/projects/hipsparse>`__
 
    .. matrix-row::
 
       .. matrix-cell::
 
-         `hipSPARSELt 0.2.8 <https://github.com/ROCm/rocm-libraries/tree/release/therock-7.13/projects/hipsparselt>`__
+         `hipSPARSELt 0.2.9 <https://github.com/ROCm/rocm-libraries/tree/therock-7.14/projects/hipsparselt>`__
 
    .. matrix-row::
 
       .. matrix-cell::
 
-         `MIOpen 3.5.1 <https://github.com/ROCm/rocm-libraries/tree/release/therock-7.13/projects/miopen>`__
+         `MIOpen 3.5.2 <https://github.com/ROCm/rocm-libraries/tree/therock-7.14/projects/miopen>`__
 
    .. matrix-row::
 
       .. matrix-cell::
 
-         `rocBLAS 5.4.0 <https://github.com/ROCm/rocm-libraries/tree/release/therock-7.13/projects/rocblas>`__
+         `rocBLAS 5.5.0 <https://github.com/ROCm/rocm-libraries/tree/therock-7.14/projects/rocblas>`__
 
    .. matrix-row::
 
       .. matrix-cell::
 
-         `rocFFT 1.0.37 <https://github.com/ROCm/rocm-libraries/tree/release/therock-7.13/projects/rocfft>`__
+         `rocFFT 1.0.38 <https://github.com/ROCm/rocm-libraries/tree/therock-7.14/projects/rocfft>`__
 
    .. matrix-row::
 
       .. matrix-cell::
 
-         `rocPRIM 4.4.0 <https://github.com/ROCm/rocm-libraries/tree/release/therock-7.13/projects/rocprim>`__
+         `rocPRIM 4.5.0 <https://github.com/ROCm/rocm-libraries/tree/therock-7.14/projects/rocprim>`__
 
    .. matrix-row::
 
       .. matrix-cell::
 
-         `rocRAND 4.4.0 <https://github.com/ROCm/rocm-libraries/tree/release/therock-7.13/projects/rocrand>`__
+         `rocRAND 4.5.0 <https://github.com/ROCm/rocm-libraries/tree/therock-7.14/projects/rocrand>`__
 
    .. matrix-row::
 
       .. matrix-cell::
 
-         `rocSOLVER 3.34.0 <https://github.com/ROCm/rocm-libraries/tree/release/therock-7.13/projects/rocsolver>`__
+         `rocSOLVER 3.35.0 <https://github.com/ROCm/rocm-libraries/tree/therock-7.14/projects/rocsolver>`__
 
    .. matrix-row::
 
       .. matrix-cell::
 
-         `rocSPARSE 4.6.0 <https://github.com/ROCm/rocm-libraries/tree/release/therock-7.13/projects/rocsparse>`__
+         `rocSPARSE 4.7.0 <https://github.com/ROCm/rocm-libraries/tree/therock-7.14/projects/rocsparse>`__
 
    .. matrix-row::
 
       .. matrix-cell::
 
-         `rocThrust 4.4.0 <https://github.com/ROCm/rocm-libraries/tree/release/therock-7.13/projects/rocthrust>`__
+         `rocThrust 4.5.0 <https://github.com/ROCm/rocm-libraries/tree/therock-7.14/projects/rocthrust>`__
 
    .. matrix-row::
 
       .. matrix-cell::
 
-         `rocWMMA 2.2.1 <https://github.com/ROCm/rocm-libraries/tree/release/therock-7.13/projects/rocwmma>`__
+         `rocWMMA 2.2.1 <https://github.com/ROCm/rocm-libraries/tree/therock-7.14/projects/rocwmma>`__
 
    .. matrix-row::
 
@@ -127,7 +127,7 @@
 
       .. matrix-cell::
 
-         `ROCm CMake <https://github.com/ROCm/rocm-cmake/tree/release/therock-7.13>`__
+         `ROCm CMake <https://github.com/ROCm/rocm-cmake/tree/therock-7.14>`__
 
    .. matrix-row::
 
@@ -136,25 +136,25 @@
 
       .. matrix-cell::
 
-         `HIP 7.13 <https://github.com/ROCm/rocm-systems/tree/release/therock-7.13/projects/hip>`__
+         `HIP 7.14 <https://github.com/ROCm/rocm-systems/tree/therock-7.14/projects/hip>`__
 
    .. matrix-row::
 
       .. matrix-cell::
 
-         `HIPIFY 7.13 <https://github.com/ROCm/HIPIFY/tree/release/therock-7.13>`__
+         `HIPIFY 7.14 <https://github.com/ROCm/HIPIFY/tree/therock-7.14>`__
 
    .. matrix-row::
 
       .. matrix-cell::
 
-         `LLVM 23.0.0 <https://github.com/ROCm/llvm-project/tree/release/therock-7.13>`__
+         `LLVM 23.0.0 <https://github.com/ROCm/llvm-project/tree/therock-7.14>`__
 
    .. matrix-row::
 
       .. matrix-cell::
 
-         `SPIRV-LLVM-Translator 23.0.0 <https://github.com/ROCm/SPIRV-LLVM-Translator/tree/release/therock-7.13>`__
+         `SPIRV-LLVM-Translator 23.0.0 <https://github.com/ROCm/SPIRV-LLVM-Translator/tree/therock-7.14>`__
 
    .. matrix-row::
 

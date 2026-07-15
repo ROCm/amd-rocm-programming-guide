@@ -7,7 +7,7 @@
          :header:
 
       .. matrix-cell::
-         :show-cond: gpu=ai-r9700 gpu=ai-r9600d
+         :show-cond: gpu=ai-r9700s gpu=ai-r9700 gpu=ai-r9600d
 
          `AMD Radeon AI PRO R9000 Series <https://www.amd.com/en/products/graphics/workstations/radeon-ai-pro.html#tabs-95fa144b96-item-b95ec9e1ca-tab>`__
 
@@ -42,7 +42,7 @@
          :header:
 
       .. matrix-cell:: RDNA 4
-         :show-cond: gpu=ai-r9700 gpu=ai-r9600d gpu=rx-9070-xt gpu=rx-9070-gre gpu=rx-9070 gpu=rx-9060-xt-lp gpu=rx-9060-xt gpu=rx-9060
+         :show-cond: gpu=ai-r9700s gpu=ai-r9700 gpu=ai-r9600d gpu=rx-9070-xt gpu=rx-9070-gre gpu=rx-9070 gpu=rx-9060-xt-lp gpu=rx-9060-xt gpu=rx-9060
 
       .. matrix-cell:: RDNA 3
          :show-cond: gpu=w7900-dual-slot gpu=w7900 gpu=w7800-48gb gpu=w7800 gpu=w7700 gpu=v710 gpu=rx-7900-xtx gpu=rx-7900-xt gpu=rx-7900-gre gpu=rx-7800-xt gpu=rx-7700-xt gpu=rx-7700-xe gpu=rx-7700 gpu=rx-7600
@@ -56,7 +56,7 @@
          :header:
 
       .. matrix-cell:: gfx1201
-         :show-cond: gpu=ai-r9700 gpu=ai-r9600d gpu=rx-9070 gpu=rx-9070-gre gpu=rx-9070-xt
+         :show-cond: gpu=ai-r9700s gpu=ai-r9700 gpu=ai-r9600d gpu=rx-9070 gpu=rx-9070-gre gpu=rx-9070-xt
 
       .. matrix-cell:: gfx1200
          :show-cond: gpu=rx-9060 gpu=rx-9060-xt gpu=rx-9060-xt-lp
@@ -81,11 +81,11 @@
 
       .. matrix-cell::
 
-         26.04 (GA kernel: 7.0)
+         Ubuntu 26.04 (GA kernel: 7.0)
 
-         24.04.4 (GA kernel: 6.8)
+         Ubuntu 24.04.4 (GA kernel: 6.8)
 
-         22.04.5 (GA kernel: 5.15)
+         Ubuntu 22.04.5 (GA kernel: 5.15)
 
    .. matrix-row::
       :show-cond: os=rhel
@@ -95,9 +95,9 @@
 
       .. matrix-cell::
 
-         10.1 (kernel: 6.12.0-124)
+         RHEL 10.2 (kernel: 6.17)
 
-         9.7 (kernel: 5.14.0-611)
+         RHEL 9.8 (kernel: 6.17)
 
    .. matrix-row::
       :show-cond: os=windows
@@ -114,6 +114,8 @@
          :header:
 
       .. matrix-cell::
+
+         `31.40.0 <https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/documentation/release-notes.html>`__
 
          `31.30.0 <https://instinct.docs.amd.com/projects/amdgpu-docs/en/31.30.0-preview/documentation/release-notes.html>`__
 
@@ -147,4 +149,14 @@
 
       .. matrix-cell::
 
-         `26.5.1 <https://www.amd.com/en/resources/support-articles/release-notes/RN-RAD-WIN-26-5-1.html>`__
+         `26.6.4 <https://www.amd.com/en/resources/support-articles/release-notes/RN-RAD-WIN-26-6-4.html>`__
+
+   .. matrix-row::
+      :show-cond: os=windows
+
+      .. matrix-cell:: Supported Windows OEM Driver version
+         :header:
+
+      .. matrix-cell::
+
+         26.10.28
