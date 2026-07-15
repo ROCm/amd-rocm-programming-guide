@@ -13,67 +13,73 @@ Uninstalling
 
             .. code-block:: bash
 
-               sudo apt autoremove amdrocm7.13
+               sudo apt autoremove amdrocm7.14
 
          .. selected:: gfx=gfx950
 
             .. code-block:: bash
 
-               sudo apt autoremove amdrocm7.13-gfx950
+               sudo apt autoremove amdrocm7.14-gfx950
 
          .. selected:: gfx=gfx942
 
             .. code-block:: bash
 
-               sudo apt autoremove amdrocm7.13-gfx94x
+               sudo apt autoremove amdrocm7.14-gfx94x
 
          .. selected:: gfx=gfx90a
 
             .. code-block:: bash
 
-               sudo apt autoremove amdrocm7.13-gfx90a
+               sudo apt autoremove amdrocm7.14-gfx90a
 
          .. selected:: gfx=gfx908
 
             .. code-block:: bash
 
-               sudo apt autoremove amdrocm7.13-gfx908
+               sudo apt autoremove amdrocm7.14-gfx908
 
          .. selected:: gfx=gfx1201 gfx=gfx1200
 
             .. code-block:: bash
 
-               sudo apt autoremove amdrocm7.13-gfx120x
+               sudo apt autoremove amdrocm7.14-gfx120x
 
          .. selected:: gfx=gfx1100 gfx=gfx1101 gfx=gfx1102 gfx=gfx1103
 
             .. code-block:: bash
 
-               sudo apt autoremove amdrocm7.13-gfx110x
+               sudo apt autoremove amdrocm7.14-gfx110x
 
          .. selected:: gfx=gfx1030
 
             .. code-block:: bash
 
-               sudo apt autoremove amdrocm7.13-gfx103x
+               sudo apt autoremove amdrocm7.14-gfx103x
 
          .. selected:: gfx=gfx1151
 
             .. code-block:: bash
 
-               sudo apt autoremove amdrocm7.13-gfx1151
+               sudo apt autoremove amdrocm7.14-gfx1151
 
          .. selected:: gfx=gfx1150
 
             .. code-block:: bash
 
-               sudo apt autoremove amdrocm7.13-gfx1150
+               sudo apt autoremove amdrocm7.14-gfx1150
 
          .. selected:: gfx=gfx1152
 
             .. code-block:: bash
 
-               sudo apt autoremove amdrocm7.13-gfx1152
+               sudo apt autoremove amdrocm7.14-gfx1152
+
+         .. selected:: gfx=gfx1153
+
+            .. code-block:: bash
+
+               sudo apt autoremove amdrocm7.14-gfx1153
 
       .. selected:: os=rhel os=oracle-linux os=rocky-linux
 
@@ -81,67 +87,73 @@ Uninstalling
 
             .. code-block:: bash
 
-               sudo dnf remove amdrocm7.13
+               sudo dnf remove amdrocm7.14
 
          .. selected:: gfx=gfx950
 
             .. code-block:: bash
 
-               sudo dnf remove amdrocm7.13-gfx950
+               sudo dnf remove amdrocm7.14-gfx950
 
          .. selected:: gfx=gfx942
 
             .. code-block:: bash
 
-               sudo dnf remove amdrocm7.13-gfx94x
+               sudo dnf remove amdrocm7.14-gfx94x
 
          .. selected:: gfx=gfx90a
 
             .. code-block:: bash
 
-               sudo dnf remove amdrocm7.13-gfx90a
+               sudo dnf remove amdrocm7.14-gfx90a
 
          .. selected:: gfx=gfx908
 
             .. code-block:: bash
 
-               sudo dnf remove amdrocm7.13-gfx908
+               sudo dnf remove amdrocm7.14-gfx908
 
          .. selected:: gfx=gfx1201 gfx=gfx1200
 
             .. code-block:: bash
 
-               sudo dnf remove amdrocm7.13-gfx120x
+               sudo dnf remove amdrocm7.14-gfx120x
 
          .. selected:: gfx=gfx1100 gfx=gfx1101 gfx=gfx1102 gfx=gfx1103
 
             .. code-block:: bash
 
-               sudo dnf remove amdrocm7.13-gfx110x
+               sudo dnf remove amdrocm7.14-gfx110x
 
          .. selected:: gfx=gfx1030
 
             .. code-block:: bash
 
-               sudo dnf remove amdrocm7.13-gfx103x
+               sudo dnf remove amdrocm7.14-gfx103x
 
          .. selected:: gfx=gfx1151
 
             .. code-block:: bash
 
-               sudo dnf remove amdrocm7.13-gfx1151
+               sudo dnf remove amdrocm7.14-gfx1151
 
          .. selected:: gfx=gfx1150
 
             .. code-block:: bash
 
-               sudo dnf remove amdrocm7.13-gfx1150
+               sudo dnf remove amdrocm7.14-gfx1150
 
          .. selected:: gfx=gfx1152
 
             .. code-block:: bash
 
-               sudo dnf remove amdrocm7.13-gfx1152
+               sudo dnf remove amdrocm7.14-gfx1152
+
+         .. selected:: gfx=gfx1153
+
+            .. code-block:: bash
+
+               sudo dnf remove amdrocm7.14-gfx1153
 
       .. selected:: os=sles
 
@@ -195,7 +207,7 @@ Uninstalling
 
          .. code-block:: bash
 
-            sudo rm -rf ~/.cache/pip
+            rm -rf ~/.cache/pip
 
       .. selected:: os=windows
 
@@ -209,7 +221,7 @@ Uninstalling
 
          .. code-block:: bash
 
-            sudo rm -rf .venv
+            rm -rf .venv
 
       .. selected:: os=windows
 
@@ -306,13 +318,13 @@ Uninstalling
 
       .. code-block:: bash
 
-         bash rocm-installer-7.13.0-3.run uninstall-rocm
+         bash rocm-installer-7.14.0-5.run uninstall-rocm
 
    2. Use the following command to uninstall the AMD GPU Driver (amdgpu).
 
       .. code-block:: bash
 
-         bash rocm-installer-7.13.0-3.run uninstall-amdgpu
+         bash rocm-installer-7.14.0-5.run uninstall-amdgpu
 
 .. selected:: w=graphics
 

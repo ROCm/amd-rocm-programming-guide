@@ -2,7 +2,7 @@
    :key: fam
 
    .. selector-option:: All
-      :value: all w=compute
+      :value: all
       :width: 25%
 
    .. selector-option:: AMD Instinct™
@@ -21,6 +21,19 @@
       :toc-label: AMD Ryzen
 
 .. selected:: fam=radeon fam=ryzen
+
+   .. selector:: Use case
+      :key: w
+
+      .. selector-option:: Mixed graphics and compute
+         :value: graphics
+         :width: 50%
+
+      .. selector-option:: Compute
+         :value: compute
+         :width: 50%
+
+.. selected:: fam=all
 
    .. selector:: Use case
       :key: w

@@ -1,7 +1,7 @@
 .. selected:: os=debian
 
    .. selector:: Debian version
-      :show-cond: gpu=mi355x gpu=mi325x gpu=mi350x gpu=mi300x
+      :show-cond: gpu=mi355x gpu=mi325x gpu=mi350x gpu=mi350p gpu=mi300x
       :key: debian-ver
 
       .. selector-option:: 13

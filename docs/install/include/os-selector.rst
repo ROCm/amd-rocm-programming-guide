@@ -34,12 +34,21 @@
 
          .. selector-option:: Ubuntu
             :value: ubuntu
-            :width: 50%
+            :width: 25%
+
+         .. selector-option:: Debian
+            :value: debian
+            :width: 25%
 
          .. selector-option:: RHEL
             :value: rhel
-            :width: 50%
+            :width: 25%
             :toc-label: Red Hat Enterprise Linux
+
+         .. selector-option:: SLES
+            :value: sles
+            :width: 25%
+            :toc-label: SUSE Linux Enterprise Server
 
       .. selector:: Linux distribution
          :key: os
@@ -176,7 +185,7 @@
                :value: windows
                :width: 3
 
-            .. selector-option:: WSL
+            .. selector-option:: WSL2
                :value: wsl i=pkgman
                :width: 3
 
@@ -214,7 +223,7 @@
             :value: windows
             :width: 3
 
-         .. selector-option:: WSL
+         .. selector-option:: WSL2
             :value: wsl i=pkgman
             :width: 3
 
@@ -267,7 +276,7 @@
                :value: windows
                :width: 3
 
-            .. selector-option:: WSL
+            .. selector-option:: WSL2
                :value: wsl i=pkgman
                :width: 3
 
@@ -305,7 +314,7 @@
 
       .. selector:: Operating system
          :key: os
-         :show-cond: gpu=max-pro-395 gpu=max-pro-390 gpu=max-pro-385 gpu=max-pro-380 gpu=max-395 gpu=max-392 gpu=max-388 gpu=max-390 gpu=max-385 gpu=ai-9-hx-pro-475 gpu=ai-9-hx-pro-470 gpu=ai-9-pro-465 gpu=ai-9-hx-475 gpu=ai-9-hx-470 gpu=ai-9-465 gpu=ai-7-pro-450 gpu=ai-5-pro-440 gpu=ai-7-450 gpu=9-hx-375 gpu=9-hx-370 gpu=9-365
+         :show-cond: gpu=max-plus-pro-495 gpu=max-pro-490 gpu=max-pro-485 gpu=ai-5-pro-435 gpu=ai-5-435 gpu=ai-5-430 gpu=ai-7-445 gpu=max-pro-395 gpu=max-pro-390 gpu=max-pro-385 gpu=max-pro-380 gpu=max-395 gpu=max-392 gpu=max-388 gpu=max-390 gpu=max-385 gpu=ai-9-hx-pro-475 gpu=ai-9-hx-pro-470 gpu=ai-9-pro-465 gpu=ai-9-hx-475 gpu=ai-9-hx-470 gpu=ai-9-465 gpu=ai-7-pro-450 gpu=ai-5-pro-440 gpu=ai-7-450 gpu=9-hx-375 gpu=9-hx-370 gpu=9-365
 
          .. selector-option:: Ubuntu
             :value: ubuntu
@@ -315,7 +324,7 @@
             :value: windows
             :width: 4
 
-         .. selector-option:: WSL
+         .. selector-option:: WSL2
             :value: wsl i=pkgman
             :width: 4
 
@@ -396,3 +405,20 @@
       .. selector-option:: Windows
          :value: windows
          :width: 6
+
+   .. selector:: Operating system
+      :key: os
+      :show-cond: fam=all
+
+      .. selector-option:: Ubuntu
+         :value: ubuntu
+         :width: 4
+
+      .. selector-option:: RHEL
+         :value: rhel
+         :width: 4
+         :toc-label: Red Hat Enterprise Linux
+
+      .. selector-option:: Windows
+         :value: windows
+         :width: 4

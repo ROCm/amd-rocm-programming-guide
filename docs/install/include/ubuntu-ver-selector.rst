@@ -67,7 +67,7 @@
 
 .. selected:: os=wsl
 
-   .. selector:: WSL Linux distro
+   .. selector:: WSL2 Linux distro
       :key: ubuntu-ver
 
       .. selector-option:: Ubuntu 26.04

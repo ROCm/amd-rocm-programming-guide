@@ -85,6 +85,8 @@ subtrees:
         title: Post-installation
       - file: install/redirect/_uninstall
         title: Uninstall ROCm
+  - file: install/rocm-runfile-installer.rst
+    title: ROCm Runfile Installer
   - file: install/build-from-source
     title: Build ROCm from source
   - file: install/third-party-tools

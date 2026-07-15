@@ -90,7 +90,6 @@ Prerequisites
 
 .. ================================================================== WINDOWS ==
 
-
 .. selected:: os=windows
    :heading: Prepare Windows for ROCm installation
    :heading-level: 3
@@ -115,53 +114,37 @@ Prerequisites
         * Settings > Privacy & security > Windows Security > App & browser
           control > Smart App Control settings > **Off**
 
-.. selected:: os=windows
-   :heading: Install AMD Software: Adrenalin Edition
-   :heading-level: 3
-
-   Install AMD Software: Adrenalin Edition for Windows. For details and the
-   download link, see `AMD Software: Adrenalin Edition 26.5.1
-   <https://www.amd.com/en/resources/support-articles/release-notes/RN-RAD-WIN-26-5-1.html#Downloads>`__.
-
-.. selected:: os=wsl
-   :heading: Install AMD Software: Adrenalin Edition
-   :heading-level: 3
-
-   Install AMD Software: Adrenalin Edition for Windows. For details and the
-   download link, see `AMD Software: Adrenalin Edition 26.5.2
-   <https://www.amd.com/en/resources/support-articles/release-notes/RN-RAD-WIN-26-5-2.html#Downloads>`__.
-
 .. selected:: os=wsl
 
    .. selected:: ubuntu-ver=26.04
-      :heading: Install WSL 2 and Ubuntu 26.04
+      :heading: Install WSL2 and Ubuntu 26.04
       :heading-level: 3
 
-      Install WSL 2 and Ubuntu 26.04 on your Windows system. See `How to install Linux on Windows
-      with WSL (Microsoft Learn)
+      Install WSL2 and Ubuntu 26.04 on your Windows system. See `How to install Linux on Windows
+      with WSL2 (Microsoft Learn)
       <https://learn.microsoft.com/en-us/windows/wsl/install>`__ for instructions.
 
-      Complete the following instructions in your WSL environment.
+      Complete the following instructions in your WSL2 environment.
 
    .. selected:: ubuntu-ver=24.04
-      :heading: Install WSL 2 and Ubuntu 24.04
+      :heading: Install WSL2 and Ubuntu 24.04
       :heading-level: 3
 
-      Install WSL 2 and Ubuntu 24.04 on your Windows system. See `How to install Linux on Windows
-      with WSL (Microsoft Learn)
+      Install WSL2 and Ubuntu 24.04 on your Windows system. See `How to install Linux on Windows
+      with WSL2 (Microsoft Learn)
       <https://learn.microsoft.com/en-us/windows/wsl/install>`__ for instructions.
 
-      Complete the following instructions in your WSL environment.
+      Complete the following instructions in your WSL2 environment.
 
    .. selected:: ubuntu-ver=22.04
-      :heading: Install WSL 2 and Ubuntu 22.04
+      :heading: Install WSL2 and Ubuntu 22.04
       :heading-level: 3
 
-      Install WSL 2 and Ubuntu 22.04 on your Windows system. See `How to install Linux on Windows
-      with WSL (Microsoft Learn)
+      Install WSL2 and Ubuntu 22.04 on your Windows system. See `How to install Linux on Windows
+      with WSL2 (Microsoft Learn)
       <https://learn.microsoft.com/en-us/windows/wsl/install>`__ for instructions.
 
-      Complete the following instructions in your WSL environment.
+      Complete the following instructions in your WSL2 environment.
 
 .. =============================================================== OEM KERNEL ==
 
@@ -175,13 +158,13 @@ Prerequisites
             :heading: Install the OEM kernel
             :heading-level: 3
 
-            Ryzen APUs (gfx1150, gfx1151, gfx1152, and gfx1103) require the OEM
+            Ryzen APUs (gfx1150, gfx1151, gfx1152, gfx1153, and gfx1103) require the OEM
             kernel 6.14 for Ubuntu 24.04. Use the following command to install it
             using ``apt``.
 
             .. code-block:: bash
 
-               sudo apt update && sudo apt install linux-image-6.14.0-1018-oem
+               sudo apt update && sudo apt install linux-oem-24.04c
 
             Reboot your system after installing the OEM kernel.
 
@@ -198,7 +181,7 @@ Prerequisites
 
             .. code-block:: bash
 
-               sudo apt update && sudo apt install linux-image-6.14.0-1018-oem
+               sudo apt update && sudo apt install linux-oem-24.04c
 
             Reboot your system after installing the OEM kernel.
 
@@ -213,13 +196,13 @@ Prerequisites
 
    Run the following command to register your system:
 
-   .. selected:: rhel-ver=10.1 rhel-ver=10.0
+   .. selected:: rhel-ver=10.2 rhel-ver=10.0
 
       .. code-block:: bash
 
          subscription-manager register --username <username> --password <password>
 
-   .. selected:: rhel-ver=9.7 rhel-ver=9.6 rhel-ver=9.4 rhel-ver=8.10
+   .. selected:: rhel-ver=9.8 rhel-ver=9.6 rhel-ver=9.4 rhel-ver=8.10
 
       .. code-block:: bash
 
@@ -250,11 +233,11 @@ Prerequisites
 
    Run the following command to update your system:
 
-   .. selected:: rhel-ver=10.1
+   .. selected:: rhel-ver=10.2
 
       .. code-block:: bash
 
-         sudo dnf update --releasever=10.1 --exclude=\*release\*
+         sudo dnf update --releasever=10.2 --exclude=\*release\*
 
    .. selected:: rhel-ver=10.0
 
@@ -262,11 +245,11 @@ Prerequisites
 
          sudo dnf update --releasever=10.0 --exclude=\*release\*
 
-   .. selected:: rhel-ver=9.7
+   .. selected:: rhel-ver=9.8
 
       .. code-block:: bash
 
-         sudo dnf update --releasever=9.7 --exclude=\*release\*
+         sudo dnf update --releasever=9.8 --exclude=\*release\*
 
    .. selected:: rhel-ver=9.6
 
@@ -309,7 +292,7 @@ Prerequisites
       the default package repositories. Use the following command to add the
       necessary repositories.
 
-      .. selected:: rhel-ver=10.1 rhel-ver=10.0
+      .. selected:: rhel-ver=10.2 rhel-ver=10.0
 
          .. code-block:: bash
 
@@ -317,7 +300,7 @@ Prerequisites
             sudo rpm -ivh epel-release-latest-10.noarch.rpm
             sudo dnf config-manager --enable codeready-builder-for-rhel-10-x86_64-rpms
 
-      .. selected:: rhel-ver=9.7 rhel-ver=9.6 rhel-ver=9.4
+      .. selected:: rhel-ver=9.8 rhel-ver=9.6 rhel-ver=9.4
 
          .. code-block:: bash
 
@@ -364,7 +347,7 @@ Prerequisites
       the default package repositories. Use the following command to add the
       necessary repositories.
 
-      .. selected:: rhel-ver=10.1 rhel-ver=10.0
+      .. selected:: rhel-ver=10.2 rhel-ver=10.0
 
          .. code-block:: bash
 
@@ -372,7 +355,7 @@ Prerequisites
             sudo rpm -ivh epel-release-latest-10.noarch.rpm
             sudo dnf config-manager --enable codeready-builder-for-rhel-10-x86_64-rpms
 
-      .. selected:: rhel-ver=9.7 rhel-ver=9.6 rhel-ver=9.4
+      .. selected:: rhel-ver=9.8 rhel-ver=9.6 rhel-ver=9.4
 
          .. code-block:: bash
 
@@ -495,13 +478,13 @@ Prerequisites
 
                   .. code-block:: bash
 
-                     sudo apt update && sudo apt install linux-image-6.14.0-1018-oem
+                     sudo apt update && sudo apt install linux-oem-24.04c
 
                   Reboot your system after installing the OEM kernel.
 
       .. selected:: os=wsl
 
-         To build the ROCDXG library for WSL, you'll need GCC 11.4 or later and
+         To build the ROCDXG library for WSL2, you'll need GCC 11.4 or later and
          CMake 3.15 or later.
 
          .. code-block:: bash
@@ -586,7 +569,7 @@ Prerequisites
 
    .. selected:: os=rhel
 
-      .. selected:: rhel-ver=10.1 rhel-ver=10.0
+      .. selected:: rhel-ver=10.2 rhel-ver=10.0
          :heading: Install Python
          :heading-level: 3
 
@@ -597,7 +580,7 @@ Prerequisites
 
             sudo dnf install python3.12 python3.12-pip
 
-      .. selected:: rhel-ver=9.7 rhel-ver=9.6 rhel-ver=9.4 rhel-ver=9 rhel-ver=8.10
+      .. selected:: rhel-ver=9.8 rhel-ver=9.6 rhel-ver=9.4 rhel-ver=9 rhel-ver=8.10
          :heading: Install Python
          :heading-level: 3
 
@@ -677,52 +660,7 @@ Prerequisites
 
 .. selected:: i=pkgman i=pip i=tar
 
-   .. selected:: os=ubuntu
-
-      .. selected:: ubuntu-ver=24.04 ubuntu-ver=22.04
-         :heading: Configure permissions for GPU access
-         :heading-level: 3
-
-         There are two primary methods for configuring GPU access for ROCm: group
-         membership or udev rules. Each method has its own advantages. The choice
-         depends on your specific requirements and system management preferences.
-
-         .. tab-set::
-
-            .. tab-item:: Group membership
-
-               By default, GPU access is controlled by membership in the ``video`` and
-               ``render`` Linux system groups. The ``video`` group traditionally handles
-               video device access, while the ``render`` group manages GPU rendering
-               through DRM render nodes.
-
-               .. code-block:: bash
-
-                  # Add the current user to the render and video groups
-                  sudo usermod -a -G render,video $LOGNAME
-
-            .. tab-item:: udev rules
-
-               udev rules are a flexible, system-wide approach for managing device
-               permissions, eliminating the need for user group management while
-               allowing granular GPU access. To enable them and grant GPU access to
-               all users, run the following command:
-
-               .. code-block:: bash
-
-                  sudo tee /etc/udev/rules.d/70-amdgpu.rules << EOF
-                  KERNEL=="kfd", GROUP="render", MODE="0666"
-                  SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="render", MODE="0666"
-                  EOF
-
-                  sudo udevadm control --reload-rules
-                  sudo udevadm trigger
-
-         .. note::
-
-            To apply all settings, reboot your system.
-
-   .. selected:: os=debian os=rhel os=oracle-linux os=rocky-linux os=sles os=wsl
+   .. selected:: os=ubuntu os=debian os=rhel os=oracle-linux os=rocky-linux os=sles os=wsl
       :heading: Configure permissions for GPU access
       :heading-level: 3
 

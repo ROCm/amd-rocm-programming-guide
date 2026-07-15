@@ -64,13 +64,12 @@
    not needed for install as long as dependencies for ROCm and/or AMD GPU driver
    (amdgpu) are met. A single installer supports all GFX architectures, automates
    post-installation configuration, and offers an interactive command line TUI for
-   guided setup.
+   guided setup. 
+   
+   .. note::
 
-.. selected:: os=wsl
-
-   Installing ROCm in a Windows Subsystem for Linux (WSL) environment requires
-   building the AMD ROCDXG library from source. See
-   `<https://github.com/ROCm/librocdxg>`__ for more information.
+      For detailed installation options and configuration, see 
+      :doc:`ROCm Runfile Installer </install/rocm-runfile-installer>`.
 
 .. selected:: w=graphics
 
