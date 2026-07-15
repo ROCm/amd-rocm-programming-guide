@@ -12,8 +12,6 @@ from subprocess import run
 from pathlib import Path
 from typing import Any, Dict, List
 
-from rocm_docs import ROCmDocs
-
 ROCM_VERSION = "7.14.0"
 GA_DATE = "2026-07-15"
 
@@ -26,9 +24,6 @@ release = ROCM_VERSION
 latex_engine = "xelatex"
 
 external_toc_path = "./sphinx/_toc.yml"
-
-docs_core = ROCmDocs(left_nav_title)
-docs_core.setup()
 
 external_projects_current_project = "amd-rocm-programming-guide"
 
