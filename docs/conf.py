@@ -42,13 +42,10 @@ rst_prolog = "\n".join(
     f".. |{key}| replace:: {val}" for key, val in myst_substitutions.items()
 )
 
-for sphinx_var in ROCmDocs.SPHINX_VARS:
-    globals()[sphinx_var] = getattr(docs_core, sphinx_var)
-
 # Add the _extensions directory to Python's search path
 sys.path.append(str(Path(__file__).parent / 'extension'))
 
-extensions += ["sphinxcontrib.datatemplates", "version-ref", "csv-to-list-table", "remote-content", "svg-pdf-converter", "sphinx_subfigure", "sphinx_substitution_extensions", "matrix", "selector"]
+extensions = ["rocm_docs", "sphinxcontrib.datatemplates", "version-ref", "csv-to-list-table", "remote-content", "svg-pdf-converter", "sphinx_subfigure", "sphinx_substitution_extensions", "matrix", "selector"]
 
 templates_path = ["extension/selector/templates"]
 
