@@ -11,10 +11,10 @@ motivation and architecture behind this system, see `ROCm Technology Preview:
 ROCm Core SDK and TheRock Build System
 <https://rocm.blogs.amd.com/software-tools-optimization/therock/README.html>`__.
 
-This page consists mainly of key references to `TheRock's README
+This page consists mainly of references to `TheRock's README
 <https://github.com/ROCm/TheRock?tab=readme-ov-file#building-from-source>`__
 and `supporting development manuals
-<https://github.com/ROCm/TheRock/blob/main/README.md#development-manuals>`__
+<https://github.com/ROCm/TheRock/blob/main/README.md#development-manuals>`__, 
 which provide up-to-date build instructions and guidance for supported
 platforms. See `TheRock Development Guide
 <https://github.com/ROCm/TheRock/blob/main/docs/development/development_guide.md#therock-development-guide>`__
@@ -89,7 +89,7 @@ On Linux, it's recommended to build with ManyLinux to produce binaries that are
 portable across Ubuntu and other Linux distributions. To learn more about what
 a ROCm ManyLinux build entails, see `ManyLinux builds
 <https://github.com/ROCm/TheRock/blob/main/docs/design/manylinux_builds.md>`__.
-Refer to `ManyLinux x86_84
+Refer to `ManyLinux x86_64
 <https://github.com/ROCm/TheRock/blob/main/docs/environment_setup_guide.md#manylinux-x86-64>`__
 in the environment setup guide.
 

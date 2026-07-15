@@ -120,7 +120,7 @@ complete your system configuration and validate the installation.
    :heading: Verify your installation
    :heading-level: 3
 
-   Use the following ROCm tools to verify that the ROCm is correctly
+   Use the following ROCm tools to verify that ROCm is correctly
    installed and that your AMD devices are visible to the system.
 
    1. Use ``rocminfo`` to list detected AMD GPUs and confirm that the ROCm
@@ -197,7 +197,7 @@ complete your system configuration and validate the installation.
    :heading: Verify your installation
    :heading-level: 3
 
-   Use the following ROCm tools to verify that the ROCm is correctly
+   Use the following ROCm tools to verify that ROCm is correctly
    installed and that your AMD devices are visible to the system.
 
    .. selected:: i=pip
@@ -267,7 +267,7 @@ complete your system configuration and validate the installation.
    :heading: Verify your installation
    :heading-level: 3
 
-   Use ``rocminfo`` to verify that the ROCm is correctly
+   Use ``rocminfo`` to verify that ROCm is correctly
    installed and that your AMD devices are visible to the system.
 
    .. code-block:: bash
@@ -390,7 +390,7 @@ complete your system configuration and validate the installation.
          rocm-sdk path --root
          rocm-sdk test
 
-      To learn more about the ``rocm-sdk`` tool and to see example expected
+      To learn more about the ``rocm-sdk`` tool and to see example 
       outputs, see `Using ROCm Python packages (TheRock)
       <https://github.com/ROCm/TheRock/blob/main/RELEASES.md#using-rocm-python-packages>`__.
 
@@ -419,7 +419,7 @@ complete your system configuration and validate the installation.
 
          rocm-sdk test
 
-      To learn more about the ``rocm-sdk`` tool and to see example expected
+      To learn more about the ``rocm-sdk`` tool and to see example 
       outputs, see `Using ROCm Python packages (TheRock)
       <https://github.com/ROCm/TheRock/blob/main/RELEASES.md#using-rocm-python-packages>`__.
 

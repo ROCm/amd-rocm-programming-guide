@@ -47,7 +47,7 @@
          `AMD Ryzen AI 300 Series <https://www.amd.com/en/products/processors/consumer/ryzen-ai.html#tabs-f556098628-item-54e149d850-tab>`__
 
       .. matrix-cell::
-         :show-cond: gpu=7-pro-250 gpu=5-pro-240 gpu=5-pro-230 gpu=5-pro-220 gpu=3=pro-210
+         :show-cond: gpu=7-pro-250 gpu=5-pro-240 gpu=5-pro-230 gpu=5-pro-220 gpu=3-pro-210
 
          `AMD Ryzen PRO 200 Series <https://www.amd.com/en/products/processors/laptop/ryzen-for-business.html#tabs-0d174caf43-item-a8ec88d07e-tab>`__
 
