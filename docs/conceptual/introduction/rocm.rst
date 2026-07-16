@@ -16,4 +16,4 @@ What is ROCm?
    :csv_widths: 33 67
    :doc_remap: /about/release-notes|Release notes|rocm:about/release-notes;; /components/core|ROCm Core SDK components|rocm:components/core;; /components/extras|ROCm Extras components|rocm:components/extras
    :doc_ignore: /install/rocm
-   :replace_re: \.\. raw:: html\s+:file: data/landing-page/rocm-ontology\.html|.. image:: /data/landing-page/rocm-ontology.png\n   :alt: ROCm software ecosystem diagram;; \.\. raw:: html\s+:file: data/landing-page/rocm-sdk-arch\.html|.. image:: /data/landing-page/rocm-sdk-arch.png\n   :alt: ROCm Core SDK architecture diagram
+   :replace_re: \.\. raw:: html\s+:file: \.\./images/landing-page/rocm-sdk-arch\.html|.. image:: /data/landing-page/rocm-sdk-arch.png\n   :alt: ROCm Core SDK architecture diagram
