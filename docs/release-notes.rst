@@ -29,9 +29,29 @@ This page tracks releases of the AMD ROCm Programming Guide.
      - November 26, 2025
 
 ROCm 7.14.0
-==========
+===========
 
-Update content to 
+New content
+-----------
+
+Added the :doc:`install/rocm-runfile-installer` page, describing how to install
+ROCm, the AMD GPU driver, or both on systems with or without network access.
+
+Updated content
+---------------
+
+* Updated the :doc:`installation instructions <install/rocm>` for ROCm 7.14.0,
+  including revised prerequisites, install methods, and pip package information.
+* Updated the :doc:`compatibility matrix <compatibility/compatibility-matrix>`
+  for 7.14.0, covering AI ecosystem, core SDK components, and supported Instinct,
+  Radeon, and Ryzen systems.
+* Enhanced the following HIP topics:
+
+  * :doc:`how-to/hip_runtime_api/cooperative_groups`
+  * :doc:`how-to/hip_runtime_api/memory_management/unified_memory`
+  * :doc:`how-to/hip_runtime_api/memory_management/coherence_control`
+  * :doc:`how-to/hip_runtime_api/memory_management/stream_ordered_allocator`
+  * :doc:`how-to/hip_runtime_api/memory_management/virtual_memory`
 
 ROCm 7.2.4
 ==========
