@@ -21,3 +21,8 @@ build:
      - gfortran # For pre-processing fortran sources
      - graphviz # For dot graphs in doxygen
      - inkscape # For converting SVG to PDF in LaTeX builds
+   jobs:
+     pre_build:
+       # Fail the PDF build fast on a missing image or font instead of
+       # hanging on xelatex's interactive prompt until the build times out.
+       - export LATEXOPTS="-interaction=batchmode -halt-on-error"
