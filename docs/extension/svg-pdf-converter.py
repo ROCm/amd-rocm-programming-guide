@@ -153,6 +153,14 @@ class DrawioSVGProcessor:
                 font_family = text_elem.get('font-family', 'Arial')
                 font_size = text_elem.get('font-size', '12px')
                 text_anchor = text_elem.get('text-anchor', 'middle')
+
+                # Draw.io's <text> fallback hardcodes fill (often #FFFFFF),
+                # but the real color lives in the foreignObject's inline style
+                # as a light-dark() value. Prefer that so labels on the light
+                # page background remain visible in the PDF.
+                fo_color = self._extract_style(foreign_obj).get('color')
+                if fo_color:
+                    fill = fo_color
                 
                 # Clear existing text content
                 text_elem.clear()
@@ -242,6 +250,36 @@ class DrawioSVGProcessor:
         get_text(elem)
         return ' '.join(text_parts).strip()
     
+    def _resolve_color(self, color):
+        """Resolve a CSS color value to something valid for an SVG fill.
+
+        Draw.io uses light-dark(<light>, <dark>) for theme-aware colors. The
+        PDF is rendered on a light background, so take the first (light-mode)
+        argument. Returns an empty string for values that can't be used.
+        """
+        color = color.strip()
+        if color.startswith('light-dark('):
+            inner = color[len('light-dark('):]
+            # Split on the top-level comma (rgb(...) contains commas too).
+            depth = 0
+            split_at = None
+            for i, ch in enumerate(inner):
+                if ch == '(':
+                    depth += 1
+                elif ch == ')':
+                    if depth == 0:
+                        break
+                    depth -= 1
+                elif ch == ',' and depth == 0:
+                    split_at = i
+                    break
+            color = (inner[:split_at] if split_at is not None else inner).strip()
+        if color.startswith('#') or color.startswith('rgb'):
+            return color
+        if color in ('white', 'black', 'red', 'blue', 'green'):
+            return color
+        return ''
+
     def _extract_style(self, elem):
         """Extract style information"""
         style_info = {
@@ -254,15 +292,13 @@ class DrawioSVGProcessor:
         for e in elem.iter():
             style = e.get('style', '')
             
-            # Extract color
-            color_match = re.search(r'color:\s*([^;]+)', style)
+            # Extract color. Draw.io emits light-dark(<light>, <dark>) for
+            # theme-aware text; resolve it to the light-mode value since the
+            # PDF is rendered on a light background.
+            color_match = re.search(r'(?<!-)color:\s*([^;]+)', style)
             if color_match:
-                color = color_match.group(1).strip()
-                if 'rgb' in color:
-                    style_info['color'] = color
-                elif color.startswith('#'):
-                    style_info['color'] = color
-                elif color in ['white', 'black', 'red', 'blue', 'green']:
+                color = self._resolve_color(color_match.group(1).strip())
+                if color:
                     style_info['color'] = color
             
             # Extract font-size
