@@ -145,10 +145,15 @@ class DrawioSVGProcessor:
             # Extract full text from foreignObject
             text_content = self._extract_text(foreign_obj)
 
-            # Skip Draw.io's hidden diagram metadata; rendering it corrupts the
-            # drawing bounds.
+            # Skip Draw.io's hidden diagram metadata. The whole switch is
+            # non-visual: both the foreignObject and its <text> fallback carry
+            # the URL-encoded mxGraphModel string, so remove the entire switch,
+            # not just the foreignObject. Rendering it corrupts the drawing
+            # bounds and leaks the raw text into the diagram.
             if self._is_nonvisual_metadata(text_content):
-                switch.remove(foreign_obj)
+                parent = self._find_parent(root, switch)
+                if parent is not None:
+                    parent.remove(switch)
                 return
 
             if text_content and text_elem is not None:
