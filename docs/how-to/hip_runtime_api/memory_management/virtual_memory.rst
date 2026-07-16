@@ -99,6 +99,15 @@ an out-of-memory error.
     padded_size = ROUND_UP(size, granularity);
     hipMemCreate(&allocHandle, padded_size, &prop, 0);
 
+.. note::
+
+    **Allocation Granularity:** Virtual memory allocations must be aligned to the
+    hardware-specific granularity, which varies by GPU architecture and memory
+    type. Always query the granularity using :cpp:func:`hipMemGetAllocationGranularity`
+    before calling :cpp:func:`hipMemAddressReserve` or :cpp:func:`hipMemCreate`.
+    Failure to align allocations to the required granularity will result in
+    ``hipErrorOutOfMemory`` errors, even when sufficient physical memory is available.
+
 .. _reserve_virtual_address:
 
 Reserve virtual address range
@@ -382,4 +391,3 @@ aliases of the same memory allocation:
         *pointerA = 0;
         *pointerB = 42;
     }
-

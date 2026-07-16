@@ -1,7 +1,7 @@
 import urllib.request
 
 repo = "ROCm/rocm-systems"
-branch = "docs/7.13.0"
+branch = "docs/7.14.0"
 
 # "https://raw.githubusercontent.com/ROCm/rocm-systems/refs/heads/develop/projects/hip/docs/how-to/hip_runtime_api.rst",
 # https://raw.githubusercontent.com/ROCm/rocm-systems/refs/heads/release/rocm-rel-7.0/projects/hip/docs/how-to/hip_runtime_api.rst
@@ -116,6 +116,6 @@ urllib.request.urlretrieve(
 
 urllib.request.urlretrieve(
      f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}/projects/hip/docs/tutorial/reduction.rst",
-     "docs/tutorial/reduction.rst"
+     "docs/tutorial/hip-performance-optimization/reduction.rst"
 )
 

@@ -10,7 +10,7 @@ What is ROCm?
 .. remote-content::
    :repo: ROCm/ROCm
    :path: docs/index.rst
-   :default_branch: docs/7.13.0
+   :default_branch: develop
    :start_line: 23
    :tag_prefix: docs/
    :csv_widths: 33 67
