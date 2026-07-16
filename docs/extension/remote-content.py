@@ -564,26 +564,24 @@ class BranchAwareRemoteContent(Directive):
                 if repo == 'ROCm/rocm-systems':
                     # For the rocm-systems monorepo, docs live under
                     # projects/<component>/docs/ (e.g. projects/hip/docs/,
-                    # projects/rccl/docs/). Derive the component base from the
-                    # source file path rather than hardcoding one project, so
-                    # images resolve correctly for every component.
+                    # projects/rccl/docs/) and their images under that same
+                    # docs directory. Derive the component base from the source
+                    # file path so images resolve correctly for every component.
                     base = ''
                     parts = source_path.as_posix().split('/')
                     if len(parts) >= 3 and parts[0] == 'projects' and parts[2] == 'docs':
                         base = f'projects/{parts[1]}/docs'
                     if base:
-                        if not image_path.startswith(f'{base}/'):
-                            # normpath may have escaped the base with ../; rebuild
-                            # the path under the component's docs directory.
-                            rest_of_path = image_path
-                            while rest_of_path.startswith('../'):
-                                rest_of_path = rest_of_path[3:]
-                            rest_of_path = rest_of_path.lstrip('/')
-                            if rest_of_path.startswith('projects/'):
-                                # Path already names a projects/ location; keep it.
-                                image_path = rest_of_path
-                            else:
-                                image_path = f'{base}/{rest_of_path}'
+                        # Rebuild from the original reference rather than the
+                        # normalized path: leading ../ segments in the source
+                        # (e.g. ../../data/...) would otherwise escape above the
+                        # component directory. Strip them and anchor the
+                        # remainder under the component's docs directory.
+                        rest_of_path = original_uri.replace('\\', '/')
+                        while rest_of_path.startswith(('../', './')):
+                            rest_of_path = rest_of_path.split('/', 1)[1]
+                        rest_of_path = rest_of_path.lstrip('/')
+                        image_path = f'{base}/{rest_of_path}'
 
                 elif repo in ['ROCm/ROCm', 'ROCm/rccl']:
                     # For ROCm and rccl, docs are under docs/
