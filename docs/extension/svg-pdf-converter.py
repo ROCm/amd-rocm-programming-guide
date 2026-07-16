@@ -60,7 +60,14 @@ class DrawioSVGProcessor:
         
         if bg_match:
             bg_color = bg_match.group(1).strip()
-            
+
+            # A transparent background must not become a filled rect. Emitting
+            # fill="transparent" makes inkscape render the area black when
+            # flattening to PDF, which fills the rounded corners with black.
+            # Skip the rect entirely so the page shows through.
+            if bg_color.lower() in ('transparent', 'none'):
+                return
+
             # Handle light-dark() function - extract the first color (light mode)
             if 'light-dark' in bg_color:
                 # Try to extract RGB values
