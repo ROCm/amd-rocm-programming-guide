@@ -144,7 +144,13 @@ class DrawioSVGProcessor:
         if foreign_obj is not None:
             # Extract full text from foreignObject
             text_content = self._extract_text(foreign_obj)
-            
+
+            # Skip Draw.io's hidden diagram metadata; rendering it corrupts the
+            # drawing bounds.
+            if self._is_nonvisual_metadata(text_content):
+                switch.remove(foreign_obj)
+                return
+
             if text_content and text_elem is not None:
                 # Update the existing text element with full content
                 x = text_elem.get('x', '0')
@@ -188,18 +194,39 @@ class DrawioSVGProcessor:
                 # Remove the foreignObject since we've extracted its content
                 switch.remove(foreign_obj)
     
+    def _is_nonvisual_metadata(self, text_content):
+        """Detect Draw.io's hidden editable-diagram metadata.
+
+        Draw.io embeds the URL-encoded mxGraphModel source in a foreignObject
+        styled with font-size: 0 and a transparent color. It is not meant to
+        render; converting it to a visible <text> produces a huge off-canvas
+        string that blows out --export-area-drawing and squishes the diagram.
+        """
+        if not text_content:
+            return False
+        stripped = text_content.lstrip()
+        return stripped.startswith('%3CmxGraphModel') or stripped.startswith('<mxGraphModel')
+
     def _convert_single_foreign_object(self, root, foreign_obj):
         """Convert a single foreignObject to text"""
-        
+
         try:
             x = float(foreign_obj.get('x', '0'))
             y = float(foreign_obj.get('y', '0'))
             width = float(foreign_obj.get('width', '100'))
             height = float(foreign_obj.get('height', '20'))
-            
+
             # Extract text
             text_content = self._extract_text(foreign_obj)
-            
+
+            # Skip Draw.io's hidden diagram metadata; rendering it corrupts the
+            # drawing bounds.
+            if self._is_nonvisual_metadata(text_content):
+                parent = self._find_parent(root, foreign_obj)
+                if parent is not None:
+                    parent.remove(foreign_obj)
+                return
+
             if text_content:
                 # Extract styles
                 style_info = self._extract_style(foreign_obj)
