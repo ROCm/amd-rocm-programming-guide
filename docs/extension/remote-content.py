@@ -562,27 +562,29 @@ class BranchAwareRemoteContent(Directive):
                 # After normpath, we need to check if the path is correct for the repository structure
                 
                 if repo == 'ROCm/rocm-systems':
-                    # For rocm-systems, docs are under projects/hip/docs/
-                    # Check various patterns for the normalized path
-                    if image_path.startswith('projects/hip/') and not image_path.startswith('projects/hip/docs/'):
-                        # The path likely normalized from projects/hip/docs/../../data to projects/hip/data
-                        # We need to add docs/ back
-                        rest_of_path = image_path[len('projects/hip/'):]
-                        image_path = f'projects/hip/docs/{rest_of_path}'
-                    elif image_path.startswith('projects/') and not image_path.startswith('projects/hip/'):
-                        # Path is projects/data/... instead of projects/hip/docs/data/...
-                        # Remove 'projects/' prefix and add full path
-                        rest_of_path = image_path[len('projects/'):]
-                        image_path = f'projects/hip/docs/{rest_of_path}'
-                    elif image_path.startswith('../'):
-                        # Path goes outside repo structure with ../
-                        # Strip the ../ and add to the correct base path
-                        rest_of_path = image_path[3:]  # Remove '../'
-                        image_path = f'projects/hip/docs/{rest_of_path}'
-                    elif not image_path.startswith('projects/'):
-                        # Path completely outside expected structure, prepend full path
-                        image_path = f'projects/hip/docs/{image_path}'
-                        
+                    # For the rocm-systems monorepo, docs live under
+                    # projects/<component>/docs/ (e.g. projects/hip/docs/,
+                    # projects/rccl/docs/). Derive the component base from the
+                    # source file path rather than hardcoding one project, so
+                    # images resolve correctly for every component.
+                    base = ''
+                    parts = source_path.as_posix().split('/')
+                    if len(parts) >= 3 and parts[0] == 'projects' and parts[2] == 'docs':
+                        base = f'projects/{parts[1]}/docs'
+                    if base:
+                        if not image_path.startswith(f'{base}/'):
+                            # normpath may have escaped the base with ../; rebuild
+                            # the path under the component's docs directory.
+                            rest_of_path = image_path
+                            while rest_of_path.startswith('../'):
+                                rest_of_path = rest_of_path[3:]
+                            rest_of_path = rest_of_path.lstrip('/')
+                            if rest_of_path.startswith('projects/'):
+                                # Path already names a projects/ location; keep it.
+                                image_path = rest_of_path
+                            else:
+                                image_path = f'{base}/{rest_of_path}'
+
                 elif repo in ['ROCm/ROCm', 'ROCm/rccl']:
                     # For ROCm and rccl, docs are under docs/
                     if image_path.startswith('../'):

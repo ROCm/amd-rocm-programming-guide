@@ -1634,7 +1634,7 @@ Use the following instructions to install ROCm packages on your system.
 
          python -m pip install --index-url https://repo.amd.com/rocm/whl-multi-arch/ "rocm[libraries,device-all]==7.14.0"
 
-      .. include:: include/pip-packages-table.rst
+      .. include:: /install/include/pip-packages-table.rst
 
    .. selected:: gfx=gfx950
 
@@ -1647,7 +1647,7 @@ Use the following instructions to install ROCm packages on your system.
 
          python -m pip install --index-url https://repo.amd.com/rocm/whl-multi-arch/ "rocm[libraries,device-gfx950]==7.14.0"
 
-      .. include:: include/pip-packages-table.rst
+      .. include:: /install/include/pip-packages-table.rst
 
    .. selected:: gfx=gfx942
 
@@ -1660,7 +1660,7 @@ Use the following instructions to install ROCm packages on your system.
 
          python -m pip install --index-url https://repo.amd.com/rocm/whl-multi-arch/ "rocm[libraries,device-gfx942]==7.14.0"
 
-      .. include:: include/pip-packages-table.rst
+      .. include:: /install/include/pip-packages-table.rst
 
    .. selected:: gfx=gfx90a
 
@@ -1672,7 +1672,7 @@ Use the following instructions to install ROCm packages on your system.
 
          python -m pip install --index-url https://repo.amd.com/rocm/whl-multi-arch/ "rocm[libraries,device-gfx90a]==7.14.0"
 
-      .. include:: include/pip-packages-table.rst
+      .. include:: /install/include/pip-packages-table.rst
 
    .. selected:: gfx=gfx908
 
@@ -1684,7 +1684,7 @@ Use the following instructions to install ROCm packages on your system.
 
          python -m pip install --index-url https://repo.amd.com/rocm/whl-multi-arch/ "rocm[libraries,device-gfx908]==7.14.0"
 
-      .. include:: include/pip-packages-table.rst
+      .. include:: /install/include/pip-packages-table.rst
 
    .. selected:: gfx=gfx1201
 
@@ -1697,7 +1697,7 @@ Use the following instructions to install ROCm packages on your system.
 
          python -m pip install --index-url https://repo.amd.com/rocm/whl-multi-arch/ "rocm[libraries,device-gfx1201]==7.14.0"
 
-      .. include:: include/pip-packages-table.rst
+      .. include:: /install/include/pip-packages-table.rst
 
    .. selected:: gfx=gfx1200
 
@@ -1710,7 +1710,7 @@ Use the following instructions to install ROCm packages on your system.
 
          python -m pip install --index-url https://repo.amd.com/rocm/whl-multi-arch/ "rocm[libraries,device-gfx1200]==7.14.0"
 
-      .. include:: include/pip-packages-table.rst
+      .. include:: /install/include/pip-packages-table.rst
 
    .. selected:: gfx=gfx1100
 
@@ -1722,7 +1722,7 @@ Use the following instructions to install ROCm packages on your system.
 
          python -m pip install --index-url https://repo.amd.com/rocm/whl-multi-arch/ "rocm[libraries,device-gfx1100]==7.14.0"
 
-      .. include:: include/pip-packages-table.rst
+      .. include:: /install/include/pip-packages-table.rst
 
    .. selected:: gfx=gfx1101
 
@@ -1734,7 +1734,7 @@ Use the following instructions to install ROCm packages on your system.
 
          python -m pip install --index-url https://repo.amd.com/rocm/whl-multi-arch/ "rocm[libraries,device-gfx1101]==7.14.0"
 
-      .. include:: include/pip-packages-table.rst
+      .. include:: /install/include/pip-packages-table.rst
 
    .. selected:: gfx=gfx1102
 
@@ -1746,7 +1746,7 @@ Use the following instructions to install ROCm packages on your system.
 
          python -m pip install --index-url https://repo.amd.com/rocm/whl-multi-arch/ "rocm[libraries,device-gfx1102]==7.14.0"
 
-      .. include:: include/pip-packages-table.rst
+      .. include:: /install/include/pip-packages-table.rst
 
    .. selected:: gfx=gfx1103
 
@@ -1758,7 +1758,7 @@ Use the following instructions to install ROCm packages on your system.
 
          python -m pip install --index-url https://repo.amd.com/rocm/whl-multi-arch/ "rocm[libraries,device-gfx1103]==7.14.0"
 
-      .. include:: include/pip-packages-table.rst
+      .. include:: /install/include/pip-packages-table.rst
 
    .. selected:: gfx=gfx1030
 
@@ -1770,7 +1770,7 @@ Use the following instructions to install ROCm packages on your system.
 
          python -m pip install --index-url https://repo.amd.com/rocm/whl-multi-arch/ "rocm[libraries,device-gfx1030]==7.14.0"
 
-      .. include:: include/pip-packages-table.rst
+      .. include:: /install/include/pip-packages-table.rst
 
    .. selected:: gfx=gfx1151
 
@@ -1783,7 +1783,7 @@ Use the following instructions to install ROCm packages on your system.
 
          python -m pip install --index-url https://repo.amd.com/rocm/whl-multi-arch/ "rocm[libraries,device-gfx1151]==7.14.0"
 
-      .. include:: include/pip-packages-table.rst
+      .. include:: /install/include/pip-packages-table.rst
 
    .. selected:: gfx=gfx1150
 
@@ -1796,7 +1796,7 @@ Use the following instructions to install ROCm packages on your system.
 
          python -m pip install --index-url https://repo.amd.com/rocm/whl-multi-arch/ "rocm[libraries,device-gfx1150]==7.14.0"
 
-      .. include:: include/pip-packages-table.rst
+      .. include:: /install/include/pip-packages-table.rst
 
    .. selected:: gfx=gfx1152
 
@@ -1820,7 +1820,7 @@ Use the following instructions to install ROCm packages on your system.
 
          python -m pip install --index-url https://repo.amd.com/rocm/whl-multi-arch/ "rocm[libraries,device-gfx1153]==7.14.0"
 
-      .. include:: include/pip-packages-table.rst
+      .. include:: /install/include/pip-packages-table.rst
 
 .. ================================================================== TARBALL ==
 
