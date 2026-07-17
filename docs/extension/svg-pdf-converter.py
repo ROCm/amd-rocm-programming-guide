@@ -19,7 +19,27 @@ logger = logging.getLogger(__name__)
 
 class DrawioSVGProcessor:
     """Process Draw.io SVGs to fix text and backgrounds"""
-    
+
+    # Helvetica glyph advances in units per 1000 em, used to estimate label
+    # widths for wrapping. Unlisted characters fall back to 556.
+    _GLYPH_WIDTHS = {
+        ' ': 278, '!': 278, '"': 355, '#': 556, '$': 556, '%': 889, '&': 667,
+        "'": 191, '(': 333, ')': 333, '*': 389, '+': 584, ',': 278, '-': 333,
+        '.': 278, '/': 278, ':': 278, ';': 278, '<': 584, '=': 584, '>': 584,
+        '?': 556, '@': 1015, '[': 278, ']': 278, '^': 469, '_': 556, '`': 333,
+        '{': 334, '|': 260, '}': 334, '~': 584,
+        '0': 556, '1': 556, '2': 556, '3': 556, '4': 556, '5': 556, '6': 556,
+        '7': 556, '8': 556, '9': 556,
+        'A': 667, 'B': 667, 'C': 722, 'D': 722, 'E': 667, 'F': 611, 'G': 778,
+        'H': 722, 'I': 278, 'J': 500, 'K': 667, 'L': 556, 'M': 833, 'N': 722,
+        'O': 778, 'P': 667, 'Q': 778, 'R': 722, 'S': 667, 'T': 611, 'U': 722,
+        'V': 667, 'W': 944, 'X': 667, 'Y': 667, 'Z': 611,
+        'a': 556, 'b': 556, 'c': 500, 'd': 556, 'e': 556, 'f': 278, 'g': 556,
+        'h': 556, 'i': 222, 'j': 222, 'k': 500, 'l': 222, 'm': 833, 'n': 556,
+        'o': 556, 'p': 556, 'q': 556, 'r': 333, 's': 500, 't': 278, 'u': 556,
+        'v': 500, 'w': 722, 'x': 500, 'y': 500, 'z': 500,
+    }
+
     def __init__(self):
         self.processed_cache = {}
     
@@ -310,8 +330,18 @@ class DrawioSVGProcessor:
                     return w
         return None
 
+    def _text_width(self, text, size):
+        """Approximate rendered width of text in px at the given font size.
+
+        Uses Helvetica glyph advances (units per 1000 em), which closely match
+        the sans fonts Draw.io emits. Far more accurate than a single average
+        advance, so wide labels ("CPU Memory (RAM)") and narrow ones
+        ("Application Implementation") are classified correctly.
+        """
+        return sum(self._GLYPH_WIDTHS.get(c, 556) for c in text) / 1000.0 * size
+
     def _wrap_text(self, text, box_width, font_size):
-        """Greedily wrap text to fit box_width, approximating glyph advance.
+        """Greedily wrap text to fit box_width using real glyph metrics.
 
         Only wraps between words; a single word wider than the box is left on
         its own line rather than being split.
@@ -320,21 +350,18 @@ class DrawioSVGProcessor:
             size = float(re.match(r'([\d.]+)', str(font_size)).group(1))
         except (AttributeError, ValueError):
             size = 12.0
-        # Average glyph advance for a proportional sans font is ~0.5em. The
-        # estimate is imprecise, so only wrap when the text clearly overflows
-        # (10% tolerance); otherwise a label that actually fits gets wrapped
-        # unnecessarily, which is more visually broken than a slight overflow.
-        char_w = size * 0.5
         words = text.split()
         if not words:
             return [text]
-        if len(text) * char_w <= box_width * 1.1:
+        # Require a small margin: Draw.io's box width includes horizontal
+        # padding, so text that measures right at the box edge actually
+        # overflows visually and must wrap.
+        if self._text_width(text, size) <= box_width * 0.98:
             return [text]
-        max_chars = max(1, int(box_width / char_w))
         lines = []
         current = words[0]
         for word in words[1:]:
-            if len(current) + 1 + len(word) <= max_chars:
+            if self._text_width(current + ' ' + word, size) <= box_width:
                 current += ' ' + word
             else:
                 lines.append(current)
