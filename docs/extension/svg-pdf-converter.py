@@ -316,13 +316,17 @@ class DrawioSVGProcessor:
             size = float(re.match(r'([\d.]+)', str(font_size)).group(1))
         except (AttributeError, ValueError):
             size = 12.0
-        # Average glyph advance for a proportional sans font is ~0.55em.
-        char_w = size * 0.55
-        max_chars = max(1, int(box_width / char_w))
-
+        # Average glyph advance for a proportional sans font is ~0.5em. The
+        # estimate is imprecise, so only wrap when the text clearly overflows
+        # (10% tolerance); otherwise a label that actually fits gets wrapped
+        # unnecessarily, which is more visually broken than a slight overflow.
+        char_w = size * 0.5
         words = text.split()
         if not words:
             return [text]
+        if len(text) * char_w <= box_width * 1.1:
+            return [text]
+        max_chars = max(1, int(box_width / char_w))
         lines = []
         current = words[0]
         for word in words[1:]:
