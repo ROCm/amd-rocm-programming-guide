@@ -163,7 +163,11 @@ class DrawioSVGProcessor:
                 fill = text_elem.get('fill', '#000000')
                 font_family = text_elem.get('font-family', 'Arial')
                 font_size = text_elem.get('font-size', '12px')
-                text_anchor = text_elem.get('text-anchor', 'middle')
+                # SVG's default text-anchor is "start"; Draw.io omits the
+                # attribute for left-aligned labels (e.g. legend entries).
+                # Defaulting to "middle" here re-centers them and shifts the
+                # text off its intended position.
+                text_anchor = text_elem.get('text-anchor', 'start')
 
                 # Draw.io's <text> fallback hardcodes fill (often #FFFFFF),
                 # but the real color lives in the foreignObject's inline style
