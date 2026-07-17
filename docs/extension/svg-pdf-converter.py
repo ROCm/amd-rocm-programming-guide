@@ -212,20 +212,13 @@ class DrawioSVGProcessor:
                 # the full string, so it overflows the canvas and gets clipped in
                 # the PDF. Re-wrap to the box width to reproduce the layout.
                 box_width = self._foreign_object_box_width(foreign_obj)
-                lines = text_content.strip().split('\n')
+                # Keep line breaks from _extract_text (already per-line trimmed);
+                # a trailing blank line is significant vertical offset.
+                lines = text_content.split('\n')
                 if len(lines) == 1 and box_width:
                     lines = self._wrap_text(lines[0], box_width, font_size)
 
-                if len(lines) == 1:
-                    text_elem.text = lines[0]
-                else:
-                    # Use tspan elements for multiline text
-                    for i, line in enumerate(lines):
-                        tspan = ET.SubElement(text_elem, 'tspan')
-                        tspan.set('x', x)
-                        if i > 0:
-                            tspan.set('dy', '1.2em')
-                        tspan.text = line
+                self._set_multiline_text(text_elem, lines, x)
 
                 # Remove the foreignObject since we've extracted its content
                 switch.remove(foreign_obj)
@@ -277,18 +270,10 @@ class DrawioSVGProcessor:
                 text_elem.set('font-family', style_info.get('font-family', 'Arial'))
                 text_elem.set('font-size', style_info.get('font-size', '12px'))
                 
-                # Handle multiline text
-                lines = text_content.strip().split('\n')
-                if len(lines) == 1:
-                    text_elem.text = lines[0]
-                else:
-                    for i, line in enumerate(lines):
-                        tspan = ET.SubElement(text_elem, 'tspan')
-                        tspan.set('x', str(x + width / 2))
-                        if i > 0:
-                            tspan.set('dy', '1.2em')
-                        tspan.text = line
-                
+                # Handle multiline text (line breaks are significant).
+                lines = text_content.split('\n')
+                self._set_multiline_text(text_elem, lines, str(x + width / 2))
+
                 # Replace foreignObject
                 parent = self._find_parent(root, foreign_obj)
                 if parent is not None:
@@ -299,19 +284,88 @@ class DrawioSVGProcessor:
             logger.debug(f"Could not convert foreignObject: {e}")
     
     def _extract_text(self, elem):
-        """Extract text from element"""
-        text_parts = []
-        
-        def get_text(e):
+        """Extract text from a foreignObject, preserving line breaks.
+
+        Draw.io encodes label line breaks as <br> elements and block-level
+        <div> wrappers. Collapsing them into spaces loses the author's intended
+        stacking, which makes multi-part labels (e.g. "CPU Memory" over "(RAM)")
+        render on a single baseline. Emit '\n' for <br> and between block
+        <div>s so the caller can lay the lines out as stacked tspans.
+        """
+        parts = []
+
+        def localname(tag):
+            return tag.rsplit('}', 1)[-1] if '}' in tag else tag
+
+        def walk(e):
+            tag = localname(e.tag)
+            if tag == 'br':
+                parts.append('\n')
+            # A block-level div starts on its own line.
+            if tag == 'div' and parts and not parts[-1].endswith('\n'):
+                parts.append('\n')
             if e.text:
-                text_parts.append(e.text.strip())
+                parts.append(e.text)
             for child in e:
-                get_text(child)
+                walk(child)
                 if child.tail:
-                    text_parts.append(child.tail.strip())
-        
-        get_text(elem)
-        return ' '.join(text_parts).strip()
+                    parts.append(child.tail)
+
+        walk(elem)
+        text = ''.join(parts)
+
+        # Collapse intra-line whitespace and trim each line.
+        lines = [re.sub(r'[ \t]+', ' ', ln).strip() for ln in text.split('\n')]
+
+        # Drop leading blank lines (artifacts of outer div nesting).
+        while lines and not lines[0]:
+            lines.pop(0)
+
+        # Trailing blanks distinguish two Draw.io patterns:
+        #   "Label<br/>"                -> one trailing newline: cosmetic, drop.
+        #   "Label<div><br/></div>"     -> two trailing newlines (div boundary +
+        #                                  br): a real empty line the author uses
+        #                                  to shift the label up so a sibling
+        #                                  label can sit below it. Keep one blank.
+        trailing = 0
+        while lines and not lines[-1]:
+            lines.pop()
+            trailing += 1
+        if trailing >= 2:
+            lines.append('')
+
+        # Collapse any remaining interior blank runs to a single blank.
+        collapsed = []
+        for ln in lines:
+            if ln == '' and collapsed and collapsed[-1] == '':
+                continue
+            collapsed.append(ln)
+        return '\n'.join(collapsed)
+
+    _LINE_HEIGHT_EM = 1.2
+
+    def _set_multiline_text(self, text_elem, lines, x):
+        """Populate text_elem with lines, vertically centered on its y anchor.
+
+        Draw.io centers a multi-line label on the anchor point, but a naive
+        conversion that keeps the first line at y and pushes the rest down
+        leaves the block sitting below center, causing stacked labels to
+        collide. Offset the first line up by half the block height so the
+        block is centered.
+        """
+        if not lines:
+            lines = ['']
+        if len(lines) == 1:
+            text_elem.text = lines[0]
+            return
+        # Shift the first line up so the block straddles the anchor: for N lines
+        # the first baseline sits at -((N-1)/2) line-heights from center.
+        first_dy = -((len(lines) - 1) / 2.0) * self._LINE_HEIGHT_EM
+        for i, line in enumerate(lines):
+            tspan = ET.SubElement(text_elem, 'tspan')
+            tspan.set('x', x)
+            tspan.set('dy', f'{first_dy:.3f}em' if i == 0 else f'{self._LINE_HEIGHT_EM}em')
+            tspan.text = line
 
     def _foreign_object_box_width(self, foreign_obj):
         """Return the wrapping width Draw.io uses for a label, in px.
