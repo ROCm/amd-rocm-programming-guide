@@ -183,8 +183,15 @@ class DrawioSVGProcessor:
                 text_elem.set('font-size', font_size)
                 text_elem.set('text-anchor', text_anchor)
                 
-                # Handle multiline text
+                # Draw.io wraps long labels inside a fixed-width foreignObject
+                # box (two lines in HTML). The single-line <text> fallback keeps
+                # the full string, so it overflows the canvas and gets clipped in
+                # the PDF. Re-wrap to the box width to reproduce the layout.
+                box_width = self._foreign_object_box_width(foreign_obj)
                 lines = text_content.strip().split('\n')
+                if len(lines) == 1 and box_width:
+                    lines = self._wrap_text(lines[0], box_width, font_size)
+
                 if len(lines) == 1:
                     text_elem.text = lines[0]
                 else:
@@ -195,7 +202,7 @@ class DrawioSVGProcessor:
                         if i > 0:
                             tspan.set('dy', '1.2em')
                         tspan.text = line
-                
+
                 # Remove the foreignObject since we've extracted its content
                 switch.remove(foreign_obj)
     
@@ -281,7 +288,52 @@ class DrawioSVGProcessor:
         
         get_text(elem)
         return ' '.join(text_parts).strip()
-    
+
+    def _foreign_object_box_width(self, foreign_obj):
+        """Return the wrapping width Draw.io uses for a label, in px.
+
+        The visible text sits in a nested <div> whose inline style carries a
+        pixel width (e.g. "width: 61px"). That width is what constrains
+        line-wrapping in HTML; the foreignObject itself is usually width="100%".
+        Returns None when no explicit width is found.
+        """
+        for e in foreign_obj.iter():
+            style = e.get('style', '')
+            m = re.search(r'(?<!max-)(?<!min-)width:\s*([\d.]+)px', style)
+            if m:
+                w = float(m.group(1))
+                if w > 1:
+                    return w
+        return None
+
+    def _wrap_text(self, text, box_width, font_size):
+        """Greedily wrap text to fit box_width, approximating glyph advance.
+
+        Only wraps between words; a single word wider than the box is left on
+        its own line rather than being split.
+        """
+        try:
+            size = float(re.match(r'([\d.]+)', str(font_size)).group(1))
+        except (AttributeError, ValueError):
+            size = 12.0
+        # Average glyph advance for a proportional sans font is ~0.55em.
+        char_w = size * 0.55
+        max_chars = max(1, int(box_width / char_w))
+
+        words = text.split()
+        if not words:
+            return [text]
+        lines = []
+        current = words[0]
+        for word in words[1:]:
+            if len(current) + 1 + len(word) <= max_chars:
+                current += ' ' + word
+            else:
+                lines.append(current)
+                current = word
+        lines.append(current)
+        return lines
+
     def _resolve_color(self, color):
         """Resolve a CSS color value to something valid for an SVG fill.
 
