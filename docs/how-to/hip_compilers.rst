@@ -11,7 +11,7 @@ HIP compilers
    :repo: ROCm/rocm-systems
    :path: projects/hip/docs/understand/compilers.rst
    :fix_latex_math: true
-   :start_line: 11
+   :start_line: 10
    :default_branch: develop
    :tag_prefix: docs/
    :project_name: HIP
