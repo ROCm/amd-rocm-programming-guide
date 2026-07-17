@@ -203,7 +203,7 @@ the graph, for example :cpp:func:`hipGraphAddKernelNode` See the
 available functions, they are of type ``hipGraphAdd{Type}Node``. Each type of
 node also has a predefined set of parameters depending on the operation, for
 example :cpp:class:`hipKernelNodeParams` for a kernel launch. See the
-:doc:`documentation for the general hipGraphNodeParams type<hip:doxygen/html/structhip_graph_node_params>`
+:doc:`graph management reference <hip:reference/hip_runtime_api/modules/graph_management>`
 for a list of available parameter types and their members.
 
 The general flow for explicitly creating a graph is usually:

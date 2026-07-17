@@ -9,7 +9,7 @@ ROCm in data centers
 
 ROCm™ in data centers:
 
-* :doc:`../install/containered_rocm`
+* `Running ROCm Docker containers <https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/docker.html>`_
 
 * :doc:`./rocm_in_data_centers/slurm-integration`
 
