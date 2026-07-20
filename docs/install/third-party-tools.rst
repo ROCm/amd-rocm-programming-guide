@@ -25,7 +25,7 @@ PAPI
 The Performance Application Programming Interface (PAPI) provides access to hardware
 performance counters on CPUs, GPUs, and other system components. PAPI 6.0.0 and later
 includes components for ROCm that enable monitoring of AMD GPU events through
-the :doc:`ROCprofiler <rocprofiler:index>` library. You can track events such as L1 and L2 cache activity, vector
+the :doc:`ROCprofiler-SDK <rocprofiler-sdk:index>`. You can track events such as L1 and L2 cache activity, vector
 and scalar arithmetic logic unit operations, and memory transactions. The :doc:`AMD SMI <amdsmi:index>`
 component adds power management support, enabling you to monitor and cap power usage
 on AMD GPUs.
@@ -47,12 +47,13 @@ For more information, see the `HPCToolkit project website <https://hpctoolkit.or
 TAU Performance System
 ----------------------
 
-The TAU Performance System provides a parallel performance evaluation toolkit that
-supports profiling and tracing modes of measurement. TAU can profile HIP programs
-using the :doc:`ROCprofiler <rocprofiler:index>` and :doc:`ROCTracer <roctracer:index>`
-APIs to gather timestamp information of executing kernels on the GPU and data-transfer
-information. It supports various parallel programming models including, MPI, OpenMP,
-and Kokkos, and can generate traces in multiple formats for visualization.
+The TAU Performance System provides a parallel performance evaluation toolkit
+that supports profiling and tracing modes of measurement. TAU can profile HIP
+programs using the :doc:`ROCprofiler-SDK <rocprofiler-sdk:index>` API to gather
+timestamp information of executing kernels on the GPU and data-transfer
+information. It supports various parallel programming models including, MPI,
+OpenMP, and Kokkos, and can generate traces in multiple formats for
+visualization.
 
 For more information, see the `TAU project website <http://tau.uoregon.edu/>`__.
 
@@ -66,7 +67,7 @@ Score-P and trace visualization
 -------------------------------
 
 Score-P is a highly scalable measurement infrastructure for profiling and event-tracing
-HPC applications. It uses the :doc:`ROCTracer <roctracer:index>` library to record HIP API functions, memory
+HPC applications. It uses the :doc:`ROCprofiler-SDK <rocprofiler-sdk:index>` to record HIP API functions, memory
 transfers between host and device, kernel launches, and other runtime behaviors. Vampir
 is a commercial tool that visualizes Score-P event logs as timelines
 and statistical charts, helping you detect performance problems that change over your
