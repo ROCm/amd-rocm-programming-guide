@@ -27,7 +27,13 @@ external_toc_path = "./sphinx/_toc.yml"
 
 external_projects_current_project = "amd-rocm-programming-guide"
 
-rocm_selector_pdf_generation = [{"fam": "all", "os": "ubuntu", "ver": "26.04"}, {"fam": "all", "os": "rhel", "ver": "10.1"}, {"fam": "all", "os": "windows"}]
+rocm_docs_pdf_mock_selector_state = {
+    "install/rocm": [
+        {"fam": "all", "w": "compute", "os": "ubuntu", "ubuntu-ver": "26.04"},
+        {"fam": "all", "w": "compute", "os": "rhel", "rhel-ver": "10.2"},
+        {"fam": "all", "w": "compute", "os": "windows"},
+    ],
+}
 
 # Generate llms.txt and llms-full.txt (requires the rocm-docs-core[llms] extra).
 rocm_docs_generate_llms = True
@@ -92,36 +98,11 @@ html_theme = "rocm_docs_theme"
 
 numfig = False
 
-
-# ---------------------------------------------------------------------------
-# PDF-specific exclusions
-# ---------------------------------------------------------------------------
-
-# Source-file glob for the HTML-only redirect stub pages under
-# install/redirect/.  These pages exist solely to give the sidebar JS
-# navigation something to link to; they have no readable content and must not
-# appear in the PDF.
-_PDF_EXCLUDED_PATTERN = "install/redirect/*"
-
-
-def _exclude_redirect_stubs_for_pdf(app):
-    """Exclude redirect stub pages from the source set for PDF builds.
-
-    builder-inited fires before Sphinx discovers source files, so adding the
-    glob to exclude_patterns here means the LaTeX builder never reads or emits
-    these pages.  The generated external-toc still references them, which would
-    warn as 'toctree contains reference to excluded document'; that warning
-    category (sphinx-external-toc's 'etoc.ref') is suppressed via
-    suppress_warnings.  HTML builds are unaffected, so the JS-driven redirect
-    navigation keeps working.
-    """
-    if app.builder.format == "latex":
-        app.config.exclude_patterns.append(_PDF_EXCLUDED_PATTERN)
-
-
-def setup(app):
-    app.connect("builder-inited", _exclude_redirect_stubs_for_pdf)
-
+# Exclude HTML-only redirect stub pages from PDF output.  These pages exist
+# solely to give the sidebar JS navigation something to link to; they have no
+# readable content.  The external-toc still references them; the "etoc.ref" and
+# "toc.excluded" entries in suppress_warnings silence the resulting warnings.
+rocm_docs_pdf_exclude_patterns = ["install/redirect/*"]
 
 # SVG converter configuration is handled by the svg-pdf-converter extension
 # which provides custom preprocessing for Draw.io SVGs
