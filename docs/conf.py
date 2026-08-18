@@ -45,7 +45,7 @@ rst_prolog = "\n".join(
 # Add the _extensions directory to Python's search path
 sys.path.append(str(Path(__file__).parent / 'extension'))
 
-extensions = ["rocm_docs", "sphinxcontrib.datatemplates", "version-ref", "csv-to-list-table", "remote-content", "svg-pdf-converter", "sphinx_subfigure", "sphinx_substitution_extensions", "matrix"]
+extensions = ["rocm_docs", "rocm_docs.selector", "sphinxcontrib.datatemplates", "version-ref", "csv-to-list-table", "remote-content", "svg-pdf-converter", "sphinx_subfigure", "sphinx_substitution_extensions", "matrix"]
 
 cpp_id_attributes = ["__global__", "__device__", "__host__", "__forceinline__", "static"]
 cpp_paren_attributes = ["__declspec"]
