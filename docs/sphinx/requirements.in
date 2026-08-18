@@ -1,4 +1,4 @@
-rocm-docs-core[llms]==1.36.0
+rocm-docs-core[llms] @ git+https://github.com/ROCm/rocm-docs-core.git@feat-selector
 sphinx-reredirects
 sphinx-sitemap
 sphinx-subfigure
