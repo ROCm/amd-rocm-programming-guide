@@ -2,7 +2,7 @@ import urllib.request
 import os
 
 repo = "ROCm/ROCm"
-branch = "docs/7.14.0"
+branch = "docs/10.0.0"
 
 def fetch(remote_path, local_path):
     os.makedirs(os.path.dirname(local_path), exist_ok=True)

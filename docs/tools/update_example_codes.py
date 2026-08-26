@@ -5,7 +5,7 @@
 import urllib.request
 import urllib.error
 
-BASE = "https://raw.githubusercontent.com/ROCm/rocm-examples/refs/heads/release/therock-7.14"
+BASE = "https://raw.githubusercontent.com/ROCm/rocm-examples/refs/heads/release/therock-10.0"
 DEST = "docs/tools/example_codes"
 
 # (source path relative to BASE, destination filename in DEST)
