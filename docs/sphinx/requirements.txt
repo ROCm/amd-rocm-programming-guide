@@ -249,7 +249,7 @@ sphinx-sitemap==2.9.0
     # via -r requirements.in
 sphinx-subfigure==0.2.4
     # via -r requirements.in
-sphinx-substitution-extensions==2026.1.12
+sphinx-substitution-extensions==2026.8.13.1
     # via -r requirements.in
 sphinxcontrib-applehelp==2.0.0
     # via sphinx
