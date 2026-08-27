@@ -1,0 +1,106 @@
+{#
+  Template: install-method-selector.rst.jinja
+  Renders the installation method selector dropdowns.
+  Output: RST with selected/selector/selector-option directives.
+
+  Primary data: install-methods.yaml (passed as `data` by the caller)
+
+  To update install methods: edit docs/data/install-methods.yaml only.
+  - Add/remove an OS from an os_group to change package manager grouping.
+  - Add/remove entries under radeon_ryzen or windows to change those methods.
+  - Add/remove entries under an os_group's methods to change Instinct methods.
+#}
+
+{%- macro col_width(n) -%}
+{%- if n == 1 %}12
+{%- elif n == 2 %}6
+{%- elif n == 3 %}4
+{%- elif n == 4 %}3
+{%- elif n == 5 %}20%
+{%- else %}2
+{%- endif -%}
+{%- endmacro -%}
+
+{#--
+  os_show_cond(group)
+  Returns the :show-cond: value for one OS group, e.g. "os=ubuntu os=debian".
+--#}
+{%- macro os_show_cond(group) -%}
+{%- for os in group.os %}os={{ os }} {% endfor -%}
+{%- endmacro -%}
+
+{#--
+  render_instinct_selectors()
+  Emits one .. selector:: per OS group for fam=instinct/all families.
+  Each selector shows the OS-specific package manager first, then the
+  remaining methods defined in that group.
+--#}
+{%- macro render_instinct_selectors() %}
+{%- for group in data.os_groups -%}
+{%- set n_methods = group.methods | length + 1 %}{# +1 for pkgman #}
+{%- set w = col_width(n_methods) %}
+   .. selector:: Installation method
+      :key: i
+      :show-cond: {{ os_show_cond(group) }}
+
+      .. selector-option:: {{ group.pkgman_display }}
+         :value: pkgman
+         :width: {{ w }}
+
+{% for m in group.methods %}
+      .. selector-option:: {{ m.display }}
+         :value: {{ m.value }}
+         :width: {{ w }}
+
+{% endfor %}
+{%- endfor %}
+{%- endmacro -%}
+
+
+.. selected:: fam=all w=graphics
+
+{%- set n = data.all_graphics | length %}
+{%- set w = col_width(n) %}
+{%- set linux_os_cond %}{% for group in data.os_groups %}{% for os in group.os %}os={{ os }} {% endfor %}{% endfor %}{% endset %}
+
+   .. selector:: Installation method
+      :key: i
+      :show-cond: {{ linux_os_cond | trim }}
+
+{% for m in data.all_graphics %}
+      .. selector-option:: {{ m.display }}
+         :value: {{ m.value }}
+         :width: {{ w }}
+
+{% endfor %}
+.. selected:: fam=all w=compute fam=instinct
+{{ render_instinct_selectors() }}
+.. selected:: fam=radeon fam=ryzen
+
+{%- set n = data.radeon_ryzen | length %}
+{%- set w = col_width(n) %}
+{%- set linux_os_cond %}{% for group in data.os_groups %}{% for os in group.os %}os={{ os }} {% endfor %}{% endfor %}{% endset %}
+
+   .. selector:: Installation method
+      :key: i
+      :show-cond: {{ linux_os_cond | trim }}
+
+{% for m in data.radeon_ryzen %}
+      .. selector-option:: {{ m.display }}
+         :value: {{ m.value }}
+         :width: {{ w }}
+
+{% endfor %}
+{%- set n = data.windows | length %}
+{%- set w = col_width(n) %}
+
+.. selector:: Installation method
+   :show-cond: os=windows
+   :key: i
+
+{% for m in data.windows %}
+   .. selector-option:: {{ m.display }}
+      :value: {{ m.value }}
+      :width: {{ w }}
+
+{% endfor %}

@@ -6,83 +6,81 @@ complete your system configuration and validate the installation.
 
 .. _rocm-post-install-env:
 
-.. selected:: w=compute
+.. selected:: os=ubuntu os=debian os=rhel os=oracle-linux os=rocky-linux os=sles
 
-   .. selected:: os=ubuntu os=debian os=rhel os=oracle-linux os=rocky-linux os=sles
+   .. selected:: i=tar
+      :heading: Configure your environment
+      :heading-level: 3
 
-      .. selected:: i=tar
-         :heading: Configure your environment
-         :heading-level: 3
+      Configure environment variables so that ROCm libraries and tools are
+      available either to all users on the system or only to your user account.
 
-         Configure environment variables so that ROCm libraries and tools are
-         available either to all users on the system or only to your user account.
+      .. tab-set::
 
-         .. tab-set::
+         .. tab-item:: System-wide setup
+            :sync: env-system-setup
 
-            .. tab-item:: System-wide setup
-               :sync: env-system-setup
+            Create a profile script so that all users inherit the ROCm
+            environment variables when they start a shell session. Make sure
+            you're in the ``therock-tarball`` directory before proceeding.
 
-               Create a profile script so that all users inherit the ROCm
-               environment variables when they start a shell session. Make sure
-               you're in the ``therock-tarball`` directory before proceeding.
+            .. code-block:: bash
 
-               .. code-block:: bash
+               # Configure ROCm PATH. Make sure you're in the therock-tarball directory before proceeding.
+               ROCM_INSTALL_PATH=$(pwd)/install
+               sudo tee /etc/profile.d/set-rocm-env.sh << EOF
+               export ROCM_PATH=$ROCM_INSTALL_PATH
+               export PATH=\$PATH:\$ROCM_PATH/bin
+               export LD_LIBRARY_PATH=\$ROCM_PATH/lib
+               EOF
+               sudo chmod +x /etc/profile.d/set-rocm-env.sh
+               source /etc/profile.d/set-rocm-env.sh
 
-                  # Configure ROCm PATH. Make sure you're in the therock-tarball directory before proceeding.
-                  ROCM_INSTALL_PATH=$(pwd)/install
-                  sudo tee /etc/profile.d/set-rocm-env.sh << EOF
-                  export ROCM_PATH=$ROCM_INSTALL_PATH
-                  export PATH=\$PATH:\$ROCM_PATH/bin
-                  export LD_LIBRARY_PATH=\$ROCM_PATH/lib
-                  EOF
-                  sudo chmod +x /etc/profile.d/set-rocm-env.sh
-                  source /etc/profile.d/set-rocm-env.sh
+         .. tab-item:: User setup
+            :sync: env-user-setup
 
-            .. tab-item:: User setup
-               :sync: env-user-setup
+            Configure the ROCm environment for your user by updating your shell
+            startup configuration file.
 
-               Configure the ROCm environment for your user by updating your shell
-               startup configuration file.
+            Use the following commands to update your shell configuration file
+            (``~/.bashrc`` or ``~/.profile``) and add ROCm to your PATH. Before proceeding, make sure you're in the
+            ``therock-tarball`` directory so the install path resolves correctly.
 
-               Use the following commands to update your shell configuration file
-               (``~/.bashrc`` or ``~/.profile``) and add ROCm to your PATH. Before proceeding, make sure you're in the
-               ``therock-tarball`` directory so the install path resolves correctly.
+            .. tab-set::
 
-               .. tab-set::
+               .. tab-item:: .bashrc
+                  :sync: bashrc
 
-                  .. tab-item:: .bashrc
-                     :sync: bashrc
+                  .. code-block:: bash
 
-                     .. code-block:: bash
+                     # Configure ROCm PATH. Make sure you're in the therock-tarball directory before proceeding.
+                     ROCM_INSTALL_PATH=$(pwd)/install
+                     tee --append ~/.bashrc << EOF
 
-                        # Configure ROCm PATH. Make sure you're in the therock-tarball directory before proceeding.
-                        ROCM_INSTALL_PATH=$(pwd)/install
-                        tee --append ~/.bashrc << EOF
+                     # BEGIN ROCm environment configuration
+                     export ROCM_PATH=$ROCM_INSTALL_PATH
+                     export PATH=\$PATH:\$ROCM_PATH/bin
+                     export LD_LIBRARY_PATH=\$ROCM_PATH/lib
+                     # END ROCm environment configuration
+                     EOF
+                     source ~/.bashrc
 
-                        # BEGIN ROCm environment configuration
-                        export ROCM_PATH=$ROCM_INSTALL_PATH
-                        export PATH=\$PATH:\$ROCM_PATH/bin
-                        export LD_LIBRARY_PATH=\$ROCM_PATH/lib
-                        # END ROCm environment configuration
-                        EOF
-                        source ~/.bashrc
+               .. tab-item:: .profile
+                  :sync: profile
 
-                  .. tab-item:: .profile
-                     :sync: profile
+                  .. code-block:: bash
 
-                     .. code-block:: bash
+                     # Configure ROCm PATH. Make sure you're in the therock-tarball directory before proceeding.
+                     ROCM_INSTALL_PATH=$(pwd)/install
+                     tee --append ~/.profile << EOF
 
-                        # Configure ROCm PATH. Make sure you're in the therock-tarball directory before proceeding.
-                        ROCM_INSTALL_PATH=$(pwd)/install
-                        tee --append ~/.profile << EOF
-
-                        # BEGIN ROCm environment configuration
-                        export ROCM_PATH=$ROCM_INSTALL_PATH
-                        export PATH=\$PATH:\$ROCM_PATH/bin
-                        export LD_LIBRARY_PATH=\$ROCM_PATH/lib
-                        # END ROCm environment configuration
-                        EOF
-                        source ~/.profile
+                     # BEGIN ROCm environment configuration
+                     export ROCM_PATH=$ROCM_INSTALL_PATH
+                     export PATH=\$PATH:\$ROCM_PATH/bin
+                     export LD_LIBRARY_PATH=\$ROCM_PATH/lib
+                     # END ROCm environment configuration
+                     EOF
+                     source ~/.profile
 
 .. selected:: os=windows
 
@@ -97,17 +95,16 @@ complete your system configuration and validate the installation.
 
          .. code-block:: bat
 
-            setx HIP_DEVICE_LIB_PATH “C:\TheRock\build\lib\llvm\amdgcn\bitcode” /M
-            setx HIP_PATH “C:\TheRock\build” /M
-            setx HIP_PLATFORM “amd” /M
-            setx LLVM_PATH “C:\TheRock\build\lib\llvm” /M
+            setx HIP_DEVICE_LIB_PATH "C:\TheRock\build\lib\llvm\amdgcn\bitcode" /M
+            setx HIP_PATH "C:\TheRock\build" /M
+            setx HIP_PLATFORM "amd" /M
+            setx LLVM_PATH "C:\TheRock\build\lib\llvm" /M
 
       2. Add the following paths into the PATH environment variable.
 
          .. code-block:: bat
 
-            setx PATH "%PATH%;C:\TheRock\build\bin" /M
-            setx PATH "%PATH%;C:\TheRock\build\lib\llvm\bin" /M
+            setx PATH "%PATH%;C:\TheRock\build\bin;C:\TheRock\build\lib\llvm\bin" /M
 
       3. Open a new command prompt window for the environment variables to take effect. Run ``set``
          to see the list of active variables.
@@ -180,7 +177,7 @@ complete your system configuration and validate the installation.
 
          .. code-block:: shell-session
 
-            AMDSMI Tool: 26.5.0+2b22ab01 | AMDSMI Library version: 26.5.0 | ROCm version: 7.14.0 | amdgpu version: 6.19.14.31400000 | ionic version: N/A
+            AMDSMI Tool: 27.0.0+6b0e43f3 | AMDSMI Library version: 27.0.0 | ROCm version: 10.0.0 | amdgpu version: 7.1.3.31500000 | ionic version: N/A
 
    .. selected:: i=pip
 
@@ -375,6 +372,20 @@ complete your system configuration and validate the installation.
 .. selected:: os=ubuntu os=debian os=rhel os=oracle-linux os=rocky-linux os=sles
 
    .. selected:: i=pip
+      :heading: Configure your environment
+      :heading-level: 3
+
+      .. note::
+
+         Follow this step only if you installed the ``devel`` package.
+
+      Initialize the ROCm SDK.
+
+      .. code-block:: bash
+
+         rocm-sdk init
+
+   .. selected:: i=pip
       :heading: Test your installation
       :heading-level: 3
 
@@ -385,25 +396,12 @@ complete your system configuration and validate the installation.
       .. code-block:: bash
 
          rocm-sdk targets
-         rocm-sdk path --cmake
-         rocm-sdk path --bin
-         rocm-sdk path --root
          rocm-sdk test
 
-      To learn more about the ``rocm-sdk`` tool and to see example 
+      To learn more about the ``rocm-sdk`` tool and to see example
       outputs, see `Using ROCm Python packages (TheRock)
       <https://github.com/ROCm/TheRock/blob/main/RELEASES.md#using-rocm-python-packages>`__.
 
-   .. selected:: i=tar
-      :heading: Test your installation
-      :heading-level: 3
-
-      Run the ``test_hip_api`` tool to verify that the HIP runtime can access
-      your GPU and execute a simple workload.
-
-      .. code-block:: bash
-
-         test_hip_api
 
 .. selected:: os=windows
 
@@ -419,7 +417,7 @@ complete your system configuration and validate the installation.
 
          rocm-sdk test
 
-      To learn more about the ``rocm-sdk`` tool and to see example 
+      To learn more about the ``rocm-sdk`` tool and to see example
       outputs, see `Using ROCm Python packages (TheRock)
       <https://github.com/ROCm/TheRock/blob/main/RELEASES.md#using-rocm-python-packages>`__.
 
@@ -433,3 +431,32 @@ complete your system configuration and validate the installation.
 
          deactivate
 
+.. seealso::
+
+   .. selected:: fam=all fam=instinct
+
+      To install deep learning frameworks, including `PyTorch
+      <https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/pytorch/install.html>`__
+      and `JAX
+      <https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/jax/install.html>`__,
+      and get started with AI training and inference, see the `AI Ecosystem
+      <https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/>`__
+      documentation portal.
+
+   .. selected:: fam=radeon fam=ryzen
+
+      To install deep learning frameworks, including `PyTorch
+      <https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/pytorch/install.html>`__,
+      and get started with AI training and inference, see the `AI Ecosystem
+      <https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/>`__
+      documentation portal.
+
+   .. selected:: fam=all fam=instinct
+
+      To learn about HPC libraries and applications, see
+      :doc:`ROCm HPC SDK </components/hpc-sdk/index>`.
+
+   .. selected:: fam=all fam=instinct fam=radeon
+
+      To learn about ROCm Extras, which include supplementary tools for
+      benchmarking and validating, see :doc:`ROCm Extras </components/extras>`.

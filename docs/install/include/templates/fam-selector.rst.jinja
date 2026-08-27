@@ -1,0 +1,57 @@
+{#
+  Template: fam-multi-arch-selector.rst.jinja
+  Renders the Device family selector dropdown.
+  Output: RST with a single .. selector:: directive.
+
+  Primary data: gpus.yaml (passed as `data` by the caller)
+
+  Families are the top-level keys of gpus.yaml (e.g. "AMD Instinct").
+  Value slug: strip "AMD " prefix, lowercase (e.g. "instinct").
+  Display name: family name + "™" (e.g. "AMD Instinct™").
+  toc-label: family name without ™.
+  Width: 100 / (number of families + 1 for "All") percent.
+#}
+{#
+{%- set families = [] -%}
+{%- for k in data.keys() if not k.startswith("_") -%}
+  {%- set _ = families.append(k) -%}
+{%- endfor -%}
+{%- set w = (100 // (families | length + 1)) | string ~ "%" -%}
+
+.. selector:: Device family
+   :key: fam
+
+   .. selector-option:: All
+      :value: all
+      :width: {{ w }}
+
+{% for fam_name in families %}
+   .. selector-option:: {{ fam_name }}™
+      :value: {{ fam_name | replace("AMD ", "") | lower }}
+      :width: {{ w }}
+      :toc-label: {{ fam_name }}
+
+{% endfor %}
+#}
+
+.. selector:: Device family
+   :key: fam
+
+   .. selector-option:: All
+      :value: all
+      :width: 25%
+
+   .. selector-option:: AMD Instinct™
+      :value: instinct w=compute
+      :width: 25%
+      :toc-label: AMD Instinct
+
+   .. selector-option:: AMD Radeon™
+      :value: radeon
+      :width: 25%
+      :toc-label: AMD Radeon
+
+   .. selector-option:: AMD Ryzen™
+      :value: ryzen
+      :width: 25%
+      :toc-label: AMD Ryzen

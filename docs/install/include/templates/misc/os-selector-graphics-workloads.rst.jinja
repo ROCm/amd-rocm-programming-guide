@@ -1,0 +1,158 @@
+{#
+  Template: os-selector.rst.jinja
+  Renders OS selector dropdowns for the install guide.
+  Output: RST with selector directives.
+
+  Primary data: gpus.yaml (passed as `data` by the caller)
+  Secondary data: os-support.yaml (loaded via load())
+
+  For each GPU family, GPUs are grouped by their OS fingerprint — the ordered
+  set of supported distros (excluding WSL2) plus a WSL2 flag. One
+  .. selector:: block is emitted per unique fingerprint.
+#}
+{%- set os_data = load("/data/os-support.yaml") -%}
+
+{#-- OS display metadata: value, display name, optional toc_label --#}
+{%- set os_meta = {
+  "Ubuntu":                       {"value": "ubuntu",       "display": "Ubuntu"},
+  "Debian":                       {"value": "debian",       "display": "Debian"},
+  "Red Hat Enterprise Linux":     {"value": "rhel",         "display": "RHEL",         "toc_label": "Red Hat Enterprise Linux"},
+  "Oracle Linux":                 {"value": "oracle-linux", "display": "Oracle Linux"},
+  "Rocky Linux":                  {"value": "rocky-linux",  "display": "Rocky Linux"},
+  "SUSE Linux Enterprise Server": {"value": "sles",         "display": "SLES",         "toc_label": "SUSE Linux Enterprise Server"},
+  "Windows":                      {"value": "windows",      "display": "Windows"},
+} -%}
+
+{%- macro slugify(name) -%}
+{{- name | lower | replace("+", "") | replace("  ", " ") | replace(" ", "-") -}}
+{%- endmacro -%}
+
+
+{#--
+  render_family(family_name, header)
+  Emits all .. selector:: blocks for one family.
+  GPUs are grouped by OS fingerprint; each group becomes one selector.
+--#}
+{%- macro render_family(family_name, header) -%}
+{%- set family_gpus = data[family_name] -%}
+{%- set family_os = os_data[family_name] -%}
+
+{#-- Build per-GPU item list --#}
+{%- set gpu_items = [] -%}
+{%- for gpu_name in family_gpus.keys() -%}
+  {%- if gpu_name in family_os -%}
+    {%- set gpu_os = family_os[gpu_name] -%}
+    {%- set distros = [] -%}
+    {%- for d in gpu_os.keys() if d != "WSL2" -%}
+      {%- set _ = distros.append(d) -%}
+    {%- endfor -%}
+    {%- set has_wsl = "WSL2" in gpu_os -%}
+    {%- set fp = distros | join("|") ~ ("|WSL2" if has_wsl else "") -%}
+    {%- set _ = gpu_items.append({"name": gpu_name, "fp": fp, "has_wsl": has_wsl, "distros": distros}) -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{#-- Collect unique fingerprints in first-appearance order --#}
+{%- set ns = namespace(seen=[]) -%}
+{%- set fp_order = [] -%}
+{%- for item in gpu_items -%}
+  {%- if item.fp not in ns.seen -%}
+    {%- set _ = fp_order.append(item.fp) -%}
+    {%- set ns.seen = ns.seen + [item.fp] -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{#-- Render one selector per fingerprint group --#}
+{%- for fp in fp_order -%}
+{%- set group = gpu_items | selectattr("fp", "equalto", fp) | list -%}
+{%- set first = group[0] -%}
+{%- set n_opts = first.distros | length + (1 if first.has_wsl else 0) -%}
+{%- if n_opts == 2 %}{%- set w = "6" -%}
+{%- elif n_opts == 3 %}{%- set w = "4" -%}
+{%- elif n_opts == 4 %}{%- set w = "3" -%}
+{%- elif n_opts == 5 %}{%- set w = "20%" -%}
+{%- else %}{%- set w = "4" -%}
+{%- endif %}
+
+   .. selector:: {{ header }}
+      :key: os
+      :show-cond: {% for item in group %}gpu={{ slugify(item.name) }} {% endfor %}
+
+{% for distro in first.distros %}
+      .. selector-option:: {{ os_meta[distro]["display"] }}
+         :value: {{ os_meta[distro]["value"] }}
+         :width: {{ w }}
+{%- if "toc_label" in os_meta[distro] %}
+         :toc-label: {{ os_meta[distro]["toc_label"] }}
+{%- endif %}
+{% endfor %}
+{%- if first.has_wsl %}
+      .. selector-option:: WSL2
+         :value: wsl i=pkgman
+         :width: {{ w }}
+
+{%- endif %}
+{% endfor -%}
+{%- endmacro %}
+
+
+{#
+.. selected:: fam=instinct
+
+{{ render_family("AMD Instinct", "Linux distribution") -}}
+
+.. selected:: fam=radeon
+
+{{ render_family("AMD Radeon", "Operating system") -}}
+
+.. selected:: fam=ryzen
+
+{{ render_family("AMD Ryzen", "Operating system") -}}
+#}
+
+.. selector:: Operating system
+   :key: os
+   :show-cond: fam=radeon
+
+   .. selector-option:: Ubuntu
+      :value: ubuntu
+      :width: 4
+
+   .. selector-option:: RHEL
+      :value: rhel
+      :width: 4
+      :toc-label: Red Hat Enterprise Linux
+
+   .. selector-option:: Windows
+      :value: windows
+      :width: 4
+
+.. selector:: Operating system
+   :key: os
+   :show-cond: fam=ryzen
+
+   .. selector-option:: Ubuntu
+      :value: ubuntu
+      :width: 6
+
+   .. selector-option:: Windows
+      :value: windows
+      :width: 6
+
+.. selector:: Operating system
+   :key: os
+   :show-cond: fam=all
+
+   .. selector-option:: Ubuntu
+      :value: ubuntu
+      :width: 4
+
+   .. selector-option:: RHEL
+      :value: rhel
+      :width: 4
+      :toc-label: Red Hat Enterprise Linux
+
+   .. selector-option:: Windows
+      :value: windows
+      :width: 4
+

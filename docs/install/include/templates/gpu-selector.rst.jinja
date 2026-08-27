@@ -1,0 +1,51 @@
+{#
+  Template: gpu-selector.rst.jinja
+  Renders the GPU selector dropdowns for the install guide.
+  Output: RST with selector directives.
+
+  Primary data: gpus.yaml (passed as `data` by the caller)
+
+  Slug derivation: GPU name lowercased, spaces replaced with hyphens, "+" removed.
+  e.g. "AMD Instinct MI355X" -> "amd-instinct-mi355x"
+       "AMD Ryzen AI Max+ PRO 495" -> "amd-ryzen-ai-max-pro-495"
+#}
+{%- set instinct = data["AMD Instinct"] -%}
+{%- set radeon   = data["AMD Radeon"] -%}
+{%- set ryzen    = data["AMD Ryzen"] -%}
+
+{%- macro slugify(name) -%}
+{{ name | lower | replace("+", "") | replace("  ", " ") | replace(" ", "-") }}
+{%- endmacro -%}
+
+.. selected:: fam=instinct fam=radeon fam=ryzen
+
+   .. selector-dropdown:: Instinct GPU
+      :key: gpu
+      :show-cond: fam=instinct
+      :sort: desc
+
+{% for gpu_name, gpu in instinct.items() %}
+      .. selector-option:: {{ gpu_name }} ({{ gpu.gfx }})
+         :value: {{ slugify(gpu_name) }} gfx={{ gpu.gfx }}
+
+{% endfor %}
+   .. selector-dropdown:: Radeon GPU
+      :key: gpu
+      :show-cond: fam=radeon
+      :sort: desc
+
+{% for gpu_name, gpu in radeon.items() %}
+      .. selector-option:: {{ gpu_name }} ({{ gpu.gfx }})
+         :value: {{ slugify(gpu_name) }} gfx={{ gpu.gfx }}
+
+{% endfor %}
+   .. selector-dropdown:: Ryzen APU
+      :key: gpu
+      :show-cond: fam=ryzen
+      :sort: desc
+
+{% for gpu_name, gpu in ryzen.items() %}
+      .. selector-option:: {{ gpu_name }} ({{ gpu.igpu }}) ({{ gpu.gfx }})
+         :value: {{ slugify(gpu_name) }} gfx={{ gpu.gfx }}
+
+{% endfor %}

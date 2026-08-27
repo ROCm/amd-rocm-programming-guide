@@ -1,0 +1,289 @@
+{#
+  Template: ver-selector.rst.jinja
+  Renders all OS version selector dropdowns for the install guide.
+  Output: RST with selected/selector/selector-option directives.
+
+  Primary data: gpus.yaml (passed as `data` by the caller)
+  Secondary data: os-support.yaml (loaded via load())
+
+  For each distro, GPUs are grouped by their version fingerprint — the ordered
+  list of supported versions. One .. selector:: block is emitted per unique
+  fingerprint, plus a fam=all block with the union of all versions.
+
+  To update version selectors: edit docs/data/os-support.yaml only.
+#}
+{%- set os_data = load("/data/os-support.yaml") -%}
+
+{%- macro slugify(name) -%}
+{{- name | lower | replace("+", "") | replace("  ", " ") | replace(" ", "-") -}}
+{%- endmacro -%}
+
+{#-- Width based on number of options --#}
+{%- macro col_width(n) -%}
+{%- if n == 1 %}12
+{%- elif n == 2 %}6
+{%- elif n == 3 %}4
+{%- elif n == 4 %}3
+{%- elif n == 5 %}20%
+{%- elif n == 6 %}2
+{%- else %}2
+{%- endif -%}
+{%- endmacro -%}
+
+{#--
+  ver_selectors(family_name, distro_name, key, header)
+  Returns 0-indented .. selector:: blocks for one family+distro pair.
+  GPUs sharing the same ordered version list form one block.
+  Caller pipes through | indent(n) to position in the RST hierarchy.
+--#}
+{%- macro ver_selectors(family_name, distro_name, key, header) -%}
+{%- set family_os = os_data[family_name] -%}
+
+{%- set gpu_items = [] -%}
+{%- for gpu_name in data[family_name].keys() -%}
+  {%- if gpu_name in family_os and distro_name in family_os[gpu_name] -%}
+    {%- set versions = [] -%}
+    {%- for v in family_os[gpu_name][distro_name]["versions"] -%}
+      {%- set _ = versions.append(v["version"]) -%}
+    {%- endfor -%}
+    {%- set fp = versions | join("|") -%}
+    {%- set _ = gpu_items.append({"name": gpu_name, "fp": fp, "versions": versions}) -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if gpu_items | length > 0 -%}
+{%- set ns = namespace(seen=[]) -%}
+{%- set fp_order = [] -%}
+{%- for item in gpu_items -%}
+  {%- if item.fp not in ns.seen -%}
+    {%- set _ = fp_order.append(item.fp) -%}
+    {%- set ns.seen = ns.seen + [item.fp] -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- for fp in fp_order -%}
+{%- set group = gpu_items | selectattr("fp", "equalto", fp) | list -%}
+{%- set first = group[0] -%}
+{%- set w = col_width(first.versions | length) %}
+.. selector:: {{ header }}
+   :key: {{ key }}
+   :show-cond: {% for item in group %}gpu={{ slugify(item.name) }} {% endfor %}
+
+{% for ver in first.versions %}
+   .. selector-option:: {{ ver }}
+      :value: {{ ver }}
+      :width: {{ w }}
+{% endfor %}
+{%- endfor %}
+{%- endif -%}
+{%- endmacro -%}
+
+{#--
+  family_all_versions(family_name, distro_name, key, header)
+  Returns a single 0-indented .. selector:: with the union of all versions for
+  one family + distro. Used for w=graphics where no GPU is pre-selected.
+--#}
+{%- macro family_all_versions(family_name, distro_name, key, header) -%}
+{%- set family_os = os_data[family_name] -%}
+{%- set ns = namespace(seen=[], vers=[]) -%}
+{%- for gpu_name in data[family_name].keys() -%}
+  {%- if gpu_name in family_os and distro_name in family_os[gpu_name] -%}
+    {%- for v in family_os[gpu_name][distro_name]["versions"] -%}
+      {%- if v["version"] not in ns.seen and v.graphics -%}
+        {%- set _ = ns.vers.append(v["version"]) -%}
+        {%- set ns.seen = ns.seen + [v["version"]] -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if ns.vers | length > 0 -%}
+{%- set w = col_width(ns.vers | length) %}
+.. selector:: {{ header }}
+   :key: {{ key }}
+
+{% for ver in ns.vers %}
+   .. selector-option:: {{ ver }}
+      :value: {{ ver }}
+      :width: {{ w }}
+{% endfor %}
+{%- endif -%}
+{%- endmacro -%}
+
+{#--
+  all_versions(distro_name, key, header)
+  Returns a single 0-indented .. selector:: with the union of all versions.
+--#}
+{%- macro all_versions(distro_name, key, header) -%}
+{%- set ns = namespace(seen=[], vers=[]) -%}
+{%- for fam_name in data.keys() if not fam_name.startswith("_") -%}
+  {%- set family_os = os_data[fam_name] -%}
+  {%- for gpu_name in data[fam_name].keys() -%}
+    {%- if gpu_name in family_os and distro_name in family_os[gpu_name] -%}
+      {%- for v in family_os[gpu_name][distro_name]["versions"] -%}
+        {%- if v["version"] not in ns.seen -%}
+          {%- set _ = ns.vers.append(v["version"]) -%}
+          {%- set ns.seen = ns.seen + [v["version"]] -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endfor -%}
+{%- if ns.vers | length > 0 -%}
+{%- set w = col_width(ns.vers | length) %}
+.. selector:: {{ header }}
+   :key: {{ key }}
+
+{% for ver in ns.vers %}
+   .. selector-option:: {{ ver }}
+      :value: {{ ver }}
+      :width: {{ w }}
+{% endfor %}
+{%- endif -%}
+{%- endmacro -%}
+
+
+{# ── Ubuntu ─────────────────────────────────────────────────────────────── #}
+
+.. selected:: os=ubuntu
+
+   .. selected:: fam=instinct
+
+{{ ver_selectors("AMD Instinct", "Ubuntu", "ubuntu-ver", "Ubuntu version") | indent(6) }}
+   .. selected:: fam=radeon
+
+      .. selected:: w=compute
+
+{{ ver_selectors("AMD Radeon", "Ubuntu", "ubuntu-ver", "Ubuntu version") | indent(9) }}
+      .. selected:: w=graphics
+
+{{ family_all_versions("AMD Radeon", "Ubuntu", "ubuntu-ver", "Ubuntu version") | indent(9) }}
+   .. selected:: fam=ryzen
+
+      .. selected:: w=compute
+
+{{ ver_selectors("AMD Ryzen", "Ubuntu", "ubuntu-ver", "Ubuntu version") | indent(9) }}
+      .. selected:: w=graphics
+
+{{ family_all_versions("AMD Ryzen", "Ubuntu", "ubuntu-ver", "Ubuntu version") | indent(9) }}
+   .. selected:: fam=all
+
+{{ all_versions("Ubuntu", "ubuntu-ver", "Ubuntu version") | indent(6) }}
+
+{# ── Debian ──────────────────────────────────────────────────────────────── #}
+
+.. selected:: os=debian
+
+   .. selected:: fam=instinct
+
+{{ ver_selectors("AMD Instinct", "Debian", "debian-ver", "Debian version") | indent(6) }}
+   .. selected:: fam=all
+
+{{ all_versions("Debian", "debian-ver", "Debian version") | indent(6) }}
+
+{# ── RHEL ────────────────────────────────────────────────────────────────── #}
+
+.. selected:: os=rhel
+
+   .. selected:: fam=instinct
+
+{{ ver_selectors("AMD Instinct", "Red Hat Enterprise Linux", "rhel-ver", "RHEL version") | indent(6) }}
+   .. selected:: fam=radeon
+
+      .. selected:: w=compute
+
+{{ ver_selectors("AMD Radeon", "Red Hat Enterprise Linux", "rhel-ver", "RHEL version") | indent(9) }}
+      .. selected:: w=graphics
+
+{{ family_all_versions("AMD Radeon", "Red Hat Enterprise Linux", "rhel-ver", "RHEL version") | indent(9) }}
+   .. selected:: fam=all
+
+{{ all_versions("Red Hat Enterprise Linux", "rhel-ver", "RHEL version") | indent(6) }}
+
+{# ── Oracle Linux ─────────────────────────────────────────────────────────── #}
+
+.. selected:: os=oracle-linux
+
+   .. selected:: fam=instinct
+
+{{ ver_selectors("AMD Instinct", "Oracle Linux", "oracle-linux-ver", "Oracle Linux version") | indent(6) }}
+   .. selected:: fam=all
+
+{{ all_versions("Oracle Linux", "oracle-linux-ver", "Oracle Linux version") | indent(6) }}
+
+{# ── Rocky Linux ─────────────────────────────────────────────────────────── #}
+
+.. selected:: os=rocky-linux
+
+   .. selected:: fam=instinct
+
+{{ ver_selectors("AMD Instinct", "Rocky Linux", "rocky-linux-ver", "Rocky Linux version") | indent(6) }}
+   .. selected:: fam=all
+
+{{ all_versions("Rocky Linux", "rocky-linux-ver", "Rocky Linux version") | indent(6) }}
+
+{# ── SLES ────────────────────────────────────────────────────────────────── #}
+
+.. selected:: os=sles
+
+   .. selected:: fam=instinct
+
+{{ ver_selectors("AMD Instinct", "SUSE Linux Enterprise Server", "sles-ver", "SLES version") | indent(6) }}
+   .. selected:: fam=all
+
+{{ all_versions("SUSE Linux Enterprise Server", "sles-ver", "SLES version") | indent(6) }}
+
+{# ── Windows ─────────────────────────────────────────────────────────────── #}
+
+.. selected:: os=windows
+
+   .. selected:: fam=radeon
+
+      .. selected:: w=compute
+
+{{ ver_selectors("AMD Radeon", "Windows", "windows-ver", "Windows version") | indent(9) }}
+      .. selected:: w=graphics
+
+{{ family_all_versions("AMD Radeon", "Windows", "windows-ver", "Windows version") | indent(9) }}
+   .. selected:: fam=ryzen
+
+      .. selected:: w=compute
+
+{{ ver_selectors("AMD Ryzen", "Windows", "windows-ver", "Windows version") | indent(9) }}
+      .. selected:: w=graphics
+
+{{ family_all_versions("AMD Ryzen", "Windows", "windows-ver", "Windows version") | indent(9) }}
+   .. selected:: fam=all
+
+{{ all_versions("Windows", "windows-ver", "Windows version") | indent(6) }}
+
+{# ── WSL2 ────────────────────────────────────────────────────────────────── #}
+
+.. selected:: os=wsl
+
+   .. selector:: WSL2 Linux distro
+      :key: ubuntu-ver
+
+{% for fam_name in data.keys() if not fam_name.startswith("_") %}
+{%- set family_os = os_data[fam_name] -%}
+{%- set fam_slug = fam_name | replace("AMD ", "") | lower -%}
+{%- set ns = namespace(seen=[], wsl_vers=[]) -%}
+{%- for gpu_name in data[fam_name].keys() -%}
+  {%- if gpu_name in family_os and "WSL2" in family_os[gpu_name] -%}
+    {%- for v in family_os[gpu_name]["WSL2"]["versions"] -%}
+      {%- if v not in ns.seen -%}
+        {%- set _ = ns.wsl_vers.append(v) -%}
+        {%- set ns.seen = ns.seen + [v] -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if ns.wsl_vers | length > 0 -%}
+{%- set w = col_width(ns.wsl_vers | length) %}
+{% for ver in ns.wsl_vers %}
+      .. selector-option:: Ubuntu {{ ver }}
+         :show-cond: fam={{ fam_slug }}
+         :value: {{ ver }}
+         :width: {{ w }}
+{% endfor %}
+{%- endif %}
+{%- endfor %}
