@@ -32,6 +32,18 @@ DIAGRAMS = [
 ]
 
 BOOTSTRAP_CDN = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+# Bootstrap is vendored locally because the headless browser cannot reach the
+# CDN behind the AMD proxy; without the grid CSS the diagram collapses. Refresh
+# with: curl -o bootstrap.min.css <BOOTSTRAP_CDN>
+BOOTSTRAP_LOCAL = DIR / "bootstrap.min.css"
+
+
+def bootstrap_style() -> str:
+    """Inline the vendored Bootstrap CSS, falling back to the CDN link."""
+    if BOOTSTRAP_LOCAL.exists():
+        css = BOOTSTRAP_LOCAL.read_text(encoding="utf-8")
+        return f"<style>{css}</style>"
+    return f'<link rel="stylesheet" href="{BOOTSTRAP_CDN}">'
 
 
 def wrap_fragment(fragment: str) -> str:
@@ -39,7 +51,7 @@ def wrap_fragment(fragment: str) -> str:
 <html>
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="{BOOTSTRAP_CDN}">
+  {bootstrap_style()}
   <style>
     body {{ margin: 0; padding: 16px; background: #1b1b1b; }}
   </style>

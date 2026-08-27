@@ -20,3 +20,6 @@ __pycache__/
 docs/contribute/index.md
 docs/about/release-notes.md
 docs/release/changelog.md
+
+# vendored Bootstrap for capture-diagrams.py (fetched on demand, not tracked)
+docs/data/landing-page/bootstrap.min.css
