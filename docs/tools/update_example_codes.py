@@ -6,6 +6,8 @@ import urllib.request
 import urllib.error
 
 BASE = "https://raw.githubusercontent.com/ROCm/rocm-examples/refs/heads/release/therock-10.0"
+# Temporary override for examples not yet synced to release/therock-10.0.
+AMD_STAGING = "https://raw.githubusercontent.com/ROCm/rocm-examples/refs/heads/amd-staging"
 DEST = "docs/tools/example_codes"
 
 # (source path relative to BASE, destination filename in DEST)
@@ -13,6 +15,11 @@ EXAMPLES = [
     # HIP-Basic
     ("HIP-Basic/opengl_interop/main.hip", "opengl_interop.hip"),
     ("HIP-Basic/vulkan_interop/main.hip", "external_interop.hip"),
+    # Not yet on release/therock-10.0; fetch from amd-staging until it syncs.
+    ("HIP-Basic/execution_context/main.hip", "execution_context.hip", AMD_STAGING),
+    # Not yet on release/therock-10.0; fetch from amd-staging until it syncs (rocm-examples PR #486).
+    ("HIP-Basic/cooperative_groups_double_buffered_tile/main.hip", "cooperative_groups_double_buffered_tile.hip", AMD_STAGING),
+    ("HIP-Basic/cooperative_groups_prefix_sum/main.hip", "cooperative_groups_prefix_sum.hip", AMD_STAGING),
 
     # HIP-C++-Language-Extensions
     ("HIP-Doc/Programming-Guide/HIP-C%2B%2B-Language-Extensions/calling_global_functions/main.hip", "calling_global_functions.hip"),
@@ -123,8 +130,12 @@ EXAMPLES = [
 
 def main() -> int:
     failures = []
-    for src, filename in EXAMPLES:
-        url = f"{BASE}/{src}"
+    for entry in EXAMPLES:
+        # Entries are (src, filename) using the default BASE, or
+        # (src, filename, base) to override the branch for that file.
+        src, filename = entry[0], entry[1]
+        base = entry[2] if len(entry) > 2 else BASE
+        url = f"{base}/{src}"
         dest = f"{DEST}/{filename}"
         try:
             urllib.request.urlretrieve(url, dest)
