@@ -13,6 +13,8 @@ This page tracks releases of the AMD ROCm Programming Guide.
 
    * - Version
      - Release date
+   * - `10.0.0 <https://rocm-handbook.amd.com/projects/amd-rocm-programming-guide/en/docs-10.0.0/>`_
+     - August 26, 2026
    * - `7.14.1 <https://rocm-handbook.amd.com/projects/amd-rocm-programming-guide/en/docs-7.14.1/>`_
      - September 2, 2026
    * - `7.14.0 <https://rocm-handbook.amd.com/projects/amd-rocm-programming-guide/en/docs-7.14.0/>`_
@@ -29,6 +31,30 @@ This page tracks releases of the AMD ROCm Programming Guide.
      - January 21, 2026
    * - `7.1.1 <https://rocm-handbook.amd.com/projects/amd-rocm-programming-guide/en/docs-7.1.1/>`_
      - November 26, 2025
+
+ROCm 10.0.0
+===========
+
+New content
+-----------
+
+Added the :doc:`how-to/hip_runtime_api/execution_context` page, describing how to
+query and use the HIP execution context.
+
+Updated content
+---------------
+
+* Updated the :doc:`installation instructions <install/rocm>` for ROCm 10.0.0,
+  including revised install methods, operating system and version selectors, and
+  pip package information.
+* Updated the :doc:`compatibility matrix <compatibility/compatibility-matrix>`
+  for 10.0.0.
+* Updated profiling references to point to ROCprofiler-SDK.
+* Enhanced the following HIP topics:
+
+  * :doc:`how-to/hip_runtime_api/cooperative_groups`
+  * :doc:`how-to/hip_runtime_api/memory_management/unified_memory`
+  * :doc:`how-to/hip_runtime_api/memory_management/stream_ordered_allocator`
 
 ROCm 7.14.1
 ===========
