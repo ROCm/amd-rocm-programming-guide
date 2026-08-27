@@ -6,13 +6,6 @@ branch = "docs/10.0.0"
 # "https://raw.githubusercontent.com/ROCm/rocm-systems/refs/heads/develop/projects/hip/docs/how-to/hip_runtime_api.rst",
 # https://raw.githubusercontent.com/ROCm/rocm-systems/refs/heads/release/rocm-rel-7.0/projects/hip/docs/how-to/hip_runtime_api.rst
 
-# Update update_example_codes.py
-
-urllib.request.urlretrieve(
-     f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}/projects/hip/docs/tools/update_example_codes.py",
-     "docs/tools/update_example_codes.py"
-)
-
 # hip_runtime.rst
 
 urllib.request.urlretrieve(

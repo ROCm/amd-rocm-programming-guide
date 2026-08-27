@@ -28,35 +28,196 @@ in ROCm |ROCM_VERSION|, see the :doc:`Release notes <rocm:about/release-notes>`.
    installation guidance, see `TheRock releases
    <https://github.com/ROCm/TheRock/blob/main/RELEASES.md>`__.
 
-.. include:: ./include/fam-multi-arch-selector.rst
+.. datatemplate:yaml:: /data/gpus.yaml
+   :template: fam-selector.rst.jinja
 
-.. include:: ./include/gpu-selector.rst
+.. selected:: fam=all fam=radeon fam=ryzen
 
-.. include:: ./include/os-selector.rst
+   .. selector:: Use case
+      :key: w
 
-.. include:: ./include/ror-gpu-selector.rst
+      .. selector-option:: Compute
+         :value: compute
+         :width: 50%
 
-.. include:: ./include/ubuntu-ver-selector.rst
+      .. selector-option:: Compute + graphics
+         :value: graphics
+         :width: 50%
 
-.. include:: ./include/debian-ver-selector.rst
+.. selected:: w=compute
 
-.. include:: ./include/rhel-ver-selector.rst
+   .. datatemplate:yaml:: /data/gpus.yaml
+      :template: gpu-selector.rst.jinja
 
-.. include:: ./include/oracle-linux-ver-selector.rst
+   .. datatemplate:yaml:: /data/gpus.yaml
+      :template: os-selector.rst.jinja
 
-.. include:: ./include/rocky-linux-ver-selector.rst
+.. selected:: w=graphics
 
-.. include:: ./include/sles-ver-selector.rst
+   .. datatemplate:yaml:: /data/gpus.yaml
+      :template: misc/os-selector-graphics-workloads.rst.jinja
 
-.. include:: ./include/windows-ver-selector.rst
+.. datatemplate:yaml:: /data/gpus.yaml
+   :template: os-version-selector.rst.jinja
 
-.. include:: ./include/install-method-selector.rst
+.. selected:: w=graphics
+
+   .. selected:: os=windows
+
+      .. datatemplate:yaml:: /data/gpus.yaml
+         :template: gpu-selector.rst.jinja
+
+   .. selector:: Installation method
+      :key: i
+      :show-cond: os=ubuntu os=rhel
+
+      .. selector-option:: amdgpu-install
+         :value: amdgpu-install
+         :width: 12
+
+.. selected:: w=compute
+
+   .. selected:: fam=all
+
+      .. selector:: Installation method
+         :show-cond: os=ubuntu os=debian
+         :key: i
+
+         .. selector-option:: apt
+            :value: pkgman
+            :width: 3
+
+         .. selector-option:: pip
+            :value: pip
+            :width: 3
+
+         .. selector-option:: Tarball
+            :value: tar
+            :width: 3
+
+         .. selector-option:: Runfile
+            :value: runfile
+            :width: 3
+
+      .. selector:: Installation method
+         :show-cond: os=rhel os=oracle-linux os=rocky-linux
+         :key: i
+
+         .. selector-option:: dnf
+            :value: pkgman
+            :width: 3
+
+         .. selector-option:: pip
+            :value: pip
+            :width: 3
+
+         .. selector-option:: Tarball
+            :value: tar
+            :width: 3
+
+         .. selector-option:: Runfile
+            :value: runfile
+            :width: 3
+
+      .. selector:: Installation method
+         :show-cond: os=sles
+         :key: i
+
+         .. selector-option:: zypper
+            :value: pkgman
+            :width: 3
+
+         .. selector-option:: pip
+            :value: pip
+            :width: 3
+
+         .. selector-option:: Tarball
+            :value: tar
+            :width: 3
+
+         .. selector-option:: Runfile
+            :value: runfile
+            :width: 3
+
+   .. selected:: fam=instinct fam=radeon fam=ryzen
+
+      .. selector:: Installation method
+         :show-cond: os=ubuntu os=debian
+         :key: i
+
+         .. selector-option:: apt
+            :value: pkgman
+            :width: 3
+
+         .. selector-option:: pip
+            :value: pip
+            :width: 3
+
+         .. selector-option:: Tarball
+            :value: tar
+            :width: 3
+
+         .. selector-option:: Runfile
+            :value: runfile
+            :width: 3
+
+      .. selector:: Installation method
+         :show-cond: os=rhel os=oracle-linux os=rocky-linux
+         :key: i
+
+         .. selector-option:: dnf
+            :value: pkgman
+            :width: 3
+
+         .. selector-option:: pip
+            :value: pip
+            :width: 3
+
+         .. selector-option:: Tarball
+            :value: tar
+            :width: 3
+
+         .. selector-option:: Runfile
+            :value: runfile
+            :width: 3
+
+      .. selector:: Installation method
+         :show-cond: os=sles
+         :key: i
+
+         .. selector-option:: zypper
+            :value: pkgman
+            :width: 3
+
+         .. selector-option:: pip
+            :value: pip
+            :width: 3
+
+         .. selector-option:: Tarball
+            :value: tar
+            :width: 3
+
+         .. selector-option:: Runfile
+            :value: runfile
+            :width: 3
+
+.. selector:: Installation method
+   :show-cond: os=windows
+   :key: i
+
+   .. selector-option:: pip
+      :value: pip
+      :width: 6
+
+   .. selector-option:: Tarball
+      :value: tar
+      :width: 6
 
 ----
 
 .. _rocm-install-about:
 
-.. include:: ./include/000-intro.rst
+.. include:: ./include/050-intro.rst
 
 ----
 

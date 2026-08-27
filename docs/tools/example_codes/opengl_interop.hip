@@ -76,7 +76,6 @@ void main()
 /// \brief Initialize a GLFW window with initial dimensions.
 GLFWwindow* create_window(const int initial_width, const int initial_height)
 {
-    /// [Sphinx-create-window]
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -92,7 +91,7 @@ GLFWwindow* create_window(const int initial_width, const int initial_height)
         std::cerr << "Failed to create GLFW window\n";
         std::exit(error_exit_code);
     }
-    /// [Sphinx-create-window]
+
     return window;
 }
 
@@ -101,7 +100,6 @@ GLFWwindow* create_window(const int initial_width, const int initial_height)
 ///   suitable device is found, an error is printed and the program is exited.
 int pick_hip_device()
 {
-    /// [Sphinx-pick device]
     unsigned int gl_device_count;
     int          hip_device;
     HIP_CHECK(
@@ -112,7 +110,6 @@ int pick_hip_device()
         std::cerr << "System has no OpenGL-capable HIP devices" << std::endl;
         std::exit(error_exit_code);
     }
-    /// [Sphinx-pick device]
 
     return hip_device;
 }
