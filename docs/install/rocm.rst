@@ -8,7 +8,9 @@
 Install AMD ROCm |ROCM_VERSION|
 *******************************
 
-.. include:: ./include/050-install-methods.rst
+.. _rocm-install-methods:
+
+.. include:: ./include/000-install-methods.rst
 
 ----
 
