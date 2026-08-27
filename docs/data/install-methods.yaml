@@ -1,0 +1,47 @@
+# Install method selector data
+# Controls the installation method dropdowns in the install guide.
+#
+# os_groups: each entry defines a set of OS selector values that share
+#   the same package manager, plus the methods shown for instinct/all families.
+#
+# all_graphics: methods shown for fam=all w=graphics (Linux only).
+#
+# radeon_ryzen: methods shown for fam=radeon and fam=ryzen (Linux only).
+#
+# windows: methods shown for os=windows (all families).
+
+os_groups:
+  - pkgman_display: apt
+    os: [ubuntu, debian]
+    methods:
+      - { display: pip,     value: pip     }
+      - { display: Tarball, value: tar     }
+      - { display: Runfile, value: runfile }
+
+  - pkgman_display: dnf
+    os: [rhel, oracle-linux, rocky-linux]
+    methods:
+      - { display: pip,     value: pip     }
+      - { display: Tarball, value: tar     }
+      - { display: Runfile, value: runfile }
+
+  - pkgman_display: zypper
+    os: [sles]
+    methods:
+      - { display: pip,     value: pip     }
+      - { display: Tarball, value: tar     }
+      - { display: Runfile, value: runfile }
+
+all_graphics:
+  - { display: amdgpu-install, value: amdgpu-install }
+  # - { display: pip,            value: pip             }
+  # - { display: Tarball,        value: tar             }
+
+radeon_ryzen:
+  - { display: amdgpu-install, value: amdgpu-install }
+  # - { display: pip,            value: pip             }
+  # - { display: Tarball,        value: tar             }
+#
+windows:
+  - { display: pip,     value: pip }
+  - { display: Tarball, value: tar }

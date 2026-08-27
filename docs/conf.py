@@ -53,6 +53,10 @@ sys.path.append(str(Path(__file__).parent / 'extension'))
 
 extensions = ["rocm_docs", "rocm_docs.selector", "sphinxcontrib.datatemplates", "version-ref", "csv-to-list-table", "remote-content", "svg-pdf-converter", "sphinx_subfigure", "sphinx_substitution_extensions", "matrix"]
 
+# Jinja templates consumed by the datatemplate:yaml selector directives on the
+# install page (fam/gpu/os/os-version selectors generated from data/*.yaml).
+templates_path = ["install/include/templates"]
+
 cpp_id_attributes = ["__global__", "__device__", "__host__", "__forceinline__", "static"]
 cpp_paren_attributes = ["__declspec"]
 

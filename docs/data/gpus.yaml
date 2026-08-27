@@ -1,0 +1,558 @@
+# yaml-language-server: $schema=schemas/gpus.schema.yaml
+# vim: set foldmethod=marker:
+
+# Anchors {{{
+_mkt_series:
+  - &mi350_series
+    name: AMD Instinct MI350 Series
+    mkt_page: https://www.amd.com/en/products/accelerators/instinct/mi350.html
+  - &mi300_series
+    name: AMD Instinct MI300 Series
+    mkt_page: https://www.amd.com/en/products/accelerators/instinct/mi300.html
+  - &mi200_series
+    name: AMD Instinct MI200 Series
+    mkt_page: https://www.amd.com/en/products/accelerators/instinct/mi200.html
+  - &mi100_series
+    name: AMD Instinct MI100 Series
+  - &radeon_ai_pro_r9000_series
+    name: AMD Radeon AI PRO R9000 Series
+    mkt_page: https://www.amd.com/en/products/graphics/workstations/radeon-ai-pro.html#tabs-95fa144b96-item-b95ec9e1ca-tab
+  - &radeon_rx_9000_series
+    name: AMD Radeon RX 9000 Series
+    mkt_page: https://www.amd.com/en/products/graphics/desktops/radeon.html#tabs-ff9c5c3863-item-37fb38a236-tab
+  - &radeon_pro_w7000_series
+    name: AMD Radeon PRO W7000 Series
+    mkt_page: https://www.amd.com/en/products/graphics/workstations/radeon-pro.html#tabs-990fdead92-item-20daa37284-tab
+  - &radeon_rx_7000_series
+    name: AMD Radeon RX 7000 Series
+    mkt_page: https://www.amd.com/en/products/graphics/desktops/radeon.html#tabs-ff9c5c3863-item-b55a56bf12-tab
+  - &radeon_pro_v_series
+    name: AMD Radeon PRO V Series
+    mkt_page: https://www.amd.com/en/products/accelerators/radeon-pro.html
+  - &radeon_pro_w6000_series
+    name: AMD Radeon PRO W6000 Series
+    mkt_page: https://www.amd.com/en/products/graphics/workstations/radeon-pro/w6800.html
+  - &ryzen_ai_max_pro_400_series
+    name: AMD Ryzen AI Max PRO 400 Series
+    mkt_page: https://www.amd.com/en/products/processors/workstations/mobile.html#tabs-7f0c432fb2-item-296e08633e-tab
+  - &ryzen_ai_max_pro_300_series
+    name: AMD Ryzen AI Max PRO 300 Series
+    mkt_page: https://www.amd.com/en/products/processors/workstations/mobile.html#tabs-7f0c432fb2-item-5116ab7a74-tab
+  - &ryzen_ai_max_300_series
+    name: AMD Ryzen AI Max 300 Series
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen.html#tabs-1181ea0b44-item-6ccfea5f65-tab
+  - &ryzen_ai_pro_400_series
+    name: AMD Ryzen AI PRO 400 Series
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-for-business.html#tabs-0d174caf43-item-87690677fc-tab
+  - &ryzen_ai_400_series
+    name: AMD Ryzen AI 400 Series
+    mkt_page: https://www.amd.com/en/products/processors/consumer/ryzen-ai.html#tabs-f556098628-item-808b56dca3-tab
+  - &ryzen_ai_pro_300_series
+    name: AMD Ryzen AI PRO 300 Series
+    mkt_page: https://www.amd.com/en/products/processors/workstations/mobile.html#tabs-7f0c432fb2-item-387526c6cc-tab
+  - &ryzen_ai_300_series
+    name: AMD Ryzen AI 300 Series
+    mkt_page: https://www.amd.com/en/products/processors/consumer/ryzen-ai.html#tabs-f556098628-item-54e149d850-tab
+  - &ryzen_pro_200_series
+    name: AMD Ryzen PRO 200 Series
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-for-business.html#tabs-0d174caf43-item-a8ec88d07e-tab
+  - &ryzen_200_series
+    name: AMD Ryzen 200 Series
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen.html#tabs-1181ea0b44-item-895d56feed-tab
+_architectures:
+  - &arch_cdna_4
+    name: CDNA 4
+    mkt_page: https://www.amd.com/en/technologies/cdna.html#cdna4
+  - &arch_cdna_3
+    name: CDNA 3
+    mkt_page: https://www.amd.com/en/technologies/cdna.html#cdna3
+  - &arch_cdna_2
+    name: CDNA 2
+    mkt_page: https://www.amd.com/en/technologies/cdna.html#cdna2
+  - &arch_cdna_1
+    name: CDNA
+    mkt_page: https://www.amd.com/en/technologies/cdna.html#cdna
+  - &arch_rdna_4
+    name: RDNA 4
+    mkt_page: https://www.amd.com/en/technologies/rdna.html#tabs-1fabb91c39-item-330ee548f0-tab
+  - &arch_rdna_3
+    name: RDNA 3
+    mkt_page: https://www.amd.com/en/technologies/rdna.html#tabs-1fabb91c39-item-05915f6044-tab
+  - &arch_rdna_3_5
+    name: RDNA 3.5
+  - &arch_rdna_2
+    name: RDNA 2
+    mkt_page: https://www.amd.com/en/technologies/rdna.html#tabs-1fabb91c39-item-9ed969eddf-tab
+# }}}
+
+AMD Instinct:
+  AMD Instinct MI355X:
+    gfx: gfx950
+    series: *mi350_series
+    arch: *arch_cdna_4
+    mkt_page: https://www.amd.com/en/products/accelerators/instinct/mi350/mi355x.html
+  AMD Instinct MI350X:
+    gfx: gfx950
+    series: *mi350_series
+    arch: *arch_cdna_4
+    mkt_page: https://www.amd.com/en/products/accelerators/instinct/mi350/mi350x.html
+  AMD Instinct MI350P:
+    gfx: gfx950
+    series: *mi350_series
+    arch: *arch_cdna_4
+    mkt_page: https://www.amd.com/en/products/accelerators/instinct/mi350/mi350p.html
+  AMD Instinct MI325X:
+    gfx: gfx942
+    series: *mi300_series
+    arch: *arch_cdna_3
+    mkt_page: https://www.amd.com/en/products/accelerators/instinct/mi300/mi325x.html
+  AMD Instinct MI300X:
+    gfx: gfx942
+    series: *mi300_series
+    arch: *arch_cdna_3
+    mkt_page: https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html
+  AMD Instinct MI300A:
+    gfx: gfx942
+    series: *mi300_series
+    arch: *arch_cdna_3
+    mkt_page: https://www.amd.com/en/products/accelerators/instinct/mi300/mi300a.html
+  AMD Instinct MI250X:
+    gfx: gfx90a
+    series: *mi200_series
+    arch: *arch_cdna_2
+    mkt_page: https://www.amd.com/en/products/accelerators/instinct/mi200/mi250x.html
+  AMD Instinct MI250:
+    gfx: gfx90a
+    series: *mi200_series
+    arch: *arch_cdna_2
+    mkt_page: https://www.amd.com/en/products/accelerators/instinct/mi200/mi250.html
+  AMD Instinct MI210:
+    gfx: gfx90a
+    series: *mi200_series
+    arch: *arch_cdna_2
+    mkt_page: https://www.amd.com/en/products/accelerators/instinct/mi200/mi210.html
+  AMD Instinct MI100:
+    gfx: gfx908
+    series: *mi100_series
+    arch: *arch_cdna_1
+    mkt_page: https://www.amd.com/en/products/accelerators/instinct/mi100.html
+AMD Radeon:
+  AMD Radeon AI PRO R9700S:
+    gfx: gfx1201
+    series: *radeon_ai_pro_r9000_series
+    arch: *arch_rdna_4
+    mkt_page: https://www.amd.com/en/products/graphics/workstations/radeon-ai-pro/ai-9000-series/amd-radeon-ai-pro-r9700s.html
+  AMD Radeon AI PRO R9700:
+    gfx: gfx1201
+    series: *radeon_ai_pro_r9000_series
+    arch: *arch_rdna_4
+    mkt_page: https://www.amd.com/en/products/graphics/workstations/radeon-ai-pro/ai-9000-series/amd-radeon-ai-pro-r9700.html
+  AMD Radeon AI PRO R9600D:
+    gfx: gfx1201
+    series: *radeon_ai_pro_r9000_series
+    arch: *arch_rdna_4
+    mkt_page: https://www.amd.com/en/products/graphics/workstations/radeon-ai-pro/ai-9000-series/amd-radeon-ai-pro-r9600d.html
+  AMD Radeon RX 9070 XT:
+    gfx: gfx1201
+    series: *radeon_rx_9000_series
+    arch: *arch_rdna_4
+    mkt_page: https://www.amd.com/en/products/graphics/desktops/radeon/9000-series/amd-radeon-rx-9070xt.html
+  AMD Radeon RX 9070 GRE:
+    gfx: gfx1201
+    series: *radeon_rx_9000_series
+    arch: *arch_rdna_4
+    mkt_page: https://www.amd.com/en/support/downloads/drivers.html/graphics/radeon-rx/radeon-rx-9000-series/amd-radeon-rx-9070-gre.html
+  AMD Radeon RX 9070:
+    gfx: gfx1201
+    series: *radeon_rx_9000_series
+    arch: *arch_rdna_4
+    mkt_page: https://www.amd.com/en/products/graphics/desktops/radeon/9000-series/amd-radeon-rx-9070.html
+  AMD Radeon RX 9060 XT LP:
+    gfx: gfx1200
+    series: *radeon_rx_9000_series
+    arch: *arch_rdna_4
+    mkt_page: https://www.amd.com/en/products/graphics/desktops/radeon/9000-series/amd-radeon-rx-9060xt-lp.html
+  AMD Radeon RX 9060 XT:
+    gfx: gfx1200
+    series: *radeon_rx_9000_series
+    arch: *arch_rdna_4
+    mkt_page: https://www.amd.com/en/products/graphics/desktops/radeon/9000-series/amd-radeon-rx-9060xt.html
+  AMD Radeon RX 9060:
+    gfx: gfx1200
+    series: *radeon_rx_9000_series
+    arch: *arch_rdna_4
+    mkt_page: https://www.amd.com/en/products/graphics/desktops/radeon/9000-series/amd-radeon-rx-9060.html
+  AMD Radeon RX 9050:
+    gfx: gfx1200
+    series: *radeon_rx_9000_series
+    arch: *arch_rdna_4
+    mkt_page: https://www.amd.com/en/products/graphics/desktops/radeon/9000-series/amd-radeon-rx-9050.html
+  AMD Radeon RX 9050 (4GB):
+    gfx: gfx1200
+    series: *radeon_rx_9000_series
+    arch: *arch_rdna_4
+    mkt_page: https://www.amd.com/en/products/graphics/desktops/radeon/9000-series/amd-radeon-rx-9050-4gb.html
+  AMD Radeon PRO W7900 Dual Slot:
+    gfx: gfx1100
+    series: *radeon_pro_w7000_series
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/graphics/workstations/radeon-pro/w7900-dual-slot.html
+  AMD Radeon PRO W7900:
+    gfx: gfx1100
+    series: *radeon_pro_w7000_series
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/graphics/workstations/radeon-pro/w7900.html
+  AMD Radeon PRO W7800 48GB:
+    gfx: gfx1100
+    series: *radeon_pro_w7000_series
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/graphics/workstations/radeon-pro/w7800-48gb.html
+  AMD Radeon PRO W7800:
+    gfx: gfx1100
+    series: *radeon_pro_w7000_series
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/graphics/workstations/radeon-pro/w7800.html
+  AMD Radeon PRO W7700:
+    gfx: gfx1101
+    series: *radeon_pro_w7000_series
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/graphics/workstations/radeon-pro/w7700.html
+  AMD Radeon RX 7900 XTX:
+    gfx: gfx1100
+    series: *radeon_rx_7000_series
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/graphics/desktops/radeon/7000-series/amd-radeon-rx-7900xtx.html
+  AMD Radeon RX 7900 XT:
+    gfx: gfx1100
+    series: *radeon_rx_7000_series
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/graphics/desktops/radeon/7000-series/amd-radeon-rx-7900xt.html
+  AMD Radeon RX 7900 GRE:
+    gfx: gfx1100
+    series: *radeon_rx_7000_series
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/graphics/desktops/radeon/7000-series/amd-radeon-rx-7900-gre.html
+  AMD Radeon RX 7800 XT:
+    gfx: gfx1101
+    series: *radeon_rx_7000_series
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/graphics/desktops/radeon/7000-series/amd-radeon-rx-7800-xt.html
+  AMD Radeon RX 7700 XT:
+    gfx: gfx1101
+    series: *radeon_rx_7000_series
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/graphics/desktops/radeon/7000-series/amd-radeon-rx-7700-xt.html
+  AMD Radeon RX 7700:
+    gfx: gfx1101
+    series: *radeon_rx_7000_series
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/graphics/desktops/radeon/7000-series/amd-radeon-rx-7700.html
+  AMD Radeon RX 7600:
+    gfx: gfx1102
+    series: *radeon_rx_7000_series
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/graphics/desktops/radeon/7000-series/amd-radeon-rx-7600.html
+  AMD Radeon PRO V710:
+    gfx: gfx1101
+    series: *radeon_pro_v_series
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/accelerators/radeon-pro/amd-radeon-pro-v710.html
+  AMD Radeon PRO V620:
+    gfx: gfx1030
+    series: *radeon_pro_v_series
+    arch: *arch_rdna_2
+    mkt_page: https://www.amd.com/en/products/accelerators/radeon-pro/amd-radeon-pro-v620.html
+  AMD Radeon PRO W6800:
+    gfx: gfx1030
+    series: *radeon_pro_w6000_series
+    arch: *arch_rdna_2
+    mkt_page: https://www.amd.com/en/products/graphics/workstations/radeon-pro/w6800.html
+AMD Ryzen:
+  AMD Ryzen AI Max+ PRO 495:
+    gfx: gfx1151
+    series: *ryzen_ai_max_pro_400_series
+    igpu: Radeon 8065S
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/ai-max-pro-400-series/amd-ryzen-ai-max-plus-pro-495.html
+  AMD Ryzen AI Max PRO 490:
+    gfx: gfx1151
+    series: *ryzen_ai_max_pro_400_series
+    igpu: Radeon 8050S
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/ai-max-pro-400-series/amd-ryzen-ai-max-pro-490.html
+  AMD Ryzen AI Max PRO 485:
+    gfx: gfx1151
+    series: *ryzen_ai_max_pro_400_series
+    igpu: Radeon 8050S
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/ai-max-pro-400-series/amd-ryzen-ai-max-pro-485.html
+  AMD Ryzen AI Max+ PRO 395:
+    gfx: gfx1151
+    series: *ryzen_ai_max_pro_300_series
+    igpu: Radeon 8060S
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/ai-max-pro-300-series/amd-ryzen-ai-max-plus-pro-395.html
+  AMD Ryzen AI Max PRO 390:
+    gfx: gfx1151
+    series: *ryzen_ai_max_pro_300_series
+    igpu: Radeon 8050S
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/ai-max-pro-300-series/amd-ryzen-ai-max-pro-390.html
+  AMD Ryzen AI Max PRO 385:
+    gfx: gfx1151
+    series: *ryzen_ai_max_pro_300_series
+    igpu: Radeon 8050S
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/ai-max-pro-300-series/amd-ryzen-ai-max-pro-385.html
+  AMD Ryzen AI Max PRO 380:
+    gfx: gfx1151
+    series: *ryzen_ai_max_pro_300_series
+    igpu: Radeon 8040S
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/ai-max-pro-300-series/amd-ryzen-ai-max-pro-380.html
+  AMD Ryzen AI Max+ 395:
+    gfx: gfx1151
+    series: *ryzen_ai_max_300_series
+    igpu: Radeon 8060S
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-max-plus-395.html
+  AMD Ryzen AI Max+ 392:
+    gfx: gfx1151
+    series: *ryzen_ai_max_300_series
+    igpu: Radeon 8060S
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-max-plus-392.html
+  AMD Ryzen AI Max+ 388:
+    gfx: gfx1151
+    series: *ryzen_ai_max_300_series
+    igpu: Radeon 8060S
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-max-plus-388.html
+  AMD Ryzen AI Max 390:
+    gfx: gfx1151
+    series: *ryzen_ai_max_300_series
+    igpu: Radeon 8050S
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-max-390.html
+  AMD Ryzen AI Max 385:
+    gfx: gfx1151
+    series: *ryzen_ai_max_300_series
+    igpu: Radeon 8050S
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-max-385.html
+  AMD Ryzen AI 9 HX PRO 475:
+    gfx: gfx1150
+    series: *ryzen_ai_pro_400_series
+    igpu: Radeon 890M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/ai-400-series/amd-ryzen-ai-9-hx-pro-475.html
+  AMD Ryzen AI 9 HX PRO 470:
+    gfx: gfx1150
+    series: *ryzen_ai_pro_400_series
+    igpu: Radeon 890M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/ai-400-series/amd-ryzen-ai-9-hx-pro-470.html
+  AMD Ryzen AI 9 PRO 465:
+    gfx: gfx1150
+    series: *ryzen_ai_pro_400_series
+    igpu: Radeon 880M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/ai-400-series/amd-ryzen-ai-9-pro-465.html
+  AMD Ryzen AI 7 PRO 450:
+    gfx: gfx1152
+    series: *ryzen_ai_pro_400_series
+    igpu: Radeon 860M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/ai-400-series/amd-ryzen-ai-7-pro-450.html
+  AMD Ryzen AI 5 PRO 440:
+    gfx: gfx1152
+    series: *ryzen_ai_pro_400_series
+    igpu: Radeon 840M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/ai-400-series/amd-ryzen-ai-5-pro-440.html
+  AMD Ryzen AI 5 PRO 435:
+    gfx: gfx1153
+    series: *ryzen_ai_pro_400_series
+    igpu: Radeon 840M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/ai-400-series/amd-ryzen-ai-5-pro-435.html
+  AMD Ryzen AI 9 HX 475:
+    gfx: gfx1150
+    series: *ryzen_ai_400_series
+    igpu: Radeon 890M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/ai-400-series/amd-ryzen-ai-9-hx-475.html
+  AMD Ryzen AI 9 HX 470:
+    gfx: gfx1150
+    series: *ryzen_ai_400_series
+    igpu: Radeon 890M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/ai-400-series/amd-ryzen-ai-9-hx-470.html
+  AMD Ryzen AI 9 465:
+    gfx: gfx1150
+    series: *ryzen_ai_400_series
+    igpu: Radeon 880M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/ai-400-series/amd-ryzen-ai-9-465.html
+  AMD Ryzen AI 7 450:
+    gfx: gfx1152
+    series: *ryzen_ai_400_series
+    igpu: Radeon 860M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/ai-400-series/amd-ryzen-ai-7-450.html
+  AMD Ryzen AI 5 435:
+    gfx: gfx1153
+    series: *ryzen_ai_400_series
+    igpu: Radeon 840M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/ai-400-series/amd-ryzen-ai-5-435.html
+  AMD Ryzen AI 5 430:
+    gfx: gfx1153
+    series: *ryzen_ai_400_series
+    igpu: Radeon 840M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/ai-400-series/amd-ryzen-ai-5-430.html
+  AMD Ryzen AI 7 445:
+    gfx: gfx1153
+    series: *ryzen_ai_400_series
+    igpu: Radeon 840M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/ai-400-series/amd-ryzen-ai-7-445.html
+  AMD Ryzen AI 9 HX PRO 375:
+    gfx: gfx1150
+    series: *ryzen_ai_pro_300_series
+    igpu: Radeon 890M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/ai-300-series/amd-ryzen-ai-9-hx-pro-375.html
+  AMD Ryzen AI 9 HX PRO 370:
+    gfx: gfx1150
+    series: *ryzen_ai_pro_300_series
+    igpu: Radeon 890M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/ai-300-series/amd-ryzen-ai-9-hx-pro-370.html
+  AMD Ryzen AI 7 PRO 350:
+    gfx: gfx1152
+    series: *ryzen_ai_pro_300_series
+    igpu: Radeon 860M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/ai-300-series/amd-ryzen-ai-7-pro-350.html
+  AMD Ryzen AI 5 PRO 340:
+    gfx: gfx1152
+    series: *ryzen_ai_pro_300_series
+    igpu: Radeon 840M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/ai-300-series/amd-ryzen-ai-5-pro-340.html
+  AMD Ryzen AI 9 HX 375:
+    gfx: gfx1150
+    series: *ryzen_ai_300_series
+    igpu: Radeon 890M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-9-hx-375.html
+  AMD Ryzen AI 9 HX 370:
+    gfx: gfx1150
+    series: *ryzen_ai_300_series
+    igpu: Radeon 890M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-9-hx-370.html
+  AMD Ryzen AI 9 365:
+    gfx: gfx1150
+    series: *ryzen_ai_300_series
+    igpu: Radeon 880M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-9-365.html
+  AMD Ryzen AI 7 350:
+    gfx: gfx1152
+    series: *ryzen_ai_300_series
+    igpu: Radeon 860M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-7-350.html
+  AMD Ryzen AI 7 345:
+    gfx: gfx1152
+    series: *ryzen_ai_300_series
+    igpu: Radeon 840M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-7-345.html
+  AMD Ryzen AI 5 340:
+    gfx: gfx1152
+    series: *ryzen_ai_300_series
+    igpu: Radeon 840M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-5-340.html
+  AMD Ryzen AI 5 330:
+    gfx: gfx1152
+    series: *ryzen_ai_300_series
+    igpu: Radeon 820M
+    arch: *arch_rdna_3_5
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-5-330.html
+  AMD Ryzen 7 PRO 250:
+    gfx: gfx1103
+    series: *ryzen_pro_200_series
+    igpu: Radeon 780M
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/200-series/amd-ryzen-7-pro-250.html
+  AMD Ryzen 5 PRO 230:
+    gfx: gfx1103
+    series: *ryzen_pro_200_series
+    igpu: Radeon 760M
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/200-series/amd-ryzen-5-pro-230.html
+  AMD Ryzen 5 PRO 220:
+    gfx: gfx1103
+    series: *ryzen_pro_200_series
+    igpu: Radeon 740M
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/200-series/amd-ryzen-5-pro-220.html
+  AMD Ryzen 5 PRO 215:
+    gfx: gfx1103
+    series: *ryzen_pro_200_series
+    igpu: Radeon 740M
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/200-series/amd-ryzen-5-pro-215.html
+  AMD Ryzen 3 PRO 210:
+    gfx: gfx1103
+    series: *ryzen_pro_200_series
+    igpu: Radeon 740M
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen-pro/200-series/amd-ryzen-3-pro-210.html
+  AMD Ryzen 9 270:
+    gfx: gfx1103
+    series: *ryzen_200_series
+    igpu: Radeon 780M
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/200-series/amd-ryzen-9-270.html
+  AMD Ryzen 7 260:
+    gfx: gfx1103
+    series: *ryzen_200_series
+    igpu: Radeon 780M
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/200-series/amd-ryzen-7-260.html
+  AMD Ryzen 7 250:
+    gfx: gfx1103
+    series: *ryzen_200_series
+    igpu: Radeon 780M
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/200-series/amd-ryzen-7-250.html
+  AMD Ryzen 5 240:
+    gfx: gfx1103
+    series: *ryzen_200_series
+    igpu: Radeon 760M
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/200-series/amd-ryzen-5-240.html
+  AMD Ryzen 5 230:
+    gfx: gfx1103
+    series: *ryzen_200_series
+    igpu: Radeon 760M
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/200-series/amd-ryzen-5-230.html
+  AMD Ryzen 5 220:
+    gfx: gfx1103
+    series: *ryzen_200_series
+    igpu: Radeon 740M
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/200-series/amd-ryzen-5-220.html
+  AMD Ryzen 3 210:
+    gfx: gfx1103
+    series: *ryzen_200_series
+    igpu: Radeon 740M
+    arch: *arch_rdna_3
+    mkt_page: https://www.amd.com/en/products/processors/laptop/ryzen/200-series/amd-ryzen-3-210.html

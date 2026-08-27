@@ -12,6 +12,14 @@ BASE = f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}"
 # selector templates centralized under include/templates/ (consumed by the
 # rocm-docs-core selector directive).
 FILES = [
+    # Selector data (consumed by the datatemplate:yaml selector templates and
+    # the templates' load() calls: gpus.yaml, os-support.yaml, install-methods.yaml).
+    ("docs/data/gpus.yaml", "docs/data/gpus.yaml"),
+    ("docs/data/os-support.yaml", "docs/data/os-support.yaml"),
+    ("docs/data/install-methods.yaml", "docs/data/install-methods.yaml"),
+    ("docs/data/schemas/gpus.schema.yaml", "docs/data/schemas/gpus.schema.yaml"),
+    ("docs/data/schemas/os-support.schema.yaml", "docs/data/schemas/os-support.schema.yaml"),
+
     # Main install page
     ("docs/install/rocm.rst", "docs/install/rocm.rst"),
 

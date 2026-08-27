@@ -1,0 +1,50 @@
+# yaml-language-server: $schema=https://json-schema.org/draft/2020-12/schema
+$schema: https://json-schema.org/draft/2020-12/schema
+title: AMD GPU/APU OS Support Data
+description: Per-GPU operating system and version support matrix.
+
+type: object
+additionalProperties: false
+patternProperties:
+  "^_":
+    description: YAML anchor blocks (internal use only)
+properties:
+  AMD Instinct:
+    $ref: "#/$defs/deviceFamily"
+  AMD Radeon:
+    $ref: "#/$defs/deviceFamily"
+  AMD Ryzen:
+    $ref: "#/$defs/deviceFamily"
+
+$defs:
+  deviceFamily:
+    type: object
+    additionalProperties:
+      $ref: "#/$defs/osSupport"
+
+  osSupport:
+    type: object
+    additionalProperties:
+      $ref: "#/$defs/osEntry"
+
+  osEntry:
+    type: object
+    required: [versions]
+    additionalProperties: false
+    properties:
+      abbr:
+        type: string
+        description: Abbreviation (e.g. RHEL, SLES)
+      versions:
+        type: array
+        items:
+          oneOf:
+            - type: string
+            - type: object
+              required: [version]
+              additionalProperties: false
+              properties:
+                version:
+                  type: string
+                kernel:
+                  type: string

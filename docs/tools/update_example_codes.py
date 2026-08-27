@@ -91,6 +91,9 @@ EXAMPLES = [
     ("HIP-Doc/Programming-Guide/Using-HIP-Runtime-API/Memory-Management/SOMA/memory_pool_resource_usage_statistics/main.cpp", "memory_pool_resource_usage_statistics.cpp"),
     ("HIP-Doc/Programming-Guide/Using-HIP-Runtime-API/Memory-Management/SOMA/memory_pool_threshold/main.hip", "memory_pool_threshold.hip"),
     ("HIP-Doc/Programming-Guide/Using-HIP-Runtime-API/Memory-Management/SOMA/memory_pool_trim/main.cpp", "memory_pool_trim.cpp"),
+    # Not yet on release/therock-10.0; fetch from amd-staging until it syncs.
+    ("HIP-Doc/Programming-Guide/Using-HIP-Runtime-API/Memory-Management/SOMA/ipc_memory_pool_device_pointer/main.hip", "ipc_memory_pool_device_pointer.hip", AMD_STAGING),
+    ("HIP-Doc/Programming-Guide/Using-HIP-Runtime-API/Memory-Management/SOMA/ipc_memory_pool_shareable_handle/main.hip", "ipc_memory_pool_shareable_handle.hip", AMD_STAGING),
 
     # Using-HIP-Runtime-API / Memory-Management / Unified-Memory-Management
     ("HIP-Doc/Programming-Guide/Using-HIP-Runtime-API/Memory-Management/Unified-Memory-Management/data_prefetching/main.hip", "data_prefetching.hip"),

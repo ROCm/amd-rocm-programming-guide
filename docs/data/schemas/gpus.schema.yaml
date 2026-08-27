@@ -1,0 +1,55 @@
+# yaml-language-server: $schema=https://json-schema.org/draft/2020-12/schema
+$schema: https://json-schema.org/draft/2020-12/schema
+title: AMD GPU/APU support data
+description: Hardware entries for AMD Instinct, Radeon, and Ryzen products.
+
+type: object
+additionalProperties: false
+patternProperties:
+  "^_":
+    description: YAML anchor blocks (internal use only)
+properties:
+  AMD Instinct:
+    $ref: "#/$defs/deviceFamily"
+  AMD Radeon:
+    $ref: "#/$defs/deviceFamily"
+  AMD Ryzen:
+    $ref: "#/$defs/deviceFamily"
+
+$defs:
+  namedLink:
+    type: object
+    required: [name]
+    additionalProperties: false
+    properties:
+      name:
+        type: string
+      mkt_page:
+        type: string
+        format: uri
+
+  deviceFamily:
+    type: object
+    additionalProperties:
+      $ref: "#/$defs/productEntry"
+
+  productEntry:
+    type: object
+    required: [gfx, series, arch]
+    additionalProperties: false
+    properties:
+      gfx:
+        type: string
+        pattern: "^gfx[0-9a-z]+$"
+        description: GFX target ID
+      series:
+        $ref: "#/$defs/namedLink"
+      arch:
+        $ref: "#/$defs/namedLink"
+      igpu:
+        type: string
+        description: Integrated GPU name (Ryzen APUs only)
+      mkt_page:
+        type: string
+        format: uri
+        description: Product marketing page URL
