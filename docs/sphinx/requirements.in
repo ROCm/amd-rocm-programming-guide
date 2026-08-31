@@ -1,4 +1,4 @@
-rocm-docs-core[llms]==1.40.0
+rocm-docs-core[llms]==1.40.2
 sphinx-reredirects
 sphinx-sitemap
 sphinx-subfigure
