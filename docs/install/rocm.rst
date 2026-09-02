@@ -8,6 +8,8 @@
 Install AMD ROCm |ROCM_VERSION|
 *******************************
 
+.. _rocm-install-methods:
+
 .. include:: ./include/050-install-methods.rst
 
 ----
@@ -18,7 +20,7 @@ Use the following selector to choose your installation method for your
 supported AMD GPU or APU and operating system. For system requirements and
 support information, see the :doc:`Compatibility matrix
 </compatibility/compatibility-matrix>`. To learn more about changes introduced
-in ROCm |ROCM_VERSION|, see the :doc:`Release notes <rocm:about/release-notes>`.
+in ROCm |ROCM_VERSION|, see the :doc:`Release notes </about/release-notes>`.
 
 .. note::
 

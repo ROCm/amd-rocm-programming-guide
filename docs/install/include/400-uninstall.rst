@@ -25,7 +25,7 @@ Uninstalling
 
             .. code-block:: bash
 
-               sudo apt autoremove amdrocm7.14-gfx94x
+               sudo apt autoremove amdrocm7.14-gfx942
 
          .. selected:: gfx=gfx90a
 
@@ -39,23 +39,47 @@ Uninstalling
 
                sudo apt autoremove amdrocm7.14-gfx908
 
-         .. selected:: gfx=gfx1201 gfx=gfx1200
+         .. selected:: gfx=gfx1201
 
             .. code-block:: bash
 
-               sudo apt autoremove amdrocm7.14-gfx120x
+               sudo apt autoremove amdrocm7.14-gfx1201
 
-         .. selected:: gfx=gfx1100 gfx=gfx1101 gfx=gfx1102 gfx=gfx1103
+         .. selected:: gfx=gfx1200
 
             .. code-block:: bash
 
-               sudo apt autoremove amdrocm7.14-gfx110x
+               sudo apt autoremove amdrocm7.14-gfx1200
+
+         .. selected:: gfx=gfx1100
+
+            .. code-block:: bash
+
+               sudo apt autoremove amdrocm7.14-gfx1100
+
+         .. selected:: gfx=gfx1101
+
+            .. code-block:: bash
+
+               sudo apt autoremove amdrocm7.14-gfx1101
+
+         .. selected:: gfx=gfx1102
+
+            .. code-block:: bash
+
+               sudo apt autoremove amdrocm7.14-gfx1102
+
+         .. selected:: gfx=gfx1103
+
+            .. code-block:: bash
+
+               sudo apt autoremove amdrocm7.14-gfx1103
 
          .. selected:: gfx=gfx1030
 
             .. code-block:: bash
 
-               sudo apt autoremove amdrocm7.14-gfx103x
+               sudo apt autoremove amdrocm7.14-gfx1030
 
          .. selected:: gfx=gfx1151
 
@@ -316,27 +340,138 @@ Uninstalling
 
    1. Use the following command to uninstall ROCm.
 
-      .. code-block:: bash
+      .. selected:: fam=all
 
-         bash rocm-installer-7.14.0-5.run uninstall-rocm
+         .. code-block:: bash
+
+            bash rocm-installer-7.14.1-1.run uninstall-rocm gfx=all
+
+      .. selected:: gfx=gfx950
+
+         .. code-block:: bash
+
+            bash rocm-installer-7.14.1-1.run uninstall-rocm gfx=gfx950
+
+      .. selected:: gfx=gfx942
+
+         .. code-block:: bash
+
+            bash rocm-installer-7.14.1-1.run uninstall-rocm gfx=gfx942
+
+      .. selected:: gfx=gfx90a
+
+         .. code-block:: bash
+
+            bash rocm-installer-7.14.1-1.run uninstall-rocm gfx=gfx90a
+
+      .. selected:: gfx=gfx908
+
+         .. code-block:: bash
+
+            bash rocm-installer-7.14.1-1.run uninstall-rocm gfx=gfx908
+
+      .. selected:: gfx=gfx1201
+
+         .. code-block:: bash
+
+            bash rocm-installer-7.14.1-1.run uninstall-rocm gfx=gfx1201
+
+      .. selected:: gfx=gfx1200
+
+         .. code-block:: bash
+
+            bash rocm-installer-7.14.1-1.run uninstall-rocm gfx=gfx1200
+
+      .. selected:: gfx=gfx1100
+
+         .. code-block:: bash
+
+            bash rocm-installer-7.14.1-1.run uninstall-rocm gfx=gfx1100
+
+      .. selected:: gfx=gfx1101
+
+         .. code-block:: bash
+
+            bash rocm-installer-7.14.1-1.run uninstall-rocm gfx=gfx1101
+
+      .. selected:: gfx=gfx1102
+
+         .. code-block:: bash
+
+            bash rocm-installer-7.14.1-1.run uninstall-rocm gfx=gfx1102
+
+      .. selected:: gfx=gfx1103
+
+         .. code-block:: bash
+
+            bash rocm-installer-7.14.1-1.run uninstall-rocm gfx=gfx1103
+
+      .. selected:: gfx=gfx1030
+
+         .. code-block:: bash
+
+            bash rocm-installer-7.14.1-1.run uninstall-rocm gfx=gfx1030
+
+      .. selected:: gfx=gfx1151
+
+         .. code-block:: bash
+
+            bash rocm-installer-7.14.1-1.run uninstall-rocm gfx=gfx1151
+
+      .. selected:: gfx=gfx1150
+
+         .. code-block:: bash
+
+            bash rocm-installer-7.14.1-1.run uninstall-rocm gfx=gfx1150
+
+      .. selected:: gfx=gfx1152
+
+         .. code-block:: bash
+
+            bash rocm-installer-7.14.1-1.run uninstall-rocm gfx=gfx1152
+
+      .. selected:: gfx=gfx1153
+
+         .. code-block:: bash
+
+            bash rocm-installer-7.14.1-1.run uninstall-rocm gfx=gfx1153
 
    2. Use the following command to uninstall the AMD GPU Driver (amdgpu).
 
       .. code-block:: bash
 
-         bash rocm-installer-7.14.0-5.run uninstall-amdgpu
+         bash rocm-installer-7.14.1-1.run uninstall-amdgpu
 
 .. selected:: w=graphics
 
    .. selected:: os=ubuntu os=rhel
 
-      1. The ``amdgpu-install`` script installs a command to uninstall ROCm packages.
-         Run the following command to uninstall the ROCm and Radeon Software for
-         Linux components:
+      .. selected:: fam=radeon
 
-         .. code-block:: bash
+         1. Use ``amdgpu-uninstall`` to remove the :ref:`installed packages
+            <rocm-install-rocm>`.
 
-            sudo amdgpu-uninstall
+            .. code-block:: bash
+
+               sudo amdgpu-uninstall
+
+      .. selected:: fam=ryzen
+
+         1. Use ``amdgpu-uninstall`` to remove the :ref:`installed packages
+            <rocm-install-rocm>`.
+
+            .. code-block:: bash
+
+               sudo amdgpu-uninstall
+
+      .. selected:: fam=all
+
+         1. Use ``amdgpu-uninstall`` to remove the :ref:`installed packages
+            <rocm-install-rocm>`.
+
+            .. code-block:: bash
+
+               sudo amdgpu-uninstall
 
       2. Remove ROCm repositories.
 

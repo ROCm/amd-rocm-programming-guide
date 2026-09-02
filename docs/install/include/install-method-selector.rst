@@ -8,15 +8,19 @@
 
          .. selector-option:: apt
             :value: pkgman
-            :width: 4
+            :width: 3
 
          .. selector-option:: pip
             :value: pip
-            :width: 4
+            :width: 3
 
          .. selector-option:: Tarball
             :value: tar
-            :width: 4
+            :width: 3
+
+         .. selector-option:: Runfile
+            :value: runfile
+            :width: 3
 
       .. selector:: Installation method
          :show-cond: os=rhel os=oracle-linux os=rocky-linux
@@ -24,15 +28,19 @@
 
          .. selector-option:: dnf
             :value: pkgman
-            :width: 4
+            :width: 3
 
          .. selector-option:: pip
             :value: pip
-            :width: 4
+            :width: 3
 
          .. selector-option:: Tarball
             :value: tar
-            :width: 4
+            :width: 3
+
+         .. selector-option:: Runfile
+            :value: runfile
+            :width: 3
 
       .. selector:: Installation method
          :show-cond: os=sles
@@ -40,15 +48,19 @@
 
          .. selector-option:: zypper
             :value: pkgman
-            :width: 4
+            :width: 3
 
          .. selector-option:: pip
             :value: pip
-            :width: 4
+            :width: 3
 
          .. selector-option:: Tarball
             :value: tar
-            :width: 4
+            :width: 3
+
+         .. selector-option:: Runfile
+            :value: runfile
+            :width: 3
 
    .. selected:: fam=instinct fam=radeon fam=ryzen
 
