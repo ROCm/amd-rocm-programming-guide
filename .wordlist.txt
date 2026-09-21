@@ -421,6 +421,7 @@ GPR
 GPT
 GPU
 GPUs
+gpus
 GPU's
 Graphbolt
 GraphSage
@@ -456,6 +457,7 @@ hipCtx
 hipCUB
 hipcub
 hipDataType
+hipDevSmResourceSplit
 hipexamine
 HIPExtension
 hipfft
@@ -565,6 +567,7 @@ IOPM
 IOPS
 IOV
 IPC
+ipc
 ipo
 IPs
 IRQ
@@ -579,6 +582,7 @@ Jannat
 jax
 JAX's
 Jinja
+jinja
 JSON
 Jupyter
 Kaeli
@@ -612,6 +616,7 @@ len
 libc
 libfabric
 libjpeg
+librocdxg
 libs
 libstdc
 libTIFF
@@ -758,6 +763,7 @@ NumPy
 numref
 NVCC
 NVIDIA
+Nvidia
 NVLink
 NVPTX
 OAM
@@ -841,6 +847,7 @@ pipelining
 pixelated
 PnP
 POR
+POSIX
 PowerEdge
 PowerShell
 pragma
@@ -930,6 +937,7 @@ reimplement
 reimplements
 reinforcememt
 RelWithDebInfo
+repartition
 repo
 repos
 representable
@@ -1288,6 +1296,7 @@ Wojna
 workgroup
 Workgroups
 workgroups
+wq
 WR
 writeback
 writebacks
