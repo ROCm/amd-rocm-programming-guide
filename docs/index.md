@@ -58,17 +58,15 @@ For details on changes and version information, see {doc}`./release-notes`.
 
 **Performance optimization techniques**
 
-* {doc}`./conceptual/gpu_performance`
-* {doc}`./how-to/performance_optimization`
 * {doc}`./tutorial/hip-performance-optimization`
 
   * {doc}`./tutorial/hip-performance-optimization/highly-parallel-image-gamma-correction`
   * {doc}`./tutorial/hip-performance-optimization/fixed-size-kernels-image-gamma-correction`
-  * {doc}`./tutorial/hip-performance-optimization/reduction`
-  * {doc}`./tutorial/hip-performance-optimization/tiling-matrix-multiply`
   * {doc}`./tutorial/hip-performance-optimization/tiling-matrix-transpose`
 
-* {doc}`./how-to/multi-gpu_programming`
+For GPU performance concepts, profiling-driven optimization patterns, and
+multi-GPU programming, see the
+[AMD ROCm Optimization Guide](https://rocm-handbook.amd.com/projects/amd-rocm-optimization-guide/en/latest/).
 
 **ROCm platform**
 
