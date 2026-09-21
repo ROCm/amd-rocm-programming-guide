@@ -21,6 +21,10 @@ can dramatically improve application performance. The optimization
 techniques presented here address common performance bottlenecks and provide
 practical strategies for improvement.
 
+For a deeper, profiling-driven treatment of optimization patterns such as
+parallel reduction and tiled matrix multiplication, see the
+`AMD ROCm Optimization Guide <https://rocm-handbook.amd.com/projects/amd-rocm-optimization-guide/en/latest/>`_.
+
 Performance optimization challenges
 ===================================
 
@@ -120,13 +124,6 @@ optimization techniques:
 * :doc:`Fixed-sized kernels <hip-performance-optimization/fixed-size-kernels-image-gamma-correction>`:
   Reducing thread dispatch overhead through fixed kernel dimensions.
 
-* :doc:`Reduction operations <hip-performance-optimization/reduction>`:
-  Efficient parallel reduction algorithms using shared memory.
-
-* :doc:`Tiling and reuse <hip-performance-optimization/tiling-matrix-multiply>`:
-  Leveraging local data share memory to improve matrix multiplication
-  performance.
-
 * :doc:`Tiling and coalescing <hip-performance-optimization/tiling-matrix-transpose>`:
   Converting non-coalesced memory access patterns to coalesced ones for better
   bandwidth utilization.
@@ -143,13 +140,7 @@ presented for optimal learning:
 2. **Progress to fixed-sized kernels** to learn techniques for reducing thread
    dispatch overhead.
 
-3. **Study reduction operations** to understand efficient parallel aggregation
-   patterns.
-
-4. **Explore tiling and data reuse** to leverage local data share memory for
-   improved performance.
-
-5. **Master memory coalescing** to optimize memory bandwidth utilization and
+3. **Master memory coalescing** to optimize memory bandwidth utilization and
    avoid non-coalesced access patterns.
 
 Each tutorial includes complete code examples, performance measurements, and

@@ -421,12 +421,12 @@ multiprocessors and makes the algorithm highly scalable.
 Best practices
 ==============
 
-1. **Choose optimal block sizes** 
+1. **Choose optimal block sizes**
 
    Powers of two (e.g., 16 or 32) often yield better occupancy and memory
    alignment.
 
-2. **Handle boundary conditions** 
+2. **Handle boundary conditions**
 
    Always include thread boundary checks.
 
@@ -435,21 +435,11 @@ Best practices
    Use :cpp:func:`hipDeviceSynchronize()` after kernel launches to ensure data
    consistency.
 
-4. **Memory coalescing** 
-
-   Arrange data access patterns so consecutive threads access contiguous memory
-   locations, maximizing bandwidth utilization.
-
-5. **Use shared memory** 
-
-   Use shared memory to cache sub-blocks of matrices, significantly 
-   reducing global memory latency.
-
-6. **Profile and tune** 
-
-   Use tools such as :doc:`rocprofv3<rocprofiler-sdk:how-to/using-rocprofv3>`
-   or :doc:`ROCm compute profiler<rocprofiler-compute:how-to/profile/mode>`
-   to identify bottlenecks and fine-tune kernel launch configurations.
+The naive kernel above leaves significant performance on the table. For the full
+optimization progression — memory coalescing, shared-memory tiling, register
+tiling, double buffering, and vectorized loads, each validated with profiling
+data — see the
+`AMD ROCm Optimization Guide <https://rocm-handbook.amd.com/projects/amd-rocm-optimization-guide/en/latest/patterns/examples/matrix-multiply-optimization.html>`_.
 
 Conclusion
 ==========
