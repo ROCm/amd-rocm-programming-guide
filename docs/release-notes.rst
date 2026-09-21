@@ -113,9 +113,9 @@ Updated content
 ---------------
 Enhanced the following topics:
 
-* :doc:`how-to/getting_started_with_hip_programming` 
-* :doc:`how-to/multi-gpu_programming` 
-* :doc:`how-to/performance_optimization` 
+* :doc:`how-to/getting_started_with_hip_programming`
+* ``how-to/multi-gpu_programming`` (removed; see the AMD ROCm Optimization Guide)
+* ``how-to/performance_optimization`` (removed; see the AMD ROCm Optimization Guide)
 
 ROCm 7.2.0
 ==========
@@ -132,7 +132,8 @@ Updated content
 * Minor command line argument update on :doc:`reference/rocm_in_data_centers/kubernetes/configuration`
   page.
 * Enhanced :doc:`conceptual/introduction/hw_impl` page.
-* Enhanced :doc:`how-to/performance_optimization` page.
+* Enhanced ``how-to/performance_optimization`` page (removed; see the AMD ROCm
+  Optimization Guide).
 
 ROCm 7.1.1
 ==========

@@ -38,9 +38,6 @@ FILES = [
 
     # hip_runtime / memory_management / device_memory
     ("projects/hip/docs/how-to/hip_runtime_api/memory_management/device_memory/texture_fetching.rst", "docs/how-to/hip_runtime_api/memory_management/device_memory/texture_fetching.rst"),
-
-    # tutorial
-    ("projects/hip/docs/tutorial/reduction.rst", "docs/tutorial/hip-performance-optimization/reduction.rst"),
 ]
 
 
