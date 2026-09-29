@@ -272,24 +272,25 @@ Best practices
    High contention on a single address or a small set of addresses leads to
    serialization. Distribute writes across independent memory locations.
 
-3. **Leverage shared memory**
-
-   Use fast, low-latency shared memory to aggregate partial results within a
-   block before issuing a single atomic update to global memory.
-
-4. **Validate correctness** 
+3. **Validate correctness**
 
    Validate the numerical and logical correctness of GPU kernels by comparing
    against single-threaded or deterministic multi-threaded CPU baselines.
 
-5. **Profile regularly**
+4. **Profile regularly**
 
    GPU performance is highly sensitive to thread divergence, memory-access
-   patterns, and workload distribution. Regularly use profiling tools such as 
+   patterns, and workload distribution. Regularly use profiling tools such as
    :doc:`rocprofv3<rocprofiler-sdk:how-to/using-rocprofv3>` or
    :doc:`ROCm compute profiler<rocprofiler-compute:how-to/profile/mode>` to
    examine warp-level execution efficiency, memory-coalescing behavior,
    occupancy, and atomic throughput bottlenecks.
+
+The naive per-pixel ``atomicAdd`` above serializes on hot bins under high
+contention. For the full optimization progression — shared-memory/LDS
+histograms and the two-pass partial-histogram technique, each validated with
+profiling data — see the
+`AMD ROCm Optimization Guide <https://rocm-handbook.amd.com/projects/amd-rocm-optimization-guide/en/latest/patterns/examples/histogram.html>`_.
 
 Conclusion
 ==========
