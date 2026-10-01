@@ -1,7 +1,0 @@
-rocm-docs-core[llms]==1.41.0
-sphinx-reredirects
-sphinx-sitemap
-sphinx-subfigure
-sphinxcontrib.datatemplates==0.11.0
-sphinxcontrib-svg2pdfconverter
-sphinx_substitution_extensions
