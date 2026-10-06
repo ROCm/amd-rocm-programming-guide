@@ -1,6 +1,10 @@
 Installation
 ============
 
+.. meta::
+  :robots: noindex
+
+
 .. selected:: os=ubuntu ubuntu-ver=24.04.4 ubuntu-ver=22.04.5 i=pkgman i=runfile
 
    .. note::
@@ -273,7 +277,7 @@ Installation
    :heading: Install AMD Software: Adrenalin Edition
    :heading-level: 3
 
-   For details and the download link, see https://www.amd.com/en/resources/support-articles/release-notes/RN-RAD-WIN-26-6-4.html#Downloads.
+   For details and the download link, see https://www.amd.com/en/resources/support-articles/release-notes/RN-RAD-WIN-26-8-1.html#Downloads.
 
 .. _rocm-install-rocm:
 

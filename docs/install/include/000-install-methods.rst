@@ -1,3 +1,6 @@
+.. meta::
+  :robots: noindex
+
 .. _rocm-install-methods:
 
 .. dropdown:: Compare installation methods
@@ -11,7 +14,7 @@
 
    .. list-table::
       :header-rows: 1
-      :widths: 22 14 40 24
+      :widths: 30 10 40 30
 
       * - Install method
         - Platform

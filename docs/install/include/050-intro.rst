@@ -1,3 +1,6 @@
+.. meta::
+  :robots: noindex
+
 .. selected:: i=pkgman
 
    .. selected:: os=ubuntu

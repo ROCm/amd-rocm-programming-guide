@@ -1,6 +1,10 @@
 Uninstalling
 ============
 
+.. meta::
+  :robots: noindex
+
+
 .. ========================================================== PACKAGE MANAGER ==
 
 .. selected:: i=pkgman

@@ -1,6 +1,10 @@
 Prerequisites
 =============
 
+.. meta::
+  :robots: noindex
+
+
 .. selected:: os=ubuntu os=debian os=rhel os=oracle-linux os=rocky-linux os=sles
 
    .. selected:: i=pkgman i=pip i=tar i=amdgpu-install
