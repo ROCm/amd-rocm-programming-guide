@@ -6,10 +6,11 @@ _os:
   - &rhel { abbr: RHEL }
   - &sles { abbr: SLES }
 _versions:
-  - &ubuntu_26_04 { version: "26.04", kernel: "GA 7.0", graphics: true }
-  - &ubuntu_24_04 { version: "24.04.4", kernel: "GA 6.8", graphics: true }
-  - &ubuntu_24_04_hwe { version: "24.04.4", kernel: "HWE 6.17", graphics: true }
+  - &ubuntu_26_04 { version: "26.04.1", kernel: "GA 7.0", graphics: true }
+  - &ubuntu_24_04 { version: "24.04.5", kernel: "GA 6.8", graphics: true }
+  - &ubuntu_24_04_hwe { version: "24.04.5", kernel: "HWE 7.0", graphics: true }
   - &ubuntu_22_04 { version: "22.04.5", kernel: "GA 5.15" }
+  - &ubuntu_22_04_hwe { version: "22.04.5", kernel: "HWE 6.8" }
   - &debian_13 { version: "13", kernel: "6.12" }
   - &debian_12 { version: "12", kernel: "6.1.0" }
   - &rhel_10_2 { version: "10.2", kernel: "6.12.0-211", graphics: true }
@@ -159,29 +160,38 @@ AMD Instinct:
 AMD Radeon:
   AMD Radeon AI PRO R9700S:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04", "22.04"]
+      versions: ["26.04.1", "24.04.5", "22.04.5"]
 
   AMD Radeon AI PRO R9700:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04", "22.04"]
+      versions: ["26.04.1", "24.04.5", "22.04.5"]
 
   AMD Radeon AI PRO R9600D:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
+    Red Hat Enterprise Linux:
+      <<: *rhel
+      versions: [*rhel_10_2, *rhel_9_8]
+    Windows:
+      versions: [*windows_11]
+
+  AMD Radeon AI PRO R9600:
+    Ubuntu:
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
@@ -190,40 +200,40 @@ AMD Radeon:
 
   AMD Radeon RX 9070 XT:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04", "22.04"]
+      versions: ["26.04.1", "24.04.5", "22.04.5"]
 
   AMD Radeon RX 9070 GRE:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04", "22.04"]
+      versions: ["26.04.1", "24.04.5", "22.04.5"]
 
   AMD Radeon RX 9070:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04", "22.04"]
+      versions: ["26.04.1", "24.04.5", "22.04.5"]
 
   AMD Radeon RX 9060 XT LP:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
@@ -232,29 +242,29 @@ AMD Radeon:
 
   AMD Radeon RX 9060 XT:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04", "22.04"]
+      versions: ["26.04.1", "24.04.5", "22.04.5"]
 
   AMD Radeon RX 9060:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04", "22.04"]
+      versions: ["26.04.1", "24.04.5", "22.04.5"]
 
   AMD Radeon RX 9050:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
@@ -263,7 +273,7 @@ AMD Radeon:
 
   AMD Radeon RX 9050 (4GB):
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
@@ -272,106 +282,106 @@ AMD Radeon:
 
   AMD Radeon PRO W7900 Dual Slot:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04", "22.04"]
+      versions: ["26.04.1", "24.04.5", "22.04.5"]
 
   AMD Radeon PRO W7900:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04", "22.04"]
+      versions: ["26.04.1", "24.04.5", "22.04.5"]
 
   AMD Radeon PRO W7800 48GB:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04", "22.04"]
+      versions: ["26.04.1", "24.04.5", "22.04.5"]
 
   AMD Radeon PRO W7800:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04", "22.04"]
+      versions: ["26.04.1", "24.04.5", "22.04.5"]
 
   AMD Radeon RX 7900 XTX:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04", "22.04"]
+      versions: ["26.04.1", "24.04.5", "22.04.5"]
 
   AMD Radeon RX 7900 XT:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04", "22.04"]
+      versions: ["26.04.1", "24.04.5", "22.04.5"]
 
   AMD Radeon RX 7900 GRE:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04", "22.04"]
+      versions: ["26.04.1", "24.04.5", "22.04.5"]
 
   AMD Radeon PRO W7700:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04", "22.04"]
+      versions: ["26.04.1", "24.04.5", "22.04.5"]
 
   AMD Radeon RX 7800 XT:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04", "22.04"]
+      versions: ["26.04.1", "24.04.5", "22.04.5"]
 
   AMD Radeon RX 7700 XT:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
@@ -380,7 +390,7 @@ AMD Radeon:
 
   AMD Radeon RX 7700:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
@@ -389,14 +399,14 @@ AMD Radeon:
 
   AMD Radeon PRO V710:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
 
   AMD Radeon RX 7600:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
@@ -405,14 +415,14 @@ AMD Radeon:
 
   AMD Radeon PRO W6800:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
 
   AMD Radeon PRO V620:
     Ubuntu:
-      versions: [*ubuntu_26_04, *ubuntu_24_04, *ubuntu_22_04]
+      versions: [*ubuntu_26_04, *ubuntu_24_04_hwe, *ubuntu_22_04_hwe]
     Red Hat Enterprise Linux:
       <<: *rhel
       versions: [*rhel_10_2, *rhel_9_8]
@@ -424,7 +434,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI Max PRO 490:
     Ubuntu:
@@ -432,7 +442,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI Max PRO 485:
     Ubuntu:
@@ -440,7 +450,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI Max+ PRO 395:
     Ubuntu:
@@ -448,7 +458,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI Max PRO 390:
     Ubuntu:
@@ -456,7 +466,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI Max PRO 385:
     Ubuntu:
@@ -464,7 +474,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI Max PRO 380:
     Ubuntu:
@@ -472,7 +482,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI Max+ 395:
     Ubuntu:
@@ -480,7 +490,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI Max+ 392:
     Ubuntu:
@@ -488,7 +498,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI Max+ 388:
     Ubuntu:
@@ -496,7 +506,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI Max 390:
     Ubuntu:
@@ -504,7 +514,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI Max 385:
     Ubuntu:
@@ -512,7 +522,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI 9 HX PRO 475:
     Ubuntu:
@@ -520,7 +530,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI 9 HX PRO 470:
     Ubuntu:
@@ -528,7 +538,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI 9 PRO 465:
     Ubuntu:
@@ -536,7 +546,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI 7 PRO 450:
     Ubuntu:
@@ -544,7 +554,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI 5 PRO 440:
     Ubuntu:
@@ -552,7 +562,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI 5 PRO 435:
     Ubuntu:
@@ -560,7 +570,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI 9 HX 475:
     Ubuntu:
@@ -568,7 +578,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI 9 HX 470:
     Ubuntu:
@@ -576,7 +586,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI 9 465:
     Ubuntu:
@@ -584,7 +594,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI 7 450:
     Ubuntu:
@@ -592,7 +602,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI 5 435:
     Ubuntu:
@@ -600,7 +610,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI 5 430:
     Ubuntu:
@@ -608,7 +618,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI 7 445:
     Ubuntu:
@@ -616,7 +626,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI 9 HX PRO 375:
     Ubuntu:
@@ -624,7 +634,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI 9 HX PRO 370:
     Ubuntu:
@@ -632,7 +642,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI 9 HX 375:
     Ubuntu:
@@ -640,7 +650,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI 9 HX 370:
     Ubuntu:
@@ -648,7 +658,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI 9 365:
     Ubuntu:
@@ -656,7 +666,7 @@ AMD Ryzen:
     Windows:
       versions: [*windows_11]
     WSL2:
-      versions: ["26.04", "24.04"]
+      versions: ["26.04.1", "24.04.5"]
 
   AMD Ryzen AI 7 PRO 350:
     Ubuntu:

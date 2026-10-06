@@ -1,6 +1,3 @@
-.. meta::
-  :robots: noindex
-
 :no-search:
 
 .. raw:: html

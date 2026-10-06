@@ -75,11 +75,47 @@ Prerequisites
 
          .. selected:: os=rhel os=rocky-linux os=oracle-linux
 
-            .. selected:: i=pkgman i=pip i=tar
+            .. selected:: i=pkgman i=pip
 
                .. code-block:: bash
 
                   dnf install sudo wget perl
+
+            .. selected:: i=tar
+
+               .. selected:: os=rhel
+
+                  .. selected:: rhel-ver=8.10
+
+                     .. code-block:: bash
+
+                        dnf install sudo wget perl python3
+
+                  .. selected:: rhel-ver=9.4 rhel-ver=9.6 rhel-ver=9.8 rhel-ver=10.0 rhel-ver=10.2
+
+                     .. code-block:: bash
+
+                        dnf install sudo wget perl
+
+               .. selected:: os=oracle-linux
+
+                  .. selected:: oracle-linux-ver=8
+
+                     .. code-block:: bash
+
+                        dnf install sudo wget perl python3
+
+                  .. selected:: oracle-linux-ver=9 oracle-linux-ver=10
+
+                     .. code-block:: bash
+
+                        dnf install sudo wget perl
+
+               .. selected:: os=rocky-linux
+
+                  .. code-block:: bash
+
+                     dnf install sudo wget perl
 
             .. selected:: i=runfile
 
@@ -105,13 +141,15 @@ Prerequisites
 
                .. code-block:: bash
 
-                  zypper install sudo wget perl
+                  zypper install sudo wget perl python3
 
             .. selected:: i=runfile
 
                .. code-block:: bash
 
                   zypper install sudo wget rsync perl
+
+         See :doc:`/install/docker-containers` for Docker-related guidance.
 
 .. ================================================================== WINDOWS ==
 
@@ -141,7 +179,7 @@ Prerequisites
 
 .. selected:: os=wsl
 
-   .. selected:: ubuntu-ver=26.04
+   .. selected:: ubuntu-ver=26.04.1
       :heading: Install WSL2 and Ubuntu 26.04
       :heading-level: 3
 
@@ -151,7 +189,7 @@ Prerequisites
 
       Complete the following instructions in your WSL2 environment.
 
-   .. selected:: ubuntu-ver=24.04.4
+   .. selected:: ubuntu-ver=24.04.5
       :heading: Install WSL2 and Ubuntu 24.04
       :heading-level: 3
 
@@ -179,7 +217,7 @@ Prerequisites
 
       .. selected:: os=ubuntu os=wsl
 
-         .. selected:: ubuntu-ver=24.04.4
+         .. selected:: ubuntu-ver=24.04.5
             :heading: Install the OEM kernel
             :heading-level: 3
 
@@ -189,7 +227,7 @@ Prerequisites
 
             .. code-block:: bash
 
-               sudo apt update && sudo apt install linux-oem-24.04c
+               sudo apt update && sudo apt install linux-oem-24.04d
 
             Reboot your system after installing the OEM kernel.
 
@@ -197,16 +235,16 @@ Prerequisites
 
       .. selected:: os=ubuntu
 
-         .. selected:: ubuntu-ver=24.04.4
+         .. selected:: ubuntu-ver=24.04.5
             :heading: Install the OEM kernel
             :heading-level: 3
 
-            Ryzen APUs require the OEM kernel 6.14 for Ubuntu 24.04. Use the
+            Ryzen APUs require the OEM kernel 6.14 or newer for Ubuntu 24.04. Use the
             following command to install it using ``apt``.
 
             .. code-block:: bash
 
-               sudo apt update && sudo apt install linux-oem-24.04c
+               sudo apt update && sudo apt install linux-oem-24.04d
 
             Reboot your system after installing the OEM kernel.
 
@@ -489,7 +527,7 @@ Prerequisites
 
          .. selected:: fam=all
 
-            .. selected:: ubuntu-ver=24.04.4
+            .. selected:: ubuntu-ver=24.04.5
 
                .. dropdown:: Install the OEM kernel for Ryzen APUs
                   :animate: fade-in-slide-down
@@ -498,23 +536,20 @@ Prerequisites
                   :chevron: down-up
                   :open:
 
-                  Ryzen APUs require the OEM kernel 6.14 for Ubuntu 24.04. Use the
+                  Ryzen APUs require the OEM kernel 6.14 or newer for Ubuntu 24.04. Use the
                   following command to install it using ``apt``.
 
                   .. code-block:: bash
 
-                     sudo apt update && sudo apt install linux-oem-24.04c
+                     sudo apt update && sudo apt install linux-oem-24.04d
 
                   Reboot your system after installing the OEM kernel.
 
       .. selected:: os=wsl
 
-         To build the ROCDXG library for WSL2, you'll need GCC 11.4 or later and
-         CMake 3.15 or later.
-
          .. code-block:: bash
 
-            sudo apt install libatomic1 libquadmath0 gcc g++ cmake
+            sudo apt install libatomic1 libquadmath0
 
       .. selected:: os=rhel os=oracle-linux os=rocky-linux
 
@@ -535,7 +570,7 @@ Prerequisites
 
    .. selected:: os=ubuntu
 
-      .. selected:: ubuntu-ver=26.04
+      .. selected:: ubuntu-ver=26.04.1
          :heading: Install Python
          :heading-level: 3
 
@@ -546,7 +581,7 @@ Prerequisites
 
             sudo apt install python3.14 python3.14-venv
 
-      .. selected:: ubuntu-ver=24.04.4
+      .. selected:: ubuntu-ver=24.04.5
          :heading: Install Python
          :heading-level: 3
 
@@ -692,6 +727,8 @@ Prerequisites
       There are two primary methods for configuring GPU access for ROCm: group
       membership or udev rules. Each method has its own advantages. The choice
       depends on your specific requirements and system management preferences.
+      If you're working in a containerized environment, do this step on the
+      host system, outside of the container.
 
       .. tab-set::
 
