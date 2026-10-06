@@ -2,7 +2,7 @@ import urllib.request
 import urllib.error
 import os
 
-repo = "ROCm/ROCm"
+repo = "ROCm/rocm-docs"
 branch = "docs/10.1.0"
 
 BASE = f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}"
