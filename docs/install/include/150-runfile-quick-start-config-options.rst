@@ -1,6 +1,3 @@
-.. meta::
-  :robots: noindex
-
 .. selected:: i=runfile
    :heading: Quick start
    :heading-level: 2

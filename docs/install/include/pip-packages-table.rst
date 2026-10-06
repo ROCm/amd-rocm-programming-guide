@@ -1,6 +1,3 @@
-.. meta::
-  :robots: noindex
-
 The table below lists the available packages. Each bracketed name is an
 optional *extra* of the ``rocm`` meta package — combine the ones you need
 as a comma-separated list (for example, ``rocm[libraries,devel]``).

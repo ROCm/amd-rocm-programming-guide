@@ -1,9 +1,6 @@
 Uninstalling
 ============
 
-.. meta::
-  :robots: noindex
-
 
 .. ========================================================== PACKAGE MANAGER ==
 

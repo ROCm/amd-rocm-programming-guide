@@ -1,10 +1,6 @@
 Post-installation
 =================
 
-.. meta::
-  :robots: noindex
-
-
 After installing ROCm |ROCM_VERSION|, complete these post-installation steps to
 complete your system configuration and validate the installation.
 

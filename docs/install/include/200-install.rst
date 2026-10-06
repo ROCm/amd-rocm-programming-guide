@@ -1,9 +1,6 @@
 Installation
 ============
 
-.. meta::
-  :robots: noindex
-
 
 .. selected:: os=ubuntu ubuntu-ver=24.04.4 ubuntu-ver=22.04.5 i=pkgman i=runfile
 
