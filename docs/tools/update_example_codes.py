@@ -5,8 +5,10 @@
 import urllib.request
 import urllib.error
 
-BASE = "https://raw.githubusercontent.com/ROCm/rocm-examples/refs/heads/release/therock-10.0"
-# Temporary override for examples not yet synced to release/therock-10.0.
+BASE = "https://raw.githubusercontent.com/ROCm/rocm-examples/refs/heads/release/therock-10.1"
+# Temporary override for examples not yet synced to the release branch. All
+# examples are present on release/therock-10.1, so no overrides are needed now;
+# kept for the next release when newly added examples may lag the branch.
 AMD_STAGING = "https://raw.githubusercontent.com/ROCm/rocm-examples/refs/heads/amd-staging"
 DEST = "docs/tools/example_codes"
 
@@ -15,11 +17,9 @@ EXAMPLES = [
     # HIP-Basic
     ("HIP-Basic/opengl_interop/main.hip", "opengl_interop.hip"),
     ("HIP-Basic/vulkan_interop/main.hip", "external_interop.hip"),
-    # Not yet on release/therock-10.0; fetch from amd-staging until it syncs.
-    ("HIP-Basic/execution_context/main.hip", "execution_context.hip", AMD_STAGING),
-    # Not yet on release/therock-10.0; fetch from amd-staging until it syncs (rocm-examples PR #486).
-    ("HIP-Basic/cooperative_groups_double_buffered_tile/main.hip", "cooperative_groups_double_buffered_tile.hip", AMD_STAGING),
-    ("HIP-Basic/cooperative_groups_prefix_sum/main.hip", "cooperative_groups_prefix_sum.hip", AMD_STAGING),
+    ("HIP-Basic/execution_context/main.hip", "execution_context.hip"),
+    ("HIP-Basic/cooperative_groups_double_buffered_tile/main.hip", "cooperative_groups_double_buffered_tile.hip"),
+    ("HIP-Basic/cooperative_groups_prefix_sum/main.hip", "cooperative_groups_prefix_sum.hip"),
 
     # HIP-C++-Language-Extensions
     ("HIP-Doc/Programming-Guide/HIP-C%2B%2B-Language-Extensions/calling_global_functions/main.hip", "calling_global_functions.hip"),
@@ -91,9 +91,8 @@ EXAMPLES = [
     ("HIP-Doc/Programming-Guide/Using-HIP-Runtime-API/Memory-Management/SOMA/memory_pool_resource_usage_statistics/main.cpp", "memory_pool_resource_usage_statistics.cpp"),
     ("HIP-Doc/Programming-Guide/Using-HIP-Runtime-API/Memory-Management/SOMA/memory_pool_threshold/main.hip", "memory_pool_threshold.hip"),
     ("HIP-Doc/Programming-Guide/Using-HIP-Runtime-API/Memory-Management/SOMA/memory_pool_trim/main.cpp", "memory_pool_trim.cpp"),
-    # Not yet on release/therock-10.0; fetch from amd-staging until it syncs.
-    ("HIP-Doc/Programming-Guide/Using-HIP-Runtime-API/Memory-Management/SOMA/ipc_memory_pool_device_pointer/main.hip", "ipc_memory_pool_device_pointer.hip", AMD_STAGING),
-    ("HIP-Doc/Programming-Guide/Using-HIP-Runtime-API/Memory-Management/SOMA/ipc_memory_pool_shareable_handle/main.hip", "ipc_memory_pool_shareable_handle.hip", AMD_STAGING),
+    ("HIP-Doc/Programming-Guide/Using-HIP-Runtime-API/Memory-Management/SOMA/ipc_memory_pool_device_pointer/main.hip", "ipc_memory_pool_device_pointer.hip"),
+    ("HIP-Doc/Programming-Guide/Using-HIP-Runtime-API/Memory-Management/SOMA/ipc_memory_pool_shareable_handle/main.hip", "ipc_memory_pool_shareable_handle.hip"),
 
     # Using-HIP-Runtime-API / Memory-Management / Unified-Memory-Management
     ("HIP-Doc/Programming-Guide/Using-HIP-Runtime-API/Memory-Management/Unified-Memory-Management/data_prefetching/main.hip", "data_prefetching.hip"),

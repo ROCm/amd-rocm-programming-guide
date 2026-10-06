@@ -3,7 +3,7 @@ import urllib.error
 import os
 
 repo = "ROCm/ROCm"
-branch = "docs/10.0.0"
+branch = "docs/10.1.0"
 
 BASE = f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}"
 
