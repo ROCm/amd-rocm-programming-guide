@@ -27,9 +27,9 @@ The guide publishes one branch per ROCm release (e.g. `docs/10.0.0`,
 `docs/10.1.0`). Each is cut from `develop`, then bumped and re-fetched.
 
 > **Base on `develop` of the public repo** (`ROCm/amd-rocm-programming-guide`,
-> the `public` remote), not the internal repo's `develop`. The public
+> the `public` remote), not the internal repository's `develop`. The public
 > `develop` is the active trunk and already carries the current `conf.py`
-> version structure. The internal repo's `develop` can lag far behind.
+> version structure. The internal repository's `develop` can lag far behind.
 
 ### 1. Branch from develop
 
