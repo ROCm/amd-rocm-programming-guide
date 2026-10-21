@@ -12,8 +12,8 @@ This document outlines the configuration options available for the AMD GPU devic
 
 The device plugin can be configured using the following environment variables:
 
-| Environment Variable | Type | Default | Description |
-|-----|------|---------|-------------|
+| Environment Variable   | Type    | Default       | Description                              |
+| ---------------------- | ------- | ------------- | ---------------------------------------- |
 | `AMD_GPU_DEVICE_COUNT` | Integer | Auto-detected | Number of AMD GPUs available on the node |
 
 ### Why limit GPU exposure?
@@ -32,7 +32,7 @@ Setting `AMD_GPU_DEVICE_COUNT` to a value lower than the physical count ensures 
 The device plugin supports the following command-line flags:
 
 | Flag | Default | Description |
-|-----|------|-------------|
+| ----- | ------ | ------------- |
 | `-pulse` | `0` | Time between health check polling in seconds. Set to 0 to disable. |
 | `-resource_naming_strategy` | `single` | Resource naming strategy used for Kubernetes resource reporting. |
 
@@ -88,19 +88,19 @@ data:
 
 The following mounts are required for basic functionality:
 
-| Mount Path | Purpose |
-|------------|---------|
+| Mount Path                        | Purpose                                                             |
+| --------------------------------- | ------------------------------------------------------------------- |
 | `/var/lib/kubelet/device-plugins` | Required for device plugin registration with the Kubernetes Kubelet |
-| `/sys` | Required for GPU detection and topology information |
+| `/sys`                            | Required for GPU detection and topology information                 |
 
 ### Device mounts
 
 For GPU functionality, the following device files must be accessible:
 
-| Mount Path | Purpose |
-|------------|---------|
+| Mount Path | Purpose                                                            |
+| ---------- | ------------------------------------------------------------------ |
 | `/dev/kfd` | Kernel Fusion Driver interface, required for GPU compute workloads |
-| `/dev/dri` | Direct Rendering Infrastructure, required for GPU access |
+| `/dev/dri` | Direct Rendering Infrastructure, required for GPU access           |
 
 ## Example deployments
 
