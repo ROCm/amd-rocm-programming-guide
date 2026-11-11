@@ -186,7 +186,7 @@ Prerequisites
       .. note::
 
          WSL2 support in ROCm 10.2.0 is a Technology Preview and has
-         :ref:`known issues <wsl2-illegal-memory-access>` that will be addressed in future releases. For example, AI workloads
+         :ref:`known issues <rocm:wsl2-illegal-memory-access>` that will be addressed in future releases. For example, AI workloads
          (PyTorch and ``llama.cpp``) running on Ryzen APUs under WSL2 might fail with
          an illegal memory access error. As a workaround, use ROCm 10.1.0 or the latest
          ROCm 10.3.0 nightly build.
@@ -204,7 +204,7 @@ Prerequisites
       .. note::
 
          WSL2 support in ROCm 10.2.0 is a Technology Preview and has
-         :ref:`known issues <wsl2-illegal-memory-access>` that will be addressed in future releases. For example, AI workloads
+         :ref:`known issues <rocm:wsl2-illegal-memory-access>` that will be addressed in future releases. For example, AI workloads
          (PyTorch and ``llama.cpp``) running on Ryzen APUs under WSL2 might fail with
          an illegal memory access error. As a workaround, use ROCm 10.1.0 or the latest
          ROCm 10.3.0 nightly build.
@@ -222,7 +222,7 @@ Prerequisites
       .. note::
 
          WSL2 support in ROCm 10.2.0 is a Technology Preview and has
-         :ref:`known issues <wsl2-illegal-memory-access>` that will be addressed in future releases. For example, AI workloads
+         :ref:`known issues <rocm:wsl2-illegal-memory-access>` that will be addressed in future releases. For example, AI workloads
          (PyTorch and ``llama.cpp``) running on Ryzen APUs under WSL2 might fail with
          an illegal memory access error. As a workaround, use ROCm 10.1.0 or the latest
          ROCm 10.3.0 nightly build.

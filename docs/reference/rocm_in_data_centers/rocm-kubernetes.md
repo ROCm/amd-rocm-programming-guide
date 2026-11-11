@@ -83,4 +83,4 @@ kubectl pytorch-gpu-pod-example
 
 ## Contributing
 
-We welcome contributions to this project! Please refer to the [Development Guidelines](contributing/development.md) for details on how to get involved.
+We welcome contributions to this project! Please refer to the [Development Guidelines](https://github.com/ROCm/k8s-device-plugin/blob/master/docs/contributing/development.md) for details on how to get involved.
