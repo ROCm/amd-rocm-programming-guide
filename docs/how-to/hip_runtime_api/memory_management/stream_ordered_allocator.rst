@@ -3,11 +3,11 @@
 
 .. _stream_ordered_memory_allocator_how-to:
 
-*******************************
-Stream-ordered memory allocator
-*******************************
+*******************************************************************************
+Stream Ordered Memory Allocator
+*******************************************************************************
 
-The Stream-ordered memory allocator (SOMA) is part of the HIP runtime API. SOMA provides an asynchronous memory allocation mechanism with stream-ordering semantics. You can use SOMA to allocate and free memory in stream order, which ensures that all asynchronous accesses occur between the stream executions of allocation and deallocation. Compliance with stream order prevents use-before-allocation or use-after-free errors, which helps to avoid an undefined behavior.
+The Stream Ordered Memory Allocator (SOMA) is part of the HIP runtime API. SOMA provides an asynchronous memory allocation mechanism with stream-ordering semantics. You can use SOMA to allocate and free memory in stream order, which ensures that all asynchronous accesses occur between the stream executions of allocation and deallocation. Compliance with stream order prevents use-before-allocation or use-after-free errors, which helps to avoid an undefined behavior.
 
 Advantages of SOMA:
 
@@ -31,17 +31,17 @@ memory if the compliant memory accesses won't overlap
 temporally. ``hipFreeAsync()`` frees memory from the pool with stream-ordered
 semantics.
 
-Here is how to use stream-ordered memory allocation:
+Here is how to use stream ordered memory allocation:
 
 .. tab-set::
-  .. tab-item:: Stream-ordered memory allocation
+  .. tab-item:: Stream Ordered Memory Allocation
 
     .. literalinclude:: ../../../tools/example_codes/stream_ordered_memory_allocation.hip
         :start-after: // [sphinx-start]
         :end-before: // [sphinx-end]
         :language: cpp
 
-  .. tab-item:: Ordinary allocation
+  .. tab-item:: Ordinary Allocation
 
     .. literalinclude:: ../../../tools/example_codes/ordinary_memory_allocation.hip
         :start-after: // [sphinx-start]
