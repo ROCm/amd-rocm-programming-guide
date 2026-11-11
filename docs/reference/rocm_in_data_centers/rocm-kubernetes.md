@@ -23,9 +23,9 @@ The AMD GPU Device Plugin for Kubernetes enables the use of AMD GPUs as schedula
 
 See the [ROCm System Requirements](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/reference/system-requirements.html) for detailed hardware compatibility information.
 
-## Quick start
+## Quick Start
 
-To deploy the device plugin, run it on all nodes equipped with AMD GPUs. The simplest way to do this is by creating a Kubernetes [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/). A pre-built container image is available on [Docker Hub for the ROCm k8s-device-plugin](https://hub.docker.com/r/rocm/k8s-device-plugin), and a predefined YAML file named [k8s-ds-amdgpu-dp.yaml](https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/k8s-ds-amdgpu-dp.yaml) is included in this repository.
+To deploy the device plugin, run it on all nodes equipped with AMD GPUs. The simplest way to do this is by creating a Kubernetes [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/). A pre-built Docker image is available on [DockerHub](https://hub.docker.com/r/rocm/k8s-device-plugin), and a predefined YAML file named [k8s-ds-amdgpu-dp.yaml](https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/k8s-ds-amdgpu-dp.yaml) is included in this repository.
 
 Create a DaemonSet in your Kubernetes cluster with the following command:
 
@@ -39,9 +39,9 @@ Alternatively, you can pull directly from the web:
 kubectl create -f https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/k8s-ds-amdgpu-dp.yaml
 ```
 
-### Deploy the node labeller (optional)
+### Deploy the Node Labeler (Optional)
 
-For enhanced GPU discovery and scheduling, deploy the AMD GPU Node Labeller:
+For enhanced GPU discovery and scheduling, deploy the AMD GPU Node Labeler:
 
 ```bash
 kubectl create -f k8s-ds-amdgpu-labeller.yaml
@@ -49,7 +49,7 @@ kubectl create -f k8s-ds-amdgpu-labeller.yaml
 
 This will automatically label nodes with GPU-specific information such as VRAM size, compute units, and device IDs.
 
-### Verify installation
+### Verify Installation
 
 After deploying the device plugin, verify that your AMD GPUs are properly recognized as schedulable resources:
 
@@ -61,7 +61,7 @@ NAME             GPU
 k8s-node-01      8
 ```
 
-## Example workload
+## Example Workload
 
 You can restrict workloads to a node with a GPU by adding `resources.limits` to the pod definition. An example pod definition is provided in [example/pod/pytorch.yaml](https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/example/pod/pytorch.yaml). Create the pod by running:
 
@@ -78,9 +78,9 @@ kubectl describe pods
 After the pod is running, view the benchmark results with:
 
 ```bash
-kubectl logs pytorch-gpu-pod-example
+kubectl pytorch-gpu-pod-example
 ```
 
 ## Contributing
 
-We welcome contributions to this project! Please refer to the [Development Guidelines](https://instinct.docs.amd.com/projects/k8s-device-plugin/en/latest/contributing/development.html) for details on how to get involved.
+We welcome contributions to this project! Please refer to the [Development Guidelines](contributing/development.md) for details on how to get involved.

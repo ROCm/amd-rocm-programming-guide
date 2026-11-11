@@ -4,15 +4,15 @@ myst:
     "robots": "noindex"
 ---
 
-# Slurm Integration
+# Slurm integration
 
-The AMD Device Metrics Exporter integrates with the Slurm workload manager to track GPU metrics for Slurm jobs. This topic explains how to set up and configure this integration.
+AMD Device Metrics Exporter integrates with Slurm workload manager to track GPU metrics for Slurm jobs. This topic explains how to set up and configure this integration.
 
 ## Prerequisites
 
 - Slurm workload manager installed and configured
 - AMD Device Metrics Exporter installed and running
-- Root or `sudo` access on Slurm nodes
+- Root or sudo access on Slurm nodes
 
 ## Installation
 
@@ -46,9 +46,9 @@ Epilog="/etc/slurm/epilog.d/*"
 sudo systemctl restart slurmd     # On compute nodes if slurm.conf is updated
 ```
 
-## Exporter container deployment
+## Exporter Container Deployment
 
-### Directory setup
+### Directory Setup
 
 It's recommended to use the following directory structure to store persistent exporter data on the host:
 
@@ -65,7 +65,7 @@ Create the directory required for tracking Slurm jobs:
 mkdir -p /var/run/exporter
 ```
 
-### Start exporter container
+### Start Exporter Container
 
 Once the directory structure is ready, start the exporter container:
 
@@ -76,7 +76,7 @@ docker run -d \
   -v ./config:/etc/metrics \
   -v /var/run/exporter/:/var/run/exporter/ \
   -p 5000:5000 --name device-metrics-exporter \
-  rocm/device-metrics-exporter:v1.5.2
+  rocm/device-metrics-exporter:v1.5.5
 ```
 
 ## Verification
@@ -146,9 +146,9 @@ journalctl -u gpuagent.service -u amd-metrics-exporter.service
 docker exec device-metrics-exporter tail -f /var/log/exporter.log
 ```
 
-## Advanced configuration
+## Advanced Configuration
 
-### Custom script location
+### Custom Script Location
 
 You can place the script in a different location by updating the paths in `slurm.conf`:
 
@@ -157,7 +157,7 @@ Prolog=/path/to/custom/slurm-prolog.sh
 Epilog=/path/to/custom/slurm-epilog.sh
 ```
 
-### Additional job information
+### Additional Job Information
 
 The integration script can be modified to include additional job-specific information in the metrics. Edit the script to add custom labels as needed.
 

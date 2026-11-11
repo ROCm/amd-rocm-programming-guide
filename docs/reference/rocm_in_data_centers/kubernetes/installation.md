@@ -4,7 +4,7 @@ myst:
     "robots": "noindex"
 ---
 
-# Installation guide
+# Installation Guide
 
 This guide walks through the process of installing the AMD GPU device plugin on a Kubernetes cluster.
 
@@ -12,22 +12,22 @@ This guide walks through the process of installing the AMD GPU device plugin on 
 
 Before installing the AMD GPU device plugin, ensure your environment meets the following requirements:
 
-### System requirements
+### System Requirements
 
 - **Kubernetes**: v1.18 or higher
 - **AMD GPUs**: ROCm-capable AMD GPU hardware
 - **GPU Drivers**: AMD GPU drivers or ROCm stack installed on worker nodes
 - **Helm**: v3.2.0 or later (if using the health check feature or GPU Operator)
 
-### Driver installation
+### Driver Installation
 
 If you haven't installed the AMD GPU drivers yet, follow the official [ROCm Installation Guide](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/tutorial/quick-start.html)
 
-## Installation steps
+## Installation Steps
 
 Choose one of the following options based on your requirements.
 
-### Option 1: Standard device plugin
+### Option 1: Standard Device Plugin
 
 Use this option if you only need basic GPU allocation without health monitoring.
 
@@ -43,23 +43,23 @@ kubectl create -f k8s-ds-amdgpu-dp.yaml
 kubectl create -f https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/k8s-ds-amdgpu-dp.yaml
 ```
 
-### Option 1.a: Standard device plugin with init container
+### Option 1.a: Standard Device Plugin with Init Container
 
-Use this option when deploying the device plugin in environments where the amdgpu driver may not be loaded before the plugin starts. This deployment has an init container that waits for amdgpu driver to load before launching the main plugin container.
+Use this option when deploying the Device Plugin in environments where the amdgpu driver may not be loaded before the plugin starts. This deployment has an init container that waits for amdgpu driver to load before launching the main plugin container.
 
-**Using pre-defined YAML file**: You can use the pre-defined YAML file provided in this repository. Run the following command:
+**Using Pre-defined YAML File**: You can use the pre-defined YAML file provided in this repository. Run the following command:
 
 ```bash
 kubectl create -f k8s-ds-amdgpu-dp-with-init-container.yaml
 ```
 
-**Pulling from the web**: Alternatively, you can directly pull the YAML file from the repository:
+**Pulling from the Web**: Alternatively, you can directly pull the YAML file from the repository:
 
 ```bash
 kubectl create -f https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/k8s-ds-amdgpu-dp-with-init-container.yaml
 ```
 
-### Option 2: Device plugin with health checks
+### Option 2: Device Plugin with Health Checks
 
 Use this option if you need GPU health monitoring capabilities in addition to GPU allocation.
 
@@ -103,7 +103,7 @@ helm install metrics-exporter \
   -n kube-system -f metrics-exporter-values.yaml
 ```
 
-#### Step 2: Install device plugin with health checks
+#### Step 2: Install Device Plugin with Health Checks
 
 After successfully installing the metrics exporter, deploy the device plugin with health check capability:
 
@@ -119,27 +119,27 @@ kubectl create -f k8s-ds-amdgpu-dp-health.yaml
 kubectl create -f https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/k8s-ds-amdgpu-dp-health.yaml
 ```
 
-### Option 3: Using AMD GPU operator
+### Option 3: Using AMD GPU Operator
 
 The AMD GPU Operator provides a comprehensive solution that installs and manages:
 
 - AMD GPU device plugin
-- Node labeller
+- Node labeler
 - Device metrics exporter
 - Driver installation and updates
 
 See the [GPU Operator Documentation](https://instinct.docs.amd.com/projects/gpu-operator/en/latest/) for installation instructions and additional information.
 
-### Install node labeller (optional)
+### Install Node Labeler (Optional)
 
-The AMD GPU Node Labeller automatically detects and labels nodes with detailed GPU properties, enabling more precise workload scheduling.
+The AMD GPU Node Labeler automatically detects and labels nodes with detailed GPU properties, enabling more precise workload scheduling.
 
-The node labeller requires:
+The node labeler requires:
 
 - A service account with permissions to modify node labels
 - Privileged container access for GPU discovery
 
-Deploy the node labeller using the provided DaemonSet manifest:
+Deploy the node labeler using the provided DaemonSet manifest:
 
 ```bash
 kubectl create -f k8s-ds-amdgpu-labeller.yaml
@@ -185,7 +185,7 @@ amd.com/gpu.simd-count=1216
 amd.com/gpu.vram=192G
 ```
 
-### Verify the device plugin installation
+### Verify the Device Plugin Installation
 
 Check the status of the pods:
 
@@ -223,7 +223,7 @@ Common issues include:
 - ROCm stack not installed or misconfigured
 - Insufficient permissions for the device plugin to access GPU devices
 
-## Uninstalling the device plugin
+## Uninstalling the Device Plugin
 
 To uninstall the device plugin, delete the DaemonSet using the same manifest file you used for installation:
 

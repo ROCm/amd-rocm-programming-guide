@@ -4,13 +4,13 @@ myst:
     "robots": "noindex"
 ---
 
-# Example workloads
+# Example Workloads
 
 This document provides example workloads and configurations for using the AMD GPU device plugin in Kubernetes.
 
-## Basic GPU pod example
+## Basic GPU Pod Example
 
-This example demonstrates how to run a basic PyTorch workload on an AMD GPU. The pod creates simple tensors on the GPU and performs basic addition operations to verify GPU functionality. Since this is a job-like workload that runs once and completes, `restartPolicy: Never` is set to prevent the pod from restarting after completion.
+This example demonstrates how to run a basic PyTorch workload on an AMD GPU. The pod creates simple tensors on the GPU and performs basic addition operations to verify GPU functionality. Since this is a job-like workload that runs once and completes, we set `restartPolicy: Never` to prevent the pod from restarting after completion.
 
 Here's a simple example of a pod requesting an AMD GPU:
 
@@ -21,6 +21,10 @@ metadata:
   name: pytorch-gpu-pod-example
 spec:
   restartPolicy: Never
+  securityContext:
+    # ROCm framework images run as root. Stated explicitly so the Pod does not
+    # inherit an unreviewed default.
+    runAsNonRoot: false
   containers:
   - name: gpu-container
     image: rocm/pytorch:latest
@@ -41,6 +45,15 @@ spec:
     resources:
       limits:
         amd.com/gpu: 1  # Request 1 AMD GPU
+    securityContext:
+      # Matches the non-privileged configuration in configuration.md: GPU
+      # access comes from the device plugin, so the container needs no
+      # privileges of its own.
+      privileged: false
+      allowPrivilegeEscalation: false
+      seccompProfile:
+        # ROCm needs syscalls the default profile blocks.
+        type: Unconfined
 ```
 
 To run the example:
@@ -55,11 +68,11 @@ Check the output with:
 kubectl logs pytorch-gpu-pod-example
 ```
 
-See the [pytorch.yaml example manifest](https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/example/pod/pytorch.yaml).
+This example manifest is available for download here: [https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/example/pod/pytorch.yaml](https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/example/pod/pytorch.yaml)
 
-## Multiple GPU example
+## Multiple GPU Example
 
-This example shows how to utilize multiple GPUs in a JAX application. It performs parallel matrix multiplications across both GPUs using JAX's `pmap` functionality for distributed computation.
+This example shows how to utilize multiple GPUs in a JAX application. It performs parallel matrix multiplications across both GPUs using JAX's pmap functionality for distributed computation.
 
 ```yaml
 apiVersion: v1
@@ -68,6 +81,10 @@ metadata:
   name: jax-multi-gpu-pod
 spec:
   restartPolicy: Never
+  securityContext:
+    # ROCm framework images run as root. Stated explicitly so the Pod does not
+    # inherit an unreviewed default.
+    runAsNonRoot: false
   containers:
   - name: multi-gpu-container
     image: rocm/jax:latest
@@ -103,6 +120,15 @@ spec:
     resources:
       limits:
         amd.com/gpu: 2  # Request 2 AMD GPUs
+    securityContext:
+      # Matches the non-privileged configuration in configuration.md: GPU
+      # access comes from the device plugin, so the container needs no
+      # privileges of its own.
+      privileged: false
+      allowPrivilegeEscalation: false
+      seccompProfile:
+        # ROCm needs syscalls the default profile blocks.
+        type: Unconfined
 ```
 
 To run the example:
@@ -117,9 +143,9 @@ Check the output with:
 kubectl logs jax-multigpu-pod
 ```
 
-See the [jax-mult-gpu.yaml example manifest](https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/example/pod/jax-mult-gpu.yaml).
+This example manifest is available for download here: [https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/example/pod/jax-mult-gpu.yaml](https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/example/pod/jax-mult-gpu.yaml)
 
-## Non-privileged pod with GPU access example
+## Non-privileged Pod with GPU Access Example
 
 This example demonstrates the same JAX example as above, running as a non-privileged container configuration for enhanced security.
 
@@ -130,6 +156,12 @@ metadata:
   name: jax-non-privileged-multi-gpu-pod
 spec:
   restartPolicy: Never
+  securityContext:
+    # ROCm framework images run as root. Stated explicitly so the Pod does not
+    # inherit an unreviewed default.
+    runAsNonRoot: false
+  # Required for shared-memory transport between ROCm processes. See
+  # configuration.md, "Non-Privileged GPU Access".
   hostIPC: true
   containers:
   - name: jax-multi-gpu-container
@@ -183,4 +215,4 @@ Check the output with:
 kubectl logs jax-non-privileged-multi-gpu-pod
 ```
 
-See the [jax-non-privileged.yaml example manifest](https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/example/pod/jax-non-privileged.yaml).
+This example manifest is available for download here: [https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/example/pod/jax-non-privileged.yaml](https://raw.githubusercontent.com/ROCm/k8s-device-plugin/master/example/pod/jax-non-privileged.yaml)
