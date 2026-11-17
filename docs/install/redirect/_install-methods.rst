@@ -13,4 +13,4 @@ Redirecting...
 
 .. important::
 
-   If you're not redirected automatically, go to :ref:`installation methods <rocm-install-methods>`.
+   If you're not redirected automatically, go to :doc:`installation methods </install/rocm>`.
