@@ -124,5 +124,10 @@ numfig = False
 # "toc.excluded" entries in suppress_warnings silence the resulting warnings.
 rocm_docs_pdf_exclude_patterns = ["install/redirect/*"]
 
+# Files under include/ are pulled into other pages with the include directive.
+# Building them as standalone pages breaks their relative include paths and
+# duplicates their labels.
+exclude_patterns = ["**/include/**"]
+
 # SVG converter configuration is handled by the svg-pdf-converter extension
 # which provides custom preprocessing for Draw.io SVGs
