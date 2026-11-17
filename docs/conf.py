@@ -66,8 +66,10 @@ cpp_paren_attributes = ["__declspec"]
 
 suppress_warnings = ["etoc.toctree", "etoc.ref", "toc.excluded"]
 
-# Check if the branch is a docs/ branch
-official_branch = run(["git", "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True).stdout.find("docs/")
+# Check if the branch is a docs/ branch. Read the Docs builds from a detached
+# HEAD, so use the branch name it reports when available.
+current_branch = os.environ.get("READTHEDOCS_GIT_IDENTIFIER") or run(["git", "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True).stdout
+official_branch = current_branch.find("docs/")
 html_context = {}
 
 if os.environ.get("READTHEDOCS", "") == "True":
