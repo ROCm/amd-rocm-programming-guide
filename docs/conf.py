@@ -33,7 +33,7 @@ external_projects_current_project = "amd-rocm-programming-guide"
 
 rocm_docs_pdf_mock_selector_state = {
     "install/rocm": [
-        {"fam": "all", "w": "compute", "os": "ubuntu", "ubuntu-ver": "26.04"},
+        {"fam": "all", "w": "compute", "os": "ubuntu", "ubuntu-ver": "26.04.1"},
         {"fam": "all", "w": "compute", "os": "rhel", "rhel-ver": "10.2"},
         {"fam": "all", "w": "compute", "os": "windows"},
     ],
