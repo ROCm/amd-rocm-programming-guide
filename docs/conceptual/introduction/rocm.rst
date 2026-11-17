@@ -8,7 +8,7 @@ What is ROCm?
 ********************************************************************************
 
 .. remote-content::
-   :repo: ROCm/ROCm
+   :repo: ROCm/rocm-docs
    :path: docs/about/what-is-rocm.rst
    :default_branch: develop
    :start_line: 10
