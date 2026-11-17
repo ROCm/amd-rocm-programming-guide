@@ -22,6 +22,10 @@ copyright = "Copyright (c) 2026 Advanced Micro Devices, Inc. All rights reserved
 version = ROCM_VERSION
 release = ROCM_VERSION
 latex_engine = "xelatex"
+# keep inline literals such as ``libamdhip64.so`` on one line in the PDF
+latex_elements = {
+    "sphinxsetup": "inlineliteralwraps=false",
+}
 
 external_toc_path = "./sphinx/_toc.yml"
 
