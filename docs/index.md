@@ -77,6 +77,6 @@ multi-GPU programming, see the
 
 Known issues are listed and can be reported on the on the [AMD ROCm Programming Guide GitHub repository](https://github.com/ROCm/amd-rocm-programming-guide/issues).
 
-To contribute to the documentation, see [Contributing to ROCm](https://github.com/ROCm/ROCm/blob/develop/CONTRIBUTING.md) for contribution guidelines.
+To contribute to the documentation, see [Contributing to ROCm](https://github.com/ROCm/rocm-docs/blob/develop/CONTRIBUTING.md) for contribution guidelines.
 
 You can find licensing information on the [Licensing](https://rocm.docs.amd.com/en/latest/about/license.html) page.
