@@ -11,7 +11,7 @@ content and prepare it for publishing.
 | Script | Fetches | From |
 |--------|---------|------|
 | `update_hip_doc_files.py` | HIP runtime API how-to pages (`docs/how-to/`) | `ROCm/rocm-systems` at `docs/<version>` |
-| `update_rocm_install_doc_files.py` | Install pages + selector data (`docs/install/`, `docs/data/`) | `ROCm/ROCm` at `docs/<version>` |
+| `update_rocm_install_doc_files.py` | Install pages + selector data (`docs/install/`, `docs/data/`) | `ROCm/rocm-docs` at `docs/<version>` |
 | `update_datacenters_doc_files.py` | Slurm + Kubernetes integration pages (`docs/reference/rocm_in_data_centers/`) | `device-metrics-exporter`, `k8s-device-plugin` |
 | `update_example_codes.py` | HIP example sources (`docs/tools/example_codes/`) | `ROCm/rocm-examples` at `release/therock-<major.minor>` |
 | `add_noindex_meta.py` | — (post-processing) | adds the `noindex` meta tag to fetched pages |
