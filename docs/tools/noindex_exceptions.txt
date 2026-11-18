@@ -33,6 +33,9 @@ release/*
 tutorial/hip-performance-optimization/*
 tutorial/prerequisites.rst
 
+# Install redirect stubs (navigation targets only, no content)
+install/redirect/*
+
 # ----------------------------------------------------------------------------
 # KEEP SPECIFIC IMPORTANT PAGES SEARCHABLE
 # ----------------------------------------------------------------------------
