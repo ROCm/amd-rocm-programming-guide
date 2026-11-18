@@ -72,7 +72,7 @@ This example manifest is available for download here: [https://raw.githubusercon
 
 ## Multiple GPU example
 
-This example shows how to utilize multiple GPUs in a JAX application. It performs parallel matrix multiplications across both GPUs using JAX's pmap functionality for distributed computation.
+This example shows how to utilize multiple GPUs in a JAX application. It performs parallel matrix multiplications across both GPUs using JAX's `pmap` functionality for distributed computation.
 
 ```yaml
 apiVersion: v1

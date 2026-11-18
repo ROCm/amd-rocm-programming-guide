@@ -12,7 +12,7 @@ AMD Device Metrics Exporter integrates with Slurm workload manager to track GPU 
 
 - Slurm workload manager installed and configured
 - AMD Device Metrics Exporter installed and running
-- Root or sudo access on Slurm nodes
+- Root or `sudo` access on Slurm nodes
 
 ## Installation
 
