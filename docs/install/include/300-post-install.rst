@@ -460,9 +460,9 @@ complete your system configuration and validate the installation.
    .. selected:: fam=all fam=instinct
 
       To learn about HPC libraries and applications, see
-      :doc:`ROCm HPC SDK </components/hpc-sdk/index>`.
+      :doc:`ROCm HPC SDK <rocm:components/hpc-sdk/index>`.
 
    .. selected:: fam=all fam=instinct fam=radeon
 
       To learn about ROCm Extras, which include supplementary tools for
-      benchmarking and validating, see :doc:`ROCm Extras </components/extras>`.
+      benchmarking and validating, see :doc:`ROCm Extras <rocm:components/extras>`.

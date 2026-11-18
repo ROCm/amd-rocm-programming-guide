@@ -22,6 +22,10 @@ copyright = "Copyright (c) 2026 Advanced Micro Devices, Inc. All rights reserved
 version = ROCM_VERSION
 release = ROCM_VERSION
 latex_engine = "xelatex"
+# keep inline literals such as ``libamdhip64.so`` on one line in the PDF
+latex_elements = {
+    "sphinxsetup": "inlineliteralwraps=false",
+}
 
 external_toc_path = "./sphinx/_toc.yml"
 
@@ -29,7 +33,7 @@ external_projects_current_project = "amd-rocm-programming-guide"
 
 rocm_docs_pdf_mock_selector_state = {
     "install/rocm": [
-        {"fam": "all", "w": "compute", "os": "ubuntu", "ubuntu-ver": "26.04"},
+        {"fam": "all", "w": "compute", "os": "ubuntu", "ubuntu-ver": "26.04.1"},
         {"fam": "all", "w": "compute", "os": "rhel", "rhel-ver": "10.2"},
         {"fam": "all", "w": "compute", "os": "windows"},
     ],
@@ -62,8 +66,10 @@ cpp_paren_attributes = ["__declspec"]
 
 suppress_warnings = ["etoc.toctree", "etoc.ref", "toc.excluded"]
 
-# Check if the branch is a docs/ branch
-official_branch = run(["git", "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True).stdout.find("docs/")
+# Check if the branch is a docs/ branch. Read the Docs builds from a detached
+# HEAD, so use the branch name it reports when available.
+current_branch = os.environ.get("READTHEDOCS_GIT_IDENTIFIER") or run(["git", "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True).stdout
+official_branch = current_branch.find("docs/")
 html_context = {}
 
 if os.environ.get("READTHEDOCS", "") == "True":
@@ -117,6 +123,11 @@ numfig = False
 # readable content.  The external-toc still references them; the "etoc.ref" and
 # "toc.excluded" entries in suppress_warnings silence the resulting warnings.
 rocm_docs_pdf_exclude_patterns = ["install/redirect/*"]
+
+# Files under include/ are pulled into other pages with the include directive.
+# Building them as standalone pages breaks their relative include paths and
+# duplicates their labels.
+exclude_patterns = ["**/include/**"]
 
 # SVG converter configuration is handled by the svg-pdf-converter extension
 # which provides custom preprocessing for Draw.io SVGs
