@@ -1,5 +1,6 @@
 .. meta::
-  :robots: noindex
+   :description: How to install AMD ROCm for Instinct GPUs, Radeon GPUs, and Ryzen AI APUs
+   :keywords: linux, distro, windows, install, download, setup, quick, start, amdgpu-install, pkg, package, meta, ubuntu, debian, red, hat, rhel, suse, sles, enterprise, server, oracle, azure, centos, rocky, fedora, void, arch, cachy, pop, mint, tar
 
 :selector-toc2: Installation environment
 :selector-toc2-icon: fa-solid fa-computer
@@ -20,7 +21,7 @@ Use the following selector to choose your installation method for your
 supported AMD GPU or APU and operating system. For system requirements and
 support information, see the :doc:`Compatibility matrix
 </compatibility/compatibility-matrix>`. To learn more about changes introduced
-in ROCm |ROCM_VERSION|, see the :doc:`Release notes <rocm:about/release-notes>`.
+in ROCm |ROCM_VERSION|, see the :doc:`Release notes </about/release-notes>`.
 
 .. note::
 
@@ -221,6 +222,13 @@ in ROCm |ROCM_VERSION|, see the :doc:`Release notes <rocm:about/release-notes>`.
 
 .. include:: ./include/050-intro.rst
 
+.. selected:: i=runfile
+   :heading: Detailed installation
+   :heading-level: 2
+
+   For detailed installation options and configuration, see
+   :doc:`ROCm Runfile Installer </install/rocm-runfile-installer>`.
+
 ----
 
 .. _rocm-prerequisites:
@@ -263,7 +271,7 @@ in ROCm |ROCM_VERSION|, see the :doc:`Release notes <rocm:about/release-notes>`.
      document.addEventListener("DOMContentLoaded", () => {
        const nextLink = document.querySelector("footer.prev-next-footer a.right-next");
        const nextTitle = nextLink.querySelector(".prev-next-title");
-       nextTitle.textContent = "Build the ROCm Core SDK from source";
-       nextLink.href = "./build-from-source.html";
+       nextTitle.textContent = "Install HPC SDK";
+       nextLink.href = "./hpc-sdk.html";
      });
    </script>

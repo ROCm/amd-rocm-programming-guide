@@ -25,6 +25,17 @@ FILES = [
 
     # Additional install pages
     ("docs/install/build-from-source.rst", "docs/install/build-from-source.rst"),
+    ("docs/install/rocm-runfile-installer.rst", "docs/install/rocm-runfile-installer.rst"),
+
+    # Runfile installer screenshots (rocm-runfile-installer.rst)
+    ("docs/install/images/rocm-runfile-main-menu-1.png", "docs/install/images/rocm-runfile-main-menu-1.png"),
+    ("docs/install/images/rocm-runfile-preinstall-menu-2.png", "docs/install/images/rocm-runfile-preinstall-menu-2.png"),
+    ("docs/install/images/rocm-runfile-rocm-menu-3.png", "docs/install/images/rocm-runfile-rocm-menu-3.png"),
+    ("docs/install/images/rocm-runfile-rocm-device-3a.png", "docs/install/images/rocm-runfile-rocm-device-3a.png"),
+    ("docs/install/images/rocm-runfile-rocm-components-3b.png", "docs/install/images/rocm-runfile-rocm-components-3b.png"),
+    ("docs/install/images/rocm-runfile-rocm-menu-uninstall-3c.png", "docs/install/images/rocm-runfile-rocm-menu-uninstall-3c.png"),
+    ("docs/install/images/rocm-runfile-driver-menu-4.png", "docs/install/images/rocm-runfile-driver-menu-4.png"),
+    ("docs/install/images/rocm-runfile-postinstall-menu-5.png", "docs/install/images/rocm-runfile-postinstall-menu-5.png"),
 
     # Include files (numbered sections + pip table)
     ("docs/install/include/000-install-methods.rst", "docs/install/include/000-install-methods.rst"),
