@@ -171,7 +171,7 @@ Prerequisites
 
                   zypper install sudo wget rsync perl
 
-         See :doc:`/install/docker-containers` for Docker-related guidance.
+         See :doc:`rocm:install/docker-containers` for Docker-related guidance.
 
 .. ================================================================== WINDOWS ==
 
