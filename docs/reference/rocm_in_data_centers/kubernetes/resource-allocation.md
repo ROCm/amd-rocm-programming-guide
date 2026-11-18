@@ -4,7 +4,7 @@ myst:
     "robots": "noindex"
 ---
 
-# Resource Allocation
+# Resource allocation
 
 ## Overview
 
@@ -14,7 +14,7 @@ myst:
 
 Device Plugin has allocator package where we can define multiple policies on how the allocation should be done. Each policy can follow a different algorithm to decide the allocation strategy based on system needs. Actual allocation of AMD GPUs is done by Kubernetes and Kubelet. The allocation policy only decides the GPUs to be picked from the available GPUs for any given request.
 
-### Best-effort Allocation Policy
+### Best-effort allocation policy
 
 Currently we use ```best-effort``` policy as the default allocation policy. This policy choses GPUs based on topology of the GPUs to ensure optimal affinity and better performance. During initialization phase, Device Plugin calculates a score for every pair of GPUs and stores it in memory. This score is calculated based on below criteria:
 - Type of connectivity link between the pair. Most common AMD GPU deployments use either XGMI or PCIE links to connect the GPUs. ```XGMI``` connectivity offers better performance than PCIE connectivity. The score assigned for a pair connected using XGMI is lower than that of a pair connected using PCIE(lower score is better)

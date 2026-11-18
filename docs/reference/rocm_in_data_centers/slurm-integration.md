@@ -4,7 +4,7 @@ myst:
     "robots": "noindex"
 ---
 
-# Slurm integration
+# Slurm Integration
 
 AMD Device Metrics Exporter integrates with Slurm workload manager to track GPU metrics for Slurm jobs. This topic explains how to set up and configure this integration.
 
@@ -46,9 +46,9 @@ Epilog="/etc/slurm/epilog.d/*"
 sudo systemctl restart slurmd     # On compute nodes if slurm.conf is updated
 ```
 
-## Exporter Container Deployment
+## Exporter container deployment
 
-### Directory Setup
+### Directory setup
 
 It's recommended to use the following directory structure to store persistent exporter data on the host:
 
@@ -65,7 +65,7 @@ Create the directory required for tracking Slurm jobs:
 mkdir -p /var/run/exporter
 ```
 
-### Start Exporter Container
+### Start exporter container
 
 Once the directory structure is ready, start the exporter container:
 
@@ -146,9 +146,9 @@ journalctl -u gpuagent.service -u amd-metrics-exporter.service
 docker exec device-metrics-exporter tail -f /var/log/exporter.log
 ```
 
-## Advanced Configuration
+## Advanced configuration
 
-### Custom Script Location
+### Custom script location
 
 You can place the script in a different location by updating the paths in `slurm.conf`:
 
@@ -157,7 +157,7 @@ Prolog=/path/to/custom/slurm-prolog.sh
 Epilog=/path/to/custom/slurm-epilog.sh
 ```
 
-### Additional Job Information
+### Additional job information
 
 The integration script can be modified to include additional job-specific information in the metrics. Edit the script to add custom labels as needed.
 
