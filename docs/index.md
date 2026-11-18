@@ -43,6 +43,7 @@ For details on changes and version information, see {doc}`./release-notes`.
   * {doc}`./how-to/hip_runtime_api/cooperative_groups`
   * {doc}`./how-to/hip_runtime_api/hipgraph`
   * {doc}`./how-to/hip_runtime_api/call_stack`
+  * {doc}`./how-to/hip_runtime_api/multi_device`
   * {doc}`./how-to/hip_runtime_api/opengl_interop`
   * {doc}`./how-to/hip_runtime_api/external_interop`
 

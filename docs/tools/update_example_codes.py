@@ -5,9 +5,9 @@
 import urllib.request
 import urllib.error
 
-BASE = "https://raw.githubusercontent.com/ROCm/rocm-examples/refs/heads/release/therock-10.1"
+BASE = "https://raw.githubusercontent.com/ROCm/rocm-examples/refs/heads/release/therock-10.2"
 # Temporary override for examples not yet synced to the release branch. All
-# examples are present on release/therock-10.1, so no overrides are needed now;
+# examples are present on release/therock-10.2, so no overrides are needed now;
 # kept for the next release when newly added examples may lag the branch.
 AMD_STAGING = "https://raw.githubusercontent.com/ROCm/rocm-examples/refs/heads/amd-staging"
 DEST = "docs/tools/example_codes"

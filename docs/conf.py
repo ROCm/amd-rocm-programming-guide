@@ -12,8 +12,8 @@ from subprocess import run
 from pathlib import Path
 from typing import Any, Dict, List
 
-ROCM_VERSION = "10.1.0"
-GA_DATE = "2026-10-05"
+ROCM_VERSION = "10.2.0"
+GA_DATE = "2026-11-18"
 
 # for PDF output on Read the Docs
 project = "AMD ROCm™ Programming Guide"
@@ -80,7 +80,7 @@ html_theme_options = {
     "flavor": "generic",
     "use_download_button": True,
     "header_title": "AMD ROCm™ Programming Guide",
-    "header_link": "https://rocm-handbook.amd.com/projects/amd-rocm-programming-guide/en/docs-10.1.0/",
+    "header_link": "https://rocm-handbook.amd.com/projects/amd-rocm-programming-guide/en/docs-10.2.0/",
     "version_list_link": False,
     "nav_secondary_items": {
         "Core SDK": "https://rocm.docs.amd.com",

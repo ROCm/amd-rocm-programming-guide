@@ -3,7 +3,7 @@ import urllib.request
 import urllib.error
 
 repo = "ROCm/rocm-systems"
-branch = "docs/10.1.0"
+branch = "docs/10.2.0"
 
 BASE = f"https://raw.githubusercontent.com/{repo}/refs/heads/{branch}"
 
@@ -23,9 +23,7 @@ FILES = [
     ("projects/hip/docs/how-to/hip_runtime_api/initialization.rst", "docs/how-to/hip_runtime_api/initialization.rst"),
     ("projects/hip/docs/how-to/hip_runtime_api/memory_management.rst", "docs/how-to/hip_runtime_api/memory_management.rst"),
 
-    # The multi device downloaded to a different location
-    ("projects/hip/docs/how-to/hip_runtime_api/multi_device.rst", "docs/how-to/multi-gpu/multi_device.rst"),
-
+    ("projects/hip/docs/how-to/hip_runtime_api/multi_device.rst", "docs/how-to/hip_runtime_api/multi_device.rst"),
     ("projects/hip/docs/how-to/hip_runtime_api/opengl_interop.rst", "docs/how-to/hip_runtime_api/opengl_interop.rst"),
 
     # hip_runtime / memory_management

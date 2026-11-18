@@ -123,7 +123,7 @@ allocators (e.g., ``new``, ``malloc()``) can be used.
       - ✅ :sup:`1`
     * - CDNA2
       - ✅
-      - ✅ :sup:`1`
+      - ✅ :sup:`1` :sup:`2`
     * - CDNA1
       - ✅
       - ❌
