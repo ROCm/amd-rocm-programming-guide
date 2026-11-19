@@ -75,11 +75,25 @@ Prerequisites
 
          .. selected:: os=rhel os=rocky-linux os=oracle-linux
 
-            .. selected:: i=pkgman i=pip
+            .. selected:: i=pkgman
 
                .. code-block:: bash
 
                   dnf install sudo wget perl
+
+            .. selected:: i=pip
+
+               .. selected:: os=rhel
+
+                  .. code-block:: bash
+
+                     dnf install sudo wget perl
+
+               .. selected:: os=oracle-linux os=rocky-linux
+
+                  .. code-block:: bash
+
+                     dnf install sudo wget perl which
 
             .. selected:: i=tar
 
@@ -91,7 +105,7 @@ Prerequisites
 
                         dnf install sudo wget perl python3
 
-                  .. selected:: rhel-ver=9.4 rhel-ver=9.6 rhel-ver=9.8 rhel-ver=10.0 rhel-ver=10.2
+                  .. selected:: rhel-ver=9.4 rhel-ver=9.6 rhel-ver=9.9 rhel-ver=9.8 rhel-ver=10.0 rhel-ver=10.3 rhel-ver=10.2
 
                      .. code-block:: bash
 
@@ -133,9 +147,17 @@ Prerequisites
 
             .. selected:: i=pip
 
-               .. code-block:: bash
+               .. selected:: sles-ver=16.1 sles-ver=16.0 sles-ver=15.6
 
-                  zypper install sudo wget cmake libgfortran5 perl
+                  .. code-block:: bash
+
+                     zypper install sudo wget cmake libgfortran5 perl
+
+               .. selected:: sles-ver=15.7
+
+                  .. code-block:: bash
+
+                     zypper install sudo wget cmake libgfortran5 perl which
 
             .. selected:: i=tar
 
@@ -183,6 +205,14 @@ Prerequisites
       :heading: Install WSL2 and Ubuntu 26.04
       :heading-level: 3
 
+      .. note::
+
+         WSL2 support in ROCm 10.2.0 is a Technology Preview and has
+         :ref:`known issues <rocm:wsl2-illegal-memory-access>` that will be addressed in future releases. For example, AI workloads
+         (PyTorch and ``llama.cpp``) running on Ryzen APUs under WSL2 might fail with
+         an illegal memory access error. As a workaround, use ROCm 10.1.0 or the latest
+         ROCm 10.3.0 nightly build.
+
       Install WSL2 and Ubuntu 26.04 on your Windows system. See `How to install Linux on Windows
       with WSL2 (Microsoft Learn)
       <https://learn.microsoft.com/en-us/windows/wsl/install>`__ for instructions.
@@ -193,6 +223,14 @@ Prerequisites
       :heading: Install WSL2 and Ubuntu 24.04
       :heading-level: 3
 
+      .. note::
+
+         WSL2 support in ROCm 10.2.0 is a Technology Preview and has
+         :ref:`known issues <rocm:wsl2-illegal-memory-access>` that will be addressed in future releases. For example, AI workloads
+         (PyTorch and ``llama.cpp``) running on Ryzen APUs under WSL2 might fail with
+         an illegal memory access error. As a workaround, use ROCm 10.1.0 or the latest
+         ROCm 10.3.0 nightly build.
+
       Install WSL2 and Ubuntu 24.04 on your Windows system. See `How to install Linux on Windows
       with WSL2 (Microsoft Learn)
       <https://learn.microsoft.com/en-us/windows/wsl/install>`__ for instructions.
@@ -202,6 +240,14 @@ Prerequisites
    .. selected:: ubuntu-ver=22.04.5
       :heading: Install WSL2 and Ubuntu 22.04
       :heading-level: 3
+
+      .. note::
+
+         WSL2 support in ROCm 10.2.0 is a Technology Preview and has
+         :ref:`known issues <rocm:wsl2-illegal-memory-access>` that will be addressed in future releases. For example, AI workloads
+         (PyTorch and ``llama.cpp``) running on Ryzen APUs under WSL2 might fail with
+         an illegal memory access error. As a workaround, use ROCm 10.1.0 or the latest
+         ROCm 10.3.0 nightly build.
 
       Install WSL2 and Ubuntu 22.04 on your Windows system. See `How to install Linux on Windows
       with WSL2 (Microsoft Learn)
@@ -259,13 +305,13 @@ Prerequisites
 
    Run the following command to register your system:
 
-   .. selected:: rhel-ver=10.2 rhel-ver=10.0
+   .. selected:: rhel-ver=10.3 rhel-ver=10.2 rhel-ver=10.0
 
       .. code-block:: bash
 
          subscription-manager register --username <username> --password <password>
 
-   .. selected:: rhel-ver=9.8 rhel-ver=9.6 rhel-ver=9.4 rhel-ver=8.10
+   .. selected:: rhel-ver=9.9 rhel-ver=9.9 rhel-ver=9.8 rhel-ver=9.6 rhel-ver=9.4 rhel-ver=8.10
 
       .. code-block:: bash
 
@@ -296,6 +342,12 @@ Prerequisites
 
    Run the following command to update your system:
 
+   .. selected:: rhel-ver=10.3
+
+      .. code-block:: bash
+
+         sudo dnf update --releasever=10.3 --exclude=\*release\*
+
    .. selected:: rhel-ver=10.2
 
       .. code-block:: bash
@@ -307,6 +359,12 @@ Prerequisites
       .. code-block:: bash
 
          sudo dnf update --releasever=10.0 --exclude=\*release\*
+
+   .. selected:: rhel-ver=9.9
+
+      .. code-block:: bash
+
+         sudo dnf update --releasever=9.9 --exclude=\*release\*
 
    .. selected:: rhel-ver=9.8
 
@@ -355,7 +413,7 @@ Prerequisites
       the default package repositories. Use the following command to add the
       necessary repositories.
 
-      .. selected:: rhel-ver=10.2 rhel-ver=10.0
+      .. selected:: rhel-ver=10.3 rhel-ver=10.2 rhel-ver=10.0
 
          .. code-block:: bash
 
@@ -363,15 +421,12 @@ Prerequisites
             sudo rpm -ivh epel-release-latest-10.noarch.rpm
             sudo dnf config-manager --enable codeready-builder-for-rhel-10-x86_64-rpms
 
-      .. selected:: rhel-ver=9.8 rhel-ver=9.6 rhel-ver=9.4
+      .. selected:: rhel-ver=9.9 rhel-ver=9.8 rhel-ver=9.6 rhel-ver=9.4
 
          .. code-block:: bash
 
             wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
             sudo rpm -ivh epel-release-latest-9.noarch.rpm
-
-         .. code-block:: bash
-
             sudo dnf config-manager --enable codeready-builder-for-rhel-9-x86_64-rpms
 
 .. selected:: i=pkgman
@@ -410,7 +465,7 @@ Prerequisites
       the default package repositories. Use the following command to add the
       necessary repositories.
 
-      .. selected:: rhel-ver=10.2 rhel-ver=10.0
+      .. selected:: rhel-ver=10.3 rhel-ver=10.2 rhel-ver=10.0
 
          .. code-block:: bash
 
@@ -418,15 +473,12 @@ Prerequisites
             sudo rpm -ivh epel-release-latest-10.noarch.rpm
             sudo dnf config-manager --enable codeready-builder-for-rhel-10-x86_64-rpms
 
-      .. selected:: rhel-ver=9.8 rhel-ver=9.6 rhel-ver=9.4
+      .. selected:: rhel-ver=9.9 rhel-ver=9.8 rhel-ver=9.6 rhel-ver=9.4
 
          .. code-block:: bash
 
             wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
             sudo rpm -ivh epel-release-latest-9.noarch.rpm
-
-         .. code-block:: bash
-
             sudo dnf config-manager --enable codeready-builder-for-rhel-9-x86_64-rpms
 
       .. selected:: rhel-ver=8.10
@@ -435,9 +487,6 @@ Prerequisites
 
             wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
             sudo rpm -ivh epel-release-latest-8.noarch.rpm
-
-         .. code-block:: bash
-
             sudo dnf config-manager --enable codeready-builder-for-rhel-8-x86_64-rpms
 
    .. selected:: os=oracle-linux
@@ -493,26 +542,22 @@ Prerequisites
 
 .. selected:: os=ubuntu os=debian os=rhel os=oracle-linux os=rocky-linux os=sles os=wsl
 
-   .. selected:: i=amdgpu-install
-      :heading: Install additional packages
-      :heading-level: 3
+   .. selected:: i=pkgman
 
-      Some ROCm tools require the ``libatomic`` and ``libquadmath`` libraries to run correctly. Install
-      them using your distribution's package manager.
+      .. selected:: os=sles
 
-      .. selected:: os=ubuntu
+         .. selected:: sles-ver=16.1
+            :heading: Install additional packages
+            :heading-level: 3
 
-         .. code-block:: bash
+            The ROCm packages require ``update-alternatives``. Install it using your
+            distribution's package manager.
 
-            sudo apt install libatomic1 libquadmath0
+            .. code-block:: bash
 
-      .. selected:: os=rhel
+               sudo zypper install update-alternatives
 
-         .. code-block:: bash
-
-            sudo dnf install libatomic libquadmath
-
-   .. selected:: i=pkgman i=pip i=tar
+   .. selected:: i=pip i=tar
       :heading: Install additional packages
       :heading-level: 3
 
@@ -629,7 +674,7 @@ Prerequisites
 
    .. selected:: os=rhel
 
-      .. selected:: rhel-ver=10.2 rhel-ver=10.0
+      .. selected:: rhel-ver=10.3 rhel-ver=10.2 rhel-ver=10.0
          :heading: Install Python
          :heading-level: 3
 
@@ -640,7 +685,7 @@ Prerequisites
 
             sudo dnf install python3.12 python3.12-pip
 
-      .. selected:: rhel-ver=9.8 rhel-ver=9.6 rhel-ver=9.4 rhel-ver=9 rhel-ver=8.10
+      .. selected:: rhel-ver=9.9 rhel-ver=9.9 rhel-ver=9.8 rhel-ver=9.6 rhel-ver=9.4 rhel-ver=8.10
          :heading: Install Python
          :heading-level: 3
 
@@ -690,7 +735,7 @@ Prerequisites
       :heading: Install Python
       :heading-level: 3
 
-      .. selected:: sles-ver=16.0
+      .. selected:: sles-ver=16.1 sles-ver=16.0
 
          Install a supported Python version. For example, to install Python 3.13,
          run the following command:

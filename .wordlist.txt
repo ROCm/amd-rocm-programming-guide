@@ -376,6 +376,7 @@ Fuyu
 FX
 galb
 GALB
+gapped
 GAT
 GCC
 gcc
@@ -483,6 +484,7 @@ hipsparse
 hipSPARSE
 hipSPARSELt
 hipTensor
+hiptensor
 hlist
 hostname
 hotspotting
@@ -602,6 +604,8 @@ Kubelet
 kv
 KV
 KVM
+Labeler
+labeler
 Labeller
 labeller
 lang
@@ -1218,6 +1222,7 @@ uncacheable
 uncached
 Uncached
 uncoalesced
+uncordoning
 uncorrectable
 underoptimized
 unhandled
@@ -1231,6 +1236,7 @@ unmapped
 unmapping
 unnormalized
 unregister
+unschedulable
 unsqueeze
 unstacking
 unswitching

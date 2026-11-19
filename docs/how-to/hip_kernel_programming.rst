@@ -22,6 +22,8 @@ built-in device functions in your code.
    :tag_prefix: docs/
    :project_name: HIP
    :docs_base_url: https://rocm.docs.amd.com/projects
+   :replace: rocm:reference/gpu-arch-specs|rocm:reference/gpu-specs
+   :replace_re: \npoint types are also be supported\.|\n  point types are also be supported.
 
 
 .. TODO:

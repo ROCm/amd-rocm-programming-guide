@@ -11,7 +11,7 @@
 
    .. list-table::
       :header-rows: 1
-      :widths: 22 14 40 24
+      :widths: 30 10 40 30
 
       * - Install method
         - Platform

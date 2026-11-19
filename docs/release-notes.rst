@@ -13,6 +13,8 @@ This page tracks releases of the AMD ROCm Programming Guide.
 
    * - Version
      - Release date
+   * - `10.2.0 <https://rocm-handbook.amd.com/projects/amd-rocm-programming-guide/en/docs-10.2.0/>`_
+     - November 18, 2026
    * - `10.1.0 <https://rocm-handbook.amd.com/projects/amd-rocm-programming-guide/en/docs-10.1.0/>`_
      - October 5, 2026
    * - `10.0.0 <https://rocm-handbook.amd.com/projects/amd-rocm-programming-guide/en/docs-10.0.0/>`_
@@ -33,6 +35,14 @@ This page tracks releases of the AMD ROCm Programming Guide.
      - January 21, 2026
    * - `7.1.1 <https://rocm-handbook.amd.com/projects/amd-rocm-programming-guide/en/docs-7.1.1/>`_
      - November 26, 2025
+
+ROCm 10.2.0
+===========
+
+Updated content
+---------------
+
+* Updated the :doc:`installation instructions <install/rocm>` for ROCm 10.2.0.
 
 ROCm 10.1.0
 ===========

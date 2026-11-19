@@ -6,7 +6,7 @@ myst:
 
 # Slurm Integration
 
-The AMD Device Metrics Exporter integrates with the Slurm workload manager to track GPU metrics for Slurm jobs. This topic explains how to set up and configure this integration.
+AMD Device Metrics Exporter integrates with Slurm workload manager to track GPU metrics for Slurm jobs. This topic explains how to set up and configure this integration.
 
 ## Prerequisites
 
@@ -76,7 +76,7 @@ docker run -d \
   -v ./config:/etc/metrics \
   -v /var/run/exporter/:/var/run/exporter/ \
   -p 5000:5000 --name device-metrics-exporter \
-  rocm/device-metrics-exporter:v1.5.2
+  rocm/device-metrics-exporter:v1.5.5
 ```
 
 ## Verification

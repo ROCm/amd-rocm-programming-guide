@@ -124,22 +124,22 @@ kubectl create -f https://raw.githubusercontent.com/ROCm/k8s-device-plugin/maste
 The AMD GPU Operator provides a comprehensive solution that installs and manages:
 
 - AMD GPU device plugin
-- Node labeller
+- Node labeler
 - Device metrics exporter
 - Driver installation and updates
 
 See the [GPU Operator Documentation](https://instinct.docs.amd.com/projects/gpu-operator/en/latest/) for installation instructions and additional information.
 
-### Install node labeller (optional)
+### Install node labeler (optional)
 
-The AMD GPU Node Labeller automatically detects and labels nodes with detailed GPU properties, enabling more precise workload scheduling.
+The AMD GPU Node Labeler automatically detects and labels nodes with detailed GPU properties, enabling more precise workload scheduling.
 
-The node labeller requires:
+The node labeler requires:
 
 - A service account with permissions to modify node labels
 - Privileged container access for GPU discovery
 
-Deploy the node labeller using the provided DaemonSet manifest:
+Deploy the node labeler using the provided DaemonSet manifest:
 
 ```bash
 kubectl create -f k8s-ds-amdgpu-labeller.yaml
