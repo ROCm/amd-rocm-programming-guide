@@ -75,7 +75,7 @@ multi-GPU programming, see the
 
 * {doc}`./install/third-party-tools`
 
-Known issues are listed and can be reported on the on the [AMD ROCm Programming Guide GitHub repository](https://github.com/ROCm/amd-rocm-programming-guide/issues).
+Known issues are listed and can be reported on the [AMD ROCm Programming Guide GitHub repository](https://github.com/ROCm/amd-rocm-programming-guide/issues).
 
 To contribute to the documentation, see [Contributing to ROCm](https://github.com/ROCm/rocm-docs/blob/develop/CONTRIBUTING.md) for contribution guidelines.
 
