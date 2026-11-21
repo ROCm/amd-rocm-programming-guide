@@ -1,7 +1,7 @@
 import urllib.request
 
 urllib.request.urlretrieve(
-     f"https://raw.githubusercontent.com/ROCm/device-metrics-exporter/refs/heads/main/docs/integrations/slurm-integration.md",
+     f"https://raw.githubusercontent.com/ROCm/device-metrics-exporter/refs/tags/v1.5.4/docs/integrations/slurm-integration.md",
      "docs/reference/rocm_in_data_centers/slurm-integration.md"
 )
 
