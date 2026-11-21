@@ -42,7 +42,20 @@ ROCm 10.2.0
 Updated content
 ---------------
 
-* Updated the :doc:`installation instructions <install/rocm>` for ROCm 10.2.0.
+* Updated the :doc:`installation instructions <install/rocm>` and the
+  :doc:`install/rocm-runfile-installer` page for ROCm 10.2.0.
+* Moved the :doc:`how-to/hip_runtime_api/multi_device` page under the HIP
+  runtime API section.
+* Updated the :doc:`Kubernetes device plugin <reference/rocm_in_data_centers/rocm-kubernetes>`
+  pages, including the ``product`` resource naming strategy and security
+  contexts in the example manifests.
+* Updated the :doc:`reference/rocm_in_data_centers/slurm-integration` page for
+  AMD Device Metrics Exporter 1.5.4, and fixed the directory for the prolog
+  script.
+* Updated the ROCm Core SDK architecture diagram on the
+  :doc:`conceptual/introduction/rocm` page.
+* Fixed typos and terminology in the HIP runtime API topics, including
+  :doc:`how-to/hip_runtime_api/cooperative_groups`.
 
 ROCm 10.1.0
 ===========
