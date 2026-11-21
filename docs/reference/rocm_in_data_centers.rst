@@ -15,10 +15,10 @@ ROCm™ in data centers:
 
 * :doc:`./rocm_in_data_centers/rocm-kubernetes`
 
-  * :doc:`./rocm_in_data_centers/kubernetes/configuration`
-
-  * :doc:`./rocm_in_data_centers/kubernetes/examples`
-
   * :doc:`./rocm_in_data_centers/kubernetes/installation`
 
+  * :doc:`./rocm_in_data_centers/kubernetes/configuration`
+
   * :doc:`./rocm_in_data_centers/kubernetes/resource-allocation`
+
+  * :doc:`./rocm_in_data_centers/kubernetes/examples`
