@@ -47,6 +47,10 @@ For details on changes and version information, see {doc}`./release-notes`.
   * {doc}`./how-to/hip_runtime_api/opengl_interop`
   * {doc}`./how-to/hip_runtime_api/external_interop`
 
+* {doc}`./how-to/hip_compilers`
+
+**Tutorials**
+
 * {doc}`./tutorial/programming-patterns`
 
   * {doc}`./tutorial/programming-patterns/matrix_multiplication`
@@ -54,10 +58,6 @@ For details on changes and version information, see {doc}`./release-notes`.
   * {doc}`./tutorial/programming-patterns/cpu_gpu_kmeans`
   * {doc}`./tutorial/programming-patterns/stencil_operations`
   * {doc}`./tutorial/programming-patterns/multikernel_bfs`
-
-* {doc}`./how-to/hip_compilers`
-
-**Performance optimization techniques**
 
 * {doc}`./tutorial/hip-performance-optimization`
 
@@ -73,7 +73,16 @@ multi-GPU programming, see the
 
 * {doc}`./install/rocm`
 
+* {doc}`./install/rocm-runfile-installer`
+
+* {doc}`./install/build-from-source`
+
 * {doc}`./install/third-party-tools`
+
+* {doc}`./reference/rocm_in_data_centers`
+
+  * {doc}`./reference/rocm_in_data_centers/slurm-integration`
+  * {doc}`./reference/rocm_in_data_centers/rocm-kubernetes`
 
 Known issues are listed and can be reported on the [AMD ROCm Programming Guide GitHub repository](https://github.com/ROCm/amd-rocm-programming-guide/issues).
 

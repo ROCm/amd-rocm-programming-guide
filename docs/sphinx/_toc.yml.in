@@ -47,6 +47,10 @@ subtrees:
       - file: how-to/hip_runtime_api/multi_device
       - file: how-to/hip_runtime_api/opengl_interop
       - file: how-to/hip_runtime_api/external_interop
+  - file: how-to/hip_compilers
+
+- caption: Tutorials
+  entries:
   - file: tutorial/programming-patterns
     subtrees:
     - entries:
@@ -55,10 +59,6 @@ subtrees:
       - file: tutorial/programming-patterns/cpu_gpu_kmeans
       - file: tutorial/programming-patterns/stencil_operations
       - file: tutorial/programming-patterns/multikernel_bfs
-  - file: how-to/hip_compilers
-
-- caption: Performance optimization
-  entries:
   - file: tutorial/hip-performance-optimization
     subtrees:
     - entries:
@@ -87,6 +87,17 @@ subtrees:
   - file: install/build-from-source
     title: Build ROCm from source
   - file: install/third-party-tools
+  - file: reference/rocm_in_data_centers
+    subtrees:
+    - entries:
+      - file: reference/rocm_in_data_centers/slurm-integration
+      - file: reference/rocm_in_data_centers/rocm-kubernetes
+        subtrees:
+        - entries:
+          - file: reference/rocm_in_data_centers/kubernetes/installation
+          - file: reference/rocm_in_data_centers/kubernetes/configuration
+          - file: reference/rocm_in_data_centers/kubernetes/resource-allocation
+          - file: reference/rocm_in_data_centers/kubernetes/examples
 
 - caption: PDF version
   entries:

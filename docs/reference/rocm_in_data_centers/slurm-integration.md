@@ -4,7 +4,7 @@ myst:
     "robots": "noindex"
 ---
 
-# Slurm Integration
+# Slurm integration
 
 AMD Device Metrics Exporter integrates with Slurm workload manager to track GPU metrics for Slurm jobs. This topic explains how to set up and configure this integration.
 
@@ -16,14 +16,14 @@ AMD Device Metrics Exporter integrates with Slurm workload manager to track GPU 
 
 ## Installation
 
-- Copy the integration script:
-  - [exporter-epilog.sh](../../debian/usr/local/etc/metrics/slurm/slurm-epilog.sh)
-  - [exporter-prolog.sh](../../debian/usr/local/etc/metrics/slurm/slurm-prolog.sh)
+- Copy the integration scripts:
+  - [exporter-prolog.sh](https://github.com/ROCm/device-metrics-exporter/blob/v1.5.4/debian/usr/local/etc/metrics/slurm/slurm-prolog.sh)
+  - [exporter-epilog.sh](https://github.com/ROCm/device-metrics-exporter/blob/v1.5.4/debian/usr/local/etc/metrics/slurm/slurm-epilog.sh)
 
 ```bash
-cp ${TOP_DIR}/example/slurm/exporter-prolog.sh /etc/slurm/epilog.d/exporter-prolog.sh
-cp ${TOP_DIR}/example/slurm/exporter-epilog.sh /etc/slurm/epilog.d/exporter-epilog.sh
-sudo chmod +x /etc/slurm/epilog.d/exporter-prolog.sh
+sudo cp ${TOP_DIR}/example/slurm/exporter-prolog.sh /etc/slurm/prolog.d/exporter-prolog.sh
+sudo cp ${TOP_DIR}/example/slurm/exporter-epilog.sh /etc/slurm/epilog.d/exporter-epilog.sh
+sudo chmod +x /etc/slurm/prolog.d/exporter-prolog.sh
 sudo chmod +x /etc/slurm/epilog.d/exporter-epilog.sh
 ```
 
@@ -76,7 +76,7 @@ docker run -d \
   -v ./config:/etc/metrics \
   -v /var/run/exporter/:/var/run/exporter/ \
   -p 5000:5000 --name device-metrics-exporter \
-  rocm/device-metrics-exporter:v1.5.5
+  rocm/device-metrics-exporter:v1.5.4
 ```
 
 ## Verification
@@ -106,7 +106,7 @@ When Slurm integration is enabled, the following job-specific labels are added t
 
 ## Troubleshooting
 
-### Common Issues
+### Common issues
 
 1. Script permissions:
    - Ensure the exporter script is executable
