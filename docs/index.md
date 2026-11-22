@@ -73,6 +73,10 @@ multi-GPU programming, see the
 
 * {doc}`./install/rocm`
 
+* {doc}`./install/rocm-runfile-installer`
+
+* {doc}`./install/build-from-source`
+
 * {doc}`./install/third-party-tools`
 
 * {doc}`./reference/rocm_in_data_centers`
